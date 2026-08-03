@@ -1,13 +1,15 @@
 import React from 'react';
-import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles, Layers } from 'lucide-react';
+import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles, Layers, Image as ImageIcon, Globe } from 'lucide-react';
 
 const CATEGORIES = [
-  { id: 'All',        label: 'All Tools',      icon: LayoutGrid },
-  { id: 'PDF Tools',  label: 'PDF Suite',      icon: Layers },
-  { id: 'E-Commerce', label: 'E-Commerce',     icon: DollarSign },
-  { id: 'AI & Dev',   label: 'AI & Dev',       icon: Cpu },
-  { id: 'Freelance',  label: 'Freelance',      icon: FileText },
-  { id: 'Marketing',  label: 'Marketing',      icon: Link2 },
+  { id: 'All',           label: 'All Tools',      icon: LayoutGrid },
+  { id: 'PDF Tools',     label: 'PDF Suite',      icon: Layers },
+  { id: 'E-Commerce',    label: 'E-Commerce',     icon: DollarSign },
+  { id: 'AI & Dev',      label: 'AI & Dev',       icon: Cpu },
+  { id: 'Image & Media', label: 'Image & Media',  icon: ImageIcon },
+  { id: 'SEO & Web',     label: 'SEO & Web',      icon: Globe },
+  { id: 'Freelance',     label: 'Freelance',      icon: FileText },
+  { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
 ];
 
 export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory }) {
@@ -67,7 +69,7 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Search size={15} color="#6161ff" />
-            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 20 utilities...</span>
+            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 30 utilities...</span>
           </div>
           <kbd style={{
             display: 'flex', alignItems: 'center', gap: 3,

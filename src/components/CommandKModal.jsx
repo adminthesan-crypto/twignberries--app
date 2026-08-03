@@ -83,7 +83,7 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
             type="text"
             value={query}
             onChange={e => { setQuery(e.target.value); setSelectedIndex(0); }}
-            placeholder="Search calculators, fee estimators, generators..."
+            placeholder="Search 30 PDF, E-Commerce, Dev & SEO utilities..."
             style={{
               flex: 1, background: 'none', border: 'none', outline: 'none',
               color: 'var(--text-1)', fontSize: 15, fontWeight: 500,

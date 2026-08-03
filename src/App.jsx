@@ -25,6 +25,16 @@ import SplitPdfTool from './tools/SplitPdfTool';
 import ImageToPdfTool from './tools/ImageToPdfTool';
 import WatermarkPdfTool from './tools/WatermarkPdfTool';
 import ProtectPdfTool from './tools/ProtectPdfTool';
+import RotatePdfTool from './tools/RotatePdfTool';
+import OrganizePdfTool from './tools/OrganizePdfTool';
+import PageNumberPdfTool from './tools/PageNumberPdfTool';
+import PdfMetadataTool from './tools/PdfMetadataTool';
+import SvgToImageTool from './tools/SvgToImageTool';
+import SocialImageCropperTool from './tools/SocialImageCropperTool';
+import ColorPaletteTool from './tools/ColorPaletteTool';
+import JsonFormatterTool from './tools/JsonFormatterTool';
+import RegexTesterTool from './tools/RegexTesterTool';
+import OpenGraphPreviewTool from './tools/OpenGraphPreviewTool';
 
 /* ─── Tool Definitions ───────────────────────────────────── */
 const TOOLS = [
@@ -317,6 +327,146 @@ const TOOLS = [
     ),
     component: ProtectPdfTool,
   },
+  {
+    id: 'rotate-pdf',
+    name: 'Rotate PDF Pages',
+    category: 'PDF Tools',
+    description: 'Rotate individual or all PDF pages 90° clockwise, counter-clockwise, or 180° offline.',
+    keywords: ['rotate pdf', 'turn pdf', 'orientation pdf', 'flip pdf'],
+    color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 2v6h-6"/><path d="M21 13a9 9 0 1 1-3-7.7L21 8"/>
+      </svg>
+    ),
+    component: RotatePdfTool,
+  },
+  {
+    id: 'organize-pdf',
+    name: 'Organize & Delete PDF Pages',
+    category: 'PDF Tools',
+    description: 'Visual page manager: drop specific pages, reverse order, or duplicate pages in RAM.',
+    keywords: ['organize pdf', 'delete pdf pages', 'remove pdf pages', 'reverse pdf', 'reorder pdf'],
+    color: '#00c875', bg: 'rgba(0,200,117,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="10" y1="13" x2="14" y2="13"/>
+      </svg>
+    ),
+    component: OrganizePdfTool,
+  },
+  {
+    id: 'page-number-pdf',
+    name: 'Stamp Page Numbers',
+    category: 'PDF Tools',
+    description: 'Stamp customizable sequential page numbers (Page X of Y) across PDF documents.',
+    keywords: ['page numbers pdf', 'number pdf', 'footer pdf', 'stamp pdf'],
+    color: '#fdab3d', bg: 'rgba(253,171,61,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>
+      </svg>
+    ),
+    component: PageNumberPdfTool,
+  },
+  {
+    id: 'metadata-pdf',
+    name: 'PDF Metadata Inspector & Privacy Scrubber',
+    category: 'PDF Tools',
+    description: 'Read and edit internal PDF XMP metadata and strip hidden author tracking tags.',
+    keywords: ['pdf metadata', 'pdf info', 'scrub pdf', 'remove author pdf', 'xmp pdf'],
+    color: '#e2445c', bg: 'rgba(226,68,92,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+      </svg>
+    ),
+    component: PdfMetadataTool,
+  },
+  {
+    id: 'svg-to-image',
+    name: 'SVG to High-Res PNG/JPG Converter',
+    category: 'Image & Media',
+    description: 'Render SVG files or raw XML code on HTML5 canvas and export as 1x–8x Retina PNG/JPG.',
+    keywords: ['svg to png', 'svg to jpg', 'convert svg', 'rasterize svg', 'retina svg'],
+    color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      </svg>
+    ),
+    component: SvgToImageTool,
+  },
+  {
+    id: 'social-cropper',
+    name: 'Social Media Aspect Ratio Cropper',
+    category: 'Image & Media',
+    description: 'Fit and frame images for Instagram (1:1), Stories/Reels (9:16), YouTube (16:9), and banners.',
+    keywords: ['image cropper', 'social media crop', 'instagram crop', 'youtube thumbnail crop', 'aspect ratio image'],
+    color: '#00c875', bg: 'rgba(0,200,117,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/>
+      </svg>
+    ),
+    component: SocialImageCropperTool,
+  },
+  {
+    id: 'color-palette',
+    name: 'WCAG Color Contrast & Palette Generator',
+    category: 'Image & Media',
+    description: 'Check ADA/WCAG 2.1 AA & AAA text contrast compliance and copy harmonious SaaS tints.',
+    keywords: ['wcag contrast', 'color contrast checker', 'ada contrast', 'palette generator', 'hex contrast'],
+    color: '#fdab3d', bg: 'rgba(253,171,61,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+      </svg>
+    ),
+    component: ColorPaletteTool,
+  },
+  {
+    id: 'json-formatter',
+    name: 'JSON Formatter & TypeScript Generator',
+    category: 'AI & Dev',
+    description: 'Beautify, minify, validate syntax errors, and instantly generate TypeScript interfaces offline.',
+    keywords: ['json formatter', 'json beautifier', 'json validator', 'json to typescript', 'json interface'],
+    color: '#00c875', bg: 'rgba(0,200,117,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+    ),
+    component: JsonFormatterTool,
+  },
+  {
+    id: 'regex-tester',
+    name: 'Regex Tester & Match Explainer',
+    category: 'AI & Dev',
+    description: 'Test regular expressions with live group capture, flag toggles, and developer presets offline.',
+    keywords: ['regex tester', 'regular expression', 'regex validator', 'test regexp'],
+    color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 17l6-6-6-6"/><path d="M12 19h8"/>
+      </svg>
+    ),
+    component: RegexTesterTool,
+  },
+  {
+    id: 'og-preview',
+    name: 'OpenGraph Social Card Simulator',
+    category: 'SEO & Web',
+    description: 'Preview link cards across Google, Twitter/X, LinkedIn, and Facebook with 1-click HTML tags.',
+    keywords: ['opengraph preview', 'og tags', 'social card preview', 'seo preview', 'twitter card preview'],
+    color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    ),
+    component: OpenGraphPreviewTool,
+  },
 ];
 
 /* ─── Tool Card (Monday.com Board Card Style) ────────────── */
@@ -383,7 +533,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
         <div className="max-w-xl text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
             <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
-            Twignberries v4.0 — Monday.com Light SaaS Edition
+            Twignberries v6.0 — 30 Offline Enterprise Utilities
           </div>
           <h1 style={{
             fontSize: '48px',
@@ -477,7 +627,17 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
               <div>
                 <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>ILovePDF Private Suite (100% Client-Side)</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Image to PDF, Watermark, Protect</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Rotate, Organize, Number, Metadata, Protect</div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                Done
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Image, AI & SEO Web Utilities</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>SVG to PNG, Cropper, WCAG, JSON, Regex, OpenGraph</div>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
                 Done
@@ -702,7 +862,7 @@ export default function App() {
                 Zero signups — 100% client-side privacy
               </div>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
-                v5.0.0 · 20 Tools & PDF Suite
+                v6.0.0 · 30 Tools & PDF Suite
               </span>
             </footer>
           </div>
