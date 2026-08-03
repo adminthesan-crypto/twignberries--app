@@ -17,20 +17,17 @@ export default function SaasChurnLtvCalculator() {
   const paybackMonths = (arpu * (grossMargin / 100)) > 0 ? (cac / (arpu * (grossMargin / 100))) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> SaaS & Software 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">B2B & Micro-SaaS Financial Spec</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            SaaS MRR Churn & Lifetime Value (LTV:CAC)
+          </h1>
+          <span className="badge badge-info">SaaS METRICS</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          SaaS MRR Churn & Lifetime Value (LTV:CAC) Calculator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Calculate true customer Lifetime Value, LTV:CAC health ratio, and CAC payback period months based on monthly churn.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Calculate customer LTV, LTV:CAC ratio, and CAC payback period months based on MRR churn.
         </p>
       </div>
 

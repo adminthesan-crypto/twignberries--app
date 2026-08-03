@@ -60,7 +60,6 @@ export default function GstCalculator() {
           {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
           <span>{copied ? 'Copied Breakdown' : 'Copy Summary'}</span>
         </button>
-      </div>
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

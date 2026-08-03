@@ -27,20 +27,17 @@ export default function CreatorPlatformFeeCalculator() {
   const effectiveCutPercent = mrr > 0 ? ((totalDeductions / mrr) * 100) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> Creator Economy 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">Patreon vs BuyMeACoffee vs Ko-fi</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Patreon & Creator Platform Fee Solver
+          </h1>
+          <span className="badge badge-success">COMPARE PLATFORMS</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          Patreon & Creator Platform Cut Solver
-        </h1>
-        <p className="text-sm text-gray-400">
-          Compare Patreon tiers (5%–12%), BuyMeACoffee (5%), and Ko-fi (0%) platform commissions plus CC processing.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Compare Patreon Pro (8%), BuyMeACoffee (5%), and Ko-fi (0%) platform cuts and take-home pay.
         </p>
       </div>
 

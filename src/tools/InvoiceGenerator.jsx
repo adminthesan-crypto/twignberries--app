@@ -68,7 +68,6 @@ export default function InvoiceGenerator() {
             <span>Print / Save PDF</span>
           </button>
         </div>
-      </div>
 
       {/* Invoice Document Canvas */}
       <div className="glass-card bg-[#0d101a] border-white/15 p-6 sm:p-10 space-y-8">

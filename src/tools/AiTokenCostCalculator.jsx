@@ -46,20 +46,17 @@ export default function AiTokenCostCalculator() {
   const maxMonthly = Math.max(...comparisonList.map(c => c.monthly), 1);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> AI & Developer 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">GPT-4o vs Claude 3.5 vs Gemini 1.5 vs DeepSeek</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            AI API Token & Inference Cost Calculator
+          </h1>
+          <span className="badge badge-info">2026 PRICING</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          AI API Token & Inference Cost Calculator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Calculate exact LLM API costs per 1K requests, daily spend, and monthly runway across top 2026 models.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Compare GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and DeepSeek API token costs and monthly spend.
         </p>
       </div>
 

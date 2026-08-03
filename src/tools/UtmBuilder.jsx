@@ -49,7 +49,6 @@ export default function UtmBuilder() {
           {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
           <span>{copied ? 'Copied Campaign Link!' : 'Copy UTM URL'}</span>
         </button>
-      </div>
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

@@ -25,20 +25,17 @@ export default function AmazonFbaCalculator() {
   const profitPct = price > 0 ? Math.min(100, Math.max(0, (netProfit / price) * 100)) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> E-Commerce 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">Amazon Seller Central Spec</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Amazon FBA Referral &amp; Profit Calculator
+          </h1>
+          <span className="badge badge-brand">8%–17% REFERRAL</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          Amazon FBA Referral & Profit Calculator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Calculate true FBA fulfillment fees, category referral cuts (8%-17%), and exact net margins per unit.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Calculate FBA fulfillment tiers, category referral cuts, and exact net profit per unit.
         </p>
       </div>
 

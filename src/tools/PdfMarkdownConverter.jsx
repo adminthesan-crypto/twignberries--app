@@ -88,37 +88,31 @@ This document outlines the deliverables and pricing structure for custom fronten
   };
 
   return (
-    <div className="space-y-6">
-      {/* Title Header (No Print) */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10 no-print">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-heading font-bold text-white">
-              Markdown to PDF Converter & Clean Formatter
-            </h1>
-            <span className="badge badge-brand">ZERO SERVER UPLOAD</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+                Markdown to PDF Converter
+              </h1>
+              <span className="badge badge-success">INSTANT PDF</span>
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+              Type or paste markdown notes, proposals, or readmes and export a clean PDF instantly.
+            </p>
           </div>
-          <p className="text-sm text-[#9ca3af] mt-1">
-            Type or paste markdown notes, proposals, or readmes and export a clean PDF instantly.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handleCopy}
-            className="btn-secondary text-xs"
-          >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-            <span>{copied ? 'Copied Markdown' : 'Copy MD'}</span>
-          </button>
-
-          <button
-            onClick={handlePrint}
-            className="btn-primary"
-          >
-            <Printer className="w-4 h-4" />
-            <span>Print / Export PDF</span>
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+            <button onClick={handleCopy} className="btn-secondary" style={{ fontSize: 13 }}>
+              {copied ? <Check size={14} color="#4ade80" /> : <Copy size={14} />}
+              {copied ? 'Copied' : 'Copy MD'}
+            </button>
+            <button onClick={handlePrint} className="btn-primary" style={{ fontSize: 13 }}>
+              <Printer size={14} />
+              Print / Export PDF
+            </button>
+          </div>
         </div>
       </div>
 
