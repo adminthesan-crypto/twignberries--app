@@ -1,43 +1,40 @@
 import React, { useState } from 'react';
-import { DollarSign, ArrowRightLeft, CreditCard, Info, TrendingUp, AlertCircle } from 'lucide-react';
+import { CreditCard, ArrowRightLeft, Info } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+
+const SL = { /* section label style */
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
 
 export default function PayPalFeeCalculator() {
   const [amount, setAmount] = useState(150);
-  const [feeType, setFeeType] = useState('standard'); // standard (2.99% + 0.49), micro (4.99% + 0.09), nonprofit (1.99% + 0.49)
+  const [feeType, setFeeType] = useState('standard');
   const [isInternational, setIsInternational] = useState(false);
-  const [currency, setCurrency] = useState('$');
   const [targetNet, setTargetNet] = useState(150);
 
-  // Fee rates (2026 PayPal US Domestic baseline)
   let percentFee = 0.0299;
   let fixedFee = 0.49;
-
-  if (feeType === 'micro') {
-    percentFee = 0.0499;
-    fixedFee = 0.09;
-  } else if (feeType === 'nonprofit') {
-    percentFee = 0.0199;
-    fixedFee = 0.49;
-  }
-
-  if (isInternational) {
-    percentFee += 0.015; // +1.5% international transaction surcharge
-  }
+  if (feeType === 'micro') { percentFee = 0.0499; fixedFee = 0.09; }
+  else if (feeType === 'nonprofit') { percentFee = 0.0199; fixedFee = 0.49; }
+  if (isInternational) percentFee += 0.015;
 
   const grossAmount = Number(amount) || 0;
   const totalFee = grossAmount * percentFee + fixedFee;
   const netPayout = grossAmount - totalFee;
   const effectiveRate = grossAmount > 0 ? ((totalFee / grossAmount) * 100).toFixed(2) : 0;
 
-  // Reverse Solver: What should you invoice to receive targetNet?
-  // target = X - (X * percentFee + fixedFee) => X = (target + fixedFee) / (1 - percentFee)
   const solvedGross = (Number(targetNet) + fixedFee) / (1 - percentFee);
   const solvedFee = solvedGross - Number(targetNet);
 
+  const healthyPayout = netPayout >= grossAmount * 0.9;
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Tool header */}
+
+      {/* Header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
@@ -46,159 +43,151 @@ export default function PayPalFeeCalculator() {
           <span className="badge badge-brand">2.99% + $0.49</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Calculate standard, international, and micropayment PayPal fees with a reverse break-even invoice solver.
+          How much actually hits your bank after PayPal takes its cut — plus a reverse invoice solver.
         </p>
       </div>
 
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Fee Calculation */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-[#ff6b00]" /> 1. Transaction & Account Type
-          </h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 20, alignItems: 'start' }}>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              Customer Payment Amount ({currency})
-            </label>
-            <input
-              type="number"
-              step="1"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="glass-input text-xl font-mono"
-            />
-          </div>
+        {/* ── Left ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-2">
-              PayPal Merchant Rate Plan
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { id: 'standard', label: 'Standard (2.99% + 49¢)' },
-                { id: 'micro', label: 'Micropayments (4.99% + 9¢)' },
-                { id: 'nonprofit', label: '501(c)(3) Charity (1.99%)' }
-              ].map((plan) => (
-                <button
-                  key={plan.id}
-                  type="button"
-                  onClick={() => setFeeType(plan.id)}
-                  className={`py-2.5 px-2 rounded-xl text-xs font-medium border transition-all ${
-                    feeType === plan.id
-                      ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white font-semibold'
-                      : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10'
-                  }`}
-                >
-                  {plan.label}
-                </button>
-              ))}
+          {/* Calculator */}
+          <div className="form-card">
+            <div style={SL}><CreditCard size={13} color="var(--brand)" /> Fee Calculator</div>
+
+            <div style={{ marginBottom: 16 }}>
+              <label>Customer pays ($)</label>
+              <input type="number" step="1" value={amount}
+                onChange={e => setAmount(e.target.value)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }} />
             </div>
-          </div>
 
-          <div className="pt-2">
-            <label className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-colors">
-              <input
-                type="checkbox"
-                checked={isInternational}
-                onChange={(e) => setIsInternational(e.target.checked)}
-                className="rounded border-white/20 text-[#ff6b00] focus:ring-[#ff6b00]"
-              />
-              <div className="text-xs">
-                <div className="font-semibold text-white">International / Cross-Border Payment (+1.50%)</div>
-                <div className="text-[#6b7280]">Customer PayPal account is registered in a different country</div>
+            <div style={{ marginBottom: 16 }}>
+              <label>Account type</label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
+                {[
+                  { id: 'standard',  label: 'Standard',     sub: '2.99% + 49¢' },
+                  { id: 'micro',     label: 'Micropayment', sub: '4.99% + 9¢' },
+                  { id: 'nonprofit', label: 'Charity',      sub: '1.99% + 49¢' },
+                ].map(plan => (
+                  <button key={plan.id} type="button" onClick={() => setFeeType(plan.id)}
+                    style={{
+                      padding: '10px 8px', borderRadius: 8, cursor: 'pointer',
+                      textAlign: 'center', transition: 'all 0.14s ease',
+                      background: feeType === plan.id ? 'var(--brand-dim)' : 'rgba(255,255,255,0.03)',
+                      border: feeType === plan.id ? '1.5px solid rgba(249,115,22,0.45)' : '1.5px solid var(--border-md)',
+                      color: feeType === plan.id ? 'var(--brand-light)' : 'var(--text-3)',
+                    }}>
+                    <div style={{ fontSize: 12, fontWeight: 600 }}>{plan.label}</div>
+                    <div style={{ fontSize: 11, opacity: 0.7, marginTop: 2, fontFamily: 'var(--font-mono)' }}>{plan.sub}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
+              padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+              background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
+              <input type="checkbox" checked={isInternational}
+                onChange={e => setIsInternational(e.target.checked)} style={{ width: 'auto' }} />
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)' }}>
+                  International / cross-border (+1.50%)
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--text-4)' }}>
+                  Customer's PayPal is registered in a different country
+                </div>
               </div>
             </label>
           </div>
 
-          {/* Fee Breakdown Box */}
-          <div className="p-4 rounded-xl bg-[#0e111a] border border-white/10 space-y-3 font-mono">
-            <div className="flex justify-between text-xs text-[#9ca3af]">
-              <span>PayPal Percentage Fee ({(percentFee * 100).toFixed(2)}%):</span>
-              <span className="text-red-400">-{currency}{(grossAmount * percentFee).toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between text-xs text-[#9ca3af]">
-              <span>PayPal Fixed Fee:</span>
-              <span className="text-red-400">-{currency}{fixedFee.toFixed(2)}</span>
-            </div>
-            <div className="h-px bg-white/10" />
-            <div className="flex justify-between text-sm font-semibold text-white">
-              <span>Total PayPal Fee ({effectiveRate}% cut):</span>
-              <span className="text-red-400">-{currency}{totalFee.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between items-center text-lg font-bold text-emerald-400 pt-1">
-              <span>YOUR NET PAYOUT:</span>
-              <span>{currency}{netPayout.toFixed(2)}</span>
-            </div>
-            <div className="pt-2 flex justify-end">
-              <CopySummaryButton
-                title="PayPal Fee & Net Payout Calculation"
-                lines={[
-                  { label: 'Gross Invoice Amount', value: `${currency}${grossAmount.toFixed(2)}` },
-                  { label: 'Percentage Cut', value: `${(percentFee * 100).toFixed(2)}% (${currency}${(grossAmount * percentFee).toFixed(2)})` },
-                  { label: 'Fixed Fee', value: `${currency}${fixedFee.toFixed(2)}` },
-                  { label: 'Total PayPal Fees', value: `${currency}${totalFee.toFixed(2)} (${effectiveRate}% cut)` },
-                  { label: 'YOUR NET PAYOUT', value: `${currency}${netPayout.toFixed(2)}` }
-                ]}
-              />
+          {/* Break-even solver */}
+          <div className="form-card">
+            <div style={SL}><ArrowRightLeft size={13} color="var(--info)" /> Invoice break-even solver</div>
+            <p style={{ fontSize: 13, color: 'var(--text-4)', marginBottom: 16, lineHeight: 1.5 }}>
+              Want exactly <strong style={{ color: 'var(--text-2)' }}>${Number(targetNet).toFixed(2)}</strong> in your bank account? Here's the exact amount to invoice.
+            </p>
+            <div style={{ marginBottom: 0 }}>
+              <label>Target amount to receive ($)</label>
+              <input type="number" step="1" value={targetNet}
+                onChange={e => setTargetNet(e.target.value)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 18 }} />
             </div>
           </div>
         </div>
 
-        {/* Right: Reverse Invoice Solver */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <ArrowRightLeft className="w-4 h-4 text-blue-400" /> 2. Reverse Invoice Break-Even Solver
-          </h2>
-          <p className="text-xs text-[#9ca3af] leading-relaxed">
-            Want a specific dollar amount to hit your bank account after PayPal fees? Calculate the exact amount to invoice.
-          </p>
+        {/* ── Right: Results ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              Target Net Payout You Want ({currency})
-            </label>
-            <input
-              type="number"
-              step="1"
-              value={targetNet}
-              onChange={(e) => setTargetNet(e.target.value)}
-              className="glass-input text-xl font-mono text-emerald-400"
-            />
-          </div>
-
-          <div className="p-5 rounded-xl bg-gradient-to-br from-[#121624] to-[#0e111c] border border-blue-500/30 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase text-blue-400">YOU SHOULD INVOICE:</span>
-              <span className="badge badge-brand">BREAK-EVEN TOTAL</span>
+          {/* Main result */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: netPayout >= 0 ? 'linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03))' : 'linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.03))',
+            border: netPayout >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              You receive
             </div>
-
-            <div className="text-3xl font-bold font-mono text-white">
-              {currency}{solvedGross.toFixed(2)}
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: netPayout >= 0 ? '#4ade80' : '#f87171' }}>
+              ${netPayout.toFixed(2)}
             </div>
-
-            <div className="space-y-1.5 text-xs font-mono text-[#9ca3af] pt-2 border-t border-white/10">
-              <div className="flex justify-between">
-                <span>Client Pays:</span>
-                <span className="text-white">{currency}{solvedGross.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>PayPal Fee ({(percentFee * 100).toFixed(2)}% + {currency}{fixedFee}):</span>
-                <span className="text-red-400">-{currency}{solvedFee.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between font-bold text-emerald-400 pt-1">
-                <span>Your Exact Bank Payout:</span>
-                <span>{currency}{Number(targetNet).toFixed(2)}</span>
-              </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              PayPal keeps <strong style={{ color: '#f87171', fontFamily: 'var(--font-mono)' }}>${totalFee.toFixed(2)}</strong> ({effectiveRate}% effective cut)
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-[#9ca3af] flex items-start gap-2.5">
-            <Info className="w-4 h-4 text-[#ff6b00] shrink-0 mt-0.5" />
-            <span>
-              <strong>Micropayments Tip:</strong> If your average transaction is under $10, switching to PayPal's Micropayment rate (4.99% + $0.09) saves significant money compared to standard $0.49 fixed fees.
-            </span>
+          {/* Break-even result */}
+          <div style={{
+            padding: 20, borderRadius: 14,
+            background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 8 }}>
+              Invoice this amount to get ${Number(targetNet).toFixed(2)}
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 32, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.03em' }}>
+              ${solvedGross.toFixed(2)}
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 6 }}>
+              PayPal fee: <span style={{ fontFamily: 'var(--font-mono)', color: '#f87171' }}>−${solvedFee.toFixed(2)}</span>
+              {' · '}You keep: <span style={{ fontFamily: 'var(--font-mono)', color: '#4ade80' }}>${Number(targetNet).toFixed(2)}</span>
+            </div>
+          </div>
+
+          {/* Breakdown */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
+              <CopySummaryButton title="PayPal Fee & Net Payout"
+                lines={[
+                  { label: 'Gross invoice', value: `$${grossAmount.toFixed(2)}` },
+                  { label: `Percentage fee (${(percentFee*100).toFixed(2)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
+                  { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
+                  { label: 'Total PayPal cut', value: `-$${totalFee.toFixed(2)}` },
+                  { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
+                ]}
+              />
+            </div>
+            {[
+              { label: 'Customer pays', value: `$${grossAmount.toFixed(2)}`, color: 'var(--text-2)', bold: true },
+              { divider: true },
+              { label: `Percentage fee (${(percentFee*100).toFixed(2)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}`, color: '#f87171' },
+              { label: 'Fixed transaction fee', value: `-$${fixedFee.toFixed(2)}`, color: '#f87171' },
+              { divider: true },
+              { label: `Total PayPal cut (${effectiveRate}%)`, value: `-$${totalFee.toFixed(2)}`, color: '#f87171', bold: true },
+            ].map((r, i) =>
+              r.divider ? <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} /> : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>{r.value}</span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Tip */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Micropayments tip:</strong> If you're charging under $10, switching to PayPal's Micropayment rate (4.99% + $0.09) saves money vs the standard $0.49 fixed fee.
           </div>
         </div>
       </div>

@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════
-   Twignberries Design System v3.0 — Clean & Premium
-   Inspired by ilovepdf's information hierarchy
+   Twignberries Design System v3.1 — Clean, Human, Premium
    ═══════════════════════════════════════════════════════ */
 
 :root {
-  /* Background layers */
   --bg-app:        #0c0e14;
   --bg-nav:        #10121a;
   --bg-sidebar:    #10121a;
@@ -14,59 +12,49 @@
   --bg-card-hover: #1c2133;
   --bg-input:      #1c2030;
   --bg-input-focus:#202438;
+  --bg-section:    rgba(255,255,255,0.025);
 
-  /* Borders */
   --border:        rgba(255, 255, 255, 0.08);
   --border-md:     rgba(255, 255, 255, 0.12);
   --border-hover:  rgba(249, 115, 22, 0.45);
   --border-focus:  rgba(249, 115, 22, 0.7);
 
-  /* Brand */
   --brand:         #f97316;
-  --brand-dim:     rgba(249, 115, 22, 0.15);
-  --brand-glow:    rgba(249, 115, 22, 0.25);
+  --brand-dim:     rgba(249, 115, 22, 0.12);
+  --brand-glow:    rgba(249, 115, 22, 0.22);
   --brand-light:   #fb923c;
 
-  /* Status */
   --success:       #22c55e;
-  --success-dim:   rgba(34, 197, 94, 0.12);
+  --success-dim:   rgba(34, 197, 94, 0.1);
   --info:          #3b82f6;
-  --info-dim:      rgba(59, 130, 246, 0.12);
+  --info-dim:      rgba(59, 130, 246, 0.1);
   --warning:       #f59e0b;
   --danger:        #ef4444;
 
-  /* Text */
-  --text-1:        #f1f5f9;   /* headings */
-  --text-2:        #cbd5e1;   /* body */
-  --text-3:        #94a3b8;   /* secondary */
-  --text-4:        #64748b;   /* muted/placeholder */
+  --text-1:        #f1f5f9;
+  --text-2:        #cbd5e1;
+  --text-3:        #94a3b8;
+  --text-4:        #64748b;
 
-  /* Typography */
   --font:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Spacing rhythm */
-  --section-gap:   32px;
-
-  /* Radius */
   --radius-sm:     8px;
   --radius:        12px;
   --radius-lg:     16px;
-  --radius-xl:     20px;
 
-  /* Shadows */
-  --shadow-card:   0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.25);
-  --shadow-card-hover: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(249,115,22,0.2);
-  --shadow-input:  0 0 0 3px rgba(249, 115, 22, 0.18);
-  --shadow-btn:    0 4px 14px rgba(249, 115, 22, 0.3);
-  --shadow-btn-hover: 0 6px 20px rgba(249, 115, 22, 0.45);
+  --shadow-card:   0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2);
+  --shadow-hover:  0 4px 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(249,115,22,0.18);
+  --shadow-input:  0 0 0 3px rgba(249, 115, 22, 0.16);
+  --shadow-btn:    0 4px 12px rgba(249, 115, 22, 0.28);
+  --shadow-btn-h:  0 6px 20px rgba(249, 115, 22, 0.42);
 }
 
-/* ─── Reset ────────────────────────────────────────────── */
+/* ─── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  background-color: var(--bg-app);
+  background: var(--bg-app);
   color: var(--text-2);
   font-family: var(--font);
   font-size: 15px;
@@ -77,136 +65,91 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Scrollbar ─────────────────────────────────────────── */
+/* ─── Scrollbar ──────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 
-/* ─── Layout Panels ─────────────────────────────────────── */
-.nav-panel {
-  background: var(--bg-nav);
-  border-bottom: 1px solid var(--border);
-}
+/* ─── Nav & Sidebar ──────────────────────────────────────── */
+.nav-panel { background: var(--bg-nav); border-bottom: 1px solid var(--border); }
+.sidebar-panel { background: var(--bg-sidebar); border-right: 1px solid var(--border); }
 
-.sidebar-panel {
-  background: var(--bg-sidebar);
-  border-right: 1px solid var(--border);
-}
-
-/* ─── Tool Home Cards (ilovepdf-inspired grid) ──────────── */
+/* ─── Tool Home Cards ────────────────────────────────────── */
 .tool-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px 20px 20px;
+  padding: 22px 18px 18px;
   cursor: pointer;
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   overflow: hidden;
 }
-
 .tool-card::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: var(--card-accent, var(--brand));
-  opacity: 0;
-  transition: opacity 0.18s ease;
+  opacity: 0; transition: opacity 0.18s ease;
 }
+.tool-card:hover { border-color: var(--border-md); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.tool-card:hover::before { opacity: 1; }
+.tool-card-icon { width: 42px; height: 42px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tool-card-name { font-size: 13.5px; font-weight: 600; color: var(--text-1); line-height: 1.3; letter-spacing: -0.01em; }
+.tool-card-desc { font-size: 12px; color: var(--text-4); line-height: 1.5; flex: 1; }
+.tool-card-arrow { font-size: 12px; font-weight: 600; color: var(--text-4); display: flex; align-items: center; gap: 4px; opacity: 0; transition: opacity 0.15s ease, color 0.15s ease; }
+.tool-card:hover .tool-card-arrow { opacity: 1; color: var(--brand); }
 
-.tool-card:hover {
-  border-color: var(--border-md);
-  background: var(--bg-card-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.tool-card:hover::before {
-  opacity: 1;
-}
-
-.tool-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.tool-card-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-1);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-.tool-card-desc {
-  font-size: 12px;
-  color: var(--text-4);
-  line-height: 1.5;
-  flex: 1;
-}
-
-.tool-card-arrow {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-4);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.15s ease, color 0.15s ease;
-}
-
-.tool-card:hover .tool-card-arrow {
-  opacity: 1;
-  color: var(--brand);
-}
-
-/* ─── Form Cards (inside each tool) ────────────────────── */
+/* ─── Tool Form Cards (inside each tool) ────────────────── */
 .form-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 24px;
   transition: border-color 0.15s ease;
+  box-shadow: var(--shadow-card);
 }
+.form-card:hover { border-color: var(--border-md); }
 
-.form-card:hover {
-  border-color: var(--border-md);
-}
-
-/* Legacy alias */
+/* Legacy class — now maps to same clean flat style */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
-  transition: all 0.15s ease;
+  padding: 24px;
   box-shadow: var(--shadow-card);
+  transition: border-color 0.15s ease;
+}
+.glass-card:hover { border-color: var(--border-md); }
+.glass-panel { background: var(--bg-sidebar); border: 1px solid var(--border); }
+
+/* ─── Section headings INSIDE tool cards ────────────────── */
+/* This overrides the old Tailwind h2 pattern used in old tools */
+.glass-card h2,
+.form-card h2 {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: var(--text-4) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin-bottom: 18px !important;
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid var(--border) !important;
+  font-family: var(--font) !important;
 }
 
-.glass-card:hover {
-  border-color: var(--border-md);
-}
-
-.glass-panel {
-  background: var(--bg-sidebar);
-  border: 1px solid var(--border);
-}
-
-/* ─── Inputs ────────────────────────────────────────────── */
-.glass-input, input[type="number"], input[type="text"], select, textarea {
+/* ─── Inputs ─────────────────────────────────────────────── */
+.glass-input,
+input[type="number"],
+input[type="text"],
+select,
+textarea {
   background: var(--bg-input);
   border: 1.5px solid var(--border-md);
   border-radius: var(--radius-sm);
@@ -219,7 +162,6 @@ html, body {
   width: 100%;
   outline: none;
 }
-
 .glass-input:focus,
 input[type="number"]:focus,
 input[type="text"]:focus,
@@ -229,9 +171,7 @@ textarea:focus {
   box-shadow: var(--shadow-input);
   background: var(--bg-input-focus);
 }
-
-.glass-input::placeholder,
-input::placeholder { color: var(--text-4); }
+.glass-input::placeholder, input::placeholder { color: var(--text-4); }
 
 select {
   cursor: pointer;
@@ -242,7 +182,8 @@ select {
   padding-right: 36px;
 }
 
-/* ─── Labels ────────────────────────────────────────────── */
+/* ─── Fix old inline color labels in legacy tools ────────── */
+/* These ensure old tools look consistent without full rewrites */
 label, .form-label {
   display: block;
   font-size: 13px;
@@ -252,30 +193,68 @@ label, .form-label {
   letter-spacing: 0.01em;
 }
 
-/* ─── Section Headings (inside tools) ──────────────────── */
-.section-heading {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-4);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 20px;
+/* Override old Tailwind text color utilities on labels within cards */
+.glass-card label,
+.form-card label {
+  color: var(--text-3) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  margin-bottom: 8px !important;
 }
 
-/* ─── Result / Output Display ───────────────────────────── */
-.result-display {
-  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(249,115,22,0.04));
-  border: 1px solid rgba(249, 115, 22, 0.2);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  text-align: center;
+/* Fix old section mini-cards — bg-[#0e111a] and similar */
+.glass-card [class*="bg-[#0e"] ,
+.glass-card [class*="bg-[#12"],
+.glass-card [class*="bg-white/[0.02]"],
+.glass-card [class*="bg-white/5"] {
+  background: var(--bg-section) !important;
+  border-color: var(--border) !important;
 }
 
+/* Override old hardcoded Tailwind text-[#9ca3af] and text-gray-400 */
+.glass-card .text-\[#9ca3af\],
+.form-card .text-\[#9ca3af\],
+.glass-card .text-gray-400,
+.form-card .text-gray-400 {
+  color: var(--text-4) !important;
+}
+
+/* ─── Range sliders (used in TikTok, ROAS) ──────────────── */
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--bg-input);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  accent-color: var(--brand);
+  padding: 0;
+}
+
+/* ─── Checkbox / radio fix ───────────────────────────────── */
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+  accent-color: var(--brand);
+}
+
+/* Fix old checkbox rows (bg-white/5 rows) */
+.glass-card label.flex,
+.form-card label.flex {
+  background: var(--bg-section) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 12px !important;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  transition: background 0.13s ease;
+}
+.glass-card label.flex:hover,
+.form-card label.flex:hover {
+  background: rgba(255,255,255,0.05) !important;
+}
+
+/* ─── Result big-number inside legacy tools ──────────────── */
 .result-number {
   font-family: var(--font-mono);
   font-size: 42px;
@@ -285,13 +264,28 @@ label, .form-label {
   line-height: 1.1;
 }
 
-.result-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-4);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 4px;
+/* Fix old `text-emerald-400` result displays */
+.glass-card .text-emerald-400,
+.form-card .text-emerald-400 {
+  color: #4ade80 !important;
+}
+.glass-card .text-red-400,
+.form-card .text-red-400 {
+  color: #f87171 !important;
+}
+.glass-card .text-orange-400,
+.form-card .text-orange-400 {
+  color: var(--brand-light) !important;
+}
+
+/* ─── Segment / pill buttons (plan selectors) ────────────── */
+.glass-card button[class*="rounded-xl"],
+.form-card button[class*="rounded-xl"] {
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  transition: all 0.14s ease !important;
 }
 
 /* ─── Buttons ────────────────────────────────────────────── */
@@ -313,17 +307,8 @@ label, .form-label {
   box-shadow: var(--shadow-btn);
   letter-spacing: -0.01em;
 }
-
-.btn-primary:hover {
-  background: var(--brand-light);
-  box-shadow: var(--shadow-btn-hover);
-  transform: translateY(-1px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-btn);
-}
+.btn-primary:hover { background: var(--brand-light); box-shadow: var(--shadow-btn-h); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); box-shadow: var(--shadow-btn); }
 
 .btn-secondary {
   background: rgba(255,255,255,0.05);
@@ -341,14 +326,9 @@ label, .form-label {
   gap: 8px;
   transition: all 0.15s ease;
 }
+.btn-secondary:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); color: var(--text-1); }
 
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.2);
-  color: var(--text-1);
-}
-
-/* ─── Badges ────────────────────────────────────────────── */
+/* ─── Badges ─────────────────────────────────────────────── */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -359,26 +339,11 @@ label, .form-label {
   font-weight: 600;
   letter-spacing: 0.04em;
 }
+.badge-brand { background: var(--brand-dim); color: var(--brand-light); border: 1px solid rgba(249,115,22,0.25); }
+.badge-success { background: var(--success-dim); color: var(--success); border: 1px solid rgba(34,197,94,0.25); }
+.badge-info { background: var(--info-dim); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
 
-.badge-brand {
-  background: var(--brand-dim);
-  color: var(--brand-light);
-  border: 1px solid rgba(249,115,22,0.25);
-}
-
-.badge-success {
-  background: var(--success-dim);
-  color: var(--success);
-  border: 1px solid rgba(34,197,94,0.25);
-}
-
-.badge-info {
-  background: var(--info-dim);
-  color: #60a5fa;
-  border: 1px solid rgba(59,130,246,0.25);
-}
-
-/* ─── Category Pills (navbar) ───────────────────────────── */
+/* ─── Category pills ─────────────────────────────────────── */
 .cat-pill {
   padding: 5px 14px;
   border-radius: 99px;
@@ -391,20 +356,10 @@ label, .form-label {
   background: transparent;
   white-space: nowrap;
 }
+.cat-pill:hover { color: var(--text-1); background: rgba(255,255,255,0.06); }
+.cat-pill.active { background: var(--brand-dim); border-color: rgba(249,115,22,0.35); color: var(--brand-light); font-weight: 600; }
 
-.cat-pill:hover {
-  color: var(--text-1);
-  background: rgba(255,255,255,0.06);
-}
-
-.cat-pill.active {
-  background: var(--brand-dim);
-  border-color: rgba(249,115,22,0.35);
-  color: var(--brand-light);
-  font-weight: 600;
-}
-
-/* ─── Sidebar nav items ──────────────────────────────────── */
+/* ─── Sidebar items ──────────────────────────────────────── */
 .sidebar-item {
   display: flex;
   align-items: center;
@@ -419,50 +374,51 @@ label, .form-label {
   color: var(--text-3);
   text-align: left;
   width: 100%;
+  background: none;
 }
+.sidebar-item:hover { background: rgba(255,255,255,0.05); color: var(--text-1); }
+.sidebar-item.active { background: var(--brand-dim); border-color: rgba(249,115,22,0.3); color: var(--brand-light); font-weight: 600; }
 
-.sidebar-item:hover {
-  background: rgba(255,255,255,0.05);
-  color: var(--text-1);
-}
-
-.sidebar-item.active {
-  background: var(--brand-dim);
-  border-color: rgba(249,115,22,0.3);
-  color: var(--brand-light);
-  font-weight: 600;
-}
-
-/* ─── Input group (prefix/suffix) ───────────────────────── */
+/* ─── Input groups ───────────────────────────────────────── */
 .input-group { position: relative; display: flex; align-items: center; width: 100%; }
-.input-prefix {
-  position: absolute; left: 12px;
-  color: var(--text-4); font-size: 14px; font-weight: 600; pointer-events: none;
-}
-.input-suffix {
-  position: absolute; right: 12px;
-  color: var(--text-4); font-size: 14px; font-weight: 600; pointer-events: none;
-}
+.input-prefix { position: absolute; left: 12px; color: var(--text-4); font-size: 14px; font-weight: 600; pointer-events: none; }
+.input-suffix { position: absolute; right: 12px; color: var(--text-4); font-size: 14px; font-weight: 600; pointer-events: none; }
 .glass-input-prefix { padding-left: 28px !important; }
 .glass-input-suffix { padding-right: 28px !important; }
 
-/* ─── Dividers ──────────────────────────────────────────── */
-.divider { height: 1px; background: var(--border); margin: 20px 0; }
+/* ─── Human touch: result insight block ──────────────────── */
+.insight-block {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: rgba(249,115,22,0.05);
+  border: 1px solid rgba(249,115,22,0.12);
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.6;
+}
+
+/* ─── Human touch: mini stat tiles ──────────────────────── */
+.stat-tile {
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.stat-tile-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-4); margin-bottom: 4px; }
+.stat-tile-value { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--text-1); }
 
 /* ─── Animations ─────────────────────────────────────────── */
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
 
-.animate-fade-in  { animation: fadeSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-fade     { animation: fadeIn 0.2s ease both; }
+.animate-fade-in { animation: fadeSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade { animation: fadeIn 0.2s ease both; }
 
-/* ─── Font mono helper ───────────────────────────────────── */
+/* ─── Number transition — makes results feel "alive" ──────── */
+.result-value { transition: color 0.2s ease; }
+
+/* ─── Font helpers ───────────────────────────────────────── */
 .font-mono { font-family: var(--font-mono) !important; }
 .font-heading { font-family: var(--font) !important; }
 
@@ -471,9 +427,7 @@ label, .form-label {
   .no-print { display: none !important; }
   .print-only { display: block !important; }
   body, .glass-card, .form-card, .glass-panel {
-    background: white !important;
-    color: black !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: white !important; color: black !important;
+    border: none !important; box-shadow: none !important;
   }
 }

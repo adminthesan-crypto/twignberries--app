@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { CreditCard, DollarSign, ArrowRightLeft, TrendingUp, Info } from 'lucide-react';
+import { CreditCard, ArrowRightLeft } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+
+const SL = {
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
 
 export default function StripeFeeCalculator() {
   const [amount, setAmount] = useState(100);
@@ -9,9 +16,6 @@ export default function StripeFeeCalculator() {
   const [targetNet, setTargetNet] = useState(100);
   const [currency, setCurrency] = useState('$');
 
-  // Stripe USA standard fee: 2.9% + $0.30
-  // +1.5% for international cards
-  // +1% for currency conversion
   let percentFee = 0.029;
   if (isInternational) percentFee += 0.015;
   if (currencyConv) percentFee += 0.010;
@@ -22,10 +26,6 @@ export default function StripeFeeCalculator() {
   const netPayout = grossAmount - totalStripeFee;
   const effectiveRate = grossAmount > 0 ? ((totalStripeFee / grossAmount) * 100).toFixed(2) : 0;
 
-  // Reverse Solver: What price should I charge to get targetNet?
-  // target = X - (X * percentFee + fixedFee)
-  // target + fixedFee = X * (1 - percentFee)
-  // X = (target + fixedFee) / (1 - percentFee)
   const solvedGross = (Number(targetNet) + fixedFee) / (1 - percentFee);
   const solvedFee = solvedGross - Number(targetNet);
 
@@ -35,158 +35,156 @@ export default function StripeFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Stripe Fee &amp; Break-even Solver
+            Stripe Fee & Break-even Solver
           </h1>
-          <span className="badge badge-brand">2.9% + $0.30</span>
+          <span className="badge badge-brand">2.9% + 30¢</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Calculate domestic, international, and reverse break-even Stripe payment processing fees.
+          Calculate exactly what hits your bank account after Stripe fees, plus a reverse invoice solver.
         </p>
       </div>
 
-      {/* 2-Column Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Standard Calculator */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-[#ff6b00]" /> 1. Transaction Amount
-          </h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 20, alignItems: 'start' }}>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              Customer Payment Amount ({currency})
-            </label>
-            <input
-              type="number"
-              step="1"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="glass-input text-xl font-mono"
-            />
+        {/* ── Left ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          
+          {/* Calculator */}
+          <div className="form-card">
+            <div style={SL}><CreditCard size={13} color="var(--brand)" /> 1. Transaction Amount</div>
+
+            <div style={{ marginBottom: 16 }}>
+              <label>Customer pays ($)</label>
+              <input type="number" step="1" value={amount}
+                onChange={e => setAmount(e.target.value)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }} />
+            </div>
+
+            <div style={{ marginBottom: 16 }}>
+              <label>Card origin & currency</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
+                  padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+                  background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
+                  <input type="checkbox" checked={isInternational}
+                    onChange={e => setIsInternational(e.target.checked)} style={{ width: 'auto' }} />
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)' }}>
+                      International / Non-US Card (+1.50%)
+                    </div>
+                    <div style={{ fontSize: 12, color: 'var(--text-4)' }}>
+                      Customer's card was issued outside your country
+                    </div>
+                  </div>
+                </label>
+
+                <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
+                  padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+                  background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
+                  <input type="checkbox" checked={currencyConv}
+                    onChange={e => setCurrencyConv(e.target.checked)} style={{ width: 'auto' }} />
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)' }}>
+                      Currency Conversion (+1.00%)
+                    </div>
+                    <div style={{ fontSize: 12, color: 'var(--text-4)' }}>
+                      Customer paid in a different currency
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-2 pt-2">
-            <label className="block text-xs font-medium text-[#9ca3af]">
-              Card Origin & Pricing Tiers
-            </label>
-            <div className="flex flex-col gap-2">
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-colors">
-                <input
-                  type="checkbox"
-                  checked={isInternational}
-                  onChange={(e) => setIsInternational(e.target.checked)}
-                  className="rounded border-white/20 text-[#ff6b00] focus:ring-[#ff6b00]"
-                />
-                <div className="text-xs">
-                  <div className="font-semibold text-white">International / Non-US Card (+1.5%)</div>
-                  <div className="text-[#6b7280]">Customer card was issued outside your home country</div>
-                </div>
-              </label>
-
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-colors">
-                <input
-                  type="checkbox"
-                  checked={currencyConv}
-                  onChange={(e) => setCurrencyConv(e.target.checked)}
-                  className="rounded border-white/20 text-[#ff6b00] focus:ring-[#ff6b00]"
-                />
-                <div className="text-xs">
-                  <div className="font-semibold text-white">Currency Conversion Required (+1.0%)</div>
-                  <div className="text-[#6b7280]">Customer paid in a currency different from your payout account</div>
-                </div>
-              </label>
+          {/* Solver */}
+          <div className="form-card">
+            <div style={SL}><ArrowRightLeft size={13} color="var(--info)" /> 2. Reverse Invoice Break-even</div>
+            <p style={{ fontSize: 13, color: 'var(--text-4)', marginBottom: 16, lineHeight: 1.5 }}>
+              Want exactly <strong style={{ color: 'var(--text-2)' }}>${Number(targetNet).toFixed(2)}</strong> in your bank account? Here's the exact amount to charge.
+            </p>
+            <div style={{ marginBottom: 0 }}>
+              <label>Target amount to receive ($)</label>
+              <input type="number" step="1" value={targetNet}
+                onChange={e => setTargetNet(e.target.value)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 18 }} />
             </div>
           </div>
 
-          {/* Output Card */}
-          <div className="p-4 rounded-xl bg-[#0e111a] border border-white/10 space-y-3 font-mono">
-            <div className="flex justify-between text-xs text-[#9ca3af]">
-              <span>Stripe Percentage Fee ({(percentFee * 100).toFixed(1)}%):</span>
-              <span className="text-red-400">-{currency}{(grossAmount * percentFee).toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between text-xs text-[#9ca3af]">
-              <span>Stripe Fixed Transaction Fee:</span>
-              <span className="text-red-400">-{currency}{fixedFee.toFixed(2)}</span>
-            </div>
-            <div className="h-px bg-white/10" />
-            <div className="flex justify-between text-sm font-semibold text-white">
-              <span>Total Stripe Cut ({effectiveRate}%):</span>
-              <span className="text-red-400">-{currency}{totalStripeFee.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between items-center text-lg font-bold text-emerald-400 pt-1">
-              <span>NET PAYOUT TO YOU:</span>
-              <span>{currency}{netPayout.toFixed(2)}</span>
-            </div>
-            <div className="pt-2 flex justify-end">
-              <CopySummaryButton
-                title="Stripe Fee & Net Payout Calculation"
-                lines={[
-                  { label: 'Gross Charge Amount', value: `${currency}${grossAmount.toFixed(2)}` },
-                  { label: 'Percentage Cut', value: `${(percentFee * 100).toFixed(1)}% (${currency}${(grossAmount * percentFee).toFixed(2)})` },
-                  { label: 'Fixed Fee', value: `${currency}${fixedFee.toFixed(2)}` },
-                  { label: 'Total Stripe Fees', value: `${currency}${totalStripeFee.toFixed(2)} (${effectiveRate}% cut)` },
-                  { label: 'NET PAYOUT TO YOU', value: `${currency}${netPayout.toFixed(2)}` }
-                ]}
-              />
-            </div>
-          </div>
         </div>
 
-        {/* Right: Reverse Solver */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <ArrowRightLeft className="w-4 h-4 text-blue-400" /> 2. Reverse Price Solver (Target Net)
-          </h2>
-          <p className="text-xs text-[#9ca3af] leading-relaxed">
-            Want to receive an exact net amount in your bank account after Stripe takes its fee? We calculate the exact price to charge.
-          </p>
+        {/* ── Right: Results ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              Target Net Payout You Want ({currency})
-            </label>
-            <input
-              type="number"
-              step="1"
-              value={targetNet}
-              onChange={(e) => setTargetNet(e.target.value)}
-              className="glass-input text-xl font-mono text-emerald-400"
-            />
+          {/* Main Result */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: netPayout >= 0 ? 'linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03))' : 'linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.03))',
+            border: netPayout >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              You receive
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: netPayout >= 0 ? '#4ade80' : '#f87171' }}>
+              ${netPayout.toFixed(2)}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              Stripe keeps <strong style={{ color: '#f87171', fontFamily: 'var(--font-mono)' }}>${totalStripeFee.toFixed(2)}</strong> ({effectiveRate}% effective cut)
+            </div>
           </div>
 
           {/* Solver Result */}
-          <div className="p-5 rounded-xl bg-gradient-to-br from-[#121624] to-[#0e111c] border border-blue-500/30 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase text-blue-400">YOU SHOULD CHARGE:</span>
-              <span className="badge badge-brand">BREAK-EVEN PRICE</span>
+          <div style={{
+            padding: 20, borderRadius: 14,
+            background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 8 }}>
+              Charge this amount to get ${Number(targetNet).toFixed(2)}
             </div>
-
-            <div className="text-3xl font-bold font-mono text-white">
-              {currency}{solvedGross.toFixed(2)}
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 32, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.03em' }}>
+              ${solvedGross.toFixed(2)}
             </div>
-
-            <div className="space-y-1.5 text-xs font-mono text-[#9ca3af] pt-2 border-t border-white/10">
-              <div className="flex justify-between">
-                <span>Customer Pays:</span>
-                <span className="text-white">{currency}{solvedGross.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Stripe Fee ({(percentFee * 100).toFixed(1)}% + {currency}{fixedFee}):</span>
-                <span className="text-red-400">-{currency}{solvedFee.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between font-bold text-emerald-400 pt-1">
-                <span>Your Exact Bank Payout:</span>
-                <span>{currency}{Number(targetNet).toFixed(2)}</span>
-              </div>
+            <div style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 6 }}>
+              Stripe fee: <span style={{ fontFamily: 'var(--font-mono)', color: '#f87171' }}>−${solvedFee.toFixed(2)}</span>
+              {' · '}You keep: <span style={{ fontFamily: 'var(--font-mono)', color: '#4ade80' }}>${Number(targetNet).toFixed(2)}</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-[#9ca3af] flex items-start gap-2.5">
-            <Info className="w-4 h-4 text-[#ff6b00] shrink-0 mt-0.5" />
-            <span>
-              Tip: SaaS businesses often absorb standard domestic processing fees, while high-ticket B2B agencies use this solver to invoice the exact processing surcharge.
-            </span>
+          {/* Breakdown */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
+              <CopySummaryButton title="Stripe Fee & Net Payout"
+                lines={[
+                  { label: 'Gross charge', value: `$${grossAmount.toFixed(2)}` },
+                  { label: `Percentage fee (${(percentFee*100).toFixed(1)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
+                  { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
+                  { label: 'Total Stripe cut', value: `-$${totalStripeFee.toFixed(2)}` },
+                  { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
+                ]}
+              />
+            </div>
+            {[
+              { label: 'Customer pays', value: `$${grossAmount.toFixed(2)}`, color: 'var(--text-2)', bold: true },
+              { divider: true },
+              { label: `Percentage fee (${(percentFee*100).toFixed(1)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}`, color: '#f87171' },
+              { label: 'Fixed transaction fee', value: `-$${fixedFee.toFixed(2)}`, color: '#f87171' },
+              { divider: true },
+              { label: `Total Stripe cut (${effectiveRate}%)`, value: `-$${totalStripeFee.toFixed(2)}`, color: '#f87171', bold: true },
+            ].map((r, i) =>
+              r.divider ? <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} /> : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>{r.value}</span>
+                </div>
+              )
+            )}
           </div>
+
+          {/* Tip */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> SaaS businesses usually absorb these processing fees, but high-ticket agencies often use the break-even solver to invoice the exact processing surcharge to clients.
+          </div>
+
         </div>
       </div>
     </div>
