@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { ShoppingBag, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, CreditCard, Layers } from 'lucide-react';
+import { CreditCard, Layers } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
+const SL = {
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
+
 export default function ShopifyFeeCalculator() {
-  const [monthlyRevenue, setMonthlyRevenue] = useState(15000); // $15k/mo
-  const [avgOrderValue, setAvgOrderValue] = useState(65.00); // $65 avg order
-  const [plan, setPlan] = useState('basic'); // 'basic' | 'shopify' | 'advanced'
+  const [monthlyRevenue, setMonthlyRevenue] = useState(15000);
+  const [avgOrderValue, setAvgOrderValue] = useState(65.00);
+  const [plan, setPlan] = useState('basic');
   const [useShopifyPayments, setUseShopifyPayments] = useState(true);
 
   // Plan pricing 2026
@@ -28,6 +35,7 @@ export default function ShopifyFeeCalculator() {
 
   const totalShopifyMonthlyCost = selectedPlan.monthly + totalCcFees + externalPenalty;
   const effectiveFeePercent = monthlyRevenue > 0 ? ((totalShopifyMonthlyCost / monthlyRevenue) * 100) : 0;
+  const netRevenueAfterShopify = monthlyRevenue - totalShopifyMonthlyCost;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -35,69 +43,57 @@ export default function ShopifyFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Shopify Plan & Transaction Fee Estimator
+            Shopify Fee &amp; Plan Comparison Calculator
           </h1>
           <span className="badge badge-success">COMPARE PLANS</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Compare Shopify Basic, Standard, and Advanced monthly CC rates and external gateway penalties.
+          Compare Basic, Standard, and Advanced plans to see exactly what hits your bank account after credit card rates and transaction fees.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Inputs */}
-        <div className="lg:col-span-6 glass-card space-y-6">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <Layers className="w-4 h-4 text-[#FF5C00]" /> 1. Monthly Store Volume
-          </h2>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Monthly Gross Store Revenue ($)
-              </label>
-              <div className="input-group">
-                <span className="input-prefix">$</span>
-                <input
-                  type="number"
-                  step="100"
-                  value={monthlyRevenue}
-                  onChange={(e) => setMonthlyRevenue(parseFloat(e.target.value) || 0)}
-                  className="glass-input glass-input-prefix font-mono font-medium text-base"
-                />
-              </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* Left Column (Inputs) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="form-card">
+            <div style={SL}>
+              <Layers size={13} color="var(--brand)" /> 1. Monthly Store Volume
             </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Average Order Value (AOV) ($)
-              </label>
-              <div className="input-group">
-                <span className="input-prefix">$</span>
-                <input
-                  type="number"
-                  step="1"
-                  value={avgOrderValue}
-                  onChange={(e) => setAvgOrderValue(parseFloat(e.target.value) || 0)}
-                  className="glass-input glass-input-prefix font-mono"
-                />
-              </div>
+            <div style={{ marginBottom: 16 }}>
+              <label>Monthly gross store revenue ($)</label>
+              <input
+                type="number"
+                step="100"
+                value={monthlyRevenue}
+                onChange={(e) => setMonthlyRevenue(parseFloat(e.target.value) || 0)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }}
+              />
+            </div>
+
+            <div style={{ marginBottom: 0 }}>
+              <label>Average order value (AOV) ($)</label>
+              <input
+                type="number"
+                step="1"
+                value={avgOrderValue}
+                onChange={(e) => setAvgOrderValue(parseFloat(e.target.value) || 0)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 18 }}
+              />
             </div>
           </div>
 
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2 pt-2">
-            <CreditCard className="w-4 h-4 text-[#FF5C00]" /> 2. Shopify Plan & Payments
-          </h2>
+          <div className="form-card">
+            <div style={SL}>
+              <CreditCard size={13} color="var(--brand)" /> 2. Shopify Plan &amp; Payments
+            </div>
 
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Shopify Subscription Tier (2026)
-              </label>
+            <div style={{ marginBottom: 16 }}>
+              <label>Shopify subscription tier (2026)</label>
               <select
                 value={plan}
                 onChange={(e) => setPlan(e.target.value)}
-                className="glass-input font-medium"
+                style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--border)', color: 'var(--text-1)', fontSize: 13, fontWeight: 500 }}
               >
                 <option value="basic">Shopify Basic ($39/mo • 2.9% + 30¢)</option>
                 <option value="shopify">Shopify Standard ($105/mo • 2.6% + 30¢)</option>
@@ -105,17 +101,23 @@ export default function ShopifyFeeCalculator() {
               </select>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: 14, borderRadius: 10, background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--border)'
+            }}>
               <div>
-                <span className="text-xs font-medium text-white block">Use Shopify Payments?</span>
-                <span className="text-[11px] text-gray-400">Avoids 0.6%–2% external gateway penalty</span>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)' }}>Use Shopify Payments?</div>
+                <div style={{ fontSize: 12, color: 'var(--text-4)' }}>Avoids 0.6%–2% external gateway penalty</div>
               </div>
               <button
                 type="button"
                 onClick={() => setUseShopifyPayments(!useShopifyPayments)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  useShopifyPayments ? 'bg-orange-500 text-white' : 'bg-white/10 text-gray-400'
-                }`}
+                style={{
+                  padding: '6px 12px', borderRadius: 8, fontSize: 12, fontWeight: 600,
+                  border: 'none', cursor: 'pointer',
+                  background: useShopifyPayments ? 'var(--brand)' : 'rgba(255,255,255,0.1)',
+                  color: useShopifyPayments ? '#fff' : 'var(--text-4)'
+                }}
               >
                 {useShopifyPayments ? 'Yes (0% penalty)' : 'No (External)'}
               </button>
@@ -123,82 +125,88 @@ export default function ShopifyFeeCalculator() {
           </div>
         </div>
 
-        {/* Right Results */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-card bg-[#12141F]/90 border-[#FF5C00]/30 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Total Shopify Monthly Cost
-              </span>
-              <div className="flex items-center gap-2">
-                <CopySummaryButton
-                  title="Shopify Fee & Plan Breakdown"
-                  lines={[
-                    { label: 'Selected Plan', value: selectedPlan.name },
-                    { label: 'Monthly GMV', value: `$${monthlyRevenue.toLocaleString()}` },
-                    { label: 'Total Orders / Month', value: `${Math.round(orderCount)} orders` },
-                    { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
-                    { label: 'Third-Party Transaction Fees', value: `$${externalPenalty.toFixed(2)}` },
-                    { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` }
-                  ]}
-                />
-                <span className="badge badge-brand">
-                  Effective Cut: {effectiveFeePercent.toFixed(2)}%
-                </span>
-              </div>
+        {/* Right Column (Results - Sticky) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          {/* Primary Hero Banner */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: netRevenueAfterShopify >= 0 ? 'linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.03))' : 'linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03))',
+            border: netRevenueAfterShopify >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              You keep (after Shopify)
             </div>
-
-            <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-extrabold font-heading text-white tracking-tight">
-                ${totalShopifyMonthlyCost.toFixed(2)}
-              </span>
-              <span className="text-sm font-medium text-gray-400">
-                / month
-              </span>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: netRevenueAfterShopify >= 0 ? '#4ade80' : '#f87171' }}>
+              ${netRevenueAfterShopify.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
-
-            <hr className="border-white/10" />
-
-            <div className="space-y-3 text-xs">
-              <div className="flex justify-between text-gray-300">
-                <span>Monthly Subscription Plan ({selectedPlan.name})</span>
-                <span className="font-mono text-white">${selectedPlan.monthly.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-gray-300">
-                <span>CC Processing ({selectedPlan.ccRate * 100}% + 30¢)</span>
-                <span className="font-mono text-white">${totalCcFees.toFixed(2)}</span>
-              </div>
-              {!useShopifyPayments && (
-                <div className="flex justify-between text-orange-400">
-                  <span>External Gateway Penalty ({selectedPlan.externalFee * 100}%)</span>
-                  <span className="font-mono">${externalPenalty.toFixed(2)}</span>
-                </div>
-              )}
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Est. Monthly Orders</span>
-                <span className="text-lg font-bold font-mono text-white">
-                  {Math.round(orderCount)} orders
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Cost per Order</span>
-                <span className="text-lg font-bold font-mono text-orange-400">
-                  ${orderCount > 0 ? (totalShopifyMonthlyCost / orderCount).toFixed(2) : '0.00'}
-                </span>
-              </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              Shopify keeps <strong style={{ color: '#f87171', fontFamily: 'var(--font-mono)' }}>${totalShopifyMonthlyCost.toFixed(2)}</strong> ({effectiveFeePercent.toFixed(2)}% effective cut)
             </div>
           </div>
 
-          <div className="glass-card p-4 flex items-start gap-3 bg-white/[0.02] border-white/5">
-            <AlertCircle className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-white">Upgrade Threshold:</strong> Upgrading from <strong>Shopify Basic ($39)</strong> to <strong>Shopify Standard ($105)</strong> pays for itself automatically once your store revenue exceeds <strong>$22,000/month</strong> due to the 0.3% CC processing savings.
-            </p>
+          {/* Secondary Cost Summary */}
+          <div style={{
+            padding: 18, borderRadius: 14,
+            background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 6 }}>
+              Total monthly Shopify cost
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 28, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.03em' }}>
+              ${totalShopifyMonthlyCost.toFixed(2)}
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 4 }}>
+              Est. {Math.round(orderCount)} monthly orders · <span style={{ fontFamily: 'var(--font-mono)' }}>${orderCount > 0 ? (totalShopifyMonthlyCost / orderCount).toFixed(2) : '0.00'}</span> average fee per order
+            </div>
+          </div>
+
+          {/* Breakdown Card */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
+                Fee breakdown
+              </span>
+              <CopySummaryButton
+                title="Shopify Fee & Plan Breakdown"
+                lines={[
+                  { label: 'Selected Plan', value: selectedPlan.name },
+                  { label: 'Monthly Gross Store Revenue', value: `$${monthlyRevenue.toLocaleString()}` },
+                  { label: 'Total Orders / Month', value: `${Math.round(orderCount)} orders` },
+                  { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
+                  { label: 'Third-Party Transaction Fees', value: `$${externalPenalty.toFixed(2)}` },
+                  { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` },
+                ]}
+              />
+            </div>
+
+            {[
+              { label: 'Monthly GMV', value: `$${monthlyRevenue.toLocaleString()}`, color: 'var(--text-1)', bold: true },
+              { divider: true },
+              { label: `Subscription plan (${selectedPlan.name})`, value: `-$${selectedPlan.monthly.toFixed(2)}`, color: '#f87171' },
+              { label: `CC processing (${(selectedPlan.ccRate * 100).toFixed(1)}% + 30¢)`, value: `-$${totalCcFees.toFixed(2)}`, color: '#f87171' },
+              ...(useShopifyPayments ? [] : [
+                { label: `External gateway penalty (${(selectedPlan.externalFee * 100).toFixed(1)}%)`, value: `-$${externalPenalty.toFixed(2)}`, color: '#f87171' }
+              ]),
+              { divider: true },
+              { label: `Total Shopify cut (${effectiveFeePercent.toFixed(2)}%)`, value: `-$${totalShopifyMonthlyCost.toFixed(2)}`, color: '#f87171', bold: true },
+              { label: 'Net revenue after Shopify', value: `$${netRevenueAfterShopify.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, color: '#4ade80', bold: true },
+            ].map((r, i) =>
+              r.divider ? (
+                <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} />
+              ) : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>
+                    {r.value}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Insight Block */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> Upgrading from Shopify Basic ($39) to Shopify Standard ($105) pays for itself automatically once your store revenue exceeds $22,000/month due to the 0.3% CC processing savings.
           </div>
         </div>
       </div>

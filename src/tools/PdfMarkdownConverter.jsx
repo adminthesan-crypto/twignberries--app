@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileText, Printer, Copy, Check, Eye, Code, Sparkles, ShieldCheck } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function PdfMarkdownConverter() {
   const [markdown, setMarkdown] = useState(`# Project Scope & Proposal (2026)
@@ -87,74 +88,162 @@ This document outlines the deliverables and pricing structure for custom fronten
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const wordCount = markdown.trim() ? markdown.trim().split(/\s+/).length : 0;
+  const lineCount = markdown.split('\n').length;
+  const charCount = markdown.length;
+
+  const sectionLabelStyle = {
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+    color: 'var(--text-4)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 7,
+    marginBottom: 16,
+    paddingBottom: 12,
+    borderBottom: '1px solid var(--border)'
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Tool header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-                Markdown to PDF Converter
-              </h1>
-              <span className="badge badge-success">INSTANT PDF</span>
-            </div>
-            <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-              Type or paste markdown notes, proposals, or readmes and export a clean PDF instantly.
-            </p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-            <button onClick={handleCopy} className="btn-secondary" style={{ fontSize: 13 }}>
-              {copied ? <Check size={14} color="#4ade80" /> : <Copy size={14} />}
-              {copied ? 'Copied' : 'Copy MD'}
-            </button>
-            <button onClick={handlePrint} className="btn-primary" style={{ fontSize: 13 }}>
-              <Printer size={14} />
-              Print / Export PDF
-            </button>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Markdown to PDF Document Generator
+          </h1>
+          <span className="badge badge-success">INSTANT PDF</span>
         </div>
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Turn raw markdown notes and proposals into clean PDFs. Type or paste your markdown on the left and export instantly.
+        </p>
       </div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Markdown Editor (No Print) */}
-        <div className="lg:col-span-6 glass-card space-y-3 no-print">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase text-[#9ca3af] flex items-center gap-1.5">
-              <Code className="w-4 h-4 text-[#ff6b00]" /> Markdown Input
-            </span>
-            <span className="text-xs font-mono text-[#6b7280]">Supports headings, tables & lists</span>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* Left Column (Inputs / Editor & Document Preview) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* Form Card 1: Markdown Editor (No Print) */}
+          <div className="form-card no-print">
+            <div style={sectionLabelStyle}>
+              <Code size={14} color="var(--brand)" />
+              1. Markdown Text Editor
+            </div>
+
+            <textarea
+              value={markdown}
+              onChange={(e) => setMarkdown(e.target.value)}
+              rows={14}
+              className="w-full glass-input font-mono text-xs text-white leading-relaxed resize-none"
+              placeholder="Type your markdown here..."
+            />
+
+            <div className="flex items-center justify-between text-xs text-[#6b7280] mt-3">
+              <span>Supports headers (#), tables (|), bold (**), italics (*), and lists (-)</span>
+              <span>{charCount} characters</span>
+            </div>
           </div>
 
-          <textarea
-            value={markdown}
-            onChange={(e) => setMarkdown(e.target.value)}
-            rows={18}
-            className="w-full bg-[#0d101a] border border-white/15 rounded-xl p-4 font-mono text-xs text-white leading-relaxed focus:outline-none focus:border-[#ff6b00] resize-none"
-            placeholder="Type your markdown here..."
-          />
+          {/* Form Card 2: Rendered Document Preview (This is what prints!) */}
+          <div className="form-card bg-[#0d1018] border-white/15">
+            <div style={sectionLabelStyle} className="no-print">
+              <Eye size={14} color="var(--brand)" />
+              2. Live Document Preview (PDF Ready)
+            </div>
 
-          <div className="flex items-center justify-between text-xs text-[#6b7280]">
-            <span>100% private client-side rendering</span>
-            <span>{markdown.length} characters</span>
+            {/* Document Canvas */}
+            <div
+              className="prose prose-invert max-w-none text-white space-y-2 py-2"
+              dangerouslySetInnerHTML={{ __html: parseMarkdownToHtml(markdown) }}
+            />
           </div>
         </div>
 
-        {/* Right: Rendered Document Preview (This is what prints!) */}
-        <div className="lg:col-span-6 glass-card bg-[#0d1018] border-white/15 p-6 sm:p-8">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4 no-print">
-            <span className="text-xs font-bold uppercase text-emerald-400 flex items-center gap-1.5">
-              <Eye className="w-4 h-4" /> Live Document Preview
+        {/* Right Column (Results / Live Preview - Sticky) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }} className="no-print">
+          {/* Primary Hero Banner / Preview */}
+          <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
+              DOCUMENT STATUS
             </span>
-            <span className="badge badge-success">READY FOR PDF EXPORT</span>
+            <div className="text-3xl font-mono font-bold text-white mb-2">
+              Ready to Export
+            </div>
+            <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
+              <span>{wordCount} Words</span>
+              <span>{lineCount} Lines</span>
+            </div>
           </div>
 
-          {/* Document Canvas */}
-          <div 
-            className="prose prose-invert max-w-none text-white space-y-2"
-            dangerouslySetInnerHTML={{ __html: parseMarkdownToHtml(markdown) }}
-          />
+          {/* Breakdown / Action Card */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <FileText size={14} color="var(--brand)" />
+              Document Actions &amp; Stats
+            </div>
+
+            <div className="space-y-3 font-mono text-sm mb-5">
+              <div className="flex justify-between text-[#9ca3af]">
+                <span>Character Count:</span>
+                <span className="text-white font-semibold">{charCount.toLocaleString()}</span>
+              </div>
+
+              <div className="flex justify-between text-xs text-[#9ca3af]">
+                <span>Word Count:</span>
+                <span className="text-white font-semibold">{wordCount.toLocaleString()}</span>
+              </div>
+
+              <div className="flex justify-between text-xs text-[#9ca3af]">
+                <span>Rendering Engine:</span>
+                <span className="text-emerald-400 font-semibold">100% Client-Side</span>
+              </div>
+
+              <div className="h-px bg-white/10 my-2" />
+
+              <div className="flex justify-between text-xs text-[#9ca3af]">
+                <span>Privacy Status:</span>
+                <span className="text-emerald-400 font-bold">Zero Server Logs</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <button
+                type="button"
+                onClick={handlePrint}
+                className="btn-primary w-full justify-center text-xs"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Print / Save as PDF</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="btn-secondary w-full justify-center text-xs"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'Copied Markdown' : 'Copy Raw Markdown'}</span>
+              </button>
+
+              <CopySummaryButton
+                title="Markdown Document Statistics"
+                lines={[
+                  { label: 'Character Count', value: `${charCount}` },
+                  { label: 'Word Count', value: `${wordCount}` },
+                  { label: 'Line Count', value: `${lineCount}` },
+                  { label: 'Rendering Privacy', value: '100% Client-Side Local Execution' },
+                  { label: 'Export Format', value: 'Printable HTML / PDF Canvas' }
+                ]}
+              />
+            </div>
+          </div>
+
+          {/* Insight Block */}
+          <div className="insight-block">
+            💡 Pro tip: Use standard Markdown tables, blockquotes, and bulleted lists to create beautifully structured executive proposals ready for instant PDF export.
+          </div>
         </div>
       </div>
     </div>

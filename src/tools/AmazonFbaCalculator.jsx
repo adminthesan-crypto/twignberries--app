@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Package, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle } from 'lucide-react';
+import { Package, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+
+const SL = {
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
 
 export default function AmazonFbaCalculator() {
   const [price, setPrice] = useState(39.99);
-  const [categoryRate, setCategoryRate] = useState(15); // 15% standard
-  const [fbaTier, setFbaTier] = useState(4.75); // Large Standard 1 lb
+  const [categoryRate, setCategoryRate] = useState(15);
+  const [fbaTier, setFbaTier] = useState(4.75);
   const [cogs, setCogs] = useState(11.50);
   const [inboundShipping, setInboundShipping] = useState(1.20);
 
@@ -18,81 +25,66 @@ export default function AmazonFbaCalculator() {
   const marginPercent = price > 0 ? ((netProfit / price) * 100) : 0;
   const breakEvenPrice = (fbaFee + cogs + inboundShipping) / (1 - (categoryRate / 100));
 
-  // Percentage bar breakdown
-  const referralPct = price > 0 ? Math.min(100, Math.max(0, (referralFee / price) * 100)) : 0;
-  const fbaPct = price > 0 ? Math.min(100, Math.max(0, (fbaFee / price) * 100)) : 0;
-  const cogsPct = price > 0 ? Math.min(100, Math.max(0, ((cogs + inboundShipping) / price) * 100)) : 0;
-  const profitPct = price > 0 ? Math.min(100, Math.max(0, (netProfit / price) * 100)) : 0;
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Tool header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Amazon FBA Referral &amp; Profit Calculator
+            Amazon FBA Referral &amp; Net Profit Calculator
           </h1>
           <span className="badge badge-brand">8%–17% REFERRAL</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Calculate FBA fulfillment tiers, category referral cuts, and exact net profit per unit.
+          See your exact net margin after Amazon referral percentages and fulfillment tiers before you ship inventory.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Interactive Inputs */}
-        <div className="lg:col-span-6 glass-card space-y-6">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <Package className="w-4 h-4 text-[#FF5C00]" /> 1. Selling Price & Category
-          </h2>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Selling Price ($)
-              </label>
-              <div className="input-group">
-                <span className="input-prefix">$</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={price}
-                  onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
-                  className="glass-input glass-input-prefix font-mono font-medium text-base"
-                />
-              </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* Left Column (Inputs) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="form-card">
+            <div style={SL}>
+              <Package size={13} color="var(--brand)" /> 1. Selling Price &amp; Category
             </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Amazon Referral Fee Category
-              </label>
+            <div style={{ marginBottom: 16 }}>
+              <label>Selling price ($)</label>
+              <input
+                type="number"
+                step="0.01"
+                value={price}
+                onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }}
+              />
+            </div>
+
+            <div style={{ marginBottom: 0 }}>
+              <label>Amazon referral fee category</label>
               <select
                 value={categoryRate}
                 onChange={(e) => setCategoryRate(parseFloat(e.target.value))}
-                className="glass-input font-medium"
+                style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--border)', color: 'var(--text-1)', fontSize: 13, fontWeight: 500 }}
               >
                 <option value={8}>Electronics / Camera / Personal Computers (8%)</option>
                 <option value={15}>Standard Categories (Home, Kitchen, Toys, Beauty) (15%)</option>
-                <option value={17}>Apparel & Clothing / Accessories (17%)</option>
-                <option value={20}>Jewelry & Fine Watches (20%)</option>
+                <option value={17}>Apparel &amp; Clothing / Accessories (17%)</option>
+                <option value={20}>Jewelry &amp; Fine Watches (20%)</option>
               </select>
             </div>
           </div>
 
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2 pt-2">
-            <DollarSign className="w-4 h-4 text-[#FF5C00]" /> 2. FBA Fulfillment & COGS
-          </h2>
+          <div className="form-card">
+            <div style={SL}>
+              <DollarSign size={13} color="var(--brand)" /> 2. FBA Fulfillment &amp; Product Costs
+            </div>
 
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                FBA Size & Weight Tier (Pick & Pack)
-              </label>
+            <div style={{ marginBottom: 16 }}>
+              <label>FBA size &amp; weight tier (pick &amp; pack)</label>
               <select
                 value={fbaTier}
                 onChange={(e) => setFbaTier(parseFloat(e.target.value))}
-                className="glass-input font-medium"
+                style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--border)', color: 'var(--text-1)', fontSize: 13, fontWeight: 500 }}
               >
                 <option value={3.22}>Small Standard (Under 4 oz) — $3.22</option>
                 <option value={3.77}>Small Standard (4 to 8 oz) — $3.77</option>
@@ -103,132 +95,114 @@ export default function AmazonFbaCalculator() {
               </select>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Unit COGS ($)
-                </label>
-                <div className="input-group">
-                  <span className="input-prefix">$</span>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={cogs}
-                    onChange={(e) => setCogs(parseFloat(e.target.value) || 0)}
-                    className="glass-input glass-input-prefix font-mono"
-                  />
-                </div>
+                <label>Unit COGS ($)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={cogs}
+                  onChange={(e) => setCogs(parseFloat(e.target.value) || 0)}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 16 }}
+                />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Inbound Shipping ($)
-                </label>
-                <div className="input-group">
-                  <span className="input-prefix">$</span>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={inboundShipping}
-                    onChange={(e) => setInboundShipping(parseFloat(e.target.value) || 0)}
-                    className="glass-input glass-input-prefix font-mono"
-                  />
-                </div>
+                <label>Inbound shipping ($)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={inboundShipping}
+                  onChange={(e) => setInboundShipping(parseFloat(e.target.value) || 0)}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 16 }}
+                />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right: Results & Linear Breakdown */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-card bg-[#12141F]/90 border-[#FF5C00]/30 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Net Profit per Unit
-              </span>
-              <div className="flex items-center gap-2">
-                <CopySummaryButton
-                  title="Amazon FBA Fee & Margin Breakdown"
-                  lines={[
-                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
-                    { label: 'Referral Fee', value: `$${referralFee.toFixed(2)}` },
-                    { label: 'FBA Fulfillment Fee', value: `$${fbaFee.toFixed(2)}` },
-                    { label: 'Unit Cost (COGS + Shipping)', value: `$${(cogs + inboundShipping).toFixed(2)}` },
-                    { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
-                    { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` }
-                  ]}
-                />
-                <span className="badge badge-brand">
-                  Margin: {marginPercent.toFixed(1)}%
-                </span>
-              </div>
+        {/* Right Column (Results - Sticky) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          {/* Primary Hero Banner */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: netProfit >= 0 ? 'linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.03))' : 'linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03))',
+            border: netProfit >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              Your net profit
             </div>
-
-            <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-extrabold font-heading text-white tracking-tight">
-                ${netProfit.toFixed(2)}
-              </span>
-              <span className="text-sm font-medium text-gray-400">
-                / sale
-              </span>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: netProfit >= 0 ? '#4ade80' : '#f87171' }}>
+              ${netProfit.toFixed(2)}
             </div>
-
-            {/* Visual Margin Bar */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-medium text-gray-400">
-                <span>Revenue Allocation Breakdown</span>
-                <span>$100% of Sale</span>
-              </div>
-              <div className="h-3 w-full bg-black/40 rounded-full overflow-hidden flex">
-                <div style={{ width: `${referralPct}%` }} title="Referral Fee" className="bg-orange-500 h-full" />
-                <div style={{ width: `${fbaPct}%` }} title="FBA Fulfillment" className="bg-amber-500 h-full" />
-                <div style={{ width: `${cogsPct}%` }} title="COGS + Shipping" className="bg-blue-500 h-full" />
-                <div style={{ width: `${profitPct}%` }} title="Net Profit" className="bg-emerald-500 h-full" />
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-[11px] text-gray-400 pt-1">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-orange-500" />
-                  Referral ({categoryRate}%): <strong className="text-white">${referralFee.toFixed(2)}</strong>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-amber-500" />
-                  FBA Pick/Pack: <strong className="text-white">${fbaFee.toFixed(2)}</strong>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  COGS + Inbound: <strong className="text-white">${(cogs + inboundShipping).toFixed(2)}</strong>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  Net Profit: <strong className="text-emerald-400">${netProfit.toFixed(2)}</strong>
-                </div>
-              </div>
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Break-Even Price</span>
-                <span className="text-lg font-bold font-mono text-white">
-                  ${breakEvenPrice.toFixed(2)}
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Total Amazon Cut</span>
-                <span className="text-lg font-bold font-mono text-orange-400">
-                  ${totalAmazonFees.toFixed(2)}
-                </span>
-              </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              Take-home profit per unit (<strong style={{ color: netProfit >= 0 ? '#4ade80' : '#f87171', fontFamily: 'var(--font-mono)' }}>{marginPercent.toFixed(1)}% margin</strong>) · Amazon keeps <strong style={{ color: '#f87171', fontFamily: 'var(--font-mono)' }}>${totalAmazonFees.toFixed(2)}</strong>
             </div>
           </div>
 
-          {/* Educational Note */}
-          <div className="glass-card p-4 flex items-start gap-3 bg-white/[0.02] border-white/5">
-            <AlertCircle className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-white">Pro Tip:</strong> Amazon applies a minimum $0.30 referral fee on most categories. If your unit COGS + FBA exceeds your break-even threshold of <strong>${breakEvenPrice.toFixed(2)}</strong>, you will incur a loss per order.
-            </p>
+          {/* Secondary Target Banner */}
+          <div style={{
+            padding: 18, borderRadius: 14,
+            background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 6 }}>
+              Break-even target
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 28, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.03em' }}>
+              ${breakEvenPrice.toFixed(2)}
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 4 }}>
+              Minimum selling price required to cover COGS, inbound shipping, referral, and FBA fees
+            </div>
+          </div>
+
+          {/* Breakdown Card */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
+                Unit economics breakdown
+              </span>
+              <CopySummaryButton
+                title="Amazon FBA Fee & Margin Breakdown"
+                lines={[
+                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                  { label: `Referral Fee (${categoryRate}%)`, value: `-$${referralFee.toFixed(2)}` },
+                  { label: 'FBA Fulfillment Fee', value: `-$${fbaFee.toFixed(2)}` },
+                  { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}` },
+                  { label: 'Inbound Shipping', value: `-$${inboundShipping.toFixed(2)}` },
+                  { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
+                  { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` },
+                ]}
+              />
+            </div>
+
+            {[
+              { label: 'Selling price', value: `$${price.toFixed(2)}`, color: 'var(--text-1)', bold: true },
+              { divider: true },
+              { label: `Amazon referral fee (${categoryRate}%)`, value: `-$${referralFee.toFixed(2)}`, color: '#f87171' },
+              { label: 'FBA pick & pack fee', value: `-$${fbaFee.toFixed(2)}`, color: '#f87171' },
+              { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}`, color: '#f87171' },
+              { label: 'Inbound shipping', value: `-$${inboundShipping.toFixed(2)}`, color: '#f87171' },
+              { divider: true },
+              { label: 'Total Amazon cut', value: `-$${totalAmazonFees.toFixed(2)}`, color: '#f87171' },
+              { label: `Net profit (${marginPercent.toFixed(1)}% margin)`, value: `$${netProfit.toFixed(2)}`, color: netProfit >= 0 ? '#4ade80' : '#f87171', bold: true },
+            ].map((r, i) =>
+              r.divider ? (
+                <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} />
+              ) : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>
+                    {r.value}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Insight Block */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> Amazon applies a minimum $0.30 referral fee on most categories. If your unit COGS + FBA exceeds your break-even threshold of ${breakEvenPrice.toFixed(2)}, you will incur a loss per order.
           </div>
         </div>
       </div>

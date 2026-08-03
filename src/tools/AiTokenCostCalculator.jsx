@@ -1,38 +1,42 @@
 import React, { useState } from 'react';
-import { Cpu, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Zap, BarChart2, Layers } from 'lucide-react';
+import { Cpu, Zap, DollarSign, BarChart2, Layers, AlertCircle, TrendingUp, ShieldCheck } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+
+const SL = {
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
+
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
 
 export default function AiTokenCostCalculator() {
   const [modelKey, setModelKey] = useState('gpt4o');
-  const [inputTokens, setInputTokens] = useState(1500); // 1.5k avg input
-  const [outputTokens, setOutputTokens] = useState(500); // 500 avg output
-  const [dailyRequests, setDailyRequests] = useState(5000); // 5k daily requests
+  const [inputTokens, setInputTokens] = useState(1500);
+  const [outputTokens, setOutputTokens] = useState(500);
+  const [dailyRequests, setDailyRequests] = useState(5000);
 
-  // 2026 Model Pricing Specs (Price per 1 Million Tokens in USD)
   const models = {
-    gpt4o: { name: 'OpenAI GPT-4o', provider: 'OpenAI', inPrice: 2.50, outPrice: 10.00, color: 'bg-emerald-500', badge: 'Flagship Multimodal' },
-    gpt4o_mini: { name: 'OpenAI GPT-4o mini', provider: 'OpenAI', inPrice: 0.15, outPrice: 0.60, color: 'bg-emerald-400', badge: 'Ultra-Fast Budget' },
-    claude_35_sonnet: { name: 'Claude 3.5 Sonnet', provider: 'Anthropic', inPrice: 3.00, outPrice: 15.00, color: 'bg-amber-500', badge: 'Top Coding / Reasoning' },
-    claude_35_haiku: { name: 'Claude 3.5 Haiku', provider: 'Anthropic', inPrice: 0.80, outPrice: 4.00, color: 'bg-amber-400', badge: 'Fast Agent Support' },
-    gemini_15_pro: { name: 'Gemini 1.5 Pro (2M Context)', provider: 'Google', inPrice: 1.25, outPrice: 5.00, color: 'bg-blue-500', badge: 'Long-Context Power' },
-    gemini_15_flash: { name: 'Gemini 1.5 Flash', provider: 'Google', inPrice: 0.075, outPrice: 0.30, color: 'bg-blue-400', badge: 'Cheapest Big Context' },
-    deepseek_v3: { name: 'DeepSeek V3 / R1 API', provider: 'DeepSeek', inPrice: 0.14, outPrice: 0.28, color: 'bg-purple-500', badge: 'Open-Weight Economy' },
+    gpt4o: { name: 'OpenAI GPT-4o', provider: 'OpenAI', inPrice: 2.50, outPrice: 10.00, badge: 'Flagship Multimodal' },
+    gpt4o_mini: { name: 'OpenAI GPT-4o mini', provider: 'OpenAI', inPrice: 0.15, outPrice: 0.60, badge: 'Ultra-Fast Budget' },
+    claude_35_sonnet: { name: 'Claude 3.5 Sonnet', provider: 'Anthropic', inPrice: 3.00, outPrice: 15.00, badge: 'Top Coding / Reasoning' },
+    claude_35_haiku: { name: 'Claude 3.5 Haiku', provider: 'Anthropic', inPrice: 0.80, outPrice: 4.00, badge: 'Fast Agent Support' },
+    gemini_15_pro: { name: 'Gemini 1.5 Pro (2M Context)', provider: 'Google', inPrice: 1.25, outPrice: 5.00, badge: 'Long-Context Power' },
+    gemini_15_flash: { name: 'Gemini 1.5 Flash', provider: 'Google', inPrice: 0.075, outPrice: 0.30, badge: 'Cheapest Big Context' },
+    deepseek_v3: { name: 'DeepSeek V3 / R1 API', provider: 'DeepSeek', inPrice: 0.14, outPrice: 0.28, badge: 'Open-Weight Economy' },
   };
 
   const selected = models[modelKey];
 
-  // Math per request
   const inputCostPerReq = (inputTokens / 1_000_000) * selected.inPrice;
   const outputCostPerReq = (outputTokens / 1_000_000) * selected.outPrice;
   const costPerReq = inputCostPerReq + outputCostPerReq;
   const costPer1kReq = costPerReq * 1000;
 
-  // Forecasts
   const dailyCost = costPerReq * dailyRequests;
   const monthlyCost = dailyCost * 30;
   const annualCost = dailyCost * 365;
 
-  // Comparison math across all models for selected volume
   const comparisonList = Object.entries(models).map(([key, m]) => {
     const daily = ((inputTokens / 1_000_000) * m.inPrice + (outputTokens / 1_000_000) * m.outPrice) * dailyRequests;
     return {
@@ -51,31 +55,40 @@ export default function AiTokenCostCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            AI API Token & Inference Cost Calculator
+            AI API Token &amp; Inference Cost Calculator
           </h1>
-          <span className="badge badge-info">2026 PRICING</span>
+          <span className="badge badge-brand">2026 API RATES</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Compare GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and DeepSeek API token costs and monthly spend.
+          Compare GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and DeepSeek API costs before you scale production traffic.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Interactive Inputs */}
-        <div className="lg:col-span-6 glass-card space-y-6">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <Cpu className="w-4 h-4 text-[#FF5C00]" /> 1. Select LLM Model (2026 API Rates)
-          </h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* ── Left Column (Inputs) ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          
+          {/* Card 1: Select LLM Model */}
+          <div className="form-card">
+            <div style={SL}>
+              <Cpu size={13} color="var(--brand)" /> 1. Select Foundation Model Tier
+            </div>
 
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Foundation Model Tier
-              </label>
+            <div style={{ marginBottom: 16 }}>
+              <label>Foundation model (2026 per-million token pricing)</label>
               <select
                 value={modelKey}
                 onChange={(e) => setModelKey(e.target.value)}
-                className="glass-input font-medium"
+                style={{
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 10,
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-md)',
+                  color: 'var(--text-1)',
+                  fontSize: 14,
+                  fontWeight: 600,
+                }}
               >
                 <option value="gpt4o">OpenAI GPT-4o ($2.50 / $10.00 per 1M)</option>
                 <option value="gpt4o_mini">OpenAI GPT-4o mini ($0.15 / $0.60 per 1M)</option>
@@ -87,55 +100,70 @@ export default function AiTokenCostCalculator() {
               </select>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-between">
+            <div style={{
+              padding: 14,
+              borderRadius: 10,
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid var(--border)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
               <div>
-                <span className="text-xs font-semibold text-white block">{selected.name}</span>
-                <span className="text-[11px] text-gray-400">{selected.badge}</span>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-1)' }}>
+                  {selected.name}
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 2 }}>
+                  {selected.provider} • {selected.badge}
+                </div>
               </div>
-              <div className="text-right font-mono text-xs">
-                <div className="text-emerald-400">In: ${selected.inPrice}/M</div>
-                <div className="text-orange-400">Out: ${selected.outPrice}/M</div>
+              <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: 12 }}>
+                <div style={{ color: '#4ade80' }}>In: ${selected.inPrice.toFixed(3)}/M</div>
+                <div style={{ color: 'var(--brand)' }}>Out: ${selected.outPrice.toFixed(3)}/M</div>
               </div>
             </div>
           </div>
 
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2 pt-2">
-            <Zap className="w-4 h-4 text-[#FF5C00]" /> 2. Token Volume & Request Scale
-          </h2>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Avg. Input Tokens per Request (Prompt + Context)
-              </label>
-              <input
-                type="number"
-                step="100"
-                value={inputTokens}
-                onChange={(e) => setInputTokens(parseFloat(e.target.value) || 0)}
-                className="glass-input font-mono font-medium"
-              />
+          {/* Card 2: Token Volume & Request Scale */}
+          <div className="form-card">
+            <div style={SL}>
+              <Zap size={13} color="var(--brand)" /> 2. Token Volume &amp; Request Scale
             </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Avg. Output Tokens per Request (Completion)
-              </label>
-              <input
-                type="number"
-                step="50"
-                value={outputTokens}
-                onChange={(e) => setOutputTokens(parseFloat(e.target.value) || 0)}
-                className="glass-input font-mono font-medium"
-              />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
+              <div>
+                <label>Avg. input tokens / request</label>
+                <input
+                  type="number"
+                  step="100"
+                  value={inputTokens}
+                  onChange={(e) => setInputTokens(parseFloat(e.target.value) || 0)}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 600 }}
+                />
+                <div style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
+                  Prompt + retrieved context + system instructions.
+                </div>
+              </div>
+
+              <div>
+                <label>Avg. output tokens / request</label>
+                <input
+                  type="number"
+                  step="50"
+                  value={outputTokens}
+                  onChange={(e) => setOutputTokens(parseFloat(e.target.value) || 0)}
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 600 }}
+                />
+                <div style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
+                  Model generation and structured completion tokens.
+                </div>
+              </div>
             </div>
 
-            <div>
-              <div className="flex justify-between items-center mb-1">
-                <label className="text-xs font-medium text-gray-400">
-                  Daily API Request Volume
-                </label>
-                <span className="text-xs font-mono font-bold text-[#FF5C00]">
+            <div style={{ marginBottom: 0 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ margin: 0 }}>Daily API request volume</label>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--brand)' }}>
                   {dailyRequests.toLocaleString()} requests/day
                 </span>
               </div>
@@ -146,102 +174,48 @@ export default function AiTokenCostCalculator() {
                 step="500"
                 value={dailyRequests}
                 onChange={(e) => setDailyRequests(parseFloat(e.target.value))}
-                className="w-full accent-[#FF5C00] cursor-pointer"
+                style={{ width: '100%', accentColor: 'var(--brand)', cursor: 'pointer' }}
               />
-              <div className="flex justify-between text-[11px] text-gray-400 mt-1">
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
                 <span>500 (Side Project)</span>
                 <span>5k (Startup)</span>
                 <span>50k (Production Scale)</span>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Right: Results & Monthly Comparison Bar */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-card bg-[#12141F]/90 border-[#FF5C00]/30 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Estimated Monthly API Cost
-              </span>
-              <div className="flex items-center gap-2">
-                <CopySummaryButton 
-                  title={`AI Token Cost: ${selected.name}`}
-                  lines={[
-                    { label: 'Model Tier', value: selected.name },
-                    { label: 'Input Tokens / Req', value: `${inputTokens} tokens` },
-                    { label: 'Output Tokens / Req', value: `${outputTokens} tokens` },
-                    { label: 'Daily Volume', value: `${dailyRequests.toLocaleString()} req/day` },
-                    { label: 'Cost per 1K Requests', value: `$${costPer1kReq.toFixed(4)}` },
-                    { label: 'Daily Spend', value: `$${dailyCost.toFixed(2)}/day` },
-                    { label: 'Monthly Spend', value: `$${monthlyCost.toFixed(2)}/mo` }
-                  ]}
-                />
-                <span className="badge badge-brand">
-                  {selected.provider}
-                </span>
-              </div>
+          {/* Card 3: Monthly Cost Comparison Across Models */}
+          <div className="form-card">
+            <div style={SL}>
+              <BarChart2 size={13} color="var(--brand)" /> 3. Monthly Cost Comparison Across All Models
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text-4)', marginBottom: 14 }}>
+              Monthly API expenditure forecast at <strong style={{ color: 'var(--text-2)' }}>{dailyRequests.toLocaleString()} req/day</strong> ({inputTokens} in / {outputTokens} out):
             </div>
 
-            <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-extrabold font-heading text-white tracking-tight">
-                ${monthlyCost.toFixed(2)}
-              </span>
-              <span className="text-sm font-medium text-gray-400">
-                / month
-              </span>
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Cost per 1,000 Requests</span>
-                <span className="text-lg font-bold font-mono text-white">
-                  ${costPer1kReq.toFixed(4)}
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Daily Spend (30 days)</span>
-                <span className="text-lg font-bold font-mono text-orange-400">
-                  ${dailyCost.toFixed(2)} / day
-                </span>
-              </div>
-            </div>
-
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex justify-between items-center text-xs">
-              <span className="text-gray-400">Projected Annual API Runway:</span>
-              <span className="font-mono font-bold text-white">${annualCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-            </div>
-          </div>
-
-          {/* Model Price Comparison Graph */}
-          <div className="glass-card space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xs font-semibold text-white uppercase tracking-wider flex items-center gap-1.5">
-                <BarChart2 className="w-4 h-4 text-[#FF5C00]" /> Monthly Cost Comparison (All Models)
-              </h3>
-              <span className="text-[11px] text-gray-400">at {dailyRequests.toLocaleString()} req/day</span>
-            </div>
-
-            <div className="space-y-3">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {comparisonList.map((item) => {
                 const widthPercent = Math.max(5, Math.min(100, (item.monthly / maxMonthly) * 100));
                 const isCurrent = item.key === modelKey;
                 return (
-                  <div key={item.key} className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span className={`font-medium ${isCurrent ? 'text-orange-400 font-bold' : 'text-gray-300'}`}>
+                  <div key={item.key} style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12 }}>
+                      <span style={{ fontWeight: isCurrent ? 700 : 500, color: isCurrent ? 'var(--brand)' : 'var(--text-2)' }}>
                         {item.name} {isCurrent && '✓'}
                       </span>
-                      <span className="font-mono text-white">
+                      <span style={{ fontFamily: 'var(--font-mono)', fontWeight: isCurrent ? 700 : 500, color: isCurrent ? '#4ade80' : 'var(--text-1)' }}>
                         ${item.monthly.toFixed(2)}/mo
                       </span>
                     </div>
-                    <div className="h-2 w-full bg-black/40 rounded-full overflow-hidden">
+                    <div style={{ height: 6, width: '100%', background: 'rgba(255,255,255,0.06)', borderRadius: 999, overflow: 'hidden' }}>
                       <div
-                        style={{ width: `${widthPercent}%` }}
-                        className={`h-full rounded-full transition-all duration-300 ${isCurrent ? 'bg-orange-500' : 'bg-white/20'}`}
+                        style={{
+                          width: `${widthPercent}%`,
+                          height: '100%',
+                          background: isCurrent ? 'var(--brand)' : 'rgba(255,255,255,0.25)',
+                          borderRadius: 999,
+                          transition: 'width 0.25s ease',
+                        }}
                       />
                     </div>
                   </div>
@@ -250,13 +224,98 @@ export default function AiTokenCostCalculator() {
             </div>
           </div>
 
-          {/* Educational Note */}
-          <div className="glass-card p-4 flex items-start gap-3 bg-white/[0.02] border-white/5">
-            <AlertCircle className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-white">Developer Cost Insight:</strong> Switching from <strong>GPT-4o</strong> to <strong>GPT-4o mini</strong> or <strong>Gemini 1.5 Flash</strong> reduces your monthly API spend by up to <strong>96%</strong> with minimal quality degradation on classification and summarization tasks.
-            </p>
+        </div>
+
+        {/* ── Right Column (Results - Sticky) ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          
+          {/* Primary Hero Banner */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: 'linear-gradient(135deg,rgba(255,92,0,0.08),rgba(255,92,0,0.03))',
+            border: '1px solid rgba(255,92,0,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              Estimated monthly API spend
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: 'var(--text-1)' }}>
+              ${monthlyCost.toFixed(2)}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              Daily spend: <strong style={{ color: 'var(--brand)', fontFamily: 'var(--font-mono)' }}>${dailyCost.toFixed(2)}/day</strong> @ {dailyRequests.toLocaleString()} req/day
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 10,
+              marginTop: 18,
+              paddingTop: 16,
+              borderTop: '1px solid rgba(255,255,255,0.08)',
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-4)', textTransform: 'uppercase', fontWeight: 600 }}>Per 1K Requests</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: '#4ade80', marginTop: 3 }}>
+                  ${costPer1kReq.toFixed(4)}
+                </div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-4)', textTransform: 'uppercase', fontWeight: 600 }}>Annual Runway</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--text-1)', marginTop: 3 }}>
+                  ${annualCost.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                </div>
+              </div>
+            </div>
           </div>
+
+          {/* Breakdown Card */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
+                Cost breakdown
+              </span>
+              <CopySummaryButton
+                title={`AI Token Cost — ${selected.name}`}
+                lines={[
+                  { label: 'Foundation Model', value: selected.name },
+                  { label: 'Input Tokens per Req', value: `${inputTokens} tokens` },
+                  { label: 'Output Tokens per Req', value: `${outputTokens} tokens` },
+                  { label: 'Daily Request Volume', value: `${dailyRequests.toLocaleString()} req/day` },
+                  { label: 'Cost per 1,000 Requests', value: `$${costPer1kReq.toFixed(4)}` },
+                  { label: 'Daily Spend', value: `$${dailyCost.toFixed(2)}/day` },
+                  { label: 'Projected Monthly Spend', value: `$${monthlyCost.toFixed(2)}/mo` },
+                  { label: 'Projected Annual Spend', value: `$${annualCost.toFixed(2)}/yr` },
+                ]}
+              />
+            </div>
+
+            {[
+              { label: 'Foundation model', value: selected.name, color: 'var(--text-1)', bold: true },
+              { label: 'Input token rate (per 1M)', value: `$${selected.inPrice.toFixed(3)}`, color: 'var(--text-4)', mono: true },
+              { label: 'Output token rate (per 1M)', value: `$${selected.outPrice.toFixed(3)}`, color: 'var(--text-4)', mono: true },
+              { divider: true },
+              { label: 'Cost per 1,000 API requests', value: `$${costPer1kReq.toFixed(4)}`, color: 'var(--text-2)', mono: true },
+              { label: 'Daily spend (30-day avg)', value: `$${dailyCost.toFixed(2)}/day`, color: 'var(--text-2)', mono: true },
+              { divider: true },
+              { label: 'Projected monthly spend', value: `$${monthlyCost.toFixed(2)}`, color: 'var(--brand)', mono: true, bold: true },
+              { label: 'Projected annual spend', value: `$${annualCost.toFixed(2)}`, color: '#4ade80', mono: true, bold: true },
+            ].map((r, i) =>
+              r.divider ? <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} /> : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: r.mono ? 'var(--font-mono)' : 'inherit', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>
+                    {r.value}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Insight Block */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> Switching from <strong style={{ color: 'var(--text-1)' }}>GPT-4o</strong> to <strong style={{ color: 'var(--text-1)' }}>GPT-4o mini</strong> or <strong style={{ color: 'var(--text-1)' }}>Gemini 1.5 Flash</strong> reduces your monthly API spend by up to <strong style={{ color: '#4ade80' }}>96%</strong> with minimal quality degradation on classification, routing, and summarization tasks.
+          </div>
+
         </div>
       </div>
     </div>

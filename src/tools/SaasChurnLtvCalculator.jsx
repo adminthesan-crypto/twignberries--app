@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Users, BarChart3, RefreshCw } from 'lucide-react';
+import { Users, RefreshCw, TrendingUp, DollarSign, Award, ShieldCheck, AlertCircle, Activity } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
-export default function SaasChurnLtvCalculator() {
-  const [arpu, setArpu] = useState(49.00); // $49/mo Average Revenue Per User
-  const [monthlyChurn, setMonthlyChurn] = useState(4.5); // 4.5% monthly churn
-  const [grossMargin, setGrossMargin] = useState(85); // 85% gross margin
-  const [cac, setCac] = useState(120.00); // Customer Acquisition Cost $120
+const SL = {
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
+  color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
+  marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)',
+};
 
-  // Math
+const ROW = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 };
+
+export default function SaasChurnLtvCalculator() {
+  const [arpu, setArpu] = useState(49.00);
+  const [monthlyChurn, setMonthlyChurn] = useState(4.5);
+  const [grossMargin, setGrossMargin] = useState(85);
+  const [cac, setCac] = useState(120.00);
+
   const churnRateDec = monthlyChurn / 100;
   const customerLifetimeMonths = churnRateDec > 0 ? (1 / churnRateDec) : 0;
   const grossLtv = arpu * customerLifetimeMonths;
@@ -16,73 +23,76 @@ export default function SaasChurnLtvCalculator() {
   const ltvCacRatio = cac > 0 ? (netLtv / cac) : 0;
   const paybackMonths = (arpu * (grossMargin / 100)) > 0 ? (cac / (arpu * (grossMargin / 100))) : 0;
 
+  const isHealthy = ltvCacRatio >= 3.0 && paybackMonths <= 12;
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Tool header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            SaaS MRR Churn & Lifetime Value (LTV:CAC)
+            SaaS MRR Churn &amp; Lifetime Value (LTV:CAC)
           </h1>
-          <span className="badge badge-info">SaaS METRICS</span>
+          <span className={`badge ${ltvCacRatio >= 3 ? 'badge-success' : 'badge-brand'}`}>
+            LTV:CAC • {ltvCacRatio.toFixed(1)}x
+          </span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Calculate customer LTV, LTV:CAC ratio, and CAC payback period months based on MRR churn.
+          Calculate customer lifetime value, CAC payback period, and unit economics health to understand true SaaS profitability.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Inputs */}
-        <div className="lg:col-span-6 glass-card space-y-6">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <Users className="w-4 h-4 text-[#FF5C00]" /> 1. Revenue & Acquisition Cost
-          </h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* ── Left Column (Inputs) ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          
+          {/* Card 1: Revenue & Acquisition Cost */}
+          <div className="form-card">
+            <div style={SL}>
+              <Users size={13} color="var(--brand)" /> 1. Revenue &amp; Acquisition Cost
+            </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                ARPU (Monthly per User) ($)
-              </label>
-              <div className="input-group">
-                <span className="input-prefix">$</span>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 0 }}>
+              <div>
+                <label>ARPU (monthly per user) ($)</label>
                 <input
                   type="number"
                   step="1"
                   value={arpu}
                   onChange={(e) => setArpu(parseFloat(e.target.value) || 0)}
-                  className="glass-input glass-input-prefix font-mono font-medium"
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }}
                 />
+                <div style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
+                  Average revenue billed per paying account each month.
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-400 mb-1">
-                Customer Acquisition Cost ($)
-              </label>
-              <div className="input-group">
-                <span className="input-prefix">$</span>
+              <div>
+                <label>Customer acquisition cost ($)</label>
                 <input
                   type="number"
                   step="5"
                   value={cac}
                   onChange={(e) => setCac(parseFloat(e.target.value) || 0)}
-                  className="glass-input glass-input-prefix font-mono font-medium"
+                  style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 600 }}
                 />
+                <div style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
+                  Total sales &amp; marketing ad spend divided by new customers.
+                </div>
               </div>
             </div>
           </div>
 
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2 pt-2">
-            <RefreshCw className="w-4 h-4 text-[#FF5C00]" /> 2. Churn & Gross Margin
-          </h2>
+          {/* Card 2: Churn & Gross Margin */}
+          <div className="form-card">
+            <div style={SL}>
+              <RefreshCw size={13} color="var(--brand)" /> 2. Churn Rate &amp; Gross Margin
+            </div>
 
-          <div className="space-y-5">
-            <div>
-              <div className="flex justify-between items-center mb-1">
-                <label className="text-xs font-medium text-gray-400">
-                  Monthly Churn Rate (%)
-                </label>
-                <span className="text-xs font-mono font-bold text-[#FF5C00]">
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ margin: 0 }}>Monthly MRR churn rate (%)</label>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--brand)' }}>
                   {monthlyChurn}%
                 </span>
               </div>
@@ -93,21 +103,19 @@ export default function SaasChurnLtvCalculator() {
                 step="0.5"
                 value={monthlyChurn}
                 onChange={(e) => setMonthlyChurn(parseFloat(e.target.value))}
-                className="w-full accent-[#FF5C00] cursor-pointer"
+                style={{ width: '100%', accentColor: 'var(--brand)', cursor: 'pointer' }}
               />
-              <div className="flex justify-between text-[11px] text-gray-400 mt-1">
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
                 <span>1% (Enterprise B2B)</span>
                 <span>5% (Prosumer SaaS)</span>
                 <span>12% (High Churn)</span>
               </div>
             </div>
 
-            <div>
-              <div className="flex justify-between items-center mb-1">
-                <label className="text-xs font-medium text-gray-400">
-                  Gross Profit Margin (%)
-                </label>
-                <span className="text-xs font-mono font-bold text-white">
+            <div style={{ marginBottom: 0 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ margin: 0 }}>Gross profit margin (%)</label>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--text-1)' }}>
                   {grossMargin}%
                 </span>
               </div>
@@ -118,88 +126,111 @@ export default function SaasChurnLtvCalculator() {
                 step="1"
                 value={grossMargin}
                 onChange={(e) => setGrossMargin(parseFloat(e.target.value))}
-                className="w-full accent-[#FF5C00] cursor-pointer"
+                style={{ width: '100%', accentColor: 'var(--brand)', cursor: 'pointer' }}
               />
-              <div className="flex justify-between text-[11px] text-gray-400 mt-1">
-                <span>60% (AI/GPU SaaS)</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-4)', marginTop: 4 }}>
+                <span>60% (AI / GPU SaaS)</span>
                 <span>80% (Standard SaaS)</span>
                 <span>95% (Pure Code)</span>
               </div>
             </div>
           </div>
+
         </div>
 
-        {/* Right Results */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-card bg-[#12141F]/90 border-[#FF5C00]/30 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Net Customer Lifetime Value (LTV)
-              </span>
-              <div className="flex items-center gap-2">
-                <CopySummaryButton
-                  title="SaaS LTV & Churn Health Summary"
-                  lines={[
-                    { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
-                    { label: 'Gross Margin', value: `${grossMargin}%` },
-                    { label: 'Monthly MRR Churn Rate', value: `${monthlyChurn}%` },
-                    { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
-                    { label: 'Customer Retention Span', value: `${customerLifetimeMonths.toFixed(1)} months` },
-                    { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
-                    { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
-                    { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` }
-                  ]}
-                />
-                <span className={`badge ${ltvCacRatio >= 3 ? 'badge-success' : 'badge-brand'}`}>
-                  LTV:CAC Ratio — {ltvCacRatio.toFixed(1)}x
-                </span>
-              </div>
+        {/* ── Right Column (Results - Sticky) ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          
+          {/* Primary Hero Banner */}
+          <div style={{
+            padding: 24, borderRadius: 16, textAlign: 'center',
+            background: isHealthy
+              ? 'linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03))'
+              : 'linear-gradient(135deg,rgba(255,92,0,0.08),rgba(255,92,0,0.03))',
+            border: isHealthy ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(255,92,0,0.2)',
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
+              Net customer lifetime value (LTV)
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: isHealthy ? '#4ade80' : 'var(--brand)' }}>
+              ${netLtv.toFixed(0)}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text-4)' }}>
+              LTV:CAC ratio is <strong style={{ color: isHealthy ? '#4ade80' : 'var(--brand)', fontFamily: 'var(--font-mono)' }}>{ltvCacRatio.toFixed(1)}x</strong> (target: 3.0x+)
             </div>
 
-            <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-extrabold font-heading text-white tracking-tight">
-                ${netLtv.toFixed(0)}
-              </span>
-              <span className="text-sm font-medium text-gray-400">
-                / customer lifetime
-              </span>
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">Customer Retention Span</span>
-                <span className="text-lg font-bold font-mono text-white">
-                  {customerLifetimeMonths.toFixed(1)} months
-                </span>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 10,
+              marginTop: 18,
+              paddingTop: 16,
+              borderTop: '1px solid rgba(255,255,255,0.08)',
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-4)', textTransform: 'uppercase', fontWeight: 600 }}>CAC Payback</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: paybackMonths <= 12 ? '#4ade80' : '#f87171', marginTop: 3 }}>
+                  {paybackMonths.toFixed(1)} mos
+                </div>
               </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
-                <span className="text-xs text-gray-400 block font-medium">CAC Payback Period</span>
-                <span className={`text-lg font-bold font-mono ${paybackMonths <= 12 ? 'text-emerald-400' : 'text-orange-400'}`}>
-                  {paybackMonths.toFixed(1)} months
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                <span className="text-[11px] text-gray-400 block">Gross LTV (Before Margin)</span>
-                <span className="text-sm font-semibold font-mono text-white">${grossLtv.toFixed(0)}</span>
-              </div>
-              <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                <span className="text-[11px] text-gray-400 block">Net Profit per Customer</span>
-                <span className="text-sm font-semibold font-mono text-emerald-400">${(netLtv - cac).toFixed(0)}</span>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-4)', textTransform: 'uppercase', fontWeight: 600 }}>Retention Span</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--text-1)', marginTop: 3 }}>
+                  {customerLifetimeMonths.toFixed(1)} mos
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="glass-card p-4 flex items-start gap-3 bg-white/[0.02] border-white/5">
-            <AlertCircle className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-gray-400 leading-relaxed">
-              <strong className="text-white">VC & Growth Health Rule:</strong> A healthy SaaS has an <strong>LTV:CAC ratio of 3.0x or higher</strong> and a <strong>CAC payback period under 12 months</strong>. Reducing monthly churn from {monthlyChurn}% to {(monthlyChurn * 0.7).toFixed(1)}% increases your net LTV by <strong>+42%</strong>.
-            </p>
+          {/* Breakdown Card */}
+          <div className="form-card" style={{ padding: 18 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
+                SaaS unit economics
+              </span>
+              <CopySummaryButton
+                title="SaaS LTV & Churn Health Summary"
+                lines={[
+                  { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
+                  { label: 'Gross Profit Margin', value: `${grossMargin}%` },
+                  { label: 'Monthly MRR Churn Rate', value: `${monthlyChurn}%` },
+                  { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
+                  { label: 'Customer Retention Span', value: `${customerLifetimeMonths.toFixed(1)} months` },
+                  { label: 'Gross Customer Lifetime Value', value: `$${grossLtv.toFixed(2)}` },
+                  { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
+                  { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
+                  { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` },
+                ]}
+              />
+            </div>
+
+            {[
+              { label: 'ARPU (monthly per user)', value: `$${arpu.toFixed(2)}/mo`, color: 'var(--text-2)', mono: true },
+              { label: 'Customer retention span', value: `${customerLifetimeMonths.toFixed(1)} months`, color: 'var(--text-2)', mono: true },
+              { label: 'Gross LTV (before margin)', value: `$${grossLtv.toFixed(0)}`, color: 'var(--text-4)', mono: true },
+              { divider: true },
+              { label: `Net LTV (@ ${grossMargin}% margin)`, value: `$${netLtv.toFixed(0)}`, color: '#4ade80', mono: true, bold: true },
+              { label: 'Customer acquisition cost (CAC)', value: `$${cac.toFixed(2)}`, color: '#f87171', mono: true },
+              { divider: true },
+              { label: 'LTV:CAC health ratio', value: `${ltvCacRatio.toFixed(2)}x`, color: ltvCacRatio >= 3 ? '#4ade80' : 'var(--brand)', mono: true, bold: true },
+              { label: 'CAC payback period', value: `${paybackMonths.toFixed(1)} months`, color: paybackMonths <= 12 ? '#4ade80' : '#f87171', mono: true, bold: true },
+            ].map((r, i) =>
+              r.divider ? <div key={i} style={{ height: 1, background: 'var(--border)', margin: '10px 0' }} /> : (
+                <div key={i} style={ROW}>
+                  <span style={{ fontSize: 12, color: 'var(--text-4)' }}>{r.label}</span>
+                  <span style={{ fontFamily: r.mono ? 'var(--font-mono)' : 'inherit', fontSize: 13, fontWeight: r.bold ? 700 : 500, color: r.color }}>
+                    {r.value}
+                  </span>
+                </div>
+              )
+            )}
           </div>
+
+          {/* Insight Block */}
+          <div className="insight-block">
+            <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> A healthy SaaS has an <strong style={{ color: 'var(--text-1)' }}>LTV:CAC ratio of 3.0x or higher</strong> and a <strong style={{ color: 'var(--text-1)' }}>CAC payback period under 12 months</strong>. Reducing monthly churn from {monthlyChurn}% to {(monthlyChurn * 0.7).toFixed(1)}% increases your net LTV by <strong style={{ color: '#4ade80' }}>+42%</strong> without spending an extra dollar on acquisition.
+          </div>
+
         </div>
       </div>
     </div>

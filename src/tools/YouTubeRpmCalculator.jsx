@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { PlaySquare, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle } from 'lucide-react';
+import { PlaySquare, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Copy, Check } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function YouTubeRpmCalculator() {
   const [views, setViews] = useState(150000); // monthly views
   const [rpm, setRpm] = useState(12); // $12 RPM
   const [niche, setNiche] = useState('tech'); // tech, finance, gaming, vlog
+  const [copied, setCopied] = useState(false);
 
   const nicheRpmPresets = [
     { id: 'finance', label: 'Finance, Investing & Crypto', rpm: 18.50 },
@@ -30,98 +31,189 @@ export default function YouTubeRpmCalculator() {
   const grossAdvertiserSpend = monthlyRevenue / 0.55;
   const youtubeCut = grossAdvertiserSpend - monthlyRevenue;
 
+  const handleCopy = () => {
+    const text = `YouTube AdSense Estimate: $${monthlyRevenue.toFixed(2)}/mo ($${yearlyRevenue.toFixed(2)}/yr) | ${Number(views).toLocaleString()} views @ $${Number(rpm).toFixed(2)} RPM`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const sectionLabelStyle = {
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+    color: 'var(--text-4)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 7,
+    marginBottom: 16,
+    paddingBottom: 12,
+    borderBottom: '1px solid var(--border)'
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Tool header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            YouTube AdSense RPM &amp; Revenue Estimator
+            YouTube AdSense Revenue &amp; RPM Estimator
           </h1>
           <span className="badge badge-brand">2026 NICHE RATES</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Estimate daily, monthly, and annual YouTube AdSense earnings across 2026 creator niches.
+          Estimate real creator earnings across niches with realistic RPM benchmarks.
         </p>
       </div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Inputs */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-            <PlaySquare className="w-4 h-4 text-red-500" /> 1. Monthly Views & Channel Niche
-          </h2>
-
-          <div>
-            <div className="flex justify-between items-center mb-1.5">
-              <label className="text-xs font-medium text-[#9ca3af]">
-                Estimated Monthly Video Views
-              </label>
-              <span className="text-sm font-mono font-bold text-[#ff8c3a]">
-                {Number(views).toLocaleString()} views/mo
-              </span>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* Left Column (Inputs / Editor) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* Form Card 1: Monthly Views */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <PlaySquare size={14} color="var(--brand)" />
+              1. Monthly Video Traffic
             </div>
-            <input
-              type="range"
-              min="1000"
-              max="5000000"
-              step="5000"
-              value={views}
-              onChange={(e) => setViews(e.target.value)}
-              className="w-full accent-[#ff6b00] cursor-pointer"
-            />
-            <div className="flex justify-between text-[10px] font-mono text-[#6b7280] mt-1">
-              <span>1K</span>
-              <span>1M</span>
-              <span>5M+</span>
-            </div>
-          </div>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-2">
-              Select Your Content Category (Benchmarks)
-            </label>
-            <div className="flex flex-col gap-1.5">
-              {nicheRpmPresets.map((preset) => (
-                <button
-                  key={preset.id}
-                  type="button"
-                  onClick={() => handleNicheSelect(preset)}
-                  className={`flex items-center justify-between p-3 rounded-xl text-xs font-medium border transition-all ${
-                    niche === preset.id
-                      ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white font-semibold'
-                      : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10'
-                  }`}
-                >
-                  <span>{preset.label}</span>
-                  <span className="font-mono font-bold text-[#ff8c3a]">${preset.rpm.toFixed(2)} RPM</span>
-                </button>
-              ))}
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-xs font-medium text-[#9ca3af]">
+                  Estimated Monthly Video Views
+                </label>
+                <span className="text-base font-mono font-bold text-[#ff8c3a]">
+                  {Number(views).toLocaleString()} views / mo
+                </span>
+              </div>
+              <input
+                type="range"
+                min="1000"
+                max="5000000"
+                step="5000"
+                value={views}
+                onChange={(e) => setViews(e.target.value)}
+                className="w-full accent-[#ff6b00] cursor-pointer"
+              />
+              <div className="flex justify-between text-[10px] font-mono text-[#6b7280] mt-1">
+                <span>1K views</span>
+                <span>1M views</span>
+                <span>5M+ views</span>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              Custom RPM (Revenue Per 1,000 Views in USD)
-            </label>
-            <input
-              type="number"
-              step="0.5"
-              value={rpm}
-              onChange={(e) => setRpm(e.target.value)}
-              className="glass-input text-lg font-mono"
-            />
+          {/* Form Card 2: Niche Presets & Custom RPM */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <TrendingUp size={14} color="var(--brand)" />
+              2. Niche Benchmarks &amp; RPM Rate
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                  Select Content Niche (Average 2026 RPM)
+                </label>
+                <div className="flex flex-col gap-2">
+                  {nicheRpmPresets.map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => handleNicheSelect(preset)}
+                      className={`flex items-center justify-between p-3 rounded-xl text-xs font-medium border transition-all ${
+                        niche === preset.id
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white font-semibold shadow-sm'
+                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      <span>{preset.label}</span>
+                      <span className="font-mono font-bold text-[#ff8c3a]">${preset.rpm.toFixed(2)} RPM</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
+                  Custom RPM Rate (Revenue Per 1,000 Views in USD)
+                </label>
+                <input
+                  type="number"
+                  step="0.5"
+                  value={rpm}
+                  onChange={(e) => setRpm(e.target.value)}
+                  className="glass-input text-lg font-mono w-full"
+                  placeholder="12.00"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right: Revenue Forecast Cards */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-card bg-gradient-to-br from-[#131724] to-[#0e111a] border-white/15 space-y-5">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#9ca3af]">
-                Estimated AdSense Revenue Projection
-              </h3>
+        {/* Right Column (Results / Live Preview - Sticky) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          {/* Primary Hero Banner */}
+          <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
+              ESTIMATED MONTHLY EARNINGS
+            </span>
+            <div className="text-4xl font-mono font-bold text-white mb-2">
+              ${monthlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </div>
+            <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
+              <span>{Number(views).toLocaleString()} Views</span>
+              <span>${Number(rpm).toFixed(2)} RPM</span>
+            </div>
+          </div>
+
+          {/* Breakdown / Action Card */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <PieChart size={14} color="var(--brand)" />
+              Revenue Breakdown
+            </div>
+
+            <div className="space-y-3 font-mono text-sm mb-5">
+              <div className="flex justify-between text-[#9ca3af]">
+                <span>Daily Average Earnings:</span>
+                <span className="text-white font-semibold">${dailyRevenue.toFixed(2)}</span>
+              </div>
+
+              <div className="flex justify-between text-[#9ca3af]">
+                <span>Annual Run-Rate:</span>
+                <span className="text-[#ff8c3a] font-semibold">${yearlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+              </div>
+
+              <div className="h-px bg-white/10 my-2" />
+
+              <div className="flex justify-between text-xs text-[#9ca3af]">
+                <span>Gross Advertiser Spend (100%):</span>
+                <span className="text-white font-semibold">${grossAdvertiserSpend.toFixed(2)}</span>
+              </div>
+
+              <div className="flex justify-between text-xs text-[#9ca3af]">
+                <span>YouTube Platform Share (45%):</span>
+                <span className="text-red-400">-${youtubeCut.toFixed(2)}</span>
+              </div>
+
+              <div className="flex justify-between items-center text-base font-bold text-emerald-400 pt-2 border-t border-white/10">
+                <span>Creator Payout (55%):</span>
+                <span>${monthlyRevenue.toFixed(2)}</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="btn-secondary w-full justify-center text-xs"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'Copied Revenue Summary' : 'Copy Estimate Summary'}</span>
+              </button>
+
               <CopySummaryButton
                 title="YouTube AdSense RPM Revenue Projection"
                 lines={[
@@ -134,64 +226,11 @@ export default function YouTubeRpmCalculator() {
                 ]}
               />
             </div>
-
-            {/* Big Monthly Revenue Banner */}
-            <div className="p-5 rounded-xl bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 border border-emerald-500/40">
-              <span className="text-xs font-medium text-emerald-400 block uppercase">
-                ESTIMATED MONTHLY EARNINGS
-              </span>
-              <div className="text-4xl font-bold font-mono text-white mt-1">
-                ${monthlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </div>
-              <span className="text-[11px] text-[#9ca3af] block mt-1">
-                Based on {Number(views).toLocaleString()} views @ ${Number(rpm).toFixed(2)} RPM
-              </span>
-            </div>
-
-            {/* Daily and Yearly cards */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 font-mono">
-                <span className="text-[10px] text-[#6b7280] block uppercase font-sans font-semibold">
-                  Daily Earnings
-                </span>
-                <div className="text-xl font-bold text-white mt-1">
-                  ${dailyRevenue.toFixed(2)}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 font-mono">
-                <span className="text-[10px] text-[#6b7280] block uppercase font-sans font-semibold">
-                  Annual Run-Rate
-                </span>
-                <div className="text-xl font-bold text-[#ff8c3a] mt-1">
-                  ${yearlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                </div>
-              </div>
-            </div>
-
-            {/* AdSense Platform Split */}
-            <div className="p-4 rounded-xl bg-[#0b0d14] border border-white/10 space-y-2 text-xs font-mono">
-              <div className="flex justify-between text-[#9ca3af]">
-                <span>Gross Advertiser Spend (100%):</span>
-                <span className="text-white font-semibold">${grossAdvertiserSpend.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-xs text-[#9ca3af]">
-                <span>YouTube Platform Share (45%):</span>
-                <span className="text-red-400">-${youtubeCut.toFixed(2)}</span>
-              </div>
-              <div className="h-px bg-white/10 my-1" />
-              <div className="flex justify-between text-xs font-bold text-emerald-400">
-                <span>Your Creator Payout (55%):</span>
-                <span>${monthlyRevenue.toFixed(2)}</span>
-              </div>
-            </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-[#9ca3af] flex items-start gap-2.5">
-            <TrendingUp className="w-4 h-4 text-[#ff6b00] shrink-0 mt-0.5" />
-            <span>
-              <strong>CPM vs. RPM:</strong> CPM is what advertisers pay per 1,000 ad impressions. <strong>RPM</strong> is what hits your bank account after YouTube's 45% cut and unmonetized views are accounted for.
-            </span>
+          {/* Insight Block */}
+          <div className="insight-block">
+            💡 Pro tip: CPM is what advertisers pay per 1,000 ad impressions. RPM is what actually hits your bank account after YouTube&apos;s 45% cut and unmonetized views are accounted for.
           </div>
         </div>
       </div>

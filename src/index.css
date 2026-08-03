@@ -202,23 +202,6 @@ label, .form-label {
   margin-bottom: 8px !important;
 }
 
-/* Fix old section mini-cards — bg-[#0e111a] and similar */
-.glass-card [class*="bg-[#0e"] ,
-.glass-card [class*="bg-[#12"],
-.glass-card [class*="bg-white/[0.02]"],
-.glass-card [class*="bg-white/5"] {
-  background: var(--bg-section) !important;
-  border-color: var(--border) !important;
-}
-
-/* Override old hardcoded Tailwind text-[#9ca3af] and text-gray-400 */
-.glass-card .text-\[#9ca3af\],
-.form-card .text-\[#9ca3af\],
-.glass-card .text-gray-400,
-.form-card .text-gray-400 {
-  color: var(--text-4) !important;
-}
-
 /* ─── Range sliders (used in TikTok, ROAS) ──────────────── */
 input[type="range"] {
   width: 100%;

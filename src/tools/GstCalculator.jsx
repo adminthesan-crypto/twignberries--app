@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Percent, Copy, Check, ShieldCheck, ArrowRightLeft } from 'lucide-react';
+import { Calculator, Percent, Copy, Check, ShieldCheck, ArrowRightLeft, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function GstCalculator() {
@@ -38,6 +38,20 @@ export default function GstCalculator() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const sectionLabelStyle = {
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+    color: 'var(--text-4)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 7,
+    marginBottom: 16,
+    paddingBottom: 12,
+    borderBottom: '1px solid var(--border)'
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Tool header */}
@@ -49,143 +63,202 @@ export default function GstCalculator() {
           <span className="badge badge-success">CGST / SGST</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Instant CGST / SGST split with inclusive and exclusive modes. Enter any amount to get both.
+          Instant CGST / SGST splits with intuitive inclusive and exclusive modes. No spreadsheets needed.
         </p>
       </div>
 
-        <button
-          onClick={handleCopy}
-          className="btn-secondary text-xs"
-        >
-          {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-          <span>{copied ? 'Copied Breakdown' : 'Copy Summary'}</span>
-        </button>
-
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Form */}
-        <div className="lg:col-span-6 glass-card space-y-5">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
-              <Calculator className="w-4 h-4 text-[#ff6b00]" /> 1. Calculation Mode
-            </h2>
-            <div className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10">
-              <button
-                type="button"
-                onClick={() => setCalcType('exclusive')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  calcType === 'exclusive'
-                    ? 'bg-[#ff6b00] text-white shadow'
-                    : 'text-[#9ca3af] hover:text-white'
-                }`}
-              >
-                + Add GST (Exclusive)
-              </button>
-              <button
-                type="button"
-                onClick={() => setCalcType('inclusive')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  calcType === 'inclusive'
-                    ? 'bg-[#ff6b00] text-white shadow'
-                    : 'text-[#9ca3af] hover:text-white'
-                }`}
-              >
-                - Remove GST (Inclusive)
-              </button>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+        {/* Left Column (Inputs / Editor) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* Form Card 1: Mode & Currency */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <ArrowRightLeft size={14} color="var(--brand)" />
+              1. Calculation Mode &amp; Currency
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                  Tax Mode
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCalcType('exclusive')}
+                    className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
+                      calcType === 'exclusive'
+                        ? 'bg-[#ff6b00] border-[#ff6b00] text-white shadow-sm'
+                        : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    + Add GST (Exclusive)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCalcType('inclusive')}
+                    className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
+                      calcType === 'inclusive'
+                        ? 'bg-[#ff6b00] border-[#ff6b00] text-white shadow-sm'
+                        : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    - Remove GST (Inclusive)
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                  Currency Symbol
+                </label>
+                <div className="flex gap-2">
+                  {['₹', '$', '€', '£'].map((curr) => (
+                    <button
+                      key={curr}
+                      type="button"
+                      onClick={() => setCurrency(curr)}
+                      className={`w-10 h-10 rounded-xl text-sm font-mono font-bold border transition-all ${
+                        currency === curr
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white'
+                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {curr}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
-              {calcType === 'exclusive' ? 'Net Amount Before Tax' : 'Total Invoice Amount With Tax'} ({currency})
-            </label>
-            <input
-              type="number"
-              step="1"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="glass-input text-xl font-mono"
-            />
-          </div>
+          {/* Form Card 2: Amount & Tax Slab */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <Calculator size={14} color="var(--brand)" />
+              2. Amount &amp; Standard GST Slab
+            </div>
 
-          <div>
-            <label className="block text-xs font-medium text-[#9ca3af] mb-2">
-              Select Standard GST Slab (%)
-            </label>
-            <div className="grid grid-cols-5 gap-2">
-              {[3, 5, 12, 18, 28].map((slab) => (
-                <button
-                  key={slab}
-                  type="button"
-                  onClick={() => setGstRate(slab)}
-                  className={`py-2.5 rounded-xl text-sm font-mono font-semibold border transition-all ${
-                    gstRate === slab
-                      ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white'
-                      : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10'
-                  }`}
-                >
-                  {slab}%
-                </button>
-              ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
+                  {calcType === 'exclusive' ? 'Net Amount Before Tax' : 'Total Invoice Amount With Tax'} ({currency})
+                </label>
+                <input
+                  type="number"
+                  step="1"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  className="glass-input text-xl font-mono w-full"
+                  placeholder="1000"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                  Select GST Slab Rate (%)
+                </label>
+                <div className="grid grid-cols-5 gap-2">
+                  {[3, 5, 12, 18, 28].map((slab) => (
+                    <button
+                      key={slab}
+                      type="button"
+                      onClick={() => setGstRate(slab)}
+                      className={`py-2.5 rounded-xl text-sm font-mono font-semibold border transition-all ${
+                        gstRate === slab
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white'
+                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {slab}%
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right Output Summary Card */}
-        <div className="lg:col-span-6 glass-card space-y-6">
-          <div className="p-5 rounded-xl bg-gradient-to-br from-[#121624] to-[#0e111a] border border-white/15 space-y-5">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs font-bold uppercase text-[#9ca3af]">TAX SUMMARY REPORT</span>
-              <div className="flex items-center gap-2">
-                <CopySummaryButton
-                  title={`GST Tax Calculation Report (${rate}% Slab)`}
-                  lines={[
-                    { label: 'Calculation Mode', value: calcType === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
-                    { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
-                    { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
-                    { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
-                    { label: 'Total GST Amount', value: `${currency}${gstAmount.toFixed(2)} (${rate}%)` },
-                    { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
-                  ]}
-                />
-                <span className="text-xs font-mono text-emerald-400 font-semibold">{rate}% GST SLAB</span>
-              </div>
+        {/* Right Column (Results / Live Preview - Sticky) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+          {/* Primary Hero Banner */}
+          <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
+              TOTAL PAYABLE ({calcType.toUpperCase()})
+            </span>
+            <div className="text-4xl font-mono font-bold text-white mb-2">
+              {currency}{grossPrice.toFixed(2)}
+            </div>
+            <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
+              <span>Net: {currency}{netPrice.toFixed(2)}</span>
+              <span>GST ({rate}%): +{currency}{gstAmount.toFixed(2)}</span>
+            </div>
+          </div>
+
+          {/* Breakdown / Action Card */}
+          <div className="form-card">
+            <div style={sectionLabelStyle}>
+              <Percent size={14} color="var(--brand)" />
+              Tax Breakdown
             </div>
 
-            <div className="space-y-3 font-mono text-sm">
+            <div className="space-y-3 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
-                <span>Net Taxable Price:</span>
+                <span>Net Taxable Value:</span>
                 <span className="text-white font-semibold">{currency}{netPrice.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
-                <span>CGST (Central Tax - {(rate / 2).toFixed(1)}%):</span>
+                <span>CGST (Central Tax — {(rate / 2).toFixed(1)}%):</span>
                 <span className="text-[#ff8c3a]">+{currency}{cgst.toFixed(2)}</span>
               </div>
+
               <div className="flex justify-between text-xs text-[#9ca3af]">
-                <span>SGST (State Tax - {(rate / 2).toFixed(1)}%):</span>
+                <span>SGST (State Tax — {(rate / 2).toFixed(1)}%):</span>
                 <span className="text-[#ff8c3a]">+{currency}{sgst.toFixed(2)}</span>
               </div>
 
               <div className="h-px bg-white/10 my-2" />
 
               <div className="flex justify-between text-[#9ca3af]">
-                <span>Total GST Amount ({rate}%):</span>
+                <span>Total GST ({rate}%):</span>
                 <span className="text-[#ff6b00] font-bold">+{currency}{gstAmount.toFixed(2)}</span>
               </div>
 
-              <div className="flex justify-between items-center text-xl font-bold text-white pt-2 border-t border-white/10">
-                <span>TOTAL PAYABLE:</span>
+              <div className="flex justify-between items-center text-lg font-bold text-white pt-2 border-t border-white/10">
+                <span>Final Total:</span>
                 <span className="text-emerald-400">{currency}{grossPrice.toFixed(2)}</span>
               </div>
             </div>
+
+            <div className="flex flex-col gap-2.5">
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="btn-secondary w-full justify-center text-xs"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'Copied Tax Summary' : 'Copy Summary Text'}</span>
+              </button>
+
+              <CopySummaryButton
+                title={`GST Tax Calculation Report (${rate}% Slab)`}
+                lines={[
+                  { label: 'Calculation Mode', value: calcType === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
+                  { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
+                  { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                  { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                  { label: 'Total GST Amount', value: `${currency}${gstAmount.toFixed(2)} (${rate}%)` },
+                  { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
+                ]}
+              />
+            </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-[#9ca3af] flex items-start gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-[#ff6b00] shrink-0 mt-0.5" />
-            <span>
-              <strong>Intra-state vs. Inter-state:</strong> For sales within the same state, GST is split equally into <strong>CGST + SGST</strong>. For sales across state borders, the full amount applies as <strong>IGST</strong>.
-            </span>
+          {/* Insight Block */}
+          <div className="insight-block">
+            💡 Pro tip: For intra-state sales within the same state, GST is split equally into CGST + SGST. For inter-state sales across borders, bill the full percentage as IGST on your invoice.
           </div>
         </div>
       </div>
