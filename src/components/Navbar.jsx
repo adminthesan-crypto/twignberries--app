@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Command, Star, LayoutGrid, DollarSign, Cpu, FileText, Link2 } from 'lucide-react';
+import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'All',        label: 'All Tools',      icon: LayoutGrid },
@@ -11,75 +11,105 @@ const CATEGORIES = [
 
 export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory }) {
   return (
-    <header className="nav-panel sticky top-0 z-40 no-print">
-      {/* Top row: logo + search */}
-      <div className="flex items-center justify-between px-5 h-14">
-        {/* Logo */}
-        <div className="flex items-center gap-3 shrink-0">
+    <header className="nav-panel sticky top-0 z-40 no-print" style={{ background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
+      {/* Top row: Monday.com style header with logo, search, and action pills */}
+      <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
+        {/* Left: Monday-style Logo & Status Dots */}
+        <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All')}>
           <div
             style={{
-              width: 32, height: 32, borderRadius: 10,
-              background: 'linear-gradient(135deg, #f97316, #ea580c)',
+              width: 36, height: 36, borderRadius: 12,
+              background: '#6161ff',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(249,115,22,0.35)',
+              boxShadow: '0 4px 14px rgba(97,97,255,0.3)',
+              position: 'relative'
             }}
+            className="flex items-center justify-center"
           >
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-              <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-              <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-            </svg>
+            {/* Monday.com iconic 3-bar / dots motif */}
+            <div className="flex items-end gap-[3px] h-[18px]">
+              <div style={{ width: 4, height: 10, background: '#ff3d8b', borderRadius: 99 }} />
+              <div style={{ width: 4, height: 16, background: '#00c875', borderRadius: 99 }} />
+              <div style={{ width: 4, height: 13, background: '#fdab3d', borderRadius: 99 }} />
+            </div>
           </div>
           <div>
-            <span style={{ fontWeight: 800, fontSize: 16, color: '#f1f5f9', letterSpacing: '-0.03em' }}>
-              Twignberries
-            </span>
-            <div style={{ fontSize: 11, color: '#64748b', lineHeight: 1, marginTop: 1 }}>
-              15 free calculators
+            <div className="flex items-center gap-2">
+              <span style={{ fontWeight: 800, fontSize: 18, color: '#1f2532', letterSpacing: '-0.04em' }}>
+                twignberries<span style={{ color: '#6161ff' }}>.com</span>
+              </span>
+              <span className="badge badge-success" style={{ fontSize: 10, padding: '2px 8px' }}>
+                Free
+              </span>
+            </div>
+            <div style={{ fontSize: 11.5, color: '#676879', fontWeight: 500, lineHeight: 1, marginTop: 1 }}>
+              Where people & AI utilities drive results
             </div>
           </div>
         </div>
 
-        {/* Search bar */}
+        {/* Center: Search bar (Cmd+K) */}
         <button
           onClick={onOpenSearch}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            gap: 32, padding: '8px 14px',
-            borderRadius: 10, cursor: 'pointer',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1.5px solid rgba(255,255,255,0.1)',
+            gap: 24, padding: '8px 16px',
+            borderRadius: 99, cursor: 'pointer',
+            background: '#f6f8fa',
+            border: '1.5px solid #e6e9ef',
             transition: 'all 0.15s ease',
-            minWidth: 240,
+            minWidth: 260,
           }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = '#6161ff'; e.currentTarget.style.background = '#ffffff'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = '#e6e9ef'; e.currentTarget.style.background = '#f6f8fa'; }}
           title="Search utilities (⌘K)"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Search size={14} color="#f97316" />
-            <span style={{ fontSize: 13, color: '#64748b', fontWeight: 500 }}>Search tools...</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Search size={15} color="#6161ff" />
+            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 15 utilities...</span>
           </div>
           <kbd style={{
             display: 'flex', alignItems: 'center', gap: 3,
-            padding: '2px 7px', borderRadius: 6,
-            background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
-            fontSize: 11, color: '#64748b', fontFamily: 'monospace',
+            padding: '2px 8px', borderRadius: 99,
+            background: '#ffffff', border: '1px solid #d0d4e4',
+            fontSize: 11, color: '#676879', fontFamily: 'monospace', fontWeight: 700
           }}>
-            <Command size={10} /> K
+            <Command size={11} /> K
           </kbd>
         </button>
+
+        {/* Right: Monday.com CTA Pills */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => onSelectCategory('All')}
+            className="btn-secondary"
+            style={{ fontSize: 13, padding: '8px 16px' }}
+          >
+            All tools
+          </button>
+          <a
+            href="#tools"
+            className="btn-primary"
+            style={{
+              fontSize: 13, padding: '8px 18px',
+              background: 'linear-gradient(90deg, #6161ff, #7f56d9)',
+              textDecoration: 'none'
+            }}
+          >
+            Get Started →
+          </a>
+        </div>
       </div>
 
-      {/* Bottom row: category pills */}
+      {/* Bottom row: Monday.com rounded-full category pills */}
       <div
         style={{
-          display: 'flex', alignItems: 'center', gap: 4,
-          padding: '0 16px 10px',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          paddingTop: 8,
+          display: 'flex', alignItems: 'center', gap: 8,
+          padding: '8px 24px 12px',
+          borderTop: '1px solid #f0f2f5',
           overflowX: 'auto',
+          maxWidth: '1280px',
+          margin: '0 auto'
         }}
       >
         {CATEGORIES.map(cat => {

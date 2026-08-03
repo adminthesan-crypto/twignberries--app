@@ -243,7 +243,7 @@ const TOOLS = [
   },
 ];
 
-/* ─── Tool Card (Home Grid) ──────────────────────────────── */
+/* ─── Tool Card (Monday.com Board Card Style) ────────────── */
 function ToolCard({ tool, onClick }) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -254,45 +254,193 @@ function ToolCard({ tool, onClick }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="tool-card-icon" style={{ background: tool.bg, color: tool.color }}>
-        {tool.icon}
+      <div className="flex items-center justify-between">
+        <div className="tool-card-icon" style={{ background: tool.bg, color: tool.color }}>
+          {tool.icon}
+        </div>
+        <span
+          className="badge"
+          style={{
+            background: '#f0f2f5',
+            color: '#676879',
+            fontSize: 11,
+            fontWeight: 600,
+            padding: '3px 10px'
+          }}
+        >
+          {tool.category}
+        </span>
       </div>
-      <div>
-        <div className="tool-card-name">{tool.name}</div>
-        <div className="tool-card-desc" style={{ marginTop: 4 }}>{tool.description}</div>
+      <div style={{ marginTop: 4 }}>
+        <div className="tool-card-name" style={{ fontSize: 16 }}>{tool.name}</div>
+        <div className="tool-card-desc" style={{ marginTop: 6, fontSize: 13, color: '#676879' }}>{tool.description}</div>
       </div>
-      <div className="tool-card-arrow">
-        Open tool →
+      <div
+        className="tool-card-arrow"
+        style={{
+          marginTop: 'auto',
+          paddingTop: 12,
+          borderTop: '1px solid #f0f2f5',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontWeight: 700,
+          color: hovered ? '#6161ff' : '#676879'
+        }}
+      >
+        <span>Open utility</span>
+        <span style={{ transform: hovered ? 'translateX(3px)' : 'none', transition: 'transform 0.15s ease' }}>→</span>
       </div>
     </div>
   );
 }
 
-/* ─── Home Grid ──────────────────────────────────────────── */
+/* ─── Home Grid (Monday.com Hero & Workspace Board) ──────── */
 function HomeGrid({ tools, onSelectTool, selectedCategory }) {
   const filtered = selectedCategory === 'All' ? tools : tools.filter(t => t.category === selectedCategory);
-  const categoryLabel = selectedCategory === 'All' ? 'All Tools' : selectedCategory;
 
   return (
-    <div>
-      {/* Greeting header (ilovepdf style) */}
-      <div style={{ marginBottom: 32, textAlign: 'center', paddingTop: 16 }}>
-        <h1 style={{
-          fontSize: 28, fontWeight: 800, color: 'var(--text-1)',
-          letterSpacing: '-0.03em', marginBottom: 8,
-        }}>
-          Free calculators for creators & sellers
-        </h1>
-        <p style={{ fontSize: 14, color: 'var(--text-4)', fontWeight: 400 }}>
-          {filtered.length} zero-signup tools — 100% client-side, nothing leaves your browser
-        </p>
+    <div className="max-w-7xl mx-auto px-6 py-8">
+      {/* Monday.com Hero Section */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-14 pt-6 pb-10 border-b border-gray-100">
+        {/* Left: Headline & Description */}
+        <div className="max-w-xl text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
+            Twignberries v4.0 — Monday.com Light SaaS Edition
+          </div>
+          <h1 style={{
+            fontSize: '48px',
+            fontWeight: 800,
+            color: '#1f2532',
+            letterSpacing: '-0.04em',
+            lineHeight: 1.1,
+            marginBottom: '20px'
+          }}>
+            You lead.<br />
+            <span style={{ color: '#6161ff' }}>Utilities act.</span>
+          </h1>
+          <p style={{
+            fontSize: '17px',
+            color: '#676879',
+            fontWeight: 500,
+            lineHeight: 1.6,
+            marginBottom: '32px'
+          }}>
+            Where creators, sellers, and utilities drive results together on one secure, zero-signup workspace. 100% client-side privacy.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href="#tools-grid"
+              className="btn-primary"
+              style={{
+                fontSize: 15,
+                padding: '13px 28px',
+                background: 'linear-gradient(90deg, #6161ff, #7f56d9)',
+                textDecoration: 'none'
+              }}
+            >
+              Explore all {tools.length} utilities →
+            </a>
+            <span style={{ fontSize: 13, color: '#868894', fontWeight: 600 }}>
+              ✓ No credit card needed &nbsp;•&nbsp; ✓ Free unlimited use
+            </span>
+          </div>
+        </div>
+
+        {/* Right: Monday.com Interactive Status Preview Widget */}
+        <div
+          className="w-full md:w-auto flex-1 max-w-md p-6 rounded-2xl bg-white border border-[#e6e9ef]"
+          style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)' }}
+        >
+          <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#f0f2f5]">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#ff3d8b]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#fdab3d]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#00c875]"></span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: '#1f2532', marginLeft: 8 }}>
+                Workspace Live Status
+              </span>
+            </div>
+            <span className="badge badge-success" style={{ background: '#00c875', color: 'white' }}>
+              Active
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>E-Commerce & Marketplaces</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>Etsy, Amazon FBA, TikTok Shop, Stripe</div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                Done
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Marketing & Paid Growth</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>ROAS Target, YouTube RPM, UTM Builder</div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                Done
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>SaaS & Freelance Utilities</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>Invoices, SaaS LTV:CAC, Markdown PDF</div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                Done
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-[#f0f2f5] flex items-center justify-between text-xs text-[#676879] font-medium">
+            <span>Client-Side Encryption</span>
+            <span className="text-[#6161ff] font-bold">100% Secure</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Monday.com Trust Brand Strip */}
+      <div className="text-center mb-14">
+        <div style={{ fontSize: 12.5, fontWeight: 700, color: '#868894', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 20 }}>
+          Trusted by over 40,000 sellers & creators across major platforms
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-10 opacity-70">
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>SHOPIFY</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>AMAZON</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>ETSY</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>STRIPE</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>PAYPAL</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>TIKTOK SHOP</span>
+        </div>
+      </div>
+
+      {/* Grid Section Heading */}
+      <div id="tools-grid" className="flex items-center justify-between mb-6 pt-4">
+        <div>
+          <h2 style={{ fontSize: 24, fontWeight: 800, color: '#1f2532', letterSpacing: '-0.03em' }}>
+            {selectedCategory === 'All' ? 'All Workspace Utilities' : `${selectedCategory} Utilities`}
+          </h2>
+          <p style={{ fontSize: 14, color: '#676879', marginTop: 2 }}>
+            Click any tool to launch instant interactive solver in your workspace.
+          </p>
+        </div>
+        <span className="badge" style={{ background: '#eceeff', color: '#6161ff', fontWeight: 700 }}>
+          {filtered.length} utilities
+        </span>
       </div>
 
       {/* Grid */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-        gap: 16,
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: 20,
       }}>
         {filtered.map((tool, i) => (
           <ToolCard
