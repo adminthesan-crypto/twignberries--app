@@ -20,6 +20,12 @@ import CreatorPlatformFeeCalculator from './tools/CreatorPlatformFeeCalculator';
 import SaasChurnLtvCalculator from './tools/SaasChurnLtvCalculator';
 import AiTokenCostCalculator from './tools/AiTokenCostCalculator';
 
+import MergePdfTool from './tools/MergePdfTool';
+import SplitPdfTool from './tools/SplitPdfTool';
+import ImageToPdfTool from './tools/ImageToPdfTool';
+import WatermarkPdfTool from './tools/WatermarkPdfTool';
+import ProtectPdfTool from './tools/ProtectPdfTool';
+
 /* ─── Tool Definitions ───────────────────────────────────── */
 const TOOLS = [
   {
@@ -241,6 +247,76 @@ const TOOLS = [
     ),
     component: AiTokenCostCalculator,
   },
+  {
+    id: 'merge-pdf',
+    name: 'Merge PDF Documents',
+    category: 'PDF Tools',
+    description: 'Combine multiple PDF files in custom order. 100% offline in browser memory.',
+    keywords: ['merge pdf', 'combine pdf', 'join pdf', 'offline pdf', 'ilovepdf'],
+    color: '#6161ff', bg: '#eceeff',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+      </svg>
+    ),
+    component: MergePdfTool,
+  },
+  {
+    id: 'split-pdf',
+    name: 'Split PDF & Extract Pages',
+    category: 'PDF Tools',
+    description: 'Extract specific page ranges (e.g. 1-3, 5) or separate all pages offline.',
+    keywords: ['split pdf', 'extract pages', 'cut pdf', 'page range', 'pdf slicer'],
+    color: '#00c875', bg: 'rgba(0,200,117,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
+      </svg>
+    ),
+    component: SplitPdfTool,
+  },
+  {
+    id: 'image-to-pdf',
+    name: 'Image to PDF Converter',
+    category: 'PDF Tools',
+    description: 'Convert JPG, PNG, WEBP, and AVIF images into an A4 PDF document.',
+    keywords: ['img to pdf', 'jpg to pdf', 'webp to pdf', 'convert image pdf'],
+    color: '#fdab3d', bg: 'rgba(253,171,61,0.15)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      </svg>
+    ),
+    component: ImageToPdfTool,
+  },
+  {
+    id: 'watermark-pdf',
+    name: 'Watermark & Stamp PDF',
+    category: 'PDF Tools',
+    description: 'Stamp custom text or copyright notices across pages with angle and opacity sliders.',
+    keywords: ['watermark pdf', 'stamp pdf', 'copyright pdf', 'confidential stamp'],
+    color: '#e2445c', bg: 'rgba(226,68,92,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+    component: WatermarkPdfTool,
+  },
+  {
+    id: 'protect-pdf',
+    name: 'Protect & Encrypt PDF',
+    category: 'PDF Tools',
+    description: 'Secure documents with author metadata sealing and password strength checks.',
+    keywords: ['protect pdf', 'encrypt pdf', 'lock pdf', 'password pdf', 'seal pdf'],
+    color: '#ff3d8b', bg: 'rgba(255,61,139,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    ),
+    component: ProtectPdfTool,
+  },
 ];
 
 /* ─── Tool Card (Monday.com Board Card Style) ────────────── */
@@ -392,6 +468,16 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
               <div>
                 <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>SaaS & Freelance Utilities</div>
                 <div style={{ fontSize: 12, color: '#676879' }}>Invoices, SaaS LTV:CAC, Markdown PDF</div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                Done
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>ILovePDF Private Suite (100% Client-Side)</div>
+                <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Image to PDF, Watermark, Protect</div>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
                 Done
@@ -616,7 +702,7 @@ export default function App() {
                 Zero signups — 100% client-side privacy
               </div>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
-                v2.3.0 · 15 Tools
+                v5.0.0 · 20 Tools & PDF Suite
               </span>
             </footer>
           </div>
