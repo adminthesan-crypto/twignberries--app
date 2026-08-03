@@ -35,6 +35,7 @@ import ColorPaletteTool from './tools/ColorPaletteTool';
 import JsonFormatterTool from './tools/JsonFormatterTool';
 import RegexTesterTool from './tools/RegexTesterTool';
 import OpenGraphPreviewTool from './tools/OpenGraphPreviewTool';
+import CultureMemeWidget from './components/CultureMemeWidget';
 
 /* ─── Tool Definitions ───────────────────────────────────── */
 const TOOLS = [
@@ -42,7 +43,7 @@ const TOOLS = [
     id: 'etsy-fee',
     name: 'Etsy Fee & Profit Calculator',
     category: 'E-Commerce',
-    description: 'True net profit after the 6.5% transaction cut, listing fees, and offsite ads.',
+    description: 'Etsy\'s fees are sneaky. Here\'s what you actually keep after their cut.',
     keywords: ['etsy margin', 'etsy seller', 'handmade fee', 'profit margin'],
     color: '#f97316', bg: 'rgba(249,115,22,0.12)',
     icon: (
@@ -56,7 +57,7 @@ const TOOLS = [
     id: 'paypal-fee',
     name: 'PayPal Fee & Net Payout',
     category: 'E-Commerce',
-    description: 'Standard 2.99% + 49¢, micropayment rates, and break-even invoice totals.',
+    description: 'Stop guessing PayPal\'s cut. See exact payouts & reverse-price your invoice.',
     keywords: ['paypal fee', 'paypal calculator', 'paypal merchant'],
     color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
     icon: (
@@ -70,7 +71,7 @@ const TOOLS = [
     id: 'stripe-fee',
     name: 'Stripe Fee & Break-even Solver',
     category: 'E-Commerce',
-    description: 'Calculate 2.9% + 30¢ domestic or international rates, reverse-price any charge.',
+    description: 'Stripe takes a slice of every sale. Know your exact bank deposit before charging.',
     keywords: ['stripe payout', 'stripe pricing', 'break even calculator'],
     color: '#6366f1', bg: 'rgba(99,102,241,0.12)',
     icon: (
@@ -84,7 +85,7 @@ const TOOLS = [
     id: 'gst-calculator',
     name: 'GST Tax Inclusive & Exclusive',
     category: 'E-Commerce',
-    description: 'Instant CGST / SGST split breakdown with inclusive and exclusive modes.',
+    description: 'Instant CGST / SGST tax math without opening a clunky spreadsheet.',
     keywords: ['gst exclusive', 'gst inclusive', 'cgst sgst india'],
     color: '#22c55e', bg: 'rgba(34,197,94,0.12)',
     icon: (
@@ -99,7 +100,7 @@ const TOOLS = [
     id: 'amazon-fba',
     name: 'Amazon FBA Profit Calculator',
     category: 'E-Commerce',
-    description: 'FBA fulfillment tiers, category referral cuts (8%–17%), and exact net profit.',
+    description: 'FBA referral cuts take up to 17%. Find your true net margin per unit.',
     keywords: ['amazon fba', 'amazon referral fee', 'fba calculator'],
     color: '#f59e0b', bg: 'rgba(245,158,11,0.12)',
     icon: (
@@ -113,7 +114,7 @@ const TOOLS = [
     id: 'tiktok-shop',
     name: 'TikTok Shop Commission Solver',
     category: 'E-Commerce',
-    description: 'Calculate 6% TikTok commission, affiliate creator cuts, and seller net margin.',
+    description: 'TikTok\'s 6% cut + creator commissions added up. Know your true take-home.',
     keywords: ['tiktok shop fee', 'tiktok affiliate calculator'],
     color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
     icon: (
@@ -127,7 +128,7 @@ const TOOLS = [
     id: 'shopify-fee',
     name: 'Shopify Plan Fee Estimator',
     category: 'E-Commerce',
-    description: 'Compare Basic, Standard, and Advanced monthly CC rates and gateway penalties.',
+    description: 'Compare Shopify\'s monthly plans and external gateway fees side-by-side.',
     keywords: ['shopify transaction fee', 'shopify basic plan'],
     color: '#10b981', bg: 'rgba(16,185,129,0.12)',
     icon: (
@@ -142,7 +143,7 @@ const TOOLS = [
     id: 'invoice-generator',
     name: 'Freelance Invoice Generator PDF',
     category: 'Freelance',
-    description: 'Create professional invoices in 30 seconds with instant PDF print/export.',
+    description: 'Clean freelance invoices in 30 seconds. No sign-ups, no watermarks.',
     keywords: ['free invoice maker', 'freelance receipt', 'pdf invoice without signup'],
     color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
     icon: (
@@ -158,7 +159,7 @@ const TOOLS = [
     id: 'pdf-markdown',
     name: 'Markdown to PDF Converter',
     category: 'Freelance',
-    description: 'Type or paste markdown notes, proposals, or readmes and export a clean PDF.',
+    description: 'Turn raw markdown notes or readmes into a polished PDF document instantly.',
     keywords: ['markdown to pdf', 'markdown exporter', 'notion pdf converter'],
     color: '#6366f1', bg: 'rgba(99,102,241,0.12)',
     icon: (
@@ -173,7 +174,7 @@ const TOOLS = [
     id: 'creator-platform',
     name: 'Patreon & Creator Platform Fees',
     category: 'Freelance',
-    description: 'Compare Patreon Pro (8%), BuyMeACoffee (5%), and Ko-fi (0%) take-home pay.',
+    description: 'Patreon vs. BuyMeACoffee vs. Ko-fi. See which platform leaves more in your pocket.',
     keywords: ['patreon fee calculator', 'buymeacoffee fee', 'ko-fi fee'],
     color: '#f97316', bg: 'rgba(249,115,22,0.12)',
     icon: (
@@ -187,7 +188,7 @@ const TOOLS = [
     id: 'saas-churn-ltv',
     name: 'SaaS MRR Churn & LTV:CAC',
     category: 'Freelance',
-    description: 'Calculate LTV, LTV:CAC ratio health, and CAC payback period based on churn.',
+    description: 'Your real SaaS customer LTV and CAC payback period, without the jargon.',
     keywords: ['saas ltv cac', 'mrr churn calculator', 'saas payback period'],
     color: '#14b8a6', bg: 'rgba(20,184,166,0.12)',
     icon: (
@@ -201,7 +202,7 @@ const TOOLS = [
     id: 'youtube-rpm',
     name: 'YouTube AdSense RPM Estimator',
     category: 'Marketing',
-    description: 'Estimate daily, monthly, and annual YouTube AdSense earnings across 2026 niches.',
+    description: 'Realistic AdSense earnings across 2026 niches based on actual creator RPMs.',
     keywords: ['youtube rpm', 'adsense calculator', 'youtube income', 'creator cpm'],
     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
     icon: (
@@ -216,7 +217,7 @@ const TOOLS = [
     id: 'utm-builder',
     name: 'UTM Campaign URL Builder',
     category: 'Marketing',
-    description: 'Build valid GA4 campaign tracking URLs with one-click copy and quick presets.',
+    description: 'Clean campaign tracking URLs for GA4 without typo headaches.',
     keywords: ['utm source', 'utm medium', 'google analytics campaign link'],
     color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
     icon: (
@@ -231,7 +232,7 @@ const TOOLS = [
     id: 'roas-calculator',
     name: 'ROAS & Ad Spend Break-Even',
     category: 'Marketing',
-    description: 'Calculate exact Break-Even ROAS, Target CPA, and paid ad profitability.',
+    description: 'Know your break-even ROAS before turning on paid ads.',
     keywords: ['roas calculator', 'break even roas', 'meta ad roas', 'cpa calculator'],
     color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
     icon: (
@@ -246,7 +247,7 @@ const TOOLS = [
     id: 'ai-token-cost',
     name: 'AI API Token Cost Calculator',
     category: 'AI & Dev',
-    description: 'Compare GPT-4o, Claude 3.5, Gemini 1.5 Pro, and DeepSeek API token costs.',
+    description: 'Compare GPT-4o, Claude 3.5, and Gemini token costs before your API bill surprises you.',
     keywords: ['ai cost calculator', 'gpt4o token pricing', 'claude 3.5 pricing', 'llm api cost'],
     color: '#06b6d4', bg: 'rgba(6,182,212,0.12)',
     icon: (
@@ -261,7 +262,7 @@ const TOOLS = [
     id: 'merge-pdf',
     name: 'Merge PDF Documents',
     category: 'PDF Tools',
-    description: 'Combine multiple PDF files in custom order. 100% offline in browser memory.',
+    description: 'Combine your PDFs right in your browser. Zero cloud uploads, zero snooping.',
     keywords: ['merge pdf', 'combine pdf', 'join pdf', 'offline pdf', 'ilovepdf'],
     color: '#6161ff', bg: '#eceeff',
     icon: (
@@ -275,7 +276,7 @@ const TOOLS = [
     id: 'split-pdf',
     name: 'Split PDF & Extract Pages',
     category: 'PDF Tools',
-    description: 'Extract specific page ranges (e.g. 1-3, 5) or separate all pages offline.',
+    description: 'Extract specific pages or chop up a PDF without waiting on a server.',
     keywords: ['split pdf', 'extract pages', 'cut pdf', 'page range', 'pdf slicer'],
     color: '#00c875', bg: 'rgba(0,200,117,0.12)',
     icon: (
@@ -289,7 +290,7 @@ const TOOLS = [
     id: 'image-to-pdf',
     name: 'Image to PDF Converter',
     category: 'PDF Tools',
-    description: 'Convert JPG, PNG, WEBP, and AVIF images into an A4 PDF document.',
+    description: 'Turn scattered photos or screenshots into a clean A4 PDF document.',
     keywords: ['img to pdf', 'jpg to pdf', 'webp to pdf', 'convert image pdf'],
     color: '#fdab3d', bg: 'rgba(253,171,61,0.15)',
     icon: (
@@ -303,7 +304,7 @@ const TOOLS = [
     id: 'watermark-pdf',
     name: 'Watermark & Stamp PDF',
     category: 'PDF Tools',
-    description: 'Stamp custom text or copyright notices across pages with angle and opacity sliders.',
+    description: 'Stamp custom text or confidential warnings across your PDF in seconds.',
     keywords: ['watermark pdf', 'stamp pdf', 'copyright pdf', 'confidential stamp'],
     color: '#e2445c', bg: 'rgba(226,68,92,0.12)',
     icon: (
@@ -317,7 +318,7 @@ const TOOLS = [
     id: 'protect-pdf',
     name: 'Protect & Encrypt PDF',
     category: 'PDF Tools',
-    description: 'Secure documents with author metadata sealing and password strength checks.',
+    description: 'Lock documents with passwords and check strength without leaving your device.',
     keywords: ['protect pdf', 'encrypt pdf', 'lock pdf', 'password pdf', 'seal pdf'],
     color: '#ff3d8b', bg: 'rgba(255,61,139,0.12)',
     icon: (
@@ -331,7 +332,7 @@ const TOOLS = [
     id: 'rotate-pdf',
     name: 'Rotate PDF Pages',
     category: 'PDF Tools',
-    description: 'Rotate individual or all PDF pages 90° clockwise, counter-clockwise, or 180° offline.',
+    description: 'Fix sideways or upside-down PDF pages without uploading NDA files to the cloud.',
     keywords: ['rotate pdf', 'turn pdf', 'orientation pdf', 'flip pdf'],
     color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
     icon: (
@@ -345,7 +346,7 @@ const TOOLS = [
     id: 'organize-pdf',
     name: 'Organize & Delete PDF Pages',
     category: 'PDF Tools',
-    description: 'Visual page manager: drop specific pages, reverse order, or duplicate pages in RAM.',
+    description: 'Reorder, duplicate, or trash specific PDF pages with a simple drag-and-drop.',
     keywords: ['organize pdf', 'delete pdf pages', 'remove pdf pages', 'reverse pdf', 'reorder pdf'],
     color: '#00c875', bg: 'rgba(0,200,117,0.12)',
     icon: (
@@ -359,7 +360,7 @@ const TOOLS = [
     id: 'page-number-pdf',
     name: 'Stamp Page Numbers',
     category: 'PDF Tools',
-    description: 'Stamp customizable sequential page numbers (Page X of Y) across PDF documents.',
+    description: 'Stamp neat "Page X of Y" numbers across reports or legal packets.',
     keywords: ['page numbers pdf', 'number pdf', 'footer pdf', 'stamp pdf'],
     color: '#fdab3d', bg: 'rgba(253,171,61,0.12)',
     icon: (
@@ -373,7 +374,7 @@ const TOOLS = [
     id: 'metadata-pdf',
     name: 'PDF Metadata Inspector & Privacy Scrubber',
     category: 'PDF Tools',
-    description: 'Read and edit internal PDF XMP metadata and strip hidden author tracking tags.',
+    description: 'Inspect PDF author tags and scrub tracking metadata clean before sharing.',
     keywords: ['pdf metadata', 'pdf info', 'scrub pdf', 'remove author pdf', 'xmp pdf'],
     color: '#e2445c', bg: 'rgba(226,68,92,0.12)',
     icon: (
@@ -387,7 +388,7 @@ const TOOLS = [
     id: 'svg-to-image',
     name: 'SVG to High-Res PNG/JPG Converter',
     category: 'Image & Media',
-    description: 'Render SVG files or raw XML code on HTML5 canvas and export as 1x–8x Retina PNG/JPG.',
+    description: 'Convert SVG graphics into crisp 1x–8x Retina PNG or JPG exports.',
     keywords: ['svg to png', 'svg to jpg', 'convert svg', 'rasterize svg', 'retina svg'],
     color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
     icon: (
@@ -401,7 +402,7 @@ const TOOLS = [
     id: 'social-cropper',
     name: 'Social Media Aspect Ratio Cropper',
     category: 'Image & Media',
-    description: 'Fit and frame images for Instagram (1:1), Stories/Reels (9:16), YouTube (16:9), and banners.',
+    description: 'Crop and frame images for Instagram, Reels, or YouTube without cropping heads.',
     keywords: ['image cropper', 'social media crop', 'instagram crop', 'youtube thumbnail crop', 'aspect ratio image'],
     color: '#00c875', bg: 'rgba(0,200,117,0.12)',
     icon: (
@@ -415,7 +416,7 @@ const TOOLS = [
     id: 'color-palette',
     name: 'WCAG Color Contrast & Palette Generator',
     category: 'Image & Media',
-    description: 'Check ADA/WCAG 2.1 AA & AAA text contrast compliance and copy harmonious SaaS tints.',
+    description: 'Check WCAG contrast ratios and copy clean SaaS color pairings.',
     keywords: ['wcag contrast', 'color contrast checker', 'ada contrast', 'palette generator', 'hex contrast'],
     color: '#fdab3d', bg: 'rgba(253,171,61,0.12)',
     icon: (
@@ -429,7 +430,7 @@ const TOOLS = [
     id: 'json-formatter',
     name: 'JSON Formatter & TypeScript Generator',
     category: 'AI & Dev',
-    description: 'Beautify, minify, validate syntax errors, and instantly generate TypeScript interfaces offline.',
+    description: 'Beautify messy JSON, catch syntax bugs, and export TypeScript types instantly.',
     keywords: ['json formatter', 'json beautifier', 'json validator', 'json to typescript', 'json interface'],
     color: '#00c875', bg: 'rgba(0,200,117,0.12)',
     icon: (
@@ -443,7 +444,7 @@ const TOOLS = [
     id: 'regex-tester',
     name: 'Regex Tester & Match Explainer',
     category: 'AI & Dev',
-    description: 'Test regular expressions with live group capture, flag toggles, and developer presets offline.',
+    description: 'Test complex regex patterns with live group highlights and zero headaches.',
     keywords: ['regex tester', 'regular expression', 'regex validator', 'test regexp'],
     color: '#6161ff', bg: 'rgba(97,97,255,0.12)',
     icon: (
@@ -457,7 +458,7 @@ const TOOLS = [
     id: 'og-preview',
     name: 'OpenGraph Social Card Simulator',
     category: 'SEO & Web',
-    description: 'Preview link cards across Google, Twitter/X, LinkedIn, and Facebook with 1-click HTML tags.',
+    description: 'See exactly how your link will look on Slack, X, and LinkedIn before posting.',
     keywords: ['opengraph preview', 'og tags', 'social card preview', 'seo preview', 'twitter card preview'],
     color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
     icon: (
@@ -533,18 +534,20 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
         <div className="max-w-xl text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
             <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
-            Twignberries v6.0 — 30 Offline Enterprise Utilities
+            Twignberries — 30 Offline Tools for Founders & Creators
           </div>
           <h1 style={{
-            fontSize: '48px',
-            fontWeight: 800,
+            fontFamily: 'var(--font-heading)',
+            fontSize: '52px',
+            fontWeight: 700,
             color: '#1f2532',
-            letterSpacing: '-0.04em',
-            lineHeight: 1.1,
-            marginBottom: '20px'
+            letterSpacing: '-0.03em',
+            lineHeight: 1.12,
+            marginBottom: '20px',
+            fontStyle: 'italic'
           }}>
-            You lead.<br />
-            <span style={{ color: '#6161ff' }}>Utilities act.</span>
+            Tools that respect your time—<br />
+            <span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontWeight: 800 }}>and your privacy.</span>
           </h1>
           <p style={{
             fontSize: '17px',
@@ -553,7 +556,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             lineHeight: 1.6,
             marginBottom: '32px'
           }}>
-            Where creators, sellers, and utilities drive results together on one secure, zero-signup workspace. 100% client-side privacy.
+            30 calculators, fee solvers, and PDF utilities built for sellers and creators. Zero cloud uploads, zero sign-up walls, and no $99/month subscriptions.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a
@@ -574,81 +577,86 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
           </div>
         </div>
 
-        {/* Right: Monday.com Interactive Status Preview Widget */}
-        <div
-          className="w-full md:w-auto flex-1 max-w-md p-6 rounded-2xl bg-white border border-[#e6e9ef]"
-          style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)' }}
-        >
-          <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#f0f2f5]">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#ff3d8b]"></span>
-              <span className="w-3 h-3 rounded-full bg-[#fdab3d]"></span>
-              <span className="w-3 h-3 rounded-full bg-[#00c875]"></span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: '#1f2532', marginLeft: 8 }}>
-                Workspace Live Status
+        {/* Right: Monday.com Interactive Status & Meme Snack Stack */}
+        <div className="w-full md:w-auto flex-1 max-w-md flex flex-col gap-6">
+          <div
+            className="p-6 rounded-2xl bg-white border border-[#e6e9ef]"
+            style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)' }}
+          >
+            <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#f0f2f5]">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#ff3d8b]"></span>
+                <span className="w-3 h-3 rounded-full bg-[#fdab3d]"></span>
+                <span className="w-3 h-3 rounded-full bg-[#00c875]"></span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: '#1f2532', marginLeft: 8 }}>
+                  Workspace Live Status
+                </span>
+              </div>
+              <span className="badge badge-success" style={{ background: '#00c875', color: 'white' }}>
+                Active
               </span>
             </div>
-            <span className="badge badge-success" style={{ background: '#00c875', color: 'white' }}>
-              Active
-            </span>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>E-Commerce & Marketplaces</div>
+                  <div style={{ fontSize: 12, color: '#676879' }}>Etsy, Amazon FBA, TikTok Shop, Stripe</div>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                  Done
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Marketing & Paid Growth</div>
+                  <div style={{ fontSize: 12, color: '#676879' }}>ROAS Target, YouTube RPM, UTM Builder</div>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                  Done
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>SaaS & Freelance Utilities</div>
+                  <div style={{ fontSize: 12, color: '#676879' }}>Invoices, SaaS LTV:CAC, Markdown PDF</div>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                  Done
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>ILovePDF Private Suite (100% Client-Side)</div>
+                  <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Rotate, Organize, Number, Metadata, Protect</div>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                  Done
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Image, AI & SEO Web Utilities</div>
+                  <div style={{ fontSize: 12, color: '#676879' }}>SVG to PNG, Cropper, WCAG, JSON, Regex, OpenGraph</div>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
+                  Done
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-3 border-t border-[#f0f2f5] flex items-center justify-between text-xs text-[#676879] font-medium">
+              <span>Client-Side Encryption</span>
+              <span className="text-[#6161ff] font-bold">100% Secure</span>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>E-Commerce & Marketplaces</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>Etsy, Amazon FBA, TikTok Shop, Stripe</div>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                Done
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Marketing & Paid Growth</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>ROAS Target, YouTube RPM, UTM Builder</div>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                Done
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>SaaS & Freelance Utilities</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>Invoices, SaaS LTV:CAC, Markdown PDF</div>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                Done
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>ILovePDF Private Suite (100% Client-Side)</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Rotate, Organize, Number, Metadata, Protect</div>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                Done
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Image, AI & SEO Web Utilities</div>
-                <div style={{ fontSize: 12, color: '#676879' }}>SVG to PNG, Cropper, WCAG, JSON, Regex, OpenGraph</div>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                Done
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-4 pt-3 border-t border-[#f0f2f5] flex items-center justify-between text-xs text-[#676879] font-medium">
-            <span>Client-Side Encryption</span>
-            <span className="text-[#6161ff] font-bold">100% Secure</span>
-          </div>
+          {/* Third-World Product: Interactive Culture & Meme Snack */}
+          <CultureMemeWidget />
         </div>
       </div>
 
@@ -695,6 +703,47 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             onClick={() => onSelectTool(tool.id)}
           />
         ))}
+      </div>
+
+      {/* Point #4: Short 'Why this exists' line in founder's actual voice */}
+      <div
+        className="mt-16 p-8 rounded-2xl bg-white border border-[#e6e9ef]"
+        style={{
+          boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12
+        }}
+      >
+        <div className="flex items-center gap-2">
+          <span style={{ fontSize: 11.5, fontWeight: 700, color: '#6161ff', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            Why Twignberries Exists
+          </span>
+        </div>
+        <p style={{
+          fontFamily: 'var(--font-heading)',
+          fontSize: 21,
+          fontWeight: 600,
+          color: '#1f2532',
+          lineHeight: 1.5,
+          fontStyle: 'italic'
+        }}>
+          "I got tired of opening five tabs just to figure out if a $35 Etsy listing was actually worth it, or uploading confidential contracts to random online converters just to rotate a single page. So I built this instead."
+        </p>
+        <div className="flex items-center justify-between pt-2 flex-wrap gap-4">
+          <span style={{ fontSize: 13, fontWeight: 600, color: '#676879' }}>
+            — Built with a little too much love for spreadsheets & local privacy.
+          </span>
+          <a
+            href="https://buymeacoffee.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#6161ff', textDecoration: 'none' }}
+            className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
+          >
+            <span>☕ Buy the creator a coffee →</span>
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -859,7 +908,7 @@ export default function App() {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <ShieldCheck size={13} color="var(--brand)" />
-                Zero signups — 100% client-side privacy
+                Built with a little too much love for spreadsheets & zero tolerance for cloud snooping
               </div>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
                 v6.0.0 · 30 Tools & PDF Suite

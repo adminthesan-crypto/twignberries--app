@@ -38,15 +38,15 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span style={{ fontWeight: 800, fontSize: 18, color: '#1f2532', letterSpacing: '-0.04em' }}>
-                twignberries<span style={{ color: '#6161ff' }}>.com</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 21, color: '#1f2532', letterSpacing: '-0.02em', fontStyle: 'italic' }}>
+                twignberries<span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontSize: 16, fontWeight: 700 }}>.com</span>
               </span>
               <span className="badge badge-success" style={{ fontSize: 10, padding: '2px 8px' }}>
                 Free
               </span>
             </div>
             <div style={{ fontSize: 11.5, color: '#676879', fontWeight: 500, lineHeight: 1, marginTop: 1 }}>
-              Where people & AI utilities drive results
+              30 offline tools. No cloud uploads. No signups.
             </div>
           </div>
         </div>
@@ -82,7 +82,31 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
         </button>
 
         {/* Right: Monday.com CTA Pills */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://buymeacoffee.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '7px 14px',
+              borderRadius: 99,
+              background: '#fff3cd',
+              border: '1px solid #ffeeba',
+              color: '#856404',
+              fontSize: 12.5,
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
+              transition: 'all 0.15s ease'
+            }}
+            title="Support free offline utility development"
+          >
+            <span>☕</span>
+            <span className="hidden sm:inline">Buy me a coffee</span>
+          </a>
           <button
             onClick={() => onSelectCategory('All')}
             className="btn-secondary"
