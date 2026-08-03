@@ -150,12 +150,11 @@ export default function EtsyFeeCalculator() {
               <CopySummaryButton
                 title="Etsy Fee & Margin Calculation"
                 lines={[
-                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                  { label: 'Selling Price', value: `$${Number(salePrice).toFixed(2)}` },
                   { label: 'Etsy Transaction Cut (6.5%)', value: `$${transactionFee.toFixed(2)}` },
                   { label: 'Payment Processing Fee', value: `$${paymentFee.toFixed(2)}` },
-                  { label: 'Total Etsy Fees', value: `$${totalEtsyFees.toFixed(2)}` },
-                  { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${profitMargin}% Margin)` },
-                  { label: 'Break-Even Selling Price', value: `$${breakEvenPrice}` }
+                  { label: 'Total Etsy Fees', value: `$${totalFees.toFixed(2)} (${etsyCutPercent}%)` },
+                  { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${profitMargin}% Margin)` }
                 ]}
               />
             </div>

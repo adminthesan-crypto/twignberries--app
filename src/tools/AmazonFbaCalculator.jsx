@@ -155,8 +155,8 @@ export default function AmazonFbaCalculator() {
                   lines={[
                     { label: 'Selling Price', value: `$${price.toFixed(2)}` },
                     { label: 'Referral Fee', value: `$${referralFee.toFixed(2)}` },
-                    { label: 'FBA Fulfillment Fee', value: `$${selectedTier.fee.toFixed(2)}` },
-                    { label: 'Unit Cost', value: `$${cost.toFixed(2)}` },
+                    { label: 'FBA Fulfillment Fee', value: `$${fbaFee.toFixed(2)}` },
+                    { label: 'Unit Cost (COGS + Shipping)', value: `$${(cogs + inboundShipping).toFixed(2)}` },
                     { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
                     { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` }
                   ]}

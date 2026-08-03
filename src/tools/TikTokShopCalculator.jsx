@@ -16,6 +16,7 @@ export default function TikTokShopCalculator() {
   const netSellerRevenue = price - totalFees;
   const netProfit = netSellerRevenue - cogs;
   const marginPercent = price > 0 ? ((netProfit / price) * 100) : 0;
+  const breakEvenPrice = (cogs + shippingSubsidy) / (1 - ((platformFeePercent + affiliateCut) / 100));
 
   // Percentage breakdown bar
   const tiktokPct = price > 0 ? Math.min(100, Math.max(0, (tiktokPlatformFee / price) * 100)) : 0;
@@ -159,9 +160,9 @@ export default function TikTokShopCalculator() {
                   title="TikTok Shop Fee & Margin Breakdown"
                   lines={[
                     { label: 'Selling Price', value: `$${price.toFixed(2)}` },
-                    { label: 'Platform Fee (6% + 30¢)', value: `$${platformFee.toFixed(2)}` },
-                    { label: 'Creator Commission', value: `$${affiliateCommission.toFixed(2)} (${commissionPercent}%)` },
-                    { label: 'Product & Shipping Cost', value: `$${cost.toFixed(2)}` },
+                    { label: 'Platform Fee (6%)', value: `$${tiktokPlatformFee.toFixed(2)}` },
+                    { label: 'Creator Commission', value: `$${creatorCommission.toFixed(2)} (${affiliateCut}%)` },
+                    { label: 'Product & Shipping Cost', value: `$${(cogs + shippingSubsidy).toFixed(2)}` },
                     { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
                     { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` }
                   ]}

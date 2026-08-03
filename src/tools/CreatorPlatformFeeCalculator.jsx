@@ -119,8 +119,8 @@ export default function CreatorPlatformFeeCalculator() {
                   title={`Creator Platform Cut: ${selected.name}`}
                   lines={[
                     { label: 'Platform Selected', value: selected.name },
-                    { label: 'Monthly Gross Revenue', value: `$${grossRevenue.toFixed(2)}` },
-                    { label: 'Avg Payout Transaction Size', value: `$${avgTxSize.toFixed(2)}` },
+                    { label: 'Monthly Gross Revenue', value: `$${mrr.toFixed(2)}` },
+                    { label: 'Avg Payout Transaction Size', value: `$${avgSupport.toFixed(2)}` },
                     { label: 'Platform Cut', value: `$${platformFeeDollar.toFixed(2)} (${(selected.cut * 100).toFixed(0)}%)` },
                     { label: 'Payment Processing Cut', value: `$${paymentFeeDollar.toFixed(2)}` },
                     { label: 'Total Fees & Deductions', value: `$${totalDeductions.toFixed(2)}` },

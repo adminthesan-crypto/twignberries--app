@@ -127,12 +127,12 @@ export default function YouTubeRpmCalculator() {
               <CopySummaryButton
                 title="YouTube AdSense RPM Revenue Projection"
                 lines={[
-                  { label: 'Niche Selected', value: currentPreset ? currentPreset.label : 'Custom Niche' },
-                  { label: 'Estimated RPM', value: `$${rpmNum.toFixed(2)} / 1,000 views` },
-                  { label: 'Monthly Views', value: `${viewsNum.toLocaleString()} views` },
-                  { label: 'Monthly AdSense Earnings', value: `$${monthlyEarnings.toFixed(2)}` },
-                  { label: 'Annual Projected Revenue', value: `$${yearlyEarnings.toFixed(2)}` },
-                  { label: 'Daily Average Earning', value: `$${dailyEarnings.toFixed(2)}` }
+                  { label: 'Niche Selected', value: nicheRpmPresets.find(p => p.id === niche)?.label || 'Custom Niche' },
+                  { label: 'Estimated RPM', value: `$${Number(rpm).toFixed(2)} / 1,000 views` },
+                  { label: 'Monthly Views', value: `${Number(views).toLocaleString()} views` },
+                  { label: 'Monthly AdSense Earnings', value: `$${monthlyRevenue.toFixed(2)}` },
+                  { label: 'Annual Projected Revenue', value: `$${yearlyRevenue.toFixed(2)}` },
+                  { label: 'Daily Average Earning', value: `$${dailyRevenue.toFixed(2)}` }
                 ]}
               />
             </div>

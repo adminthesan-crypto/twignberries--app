@@ -19,6 +19,10 @@ export default function RoasCalculator() {
   const adSpendPerSale = clicksPerSale * cpc;
   const actualRoas = adSpendPerSale > 0 ? (price / adSpendPerSale) : 0;
   const netProfitAfterAds = grossMarginDollar - adSpendPerSale;
+  const cogsPercent = price > 0 ? ((cogs / price) * 100) : 0;
+  const targetCpa = breakEvenCpa;
+  const maxCpc = clicksPerSale > 0 ? (breakEvenCpa / clicksPerSale) : 0;
+  const netMarginPercent = price > 0 ? ((netProfitAfterAds / price) * 100) : 0;
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">

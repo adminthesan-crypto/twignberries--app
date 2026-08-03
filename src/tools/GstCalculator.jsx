@@ -142,11 +142,11 @@ export default function GstCalculator() {
                 <CopySummaryButton
                   title={`GST Tax Calculation Report (${rate}% Slab)`}
                   lines={[
-                    { label: 'Calculation Mode', value: mode === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
+                    { label: 'Calculation Mode', value: calcType === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
                     { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
                     { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
                     { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
-                    { label: 'Total GST Amount', value: `${currency}${totalTax.toFixed(2)} (${rate}%)` },
+                    { label: 'Total GST Amount', value: `${currency}${gstAmount.toFixed(2)} (${rate}%)` },
                     { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
                   ]}
                 />

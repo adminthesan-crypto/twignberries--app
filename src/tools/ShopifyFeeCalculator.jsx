@@ -138,10 +138,10 @@ export default function ShopifyFeeCalculator() {
                   title="Shopify Fee & Plan Breakdown"
                   lines={[
                     { label: 'Selected Plan', value: selectedPlan.name },
-                    { label: 'Monthly GMV', value: `$${monthlyGmv.toLocaleString()}` },
-                    { label: 'Total Orders / Month', value: `${ordersCount} orders` },
+                    { label: 'Monthly GMV', value: `$${monthlyRevenue.toLocaleString()}` },
+                    { label: 'Total Orders / Month', value: `${Math.round(orderCount)} orders` },
                     { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
-                    { label: 'Third-Party Transaction Fees', value: `$${thirdPartyFees.toFixed(2)}` },
+                    { label: 'Third-Party Transaction Fees', value: `$${externalPenalty.toFixed(2)}` },
                     { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` }
                   ]}
                 />

@@ -145,9 +145,9 @@ export default function SaasChurnLtvCalculator() {
                   lines={[
                     { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
                     { label: 'Gross Margin', value: `${grossMargin}%` },
-                    { label: 'Monthly MRR Churn Rate', value: `${churnRate}%` },
+                    { label: 'Monthly MRR Churn Rate', value: `${monthlyChurn}%` },
                     { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
-                    { label: 'Customer Retention Span', value: `${customerLifespanMonths.toFixed(1)} months` },
+                    { label: 'Customer Retention Span', value: `${customerLifetimeMonths.toFixed(1)} months` },
                     { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
                     { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
                     { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` }
