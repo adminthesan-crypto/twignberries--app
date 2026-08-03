@@ -39,20 +39,19 @@ export default function GstCalculator() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Title Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-heading font-bold text-white">
-              GST Tax Inclusive & Exclusive Calculator (2026)
-            </h1>
-            <span className="badge badge-brand">INSTANT CGST / SGST</span>
-          </div>
-          <p className="text-sm text-[#9ca3af] mt-1">
-            Easily add or remove GST from invoice totals, showing split Central (CGST) and State (SGST) tax shares.
-          </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            GST Tax Calculator — Inclusive &amp; Exclusive
+          </h1>
+          <span className="badge badge-success">CGST / SGST</span>
         </div>
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Instant CGST / SGST split with inclusive and exclusive modes. Enter any amount to get both.
+        </p>
+      </div>
 
         <button
           onClick={handleCopy}

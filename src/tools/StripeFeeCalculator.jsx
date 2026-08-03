@@ -30,20 +30,18 @@ export default function StripeFeeCalculator() {
   const solvedFee = solvedGross - Number(targetNet);
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-heading font-bold text-white">
-              Stripe Fee & Net Payout Calculator (2026)
-            </h1>
-            <span className="badge badge-brand">2.9% + $0.30</span>
-          </div>
-          <p className="text-sm text-[#9ca3af] mt-1">
-            Calculate domestic, international, and reverse break-even Stripe payment processing fees.
-          </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Stripe Fee &amp; Break-even Solver
+          </h1>
+          <span className="badge badge-brand">2.9% + $0.30</span>
         </div>
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Calculate domestic, international, and reverse break-even Stripe payment processing fees.
+        </p>
       </div>
 
       {/* 2-Column Grid */}

@@ -30,20 +30,17 @@ export default function ShopifyFeeCalculator() {
   const effectiveFeePercent = monthlyRevenue > 0 ? ((totalShopifyMonthlyCost / monthlyRevenue) * 100) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> E-Commerce 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">Shopify Basic vs Standard vs Advanced</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Shopify Plan & Transaction Fee Estimator
+          </h1>
+          <span className="badge badge-success">COMPARE PLANS</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          Shopify Plan & Transaction Fee Estimator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Compare Shopify 2026 monthly plans, Stripe/Shopify Payments CC rates, and external gateway penalty cuts.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Compare Shopify Basic, Standard, and Advanced monthly CC rates and external gateway penalties.
         </p>
       </div>
 

@@ -25,20 +25,17 @@ export default function RoasCalculator() {
   const netMarginPercent = price > 0 ? ((netProfitAfterAds / price) * 100) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> Marketing 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">Meta & Google Ads Break-Even Solver</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            ROAS & Ad Spend Break-Even Calculator
+          </h1>
+          <span className="badge badge-brand">PAID ADS</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          ROAS & Ad Spend Break-Even Calculator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Calculate your exact Break-Even ROAS, Target CPA, and ad profitability based on unit margins.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Calculate exact Break-Even ROAS, Target CPA, and paid ad profitability from your unit margins.
         </p>
       </div>
 

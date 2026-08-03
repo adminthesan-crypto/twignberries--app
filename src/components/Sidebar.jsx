@@ -1,163 +1,104 @@
 import React from 'react';
-import { 
-  Star, 
-  Clock, 
-  Calculator, 
-  FileText, 
-  Link2, 
-  DollarSign, 
-  LayoutGrid,
-  ChevronRight,
-  Cpu
-} from 'lucide-react';
+import { Star, Clock, ChevronRight } from 'lucide-react';
 
-export default function Sidebar({ 
-  tools, 
-  activeToolId, 
-  onSelectTool, 
-  starredIds, 
-  onToggleStar, 
-  recentIds, 
-  selectedCategory,
-  onSelectCategory 
-}) {
-  const categories = [
-    { id: 'All', label: 'All Utilities', icon: LayoutGrid },
-    { id: 'E-Commerce', label: 'E-Commerce & Fees', icon: DollarSign },
-    { id: 'AI & Dev', label: 'AI & Developer', icon: Cpu },
-    { id: 'Freelance', label: 'Freelance & SaaS', icon: FileText },
-    { id: 'Marketing', label: 'Marketing & Web', icon: Link2 },
-  ];
-
+export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds, recentIds }) {
   const starredTools = tools.filter(t => starredIds.includes(t.id));
   const recentTools = recentIds
     .map(id => tools.find(t => t.id === id))
     .filter(Boolean)
-    .slice(0, 5);
-
-  const categoryTools = selectedCategory === 'All'
-    ? tools
-    : tools.filter(t => t.category === selectedCategory);
+    .slice(0, 4);
 
   return (
-    <aside className="w-64 glass-panel border-r border-white/10 p-4 flex flex-col gap-6 no-print shrink-0 overflow-y-auto">
-      {/* Category Navigation */}
-      <div>
-        <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2">
-          Browse Categories
-        </div>
-        <div className="flex flex-col gap-1">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-all ${
-                  isActive
-                    ? 'bg-[#ff6b00]/15 text-[#ff8c3a] border border-[#ff6b00]/30 font-semibold'
-                    : 'text-[#9ca3af] hover:text-white hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-[#ff6b00]' : 'text-[#6b7280]'}`} />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Full List of Tools in Selected Category */}
-      <div className="pt-4 border-t border-white/10">
-        <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2 flex items-center justify-between">
-          <span>{selectedCategory === 'All' ? 'All 15 Utilities' : `${selectedCategory} Tools`}</span>
-          <span className="font-mono text-xs">{categoryTools.length}</span>
-        </div>
-        <div className="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
-          {categoryTools.map((t) => {
-            const isCurrent = activeToolId === t.id;
-            return (
-              <button
-                key={t.id}
-                onClick={() => onSelectTool(t.id)}
-                className={`group flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all text-left ${
-                  isCurrent
-                    ? 'bg-[#ff6b00]/20 text-white font-semibold border border-[#ff6b00]/40'
-                    : 'text-[#9ca3af] hover:text-white hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <span className="truncate pr-2">{t.name}</span>
-                {isCurrent ? (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b00] shrink-0" />
-                ) : (
-                  <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#ff6b00] shrink-0" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Starred / Pinned Workspace */}
-      <div className="pt-4 border-t border-white/10">
-        <div className="flex items-center justify-between px-3 mb-2">
-          <span className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase flex items-center gap-1.5">
-            <Star className="w-3 h-3 text-amber-400 fill-amber-400" /> Starred Tools
-          </span>
-          <span className="text-xs text-[#6b7280] font-mono">{starredTools.length}</span>
+    <aside
+      className="no-print shrink-0 overflow-y-auto"
+      style={{
+        width: 220,
+        background: 'var(--bg-sidebar)',
+        borderRight: '1px solid var(--border)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0,
+        padding: '16px 12px',
+      }}
+    >
+      {/* Starred */}
+      <div style={{ marginBottom: 24 }}>
+        <div style={{
+          fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
+          textTransform: 'uppercase', color: 'var(--text-4)',
+          marginBottom: 8, padding: '0 4px',
+          display: 'flex', alignItems: 'center', gap: 6,
+        }}>
+          <Star size={11} color="#f59e0b" fill="#f59e0b" />
+          Starred
         </div>
         {starredTools.length === 0 ? (
-          <div className="px-3 py-2.5 text-xs text-[#6b7280] bg-white/[0.02] rounded-xl border border-white/5">
-            Click the ☆ star on any tool to pin it here.
+          <div style={{
+            fontSize: 12, color: 'var(--text-4)', padding: '8px 10px',
+            background: 'rgba(255,255,255,0.02)', borderRadius: 8,
+            border: '1px dashed rgba(255,255,255,0.08)', lineHeight: 1.5,
+          }}>
+            Star any tool to pin it here
           </div>
         ) : (
-          <div className="flex flex-col gap-1">
-            {starredTools.map((t) => (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {starredTools.map(t => (
               <button
                 key={t.id}
                 onClick={() => onSelectTool(t.id)}
-                className={`group flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all ${
-                  activeToolId === t.id
-                    ? 'bg-white/10 text-white font-medium border border-white/15'
-                    : 'text-[#9ca3af] hover:text-white hover:bg-white/5'
-                }`}
+                className="sidebar-item"
+                style={{
+                  background: activeToolId === t.id ? 'var(--brand-dim)' : undefined,
+                  color: activeToolId === t.id ? 'var(--brand-light)' : undefined,
+                  borderColor: activeToolId === t.id ? 'rgba(249,115,22,0.3)' : undefined,
+                }}
               >
-                <span className="truncate">{t.name}</span>
-                <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#ff6b00]" />
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{t.name}</span>
+                <ChevronRight size={12} color="var(--text-4)" style={{ flexShrink: 0, opacity: 0.5 }} />
               </button>
             ))}
           </div>
         )}
       </div>
 
-      {/* Recent History */}
-      <div className="pt-4 border-t border-white/10">
-        <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2 flex items-center gap-1.5">
-          <Clock className="w-3 h-3 text-[#3b82f6]" /> Recently Used
+      {/* Recently Used */}
+      <div>
+        <div style={{
+          fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
+          textTransform: 'uppercase', color: 'var(--text-4)',
+          marginBottom: 8, padding: '0 4px',
+          display: 'flex', alignItems: 'center', gap: 6,
+        }}>
+          <Clock size={11} color="var(--text-4)" />
+          Recent
         </div>
         {recentTools.length === 0 ? (
-          <div className="px-3 py-2.5 text-xs text-[#6b7280] bg-white/[0.02] rounded-xl border border-white/5">
-            Tools you use will appear here automatically.
+          <div style={{
+            fontSize: 12, color: 'var(--text-4)', padding: '8px 10px',
+            background: 'rgba(255,255,255,0.02)', borderRadius: 8,
+            border: '1px dashed rgba(255,255,255,0.08)', lineHeight: 1.5,
+          }}>
+            Recently opened tools appear here
           </div>
         ) : (
-          <div className="flex flex-col gap-1">
-            {recentTools.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => onSelectTool(t.id)}
-                className={`group flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-all ${
-                  activeToolId === t.id
-                    ? 'bg-white/10 text-white font-medium border border-white/15'
-                    : 'text-[#9ca3af] hover:text-white hover:bg-white/5'
-                }`}
-              >
-                <span className="truncate">{t.name}</span>
-                <span className="text-[10px] text-[#6b7280] group-hover:text-[#ff6b00] font-mono">
-                  open
-                </span>
-              </button>
-            ))}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {recentTools.map(t => {
+              const isActive = activeToolId === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => onSelectTool(t.id)}
+                  className="sidebar-item"
+                  style={{
+                    background: isActive ? 'var(--brand-dim)' : undefined,
+                    color: isActive ? 'var(--brand-light)' : undefined,
+                    borderColor: isActive ? 'rgba(249,115,22,0.3)' : undefined,
+                  }}
+                >
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{t.name}</span>
+                </button>
+              );
+            })}
           </div>
         )}
       </div>

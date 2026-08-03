@@ -25,20 +25,17 @@ export default function TikTokShopCalculator() {
   const profitPct = price > 0 ? Math.min(100, Math.max(0, (netProfit / price) * 100)) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="badge badge-brand">
-            <Sparkles className="w-3.5 h-3.5" /> E-Commerce 2026
-          </span>
-          <span className="text-xs text-gray-400 font-medium">TikTok Shop Standard Cut</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            TikTok Shop Seller & Creator Commission Solver
+          </h1>
+          <span className="badge badge-brand">6% COMMISSION</span>
         </div>
-        <h1 className="text-3xl font-bold font-heading text-white tracking-tight">
-          TikTok Shop Seller Fee & Creator Cut Calculator
-        </h1>
-        <p className="text-sm text-gray-400">
-          Calculate TikTok Shop's 6% platform fee, affiliate creator commissions, and exact net payouts per item.
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Calculate TikTok Shop 6% commission, affiliate creator cuts, and seller net margin per order.
         </p>
       </div>
 

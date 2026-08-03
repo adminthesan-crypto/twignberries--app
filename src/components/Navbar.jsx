@@ -1,50 +1,99 @@
 import React from 'react';
-import { Search, Sparkles, Command, Star, Layers } from 'lucide-react';
+import { Search, Command, Star, LayoutGrid, DollarSign, Cpu, FileText, Link2 } from 'lucide-react';
 
-export default function Navbar({ onOpenSearch, starredCount = 0, currentCategory = 'All' }) {
+const CATEGORIES = [
+  { id: 'All',        label: 'All Tools',      icon: LayoutGrid },
+  { id: 'E-Commerce', label: 'E-Commerce',     icon: DollarSign },
+  { id: 'AI & Dev',   label: 'AI & Dev',       icon: Cpu },
+  { id: 'Freelance',  label: 'Freelance',      icon: FileText },
+  { id: 'Marketing',  label: 'Marketing',      icon: Link2 },
+];
+
+export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory }) {
   return (
-    <header className="glass-panel sticky top-0 z-40 border-b border-white/10 px-6 py-3.5 flex items-center justify-between no-print">
-      {/* Brand Logo & Name */}
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#ff6b00] to-[#ff4400] flex items-center justify-center shadow-lg shadow-[#ff6b00]/30">
-          <Layers className="w-5 h-5 text-white" />
-        </div>
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="font-heading font-bold text-lg tracking-tight text-white">
+    <header className="nav-panel sticky top-0 z-40 no-print">
+      {/* Top row: logo + search */}
+      <div className="flex items-center justify-between px-5 h-14">
+        {/* Logo */}
+        <div className="flex items-center gap-3 shrink-0">
+          <div
+            style={{
+              width: 32, height: 32, borderRadius: 10,
+              background: 'linear-gradient(135deg, #f97316, #ea580c)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 12px rgba(249,115,22,0.35)',
+            }}
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <span style={{ fontWeight: 800, fontSize: 16, color: '#f1f5f9', letterSpacing: '-0.03em' }}>
               Twignberries
             </span>
-            <span className="badge badge-brand">
-              <Sparkles className="w-3 h-3" /> DAILY WORKSPACE
-            </span>
+            <div style={{ fontSize: 11, color: '#64748b', lineHeight: 1, marginTop: 1 }}>
+              15 free calculators
+            </div>
           </div>
-          <p className="text-xs text-[#9ca3af]">
-            Zero-friction 2026 utilities • Bookmark-ready
-          </p>
         </div>
-      </div>
 
-      {/* Universal Search (Cmd + K trigger) */}
-      <div className="flex items-center gap-3">
+        {/* Search bar */}
         <button
           onClick={onOpenSearch}
-          className="flex items-center justify-between gap-6 px-4 py-2 rounded-xl bg-[#131722]/80 border border-white/10 hover:border-[#ff6b00]/50 hover:bg-[#181d2c] transition-all group min-w-[260px]"
-          title="Search all utilities (Cmd + K)"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            gap: 32, padding: '8px 14px',
+            borderRadius: 10, cursor: 'pointer',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1.5px solid rgba(255,255,255,0.1)',
+            transition: 'all 0.15s ease',
+            minWidth: 240,
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
+          title="Search utilities (⌘K)"
         >
-          <div className="flex items-center gap-2.5 text-[#9ca3af] group-hover:text-white">
-            <Search className="w-4 h-4 text-[#ff6b00]" />
-            <span className="text-sm font-medium">Search 100+ tools...</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Search size={14} color="#f97316" />
+            <span style={{ fontSize: 13, color: '#64748b', fontWeight: 500 }}>Search tools...</span>
           </div>
-          <kbd className="flex items-center gap-1 px-2 py-0.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-[#9ca3af]">
-            <Command className="w-3 h-3" /> K
+          <kbd style={{
+            display: 'flex', alignItems: 'center', gap: 3,
+            padding: '2px 7px', borderRadius: 6,
+            background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+            fontSize: 11, color: '#64748b', fontFamily: 'monospace',
+          }}>
+            <Command size={10} /> K
           </kbd>
         </button>
+      </div>
 
-        {/* Starred Counter */}
-        <div className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-white">
-          <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-          <span>{starredCount} Starred</span>
-        </div>
+      {/* Bottom row: category pills */}
+      <div
+        style={{
+          display: 'flex', alignItems: 'center', gap: 4,
+          padding: '0 16px 10px',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          paddingTop: 8,
+          overflowX: 'auto',
+        }}
+      >
+        {CATEGORIES.map(cat => {
+          const isActive = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => onSelectCategory(cat.id)}
+              className={`cat-pill ${isActive ? 'active' : ''}`}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
       </div>
     </header>
   );

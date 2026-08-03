@@ -45,20 +45,19 @@ export default function InvoiceGenerator() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Title Header (No Print) */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10 no-print">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-heading font-bold text-white">
-              Freelance Invoice Generator with Instant PDF
-            </h1>
-            <span className="badge badge-brand">NO SIGNUP REQUIRED</span>
-          </div>
-          <p className="text-sm text-[#9ca3af] mt-1">
-            Create professional, tax-ready invoices in 30 seconds. Print or save directly to PDF.
-          </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Tool header */}
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+            Freelance Invoice Generator &amp; PDF
+          </h1>
+          <span className="badge badge-brand">NO SIGNUP REQUIRED</span>
         </div>
+        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
+          Create professional, tax-ready invoices in 30 seconds. Print or save directly to PDF.
+        </p>
+      </div>
 
         <div className="flex items-center gap-3">
           <button

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, Star, ArrowRight, CornerDownLeft, Sparkles } from 'lucide-react';
+import { Search, X, Star, CornerDownLeft } from 'lucide-react';
 
 export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, starredIds }) {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef(null);
 
-  const filteredTools = tools.filter(t => 
+  const filteredTools = tools.filter(t =>
     t.name.toLowerCase().includes(query.toLowerCase()) ||
     t.description.toLowerCase().includes(query.toLowerCase()) ||
     t.category.toLowerCase().includes(query.toLowerCase()) ||
@@ -24,21 +24,19 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isOpen) return;
-      if (e.key === 'Escape') {
-        onClose();
-      } else if (e.key === 'ArrowDown') {
+      if (e.key === 'Escape') onClose();
+      else if (e.key === 'ArrowDown') {
         e.preventDefault();
-        setSelectedIndex((prev) => (prev + 1) % (filteredTools.length || 1));
+        setSelectedIndex(p => (p + 1) % (filteredTools.length || 1));
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        setSelectedIndex((prev) => (prev - 1 + (filteredTools.length || 1)) % (filteredTools.length || 1));
+        setSelectedIndex(p => (p - 1 + (filteredTools.length || 1)) % (filteredTools.length || 1));
       } else if (e.key === 'Enter' && filteredTools[selectedIndex]) {
         e.preventDefault();
         onSelectTool(filteredTools[selectedIndex].id);
         onClose();
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, filteredTools, selectedIndex, onSelectTool, onClose]);
@@ -46,89 +44,131 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 animate-fade-in no-print">
+    <div className="no-print" style={{
+      position: 'fixed', inset: 0, zIndex: 50,
+      display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+      padding: '14vh 16px 0',
+    }}>
       {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+      <div
+        style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(0,0,0,0.65)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
+        }}
         onClick={onClose}
       />
 
-      {/* Modal Card */}
-      <div className="relative w-full max-w-2xl bg-[#0e111a] border border-white/15 rounded-2xl shadow-2xl overflow-hidden z-10">
-        {/* Top Search Input */}
-        <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-[#121622]">
-          <Search className="w-5 h-5 text-[#ff6b00]" />
+      {/* Modal */}
+      <div className="animate-fade-in" style={{
+        position: 'relative', zIndex: 10,
+        width: '100%', maxWidth: 620,
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border-md)',
+        borderRadius: 16,
+        boxShadow: '0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)',
+        overflow: 'hidden',
+      }}>
+        {/* Search input */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 12,
+          padding: '14px 18px',
+          borderBottom: '1px solid var(--border)',
+          background: 'var(--bg-input)',
+        }}>
+          <Search size={16} color="var(--brand)" strokeWidth={2.5} />
           <input
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
+            onChange={e => { setQuery(e.target.value); setSelectedIndex(0); }}
+            placeholder="Search calculators, fee estimators, generators..."
+            style={{
+              flex: 1, background: 'none', border: 'none', outline: 'none',
+              color: 'var(--text-1)', fontSize: 15, fontWeight: 500,
+              fontFamily: 'var(--font)', caretColor: 'var(--brand)',
             }}
-            placeholder="Search 2026 calculators, fee estimators, generators..."
-            className="w-full bg-transparent text-white placeholder-[#6b7280] text-base font-medium focus:outline-none"
           />
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-[#9ca3af] hover:text-white hover:bg-white/10 transition-colors"
+            style={{
+              padding: '4px 6px', borderRadius: 7, border: 'none',
+              background: 'rgba(255,255,255,0.06)', cursor: 'pointer',
+              color: 'var(--text-4)', transition: 'all 0.13s ease',
+            }}
           >
-            <X className="w-4 h-4" />
+            <X size={14} />
           </button>
         </div>
 
-        {/* Search Results */}
-        <div className="max-h-[380px] overflow-y-auto p-2">
+        {/* Results */}
+        <div style={{ maxHeight: 380, overflowY: 'auto', padding: '8px' }}>
           {filteredTools.length === 0 ? (
-            <div className="py-12 text-center">
-              <p className="text-sm text-[#9ca3af]">No utilities found matching "{query}"</p>
-              <p className="text-xs text-[#6b7280] mt-1">Try searching "Etsy", "Invoice", "Stripe", or "GST"</p>
+            <div style={{ padding: '40px 0', textAlign: 'center' }}>
+              <p style={{ fontSize: 14, color: 'var(--text-4)' }}>No results for "{query}"</p>
+              <p style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 4, opacity: 0.6 }}>
+                Try "Etsy", "Invoice", "Stripe", or "GST"
+              </p>
             </div>
           ) : (
-            <div className="flex flex-col gap-1">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {filteredTools.map((tool, idx) => {
                 const isSelected = idx === selectedIndex;
                 const isStarred = starredIds.includes(tool.id);
                 return (
                   <div
                     key={tool.id}
-                    onClick={() => {
-                      onSelectTool(tool.id);
-                      onClose();
-                    }}
+                    onClick={() => { onSelectTool(tool.id); onClose(); }}
                     onMouseEnter={() => setSelectedIndex(idx)}
-                    className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
-                      isSelected 
-                        ? 'bg-gradient-to-r from-[#ff6b00]/20 to-[#ff6b00]/10 border border-[#ff6b00]/40 text-white' 
-                        : 'text-[#9ca3af] hover:bg-white/5'
-                    }`}
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '11px 12px', borderRadius: 10, cursor: 'pointer',
+                      transition: 'all 0.12s ease',
+                      background: isSelected ? 'rgba(249,115,22,0.1)' : 'transparent',
+                      border: isSelected ? '1px solid rgba(249,115,22,0.25)' : '1px solid transparent',
+                    }}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-[#ff6b00] text-white' : 'bg-white/5 text-[#9ca3af]'}`}>
-                        <Sparkles className="w-4 h-4" />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      {/* Color dot from tool */}
+                      <div style={{
+                        width: 34, height: 34, borderRadius: 9, flexShrink: 0,
+                        background: tool.bg || 'rgba(255,255,255,0.06)',
+                        color: tool.color || 'var(--text-4)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        {tool.icon || <Search size={15} />}
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-sm text-white">{tool.name}</span>
-                          <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-white/5 text-[#6b7280]">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                          <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-1)' }}>
+                            {tool.name}
+                          </span>
+                          <span style={{
+                            fontSize: 10, fontWeight: 700, letterSpacing: '0.05em',
+                            textTransform: 'uppercase', color: 'var(--text-4)',
+                            padding: '2px 7px', borderRadius: 99,
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid var(--border)',
+                          }}>
                             {tool.category}
                           </span>
-                          {isStarred && (
-                            <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          )}
+                          {isStarred && <Star size={11} color="#f59e0b" fill="#f59e0b" />}
                         </div>
-                        <p className="text-xs text-[#6b7280] line-clamp-1 mt-0.5">
+                        <p style={{ fontSize: 12, color: 'var(--text-4)', marginTop: 2 }}>
                           {tool.description}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {isSelected && (
-                        <span className="text-xs font-mono text-[#ff8c3a] flex items-center gap-1">
-                          Open <CornerDownLeft className="w-3 h-3" />
-                        </span>
-                      )}
-                    </div>
+                    {isSelected && (
+                      <span style={{
+                        display: 'flex', alignItems: 'center', gap: 4,
+                        fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--brand-light)',
+                        flexShrink: 0,
+                      }}>
+                        Open <CornerDownLeft size={11} />
+                      </span>
+                    )}
                   </div>
                 );
               })}
@@ -136,14 +176,22 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
           )}
         </div>
 
-        {/* Footer info */}
-        <div className="px-5 py-2.5 bg-[#0b0d14] border-t border-white/5 flex items-center justify-between text-[11px] text-[#6b7280]">
-          <div className="flex items-center gap-3">
-            <span>↑↓ to navigate</span>
-            <span>↵ to open</span>
-            <span>ESC to close</span>
+        {/* Footer hints */}
+        <div style={{
+          padding: '9px 18px',
+          borderTop: '1px solid var(--border)',
+          background: 'rgba(0,0,0,0.15)',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          fontSize: 11, color: 'var(--text-4)',
+        }}>
+          <div style={{ display: 'flex', gap: 16 }}>
+            <span>↑↓ navigate</span>
+            <span>↵ open</span>
+            <span>ESC close</span>
           </div>
-          <span className="font-mono text-[#ff6b00]">Twignberries OS v1.0</span>
+          <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand)', opacity: 0.8 }}>
+            Twignberries
+          </span>
         </div>
       </div>
     </div>
