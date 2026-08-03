@@ -279,7 +279,7 @@ export default function App() {
               </div>
               <div className="flex items-center gap-6">
                 <span>Built for 2026 E-Commerce & Creators</span>
-                <span className="font-mono text-[#ff8c3a]">v2.1.0 (15 Utilities)</span>
+                <span className="font-mono text-[#ff8c3a]">v2.2.0 (15 Utilities)</span>
               </div>
             </footer>
           </div>
