@@ -1,27 +1,27 @@
-/* Twignberries Design System — 2026 Daily Utility Workspace */
+/* Twignberries Design System — 2026 Daily Utility Workspace (Linear / Stripe Aesthetic) */
 :root {
-  --bg-app: #08090d;
-  --bg-sidebar: #0d0f17;
-  --bg-card: rgba(18, 22, 34, 0.7);
-  --bg-card-hover: rgba(26, 32, 48, 0.85);
-  --bg-input: rgba(13, 16, 25, 0.85);
+  --bg-app: #0D0E12;
+  --bg-sidebar: #11131A;
+  --bg-card: rgba(20, 22, 32, 0.75);
+  --bg-card-hover: rgba(26, 30, 44, 0.85);
+  --bg-input: rgba(13, 14, 18, 0.85);
   
-  --border-light: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 107, 0, 0.4);
-  --border-active: rgba(255, 107, 0, 0.7);
+  --border-light: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 92, 0, 0.4);
+  --border-active: rgba(255, 92, 0, 0.75);
 
-  --color-brand: #ff6b00;
-  --color-brand-glow: rgba(255, 107, 0, 0.25);
-  --color-brand-light: #ff8c3a;
-  --color-success: #10b981;
+  --color-brand: #FF5C00;
+  --color-brand-glow: rgba(255, 92, 0, 0.25);
+  --color-brand-light: #FF8A3D;
+  --color-success: #10B981;
   --color-success-bg: rgba(16, 185, 129, 0.15);
-  --color-info: #3b82f6;
+  --color-info: #3B82F6;
 
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
+  --text-main: #F4F5F8;
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -172,6 +172,36 @@ html, body {
   background: var(--color-success-bg);
   color: var(--color-success);
   border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Inline Unit Prefix & Suffix Inputs (Linear / Stripe style) */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.input-prefix {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.input-suffix {
+  position: absolute;
+  right: 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.glass-input-prefix {
+  padding-left: 30px !important;
+}
+.glass-input-suffix {
+  padding-right: 30px !important;
 }
 
 /* Animations */

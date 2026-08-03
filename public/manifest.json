@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Twignberries Daily Workspace & SEO ToolHub",
-  "version": "1.2.0",
-  "description": "Zero-signup 2026 calculators, fee solvers (Etsy, Stripe, PayPal), GST splitter, and PDF invoice/markdown generator.",
+  "version": "2.0.0",
+  "description": "Zero-signup 2026 suite of 14 utilities: Amazon FBA, TikTok Shop, ROAS, Shopify, Patreon, SaaS LTV, Etsy, Stripe, PayPal, GST, Invoices, & PDF.",
   "action": {
     "default_popup": "index.html",
     "default_title": "Open Twignberries Workspace"

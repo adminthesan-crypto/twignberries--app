@@ -15,6 +15,14 @@ import PayPalFeeCalculator from './tools/PayPalFeeCalculator';
 import YouTubeRpmCalculator from './tools/YouTubeRpmCalculator';
 import PdfMarkdownConverter from './tools/PdfMarkdownConverter';
 
+// New Tools (6 Full Suite Expansion Utilities — v2.0.0)
+import AmazonFbaCalculator from './tools/AmazonFbaCalculator';
+import TikTokShopCalculator from './tools/TikTokShopCalculator';
+import RoasCalculator from './tools/RoasCalculator';
+import ShopifyFeeCalculator from './tools/ShopifyFeeCalculator';
+import CreatorPlatformFeeCalculator from './tools/CreatorPlatformFeeCalculator';
+import SaasChurnLtvCalculator from './tools/SaasChurnLtvCalculator';
+
 import { Sparkles, Star, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export default function App() {
@@ -82,6 +90,54 @@ export default function App() {
       description: 'Build valid campaign tracking URLs for GA4 with one-click copy and presets.',
       keywords: ['utm source', 'utm medium', 'google analytics campaign link', 'url builder'],
       component: UtmBuilder
+    },
+    {
+      id: 'amazon-fba',
+      name: 'Amazon FBA Referral & Profit Calculator',
+      category: 'E-Commerce',
+      description: 'Calculate FBA fulfillment tiers, category referral cuts (8%-17%), and exact net profit.',
+      keywords: ['amazon fba', 'amazon referral fee', 'fba calculator', 'amazon seller profit'],
+      component: AmazonFbaCalculator
+    },
+    {
+      id: 'tiktok-shop',
+      name: 'TikTok Shop Seller & Creator Commission Solver',
+      category: 'E-Commerce',
+      description: 'Calculate 6% TikTok Shop commission, affiliate creator cuts, and seller net margin.',
+      keywords: ['tiktok shop fee', 'tiktok affiliate calculator', 'tiktok seller margin'],
+      component: TikTokShopCalculator
+    },
+    {
+      id: 'shopify-fee',
+      name: 'Shopify Plan & Transaction Fee Estimator',
+      category: 'E-Commerce',
+      description: 'Compare Shopify Basic, Standard, and Advanced monthly CC rates and external gateway penalties.',
+      keywords: ['shopify transaction fee', 'shopify basic plan', 'shopify pricing calculator'],
+      component: ShopifyFeeCalculator
+    },
+    {
+      id: 'roas-calculator',
+      name: 'ROAS & Ad Spend Break-Even Calculator',
+      category: 'Marketing',
+      description: 'Calculate exact Break-Even ROAS, Target CPA, and paid ad profitability from unit margins.',
+      keywords: ['roas calculator', 'break even roas', 'meta ad roas', 'cpa calculator'],
+      component: RoasCalculator
+    },
+    {
+      id: 'creator-platform',
+      name: 'Patreon & Creator Platform Fee Solver',
+      category: 'Freelance',
+      description: 'Compare Patreon Pro (8%), BuyMeACoffee (5%), and Ko-fi (0%) platform cuts and take-home pay.',
+      keywords: ['patreon fee calculator', 'buymeacoffee fee', 'ko-fi fee', 'creator earnings'],
+      component: CreatorPlatformFeeCalculator
+    },
+    {
+      id: 'saas-churn-ltv',
+      name: 'SaaS MRR Churn & Lifetime Value (LTV:CAC)',
+      category: 'Freelance',
+      description: 'Calculate customer LTV, LTV:CAC ratio health, and CAC payback period months based on churn.',
+      keywords: ['saas ltv cac', 'mrr churn calculator', 'saas payback period', 'ltv calculator'],
+      component: SaasChurnLtvCalculator
     }
   ];
 
@@ -214,7 +270,7 @@ export default function App() {
               </div>
               <div className="flex items-center gap-6">
                 <span>Built for 2026 E-Commerce & Creators</span>
-                <span className="font-mono text-[#ff8c3a]">v1.2.0 (8 Utilities)</span>
+                <span className="font-mono text-[#ff8c3a]">v2.0.0 (14 Utilities)</span>
               </div>
             </footer>
           </div>
