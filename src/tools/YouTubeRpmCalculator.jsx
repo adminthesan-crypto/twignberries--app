@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PlaySquare, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function YouTubeRpmCalculator() {
   const [views, setViews] = useState(150000); // monthly views
@@ -119,9 +120,22 @@ export default function YouTubeRpmCalculator() {
         {/* Right: Revenue Forecast Cards */}
         <div className="lg:col-span-6 space-y-6">
           <div className="glass-card bg-gradient-to-br from-[#131724] to-[#0e111a] border-white/15 space-y-5">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#9ca3af]">
-              Estimated AdSense Revenue Projection
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#9ca3af]">
+                Estimated AdSense Revenue Projection
+              </h3>
+              <CopySummaryButton
+                title="YouTube AdSense RPM Revenue Projection"
+                lines={[
+                  { label: 'Niche Selected', value: currentPreset ? currentPreset.label : 'Custom Niche' },
+                  { label: 'Estimated RPM', value: `$${rpmNum.toFixed(2)} / 1,000 views` },
+                  { label: 'Monthly Views', value: `${viewsNum.toLocaleString()} views` },
+                  { label: 'Monthly AdSense Earnings', value: `$${monthlyEarnings.toFixed(2)}` },
+                  { label: 'Annual Projected Revenue', value: `$${yearlyEarnings.toFixed(2)}` },
+                  { label: 'Daily Average Earning', value: `$${dailyEarnings.toFixed(2)}` }
+                ]}
+              />
+            </div>
 
             {/* Big Monthly Revenue Banner */}
             <div className="p-5 rounded-xl bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 border border-emerald-500/40">

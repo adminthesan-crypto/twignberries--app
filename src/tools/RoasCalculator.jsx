@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Target, BarChart2 } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function RoasCalculator() {
   const [price, setPrice] = useState(79.99);
@@ -142,9 +143,22 @@ export default function RoasCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Break-Even ROAS Target
               </span>
-              <span className={`badge ${netProfitAfterAds >= 0 ? 'badge-success' : 'badge-brand'}`}>
-                {netProfitAfterAds >= 0 ? 'Profitable Ad Campaign' : 'Loss-Making at this CPC'}
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title="ROAS & Profitability Target Summary"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: 'COGS & Fulfillment', value: `$${cogs.toFixed(2)} (${cogsPercent.toFixed(1)}%)` },
+                    { label: 'Ad Spend per Sale (CPA)', value: `$${targetCpa.toFixed(2)}` },
+                    { label: 'Break-Even ROAS Target', value: `${breakEvenRoas.toFixed(2)}x` },
+                    { label: 'Max Allowable Cost per Click (CPC)', value: `$${maxCpc.toFixed(2)}` },
+                    { label: 'Net Profit After Ads', value: `$${netProfitAfterAds.toFixed(2)} (${netMarginPercent.toFixed(1)}% Margin)` }
+                  ]}
+                />
+                <span className={`badge ${netProfitAfterAds >= 0 ? 'badge-success' : 'badge-brand'}`}>
+                  {netProfitAfterAds >= 0 ? 'Profitable Ad Campaign' : 'Loss-Making at this CPC'}
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

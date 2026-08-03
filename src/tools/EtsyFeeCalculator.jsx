@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DollarSign, PieChart, Info, TrendingUp, HelpCircle, AlertCircle } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function EtsyFeeCalculator() {
   const [salePrice, setSalePrice] = useState(35);
@@ -142,9 +143,22 @@ export default function EtsyFeeCalculator() {
         {/* Right Profit Summary Card */}
         <div className="lg:col-span-5 space-y-6">
           <div className="glass-card bg-gradient-to-br from-[#121624] to-[#0e121e] border-white/15">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#9ca3af] mb-4">
-              Financial Breakdown
-            </h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#9ca3af]">
+                Financial Breakdown
+              </h3>
+              <CopySummaryButton
+                title="Etsy Fee & Margin Calculation"
+                lines={[
+                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                  { label: 'Etsy Transaction Cut (6.5%)', value: `$${transactionFee.toFixed(2)}` },
+                  { label: 'Payment Processing Fee', value: `$${paymentFee.toFixed(2)}` },
+                  { label: 'Total Etsy Fees', value: `$${totalEtsyFees.toFixed(2)}` },
+                  { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${profitMargin}% Margin)` },
+                  { label: 'Break-Even Selling Price', value: `$${breakEvenPrice}` }
+                ]}
+              />
+            </div>
 
             {/* Net Profit Big Banner */}
             <div className={`p-4 rounded-xl border mb-6 ${

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DollarSign, ArrowRightLeft, CreditCard, Info, TrendingUp, AlertCircle } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function PayPalFeeCalculator() {
   const [amount, setAmount] = useState(150);
@@ -131,6 +132,18 @@ export default function PayPalFeeCalculator() {
             <div className="flex justify-between items-center text-lg font-bold text-emerald-400 pt-1">
               <span>YOUR NET PAYOUT:</span>
               <span>{currency}{netPayout.toFixed(2)}</span>
+            </div>
+            <div className="pt-2 flex justify-end">
+              <CopySummaryButton
+                title="PayPal Fee & Net Payout Calculation"
+                lines={[
+                  { label: 'Gross Invoice Amount', value: `${currency}${grossAmount.toFixed(2)}` },
+                  { label: 'Percentage Cut', value: `${(percentFee * 100).toFixed(2)}% (${currency}${(grossAmount * percentFee).toFixed(2)})` },
+                  { label: 'Fixed Fee', value: `${currency}${fixedFee.toFixed(2)}` },
+                  { label: 'Total PayPal Fees', value: `${currency}${totalFee.toFixed(2)} (${effectiveRate}% cut)` },
+                  { label: 'YOUR NET PAYOUT', value: `${currency}${netPayout.toFixed(2)}` }
+                ]}
+              />
             </div>
           </div>
         </div>

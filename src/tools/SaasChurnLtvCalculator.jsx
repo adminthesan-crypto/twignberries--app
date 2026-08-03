@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Users, BarChart3, RefreshCw } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function SaasChurnLtvCalculator() {
   const [arpu, setArpu] = useState(49.00); // $49/mo Average Revenue Per User
@@ -138,9 +139,24 @@ export default function SaasChurnLtvCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Net Customer Lifetime Value (LTV)
               </span>
-              <span className={`badge ${ltvCacRatio >= 3 ? 'badge-success' : 'badge-brand'}`}>
-                LTV:CAC Ratio — {ltvCacRatio.toFixed(1)}x
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title="SaaS LTV & Churn Health Summary"
+                  lines={[
+                    { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
+                    { label: 'Gross Margin', value: `${grossMargin}%` },
+                    { label: 'Monthly MRR Churn Rate', value: `${churnRate}%` },
+                    { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
+                    { label: 'Customer Retention Span', value: `${customerLifespanMonths.toFixed(1)} months` },
+                    { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
+                    { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
+                    { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` }
+                  ]}
+                />
+                <span className={`badge ${ltvCacRatio >= 3 ? 'badge-success' : 'badge-brand'}`}>
+                  LTV:CAC Ratio — {ltvCacRatio.toFixed(1)}x
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

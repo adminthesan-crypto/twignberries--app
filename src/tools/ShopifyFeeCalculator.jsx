@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShoppingBag, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, CreditCard, Layers } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function ShopifyFeeCalculator() {
   const [monthlyRevenue, setMonthlyRevenue] = useState(15000); // $15k/mo
@@ -132,9 +133,22 @@ export default function ShopifyFeeCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Total Shopify Monthly Cost
               </span>
-              <span className="badge badge-brand">
-                Effective Cut: {effectiveFeePercent.toFixed(2)}%
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title="Shopify Fee & Plan Breakdown"
+                  lines={[
+                    { label: 'Selected Plan', value: selectedPlan.name },
+                    { label: 'Monthly GMV', value: `$${monthlyGmv.toLocaleString()}` },
+                    { label: 'Total Orders / Month', value: `${ordersCount} orders` },
+                    { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
+                    { label: 'Third-Party Transaction Fees', value: `$${thirdPartyFees.toFixed(2)}` },
+                    { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` }
+                  ]}
+                />
+                <span className="badge badge-brand">
+                  Effective Cut: {effectiveFeePercent.toFixed(2)}%
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

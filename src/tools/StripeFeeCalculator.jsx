@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CreditCard, DollarSign, ArrowRightLeft, TrendingUp, Info } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function StripeFeeCalculator() {
   const [amount, setAmount] = useState(100);
@@ -117,6 +118,18 @@ export default function StripeFeeCalculator() {
             <div className="flex justify-between items-center text-lg font-bold text-emerald-400 pt-1">
               <span>NET PAYOUT TO YOU:</span>
               <span>{currency}{netPayout.toFixed(2)}</span>
+            </div>
+            <div className="pt-2 flex justify-end">
+              <CopySummaryButton
+                title="Stripe Fee & Net Payout Calculation"
+                lines={[
+                  { label: 'Gross Charge Amount', value: `${currency}${grossAmount.toFixed(2)}` },
+                  { label: 'Percentage Cut', value: `${(percentFee * 100).toFixed(1)}% (${currency}${(grossAmount * percentFee).toFixed(2)})` },
+                  { label: 'Fixed Fee', value: `${currency}${fixedFee.toFixed(2)}` },
+                  { label: 'Total Stripe Fees', value: `${currency}${totalStripeFee.toFixed(2)} (${effectiveRate}% cut)` },
+                  { label: 'NET PAYOUT TO YOU', value: `${currency}${netPayout.toFixed(2)}` }
+                ]}
+              />
             </div>
           </div>
         </div>

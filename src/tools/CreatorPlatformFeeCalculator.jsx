@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Users, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Coffee, Heart } from 'lucide-react';
+import { Users, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Coffee, Heart, Award } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function CreatorPlatformFeeCalculator() {
   const [mrr, setMrr] = useState(2500); // $2,500/mo creator earnings
@@ -113,9 +114,23 @@ export default function CreatorPlatformFeeCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Net Take-Home Creator Earnings
               </span>
-              <span className="badge badge-brand">
-                Total Cut: {effectiveCutPercent.toFixed(1)}%
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title={`Creator Platform Cut: ${selected.name}`}
+                  lines={[
+                    { label: 'Platform Selected', value: selected.name },
+                    { label: 'Monthly Gross Revenue', value: `$${grossRevenue.toFixed(2)}` },
+                    { label: 'Avg Payout Transaction Size', value: `$${avgTxSize.toFixed(2)}` },
+                    { label: 'Platform Cut', value: `$${platformFeeDollar.toFixed(2)} (${(selected.cut * 100).toFixed(0)}%)` },
+                    { label: 'Payment Processing Cut', value: `$${paymentFeeDollar.toFixed(2)}` },
+                    { label: 'Total Fees & Deductions', value: `$${totalDeductions.toFixed(2)}` },
+                    { label: 'Net Take-Home Creator Earnings', value: `$${netTakeHome.toFixed(2)} (${(100 - effectiveCutPercent).toFixed(1)}% Keep Rate)` }
+                  ]}
+                />
+                <span className="badge badge-brand">
+                  Total Cut: {effectiveCutPercent.toFixed(1)}%
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Package, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function AmazonFbaCalculator() {
   const [price, setPrice] = useState(39.99);
@@ -148,9 +149,22 @@ export default function AmazonFbaCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Net Profit per Unit
               </span>
-              <span className="badge badge-brand">
-                Margin: {marginPercent.toFixed(1)}%
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title="Amazon FBA Fee & Margin Breakdown"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: 'Referral Fee', value: `$${referralFee.toFixed(2)}` },
+                    { label: 'FBA Fulfillment Fee', value: `$${selectedTier.fee.toFixed(2)}` },
+                    { label: 'Unit Cost', value: `$${cost.toFixed(2)}` },
+                    { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
+                    { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` }
+                  ]}
+                />
+                <span className="badge badge-brand">
+                  Margin: {marginPercent.toFixed(1)}%
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

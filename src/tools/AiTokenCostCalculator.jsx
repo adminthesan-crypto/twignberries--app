@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Cpu, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Zap, BarChart2, Layers } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function AiTokenCostCalculator() {
   const [modelKey, setModelKey] = useState('gpt4o');
@@ -166,9 +167,23 @@ export default function AiTokenCostCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Estimated Monthly API Cost
               </span>
-              <span className="badge badge-brand">
-                {selected.provider}
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton 
+                  title={`AI Token Cost: ${selected.name}`}
+                  lines={[
+                    { label: 'Model Tier', value: selected.name },
+                    { label: 'Input Tokens / Req', value: `${inputTokens} tokens` },
+                    { label: 'Output Tokens / Req', value: `${outputTokens} tokens` },
+                    { label: 'Daily Volume', value: `${dailyRequests.toLocaleString()} req/day` },
+                    { label: 'Cost per 1K Requests', value: `$${costPer1kReq.toFixed(4)}` },
+                    { label: 'Daily Spend', value: `$${dailyCost.toFixed(2)}/day` },
+                    { label: 'Monthly Spend', value: `$${monthlyCost.toFixed(2)}/mo` }
+                  ]}
+                />
+                <span className="badge badge-brand">
+                  {selected.provider}
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

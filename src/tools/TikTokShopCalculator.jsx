@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShoppingBag, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Users } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function TikTokShopCalculator() {
   const [price, setPrice] = useState(29.99);
@@ -153,9 +154,22 @@ export default function TikTokShopCalculator() {
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Net Profit per Item
               </span>
-              <span className="badge badge-brand">
-                Margin: {marginPercent.toFixed(1)}%
-              </span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title="TikTok Shop Fee & Margin Breakdown"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: 'Platform Fee (6% + 30¢)', value: `$${platformFee.toFixed(2)}` },
+                    { label: 'Creator Commission', value: `$${affiliateCommission.toFixed(2)} (${commissionPercent}%)` },
+                    { label: 'Product & Shipping Cost', value: `$${cost.toFixed(2)}` },
+                    { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
+                    { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` }
+                  ]}
+                />
+                <span className="badge badge-brand">
+                  Margin: {marginPercent.toFixed(1)}%
+                </span>
+              </div>
             </div>
 
             <div className="flex items-baseline gap-3">

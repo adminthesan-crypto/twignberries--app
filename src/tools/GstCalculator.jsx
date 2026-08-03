@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calculator, Percent, Copy, Check, ShieldCheck, ArrowRightLeft } from 'lucide-react';
+import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function GstCalculator() {
   const [amount, setAmount] = useState(1000);
@@ -137,7 +138,20 @@ export default function GstCalculator() {
           <div className="p-5 rounded-xl bg-gradient-to-br from-[#121624] to-[#0e111a] border border-white/15 space-y-5">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-xs font-bold uppercase text-[#9ca3af]">TAX SUMMARY REPORT</span>
-              <span className="text-xs font-mono text-emerald-400 font-semibold">{rate}% GST SLAB</span>
+              <div className="flex items-center gap-2">
+                <CopySummaryButton
+                  title={`GST Tax Calculation Report (${rate}% Slab)`}
+                  lines={[
+                    { label: 'Calculation Mode', value: mode === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
+                    { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
+                    { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                    { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                    { label: 'Total GST Amount', value: `${currency}${totalTax.toFixed(2)} (${rate}%)` },
+                    { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
+                  ]}
+                />
+                <span className="text-xs font-mono text-emerald-400 font-semibold">{rate}% GST SLAB</span>
+              </div>
             </div>
 
             <div className="space-y-3 font-mono text-sm">
