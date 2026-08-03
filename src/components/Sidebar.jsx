@@ -35,8 +35,12 @@ export default function Sidebar({
     .filter(Boolean)
     .slice(0, 5);
 
+  const categoryTools = selectedCategory === 'All'
+    ? tools
+    : tools.filter(t => t.category === selectedCategory);
+
   return (
-    <aside className="w-64 glass-panel border-r border-white/10 p-4 flex flex-col gap-8 no-print shrink-0">
+    <aside className="w-64 glass-panel border-r border-white/10 p-4 flex flex-col gap-6 no-print shrink-0 overflow-y-auto">
       {/* Category Navigation */}
       <div>
         <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2">
@@ -58,6 +62,37 @@ export default function Sidebar({
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-[#ff6b00]' : 'text-[#6b7280]'}`} />
                 <span>{cat.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Full List of Tools in Selected Category */}
+      <div className="pt-4 border-t border-white/10">
+        <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2 flex items-center justify-between">
+          <span>{selectedCategory === 'All' ? 'All 15 Utilities' : `${selectedCategory} Tools`}</span>
+          <span className="font-mono text-xs">{categoryTools.length}</span>
+        </div>
+        <div className="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+          {categoryTools.map((t) => {
+            const isCurrent = activeToolId === t.id;
+            return (
+              <button
+                key={t.id}
+                onClick={() => onSelectTool(t.id)}
+                className={`group flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all text-left ${
+                  isCurrent
+                    ? 'bg-[#ff6b00]/20 text-white font-semibold border border-[#ff6b00]/40'
+                    : 'text-[#9ca3af] hover:text-white hover:bg-white/5 border border-transparent'
+                }`}
+              >
+                <span className="truncate pr-2">{t.name}</span>
+                {isCurrent ? (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b00] shrink-0" />
+                ) : (
+                  <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#ff6b00] shrink-0" />
+                )}
               </button>
             );
           })}
