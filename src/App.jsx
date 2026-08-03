@@ -33,8 +33,37 @@ import SvgToImageTool from './tools/SvgToImageTool';
 import SocialImageCropperTool from './tools/SocialImageCropperTool';
 import ColorPaletteTool from './tools/ColorPaletteTool';
 import JsonFormatterTool from './tools/JsonFormatterTool';
-import RegexTesterTool from './tools/RegexTesterTool';
 import OpenGraphPreviewTool from './tools/OpenGraphPreviewTool';
+import PdfTextExtractorTool from './tools/PdfTextExtractorTool';
+import PdfCropTool from './tools/PdfCropTool';
+import PdfBookletTool from './tools/PdfBookletTool';
+import PdfToImageTool from './tools/PdfToImageTool';
+import Base64ImageTool from './tools/Base64ImageTool';
+import CssGradientTool from './tools/CssGradientTool';
+import ImagePaletteTool from './tools/ImagePaletteTool';
+import SvgOptimizerTool from './tools/SvgOptimizerTool';
+import ImageCompressorTool from './tools/ImageCompressorTool';
+import ImageResizerTool from './tools/ImageResizerTool';
+import SqlFormatterTool from './tools/SqlFormatterTool';
+import CsvJsonTool from './tools/CsvJsonTool';
+import DiffViewerTool from './tools/DiffViewerTool';
+import JwtDecoderTool from './tools/JwtDecoderTool';
+import CronParserTool from './tools/CronParserTool';
+import MarkdownEditorTool from './tools/MarkdownEditorTool';
+import PasswordGeneratorTool from './tools/PasswordGeneratorTool';
+import MetaRobotsTool from './tools/MetaRobotsTool';
+import KeywordDensityTool from './tools/KeywordDensityTool';
+import SitemapGeneratorTool from './tools/SitemapGeneratorTool';
+import FaviconGeneratorTool from './tools/FaviconGeneratorTool';
+import StripePaypalTool from './tools/StripePaypalTool';
+import BundleMarginTool from './tools/BundleMarginTool';
+import ShippingRateTool from './tools/ShippingRateTool';
+import InvoiceTaxTool from './tools/InvoiceTaxTool';
+import ProjectScoperTool from './tools/ProjectScoperTool';
+import TimezonePlannerTool from './tools/TimezonePlannerTool';
+import QrCodeGeneratorTool from './tools/QrCodeGeneratorTool';
+import EmailSubjectTool from './tools/EmailSubjectTool';
+import AdCopyCounterTool from './tools/AdCopyCounterTool';
 import CultureMemeWidget from './components/CultureMemeWidget';
 
 /* ─── Tool Definitions ───────────────────────────────────── */
@@ -468,6 +497,433 @@ const TOOLS = [
     ),
     component: OpenGraphPreviewTool,
   },
+  // ─── PDF Suite Expansion ───
+  {
+    id: 'pdf-text-extractor',
+    name: 'PDF Text Extractor & Plaintext Converter',
+    category: 'PDF Tools',
+    description: 'Extract raw selectable text from PDF pages offline in your browser.',
+    keywords: ['pdf to text', 'extract text pdf', 'pdf parser'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+      </svg>
+    ),
+    component: PdfTextExtractorTool,
+  },
+  {
+    id: 'pdf-crop',
+    name: 'PDF Margin Cropper & Trim Tool',
+    category: 'PDF Tools',
+    description: 'Trim white margins and crop PDF page boxes for Kindle & e-readers.',
+    keywords: ['crop pdf', 'trim pdf margin', 'resize pdf margins'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/>
+      </svg>
+    ),
+    component: PdfCropTool,
+  },
+  {
+    id: 'pdf-booklet',
+    name: 'PDF Booklet Imposition & Signature Planner',
+    category: 'PDF Tools',
+    description: 'Plan signature sheets and page imposition for saddle-stitch print booklets.',
+    keywords: ['booklet pdf', 'imposition pdf', 'print booklet'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5.5Z"/><path d="M6 17h14"/>
+      </svg>
+    ),
+    component: PdfBookletTool,
+  },
+  {
+    id: 'pdf-to-image',
+    name: 'PDF to High-DPI Image Exporter',
+    category: 'PDF Tools',
+    description: 'Convert PDF document pages to PNG or JPEG images at custom DPI.',
+    keywords: ['pdf to png', 'pdf to jpg', 'export pdf image'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      </svg>
+    ),
+    component: PdfToImageTool,
+  },
+  // ─── Image & Media Suite Expansion ───
+  {
+    id: 'base64-image',
+    name: 'Image to Base64 Data URI Converter',
+    category: 'Image & Media',
+    description: 'Convert images to base64 strings or embed data URIs directly in CSS/HTML.',
+    keywords: ['base64 image', 'data uri image', 'image to string'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+    ),
+    component: Base64ImageTool,
+  },
+  {
+    id: 'css-gradient',
+    name: 'CSS Linear & Radial Gradient Generator',
+    category: 'Image & Media',
+    description: 'Design multi-stop CSS gradients with angle controls and copy CSS syntax.',
+    keywords: ['css gradient', 'gradient generator', 'linear gradient'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    ),
+    component: CssGradientTool,
+  },
+  {
+    id: 'image-palette',
+    name: 'Image Color Palette & Hex Extractor',
+    category: 'Image & Media',
+    description: 'Extract dominant color palettes and hex codes directly from any image.',
+    keywords: ['extract color from image', 'image palette', 'color picker image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+      </svg>
+    ),
+    component: ImagePaletteTool,
+  },
+  {
+    id: 'svg-optimizer',
+    name: 'SVG Code Optimizer & Cleaner',
+    category: 'Image & Media',
+    description: 'Clean up bloated SVG vector code, remove editor metadata, and reduce file size.',
+    keywords: ['svg optimizer', 'clean svg', 'compress svg', 'svg minify'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+    component: SvgOptimizerTool,
+  },
+  {
+    id: 'image-compressor',
+    name: 'Browser Image Compressor & Optimizer',
+    category: 'Image & Media',
+    description: 'Compress PNG, WebP, and JPEG images locally without quality loss.',
+    keywords: ['compress image', 'optimize png jpg', 'image size reducer'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    ),
+    component: ImageCompressorTool,
+  },
+  {
+    id: 'image-resizer',
+    name: 'Batch Image Resizer & Aspect Crop',
+    category: 'Image & Media',
+    description: 'Resize image dimensions by percentage or target pixel width/height.',
+    keywords: ['resize image', 'image dimensions', 'scale photo'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/>
+      </svg>
+    ),
+    component: ImageResizerTool,
+  },
+  // ─── AI & Dev Suite Expansion ───
+  {
+    id: 'sql-formatter',
+    name: 'SQL Query Formatter & Syntax Beautifier',
+    category: 'AI & Dev',
+    description: 'Beautify complex PostgreSQL, MySQL, and Snowflake queries offline.',
+    keywords: ['sql formatter', 'format sql query', 'beautify sql'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+      </svg>
+    ),
+    component: SqlFormatterTool,
+  },
+  {
+    id: 'csv-json',
+    name: 'CSV to JSON & Array Converter',
+    category: 'AI & Dev',
+    description: 'Convert CSV spreadsheets to structured JSON arrays or objects instantly.',
+    keywords: ['csv to json', 'convert csv json', 'csv parser'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+      </svg>
+    ),
+    component: CsvJsonTool,
+  },
+  {
+    id: 'diff-viewer',
+    name: 'Code & Text Side-by-Side Diff Checker',
+    category: 'AI & Dev',
+    description: 'Compare two text or code snippets line-by-line to spot differences.',
+    keywords: ['diff checker', 'compare text', 'code diff viewer'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 6H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h13l4-3.5L18 6Z"/><path d="M6 18h13a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H6l-4 3.5 4 3.5Z"/>
+      </svg>
+    ),
+    component: DiffViewerTool,
+  },
+  {
+    id: 'jwt-decoder',
+    name: 'JWT Token Decoder & Expiry Inspector',
+    category: 'AI & Dev',
+    description: 'Decode JSON Web Token header, payload claims, and check expiration time.',
+    keywords: ['jwt decoder', 'decode jwt token', 'jwt parser'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    ),
+    component: JwtDecoderTool,
+  },
+  {
+    id: 'cron-parser',
+    name: 'Cron Schedule Expression Generator & Explainer',
+    category: 'AI & Dev',
+    description: 'Generate standard 5-field cron syntax and see next execution runtimes.',
+    keywords: ['cron parser', 'cron generator', 'explain cron expression'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    component: CronParserTool,
+  },
+  {
+    id: 'markdown-editor',
+    name: 'Markdown Live Editor & HTML Converter',
+    category: 'AI & Dev',
+    description: 'Write markdown with live rendered preview and export clean HTML code.',
+    keywords: ['markdown editor', 'markdown preview', 'md to html'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+    ),
+    component: MarkdownEditorTool,
+  },
+  {
+    id: 'password-generator',
+    name: 'Secure Offline Password & Passphrase Generator',
+    category: 'AI & Dev',
+    description: 'Generate cryptographically secure passwords and Diceware passphrases locally.',
+    keywords: ['password generator', 'secure passphrase', 'random password offline'],
+    color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    ),
+    component: PasswordGeneratorTool,
+  },
+  // ─── SEO & Web Suite Expansion ───
+  {
+    id: 'meta-robots',
+    name: 'Meta Robots & Canonical Tag Generator',
+    category: 'SEO & Web',
+    description: 'Generate clean HTML head meta robots tags and canonical link directives.',
+    keywords: ['meta robots tag', 'canonical url generator', 'seo robots noindex'],
+    color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+    ),
+    component: MetaRobotsTool,
+  },
+  {
+    id: 'keyword-density',
+    name: 'SEO Keyword Density & Frequency Analyzer',
+    category: 'SEO & Web',
+    description: 'Analyze content keyword frequency, density percentage, and stop words.',
+    keywords: ['keyword density', 'seo keyword checker', 'word frequency analyzer'],
+    color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    ),
+    component: KeywordDensityTool,
+  },
+  {
+    id: 'sitemap-generator',
+    name: 'Sitemap XML & URL List Extractor',
+    category: 'SEO & Web',
+    description: 'Generate Google-compliant sitemap XML files with priority and changefreq.',
+    keywords: ['sitemap generator', 'xml sitemap', 'url list to xml'],
+    color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+      </svg>
+    ),
+    component: SitemapGeneratorTool,
+  },
+  {
+    id: 'favicon-generator',
+    name: 'SVG Favicon & Web Manifest Generator',
+    category: 'SEO & Web',
+    description: 'Design vector SVG favicons and export site.webmanifest JSON for modern PWA.',
+    keywords: ['favicon generator', 'svg favicon', 'web manifest generator'],
+    color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><polygon points="12 8 8 12 12 16 12 8"/>
+      </svg>
+    ),
+    component: FaviconGeneratorTool,
+  },
+  // ─── E-Commerce Suite Expansion ───
+  {
+    id: 'stripe-paypal',
+    name: 'Stripe vs PayPal Processing Fee Comparator',
+    category: 'E-Commerce',
+    description: 'Compare Stripe and PayPal fee cuts side-by-side for domestic and international sales.',
+    keywords: ['stripe vs paypal', 'payment fee comparison', 'merchant processor fee'],
+    color: '#f97316', bg: 'rgba(249,115,22,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    ),
+    component: StripePaypalTool,
+  },
+  {
+    id: 'bundle-margin',
+    name: 'E-Commerce Product Bundle Margin Calculator',
+    category: 'E-Commerce',
+    description: 'Calculate product bundle discount profitability, gross margins, and break-even units.',
+    keywords: ['bundle pricing', 'bundle margin calculator', 'kit pricing e-commerce'],
+    color: '#f97316', bg: 'rgba(249,115,22,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      </svg>
+    ),
+    component: BundleMarginTool,
+  },
+  {
+    id: 'shipping-rate',
+    name: 'Shopify/WooCommerce Shipping Rate & DIM Solver',
+    category: 'E-Commerce',
+    description: 'Calculate dimensional weight (DIM Divisor) and carrier billable shipping weight.',
+    keywords: ['dimensional weight', 'dim weight calculator', 'shipping cost estimator'],
+    color: '#f97316', bg: 'rgba(249,115,22,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    ),
+    component: ShippingRateTool,
+  },
+  // ─── Freelance & Business Suite Expansion ───
+  {
+    id: 'invoice-tax',
+    name: 'Multi-Item Invoice Line Tax & Discount Calculator',
+    category: 'Freelance',
+    description: 'Calculate multi-line item totals, percentage/flat discounts, and regional sales tax.',
+    keywords: ['invoice tax calculator', 'multi item discount', 'line item tax'],
+    color: '#22c55e', bg: 'rgba(34,197,94,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+    ),
+    component: InvoiceTaxTool,
+  },
+  {
+    id: 'project-scoper',
+    name: 'Freelance Project Scoper & Quote Generator',
+    category: 'Freelance',
+    description: 'Build structured project scopes, estimate billable hours, and buffer risk contingency.',
+    keywords: ['project quote estimate', 'freelance quote generator', 'project scope calculator'],
+    color: '#22c55e', bg: 'rgba(34,197,94,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+      </svg>
+    ),
+    component: ProjectScoperTool,
+  },
+  {
+    id: 'timezone-planner',
+    name: 'Remote Team Timezone & Overlap Planner',
+    category: 'Freelance',
+    description: 'Coordinate remote teams across UTC offsets and discover golden working overlap hours.',
+    keywords: ['timezone planner', 'team overlap calculator', 'utc meeting planner'],
+    color: '#22c55e', bg: 'rgba(34,197,94,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    ),
+    component: TimezonePlannerTool,
+  },
+  // ─── Marketing & Content Suite Expansion ───
+  {
+    id: 'qr-generator',
+    name: 'SVG QR Code Generator with Custom Colors',
+    category: 'Marketing',
+    description: 'Create vector SVG QR codes for URLs and marketing campaigns without server calls.',
+    keywords: ['qr code generator', 'svg qr code', 'offline qr generator'],
+    color: '#14b8a6', bg: 'rgba(20,184,166,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+      </svg>
+    ),
+    component: QrCodeGeneratorTool,
+  },
+  {
+    id: 'email-subject',
+    name: 'Email Subject Line & Inbox Preview Checker',
+    category: 'Marketing',
+    description: 'Preview email subject & preheader text in iOS Mail and check spam trigger words.',
+    keywords: ['email subject checker', 'preheader preview', 'spam word checker'],
+    color: '#14b8a6', bg: 'rgba(20,184,166,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+      </svg>
+    ),
+    component: EmailSubjectTool,
+  },
+  {
+    id: 'ad-copy-counter',
+    name: 'Ad Copy Character Limit & Visual Meter',
+    category: 'Marketing',
+    description: 'Draft Google Search, Meta, and LinkedIn ad copy against exact character limits.',
+    keywords: ['ad copy character limit', 'google ads headline counter', 'meta ad text counter'],
+    color: '#14b8a6', bg: 'rgba(20,184,166,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+    ),
+    component: AdCopyCounterTool,
+  },
 ];
 
 /* ─── Tool Card (Monday.com Board Card Style) ────────────── */
@@ -534,7 +990,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
         <div className="max-w-xl text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
             <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
-            Twignberries — 30 Offline Tools for Founders & Creators
+            Pahruli — 60 Offline Tools for Founders & Creators
           </div>
           <h1 style={{
             fontFamily: 'var(--font-heading)',
@@ -556,7 +1012,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             lineHeight: 1.6,
             marginBottom: '32px'
           }}>
-            30 calculators, fee solvers, and PDF utilities built for sellers and creators. Zero cloud uploads, zero sign-up walls, and no $99/month subscriptions.
+            60 calculators, fee solvers, and PDF utilities built for sellers and creators. Zero cloud uploads, zero sign-up walls, and no $99/month subscriptions.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a
@@ -717,7 +1173,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
       >
         <div className="flex items-center gap-2">
           <span style={{ fontSize: 11.5, fontWeight: 700, color: '#6161ff', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Why Twignberries Exists
+            Why Pahruli Exists
           </span>
         </div>
         <p style={{
@@ -911,7 +1367,7 @@ export default function App() {
                 Built with a little too much love for spreadsheets & zero tolerance for cloud snooping
               </div>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
-                v6.0.0 · 30 Tools & PDF Suite
+                v6.0.0 · 60 Tools & PDF Suite
               </span>
             </footer>
           </div>

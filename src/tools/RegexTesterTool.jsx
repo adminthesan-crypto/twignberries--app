@@ -1,249 +1,187 @@
-import React, { useState, useMemo } from 'react';
-import { Terminal, CheckCircle2, AlertCircle, Copy, Check, ShieldCheck, Play } from 'lucide-react';
+import React, { useState } from 'react';
+import { Terminal, ShieldCheck, AlertCircle, HelpCircle } from 'lucide-react';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
 };
 
-const PRESETS = [
-  { id: 'email', name: 'Email Address', pattern: '([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)', desc: 'Matches standard user@domain.com addresses.' },
-  { id: 'url', name: 'HTTP / HTTPS URL', pattern: 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', desc: 'Matches web URLs with or without SSL.' },
-  { id: 'ipv4', name: 'IPv4 Address', pattern: '\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b', desc: 'Matches standard 0.0.0.0 to 255.255.255.255 IP addresses.' },
-  { id: 'hex', name: 'HEX Color Code', pattern: '#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\\b', desc: 'Matches 3 or 6 character hexadecimal colors.' }
-];
-
-const DEFAULT_TEXT = `Hello! Welcome to Twignberries v6.0 Developer Suite.
-Contact our team at support@twignberries.com or legal@acme.org.
-Visit our documentation at https://twignberries.com/docs or http://api.twignberries.io.
-Primary brand color is #6161ff and secondary status is #00c875.`;
-
 export default function RegexTesterTool() {
-  const [pattern, setPattern] = useState(PRESETS[0].pattern);
-  const [flags, setFlags] = useState('g'); // g, i, m
-  const [text, setText] = useState(DEFAULT_TEXT);
+  const [pattern, setPattern] = useState('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}');
+  const [flags, setFlags] = useState('gi');
+  const [testText, setTestText] = useState(
+    `Contact our team at support@pahruli.com or sales@enterprise.co.uk for billing assistance. Admin: root@localhost.`
+  );
   const [errorMsg, setErrorMsg] = useState(null);
-  const [copied, setCopied] = useState(false);
+  const [matches, setMatches] = useState([]);
 
-  const { matches, isRegexValid } = useMemo(() => {
-    setErrorMsg(null);
-    if (!pattern) return { matches: [], isRegexValid: true };
-
+  React.useEffect(() => {
     try {
-      const re = new RegExp(pattern, flags);
-      const results = [];
-      let m;
+      setErrorMsg(null);
+      if (!pattern) {
+        setMatches([]);
+        return;
+      }
+      const regex = new RegExp(pattern, flags);
+      const found = [];
+      let match;
+
       if (flags.includes('g')) {
-        let count = 0;
-        while ((m = re.exec(text)) !== null && count < 200) {
-          results.push({
-            index: m.index,
-            match: m[0],
-            groups: m.slice(1)
+        while ((match = regex.exec(testText)) !== null) {
+          found.push({
+            str: match[0],
+            index: match.index,
+            groups: match.slice(1)
           });
-          count++;
-          if (m.index === re.lastIndex) re.lastIndex++;
+          if (match.index === regex.lastIndex) regex.lastIndex++; // prevent infinite loop
         }
       } else {
-        m = re.exec(text);
-        if (m) {
-          results.push({
-            index: m.index,
-            match: m[0],
-            groups: m.slice(1)
+        match = regex.exec(testText);
+        if (match) {
+          found.push({
+            str: match[0],
+            index: match.index,
+            groups: match.slice(1)
           });
         }
       }
-      return { matches: results, isRegexValid: true };
+      setMatches(found);
     } catch (err) {
-      setErrorMsg(err.message);
-      return { matches: [], isRegexValid: false };
+      setErrorMsg(`Invalid Regex: ${err.message}`);
+      setMatches([]);
     }
-  }, [pattern, flags, text]);
+  }, [pattern, flags, testText]);
 
-  const toggleFlag = (f) => {
-    if (flags.includes(f)) {
-      setFlags(flags.replace(f, ''));
+  const toggleFlag = (flag) => {
+    if (flags.includes(flag)) {
+      setFlags(flags.replace(flag, ''));
     } else {
-      setFlags(flags + f);
+      setFlags(flags + flag);
     }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(`/${pattern}/${flags}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
-      {/* Left Column: Regex Pattern Input & Text Editor */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-        <div className="form-card">
-          <div className="flex items-center justify-between mb-3">
-            <div style={SL} className="mb-0">1. Regular Expression (PCRE / ES6)</div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              {['g', 'i', 'm'].map(f => (
-                <button
-                  key={f}
-                  type="button"
-                  onClick={() => toggleFlag(f)}
-                  style={{
-                    padding: '6px 10px', borderRadius: 8,
-                    border: flags.includes(f) ? '2px solid #6161ff' : '1px solid #d0d4e4',
-                    background: flags.includes(f) ? '#f3f5ff' : '#ffffff',
-                    color: flags.includes(f) ? '#6161ff' : '#676879',
-                    fontSize: 12, fontWeight: 700, cursor: 'pointer'
-                  }}
-                >
-                  Flag: {f}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-            <span style={{ fontSize: 18, fontWeight: 700, color: '#676879' }}>/</span>
-            <input
-              type="text"
-              value={pattern}
-              onChange={e => setPattern(e.target.value)}
-              placeholder="e.g. ([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+)"
-              style={{
-                flex: 1, padding: '12px 16px', borderRadius: 12,
-                border: errorMsg ? '2px solid #e2445c' : '1px solid #d0d4e4',
-                background: '#ffffff', fontFamily: 'var(--font-mono)', fontSize: 14, fontWeight: 700, color: '#1f2532'
-              }}
-            />
-            <span style={{ fontSize: 18, fontWeight: 700, color: '#676879' }}>/{flags}</span>
-          </div>
-
-          <div style={{ fontSize: 13, fontWeight: 600, color: '#676879', marginBottom: 10 }}>
-            ⚡ Common Pattern Presets:
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-            {PRESETS.map(p => (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => setPattern(p.pattern)}
-                style={{
-                  padding: '8px 6px', borderRadius: 10, border: '1px solid #d0d4e4',
-                  background: '#f6f8fa', color: '#1f2532', fontSize: 12, fontWeight: 700,
-                  cursor: 'pointer', textAlign: 'center'
-                }}
-              >
-                {p.name}
-              </button>
-            ))}
-          </div>
-
-          {errorMsg && (
-            <div style={{ marginTop: 12, padding: '10px 14px', borderRadius: 10, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <AlertCircle size={15} />
-              <span>{errorMsg}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Test Subject String Card */}
-        <div className="form-card">
-          <div className="flex items-center justify-between mb-3">
-            <div style={SL} className="mb-0">2. Test Subject Text</div>
-            <button
-              type="button"
-              onClick={() => setText(DEFAULT_TEXT)}
-              style={{ padding: '6px 10px', borderRadius: 8, border: '1px solid #d0d4e4', background: '#fff', fontSize: 11, fontWeight: 700, color: '#676879', cursor: 'pointer' }}
-            >
-              Reset Sample Text
-            </button>
-          </div>
-
-          <textarea
-            value={text}
-            onChange={e => setText(e.target.value)}
-            rows={7}
-            placeholder="Type or paste text to test regex matches..."
-            style={{
-              width: '100%', padding: '14px', borderRadius: 12, border: '1px solid #d0d4e4',
-              background: '#f6f8fa', fontFamily: 'var(--font-mono)', fontSize: 13.5, color: '#1f2532',
-              resize: 'vertical'
-            }}
-          />
-
-          {/* Matched Highlights List */}
-          <div style={{ marginTop: 20 }}>
-            <div style={SL}>3. Extracted Matches & Capture Groups</div>
-
-            {matches.length === 0 ? (
-              <div style={{ padding: '20px', borderRadius: 12, background: '#f6f8fa', border: '1px dashed #d0d4e4', textAlign: 'center', color: '#676879', fontSize: 13, fontWeight: 600 }}>
-                No regex matches found in test subject text.
-              </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 260, overflowY: 'auto' }}>
-                {matches.map((m, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      padding: '12px 14px', borderRadius: 10, background: '#f3f5ff',
-                      border: '1px solid rgba(97,97,255,0.25)', display: 'flex',
-                      alignItems: 'center', justifyItems: 'start', gap: 12
-                    }}
-                  >
-                    <span style={{ width: 28, height: 28, borderRadius: 8, background: '#6161ff', color: '#fff', fontSize: 12, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      #{idx + 1}
-                    </span>
-                    <div style={{ minWidth: 0, flex: 1 }}>
-                      <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', fontFamily: 'var(--font-mono)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {m.match}
-                      </div>
-                      <div style={{ fontSize: 11.5, color: '#676879', marginTop: 2 }}>
-                        Index: {m.index} {m.groups.length > 0 && `• Groups: [${m.groups.join(', ')}]`}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+    <div className="space-y-6">
+      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+        <div>
+          <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
+            100% Client-Side Regular Expression Tester
+          </h4>
+          <p style={{ fontSize: 13, color: '#676879', marginTop: 2 }}>
+            "Test emails, URLs, and scraping patterns against sensitive text samples safely in your local browser."
+          </p>
         </div>
       </div>
 
-      {/* Right Column: Sticky Live Action & Results */}
-      <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-2">
-            <div style={SL} className="mb-0">Match Count</div>
-            <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
-          </div>
+      {errorMsg && (
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+          <AlertCircle size={18} />
+          {errorMsg}
+        </div>
+      )}
 
-          <div style={{ marginBottom: 20 }}>
-            <div className="result-number" style={{ fontSize: 36, color: matches.length > 0 ? '#00c875' : '#676879' }}>
-              {matches.length} {matches.length === 1 ? 'Match' : 'Matches'}
-            </div>
-            <div style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
-              {isRegexValid ? 'Valid ES6 RegExp Syntax' : 'Syntax Error'}
-            </div>
-          </div>
-
-          <button
-            onClick={handleCopy}
-            className="btn-primary"
-            style={{ width: '100%', background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-          >
-            {copied ? <Check size={16} /> : <Copy size={16} />}
-            {copied ? 'Copied Regex Pattern!' : 'Copy Regex String (e.g. /pattern/g)'}
-          </button>
-
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
-            <ShieldCheck size={14} color="#00c875" />
-            <span>Local RegExp V8 engine. Zero cloud calls.</span>
+      {/* Pattern Input & Flags */}
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+        <div>
+          <div style={SL}>Regular Expression Pattern</div>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-lg font-bold text-[#868894]">/</span>
+            <input
+              type="text"
+              value={pattern}
+              onChange={(e) => setPattern(e.target.value)}
+              placeholder="e.g. \\d{3}-\\d{3}-\\d{4}"
+              className="w-full h-12 px-4 rounded-xl border border-[#d0d4e4] font-mono text-sm font-bold text-[#1f2532] focus:outline-none focus:border-[#6161ff]"
+            />
+            <span className="font-mono text-lg font-bold text-[#868894]">/</span>
+            <input
+              type="text"
+              value={flags}
+              onChange={(e) => setFlags(e.target.value)}
+              className="w-20 h-12 px-3 rounded-xl border border-[#d0d4e4] font-mono text-sm font-bold text-[#1f2532] text-center"
+            />
           </div>
         </div>
 
-        <div className="insight-block">
-          <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why test Regex Offline?</div>
-          Regular expressions often parse sensitive PII, passwords, and user logs. Testing them locally ensures zero data leakage to external regex debugging servers.
+        <div className="flex items-center gap-4 text-xs font-bold text-[#676879]">
+          <span>Quick Flags:</span>
+          <button
+            onClick={() => toggleFlag('g')}
+            className={`px-3 py-1.5 rounded-lg border transition ${
+              flags.includes('g')
+                ? 'border-[#6161ff] bg-[#f5f6ff] text-[#6161ff]'
+                : 'border-[#d0d4e4] bg-white text-[#676879]'
+            }`}
+          >
+            /g (Global All Matches)
+          </button>
+          <button
+            onClick={() => toggleFlag('i')}
+            className={`px-3 py-1.5 rounded-lg border transition ${
+              flags.includes('i')
+                ? 'border-[#6161ff] bg-[#f5f6ff] text-[#6161ff]'
+                : 'border-[#d0d4e4] bg-white text-[#676879]'
+            }`}
+          >
+            /i (Case Insensitive)
+          </button>
+          <button
+            onClick={() => toggleFlag('m')}
+            className={`px-3 py-1.5 rounded-lg border transition ${
+              flags.includes('m')
+                ? 'border-[#6161ff] bg-[#f5f6ff] text-[#6161ff]'
+                : 'border-[#d0d4e4] bg-white text-[#676879]'
+            }`}
+          >
+            /m (Multiline)
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div>
+          <div style={SL}>Test String / Sample Text</div>
+          <textarea
+            value={testText}
+            onChange={(e) => setTestText(e.target.value)}
+            rows={10}
+            placeholder="Enter text to test pattern against..."
+            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+          />
+        </div>
+
+        <div>
+          <div style={SL}>Match Results ({matches.length} found)</div>
+          <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] min-h-[220px] max-h-[300px] overflow-y-auto space-y-2">
+            {matches.length === 0 ? (
+              <span className="text-xs text-[#868894] font-mono">No regex matches found in test string.</span>
+            ) : (
+              matches.map((m, idx) => (
+                <div
+                  key={idx}
+                  className="p-3 rounded-lg bg-white border border-[#e6e9ef] shadow-sm flex flex-col gap-1"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="badge badge-brand text-[10px]">Match #{idx + 1}</span>
+                    <span className="font-mono text-xs text-[#868894]">Index: {m.index}</span>
+                  </div>
+                  <div className="font-mono text-xs font-bold text-[#1f2532] break-all">
+                    "{m.str}"
+                  </div>
+                  {m.groups.length > 0 && (
+                    <div className="mt-1 pt-1 border-t border-[#f0f2f5] text-[11px] text-[#676879]">
+                      <span className="font-bold">Capture Groups: </span>
+                      {m.groups.map((g, gi) => (
+                        <span key={gi} className="px-1.5 py-0.5 rounded bg-gray-100 font-mono mr-1">
+                          ${gi + 1}: {g || 'undefined'}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

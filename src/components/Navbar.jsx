@@ -38,15 +38,15 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 21, color: '#1f2532', letterSpacing: '-0.02em', fontStyle: 'italic' }}>
-                twignberries<span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontSize: 16, fontWeight: 700 }}>.com</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: '#1f2532', letterSpacing: '-0.02em', fontStyle: 'italic' }}>
+                pahruli<span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontSize: 16, fontWeight: 700 }}>.com</span>
               </span>
               <span className="badge badge-success" style={{ fontSize: 10, padding: '2px 8px' }}>
                 Free
               </span>
             </div>
             <div style={{ fontSize: 11.5, color: '#676879', fontWeight: 500, lineHeight: 1, marginTop: 1 }}>
-              30 offline tools. No cloud uploads. No signups.
+              60 offline tools. No cloud uploads. No signups.
             </div>
           </div>
         </div>
