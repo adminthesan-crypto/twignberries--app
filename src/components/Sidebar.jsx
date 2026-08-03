@@ -8,7 +8,6 @@ import {
   DollarSign, 
   LayoutGrid,
   ChevronRight,
-  BookmarkCheck,
   Cpu
 } from 'lucide-react';
 
@@ -37,7 +36,7 @@ export default function Sidebar({
     .slice(0, 5);
 
   return (
-    <aside className="w-64 glass-panel border-r border-white/10 p-4 flex flex-col gap-6 no-print shrink-0">
+    <aside className="w-64 glass-panel border-r border-white/10 p-4 flex flex-col gap-8 no-print shrink-0">
       {/* Category Navigation */}
       <div>
         <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2">
@@ -66,7 +65,7 @@ export default function Sidebar({
       </div>
 
       {/* Starred / Pinned Workspace */}
-      <div>
+      <div className="pt-4 border-t border-white/10">
         <div className="flex items-center justify-between px-3 mb-2">
           <span className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase flex items-center gap-1.5">
             <Star className="w-3 h-3 text-amber-400 fill-amber-400" /> Starred Tools
@@ -98,7 +97,7 @@ export default function Sidebar({
       </div>
 
       {/* Recent History */}
-      <div>
+      <div className="pt-4 border-t border-white/10">
         <div className="text-[11px] font-bold tracking-wider text-[#6b7280] uppercase px-3 mb-2 flex items-center gap-1.5">
           <Clock className="w-3 h-3 text-[#3b82f6]" /> Recently Used
         </div>
@@ -126,17 +125,6 @@ export default function Sidebar({
             ))}
           </div>
         )}
-      </div>
-
-      {/* Habit Builder Tip Banner */}
-      <div className="mt-auto p-3.5 rounded-xl bg-gradient-to-br from-[#121622] to-[#181d2c] border border-white/10">
-        <div className="flex items-center gap-2 text-xs font-semibold text-white mb-1">
-          <BookmarkCheck className="w-4 h-4 text-[#ff6b00]" />
-          <span>Why Twignberries?</span>
-        </div>
-        <p className="text-[11px] text-[#9ca3af] leading-relaxed">
-          Zero signups, instant client-side math, and your workflow saved automatically to localStorage.
-        </p>
       </div>
     </aside>
   );

@@ -32,13 +32,13 @@ export default function EtsyFeeCalculator() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-heading font-bold text-white">
+            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight text-white">
               Etsy Profit Margin & Fee Calculator (2026)
             </h1>
             <span className="badge badge-success">UPDATED FOR 2026</span>
           </div>
-          <p className="text-sm text-[#9ca3af] mt-1">
-            Calculate your exact listing fee, 6.5% transaction cut, processing fees, and true net profit.
+          <p className="text-sm text-[#9ca3af] mt-1.5">
+            Instant 2026 Etsy fee breakdown and true net profit.
           </p>
         </div>
       </div>
@@ -130,7 +130,7 @@ export default function EtsyFeeCalculator() {
                   className={`px-3 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                     offsiteAds === opt.id
                       ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white font-semibold'
-                      : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10'
+                      : 'bg-[#1e2232] border-white/25 text-[#e5e7eb] hover:bg-white/15 hover:border-white/40 hover:text-white'
                   }`}
                 >
                   {opt.label}
@@ -227,7 +227,7 @@ export default function EtsyFeeCalculator() {
               <Info className="w-4 h-4 text-[#ff6b00]" /> Why know your Etsy Margin?
             </div>
             <p className="leading-relaxed">
-              Etsy charges a mandatory 6.5% transaction fee on both the item price <strong className="text-white">and</strong> shipping fee. Bookmark this tool to check margins before listing new handmade inventory.
+              Etsy applies its mandatory 6.5% transaction cut to both item price and shipping.
             </p>
           </div>
         </div>
