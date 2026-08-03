@@ -8,7 +8,8 @@ import {
   DollarSign, 
   LayoutGrid,
   ChevronRight,
-  BookmarkCheck
+  BookmarkCheck,
+  Cpu
 } from 'lucide-react';
 
 export default function Sidebar({ 
@@ -24,7 +25,8 @@ export default function Sidebar({
   const categories = [
     { id: 'All', label: 'All Utilities', icon: LayoutGrid },
     { id: 'E-Commerce', label: 'E-Commerce & Fees', icon: DollarSign },
-    { id: 'Freelance', label: 'Freelance & B2B', icon: FileText },
+    { id: 'AI & Dev', label: 'AI & Developer', icon: Cpu },
+    { id: 'Freelance', label: 'Freelance & SaaS', icon: FileText },
     { id: 'Marketing', label: 'Marketing & Web', icon: Link2 },
   ];
 

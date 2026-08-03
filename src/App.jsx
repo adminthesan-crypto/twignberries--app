@@ -22,6 +22,7 @@ import RoasCalculator from './tools/RoasCalculator';
 import ShopifyFeeCalculator from './tools/ShopifyFeeCalculator';
 import CreatorPlatformFeeCalculator from './tools/CreatorPlatformFeeCalculator';
 import SaasChurnLtvCalculator from './tools/SaasChurnLtvCalculator';
+import AiTokenCostCalculator from './tools/AiTokenCostCalculator';
 
 import { Sparkles, Star, ExternalLink, ShieldCheck } from 'lucide-react';
 
@@ -138,6 +139,14 @@ export default function App() {
       description: 'Calculate customer LTV, LTV:CAC ratio health, and CAC payback period months based on churn.',
       keywords: ['saas ltv cac', 'mrr churn calculator', 'saas payback period', 'ltv calculator'],
       component: SaasChurnLtvCalculator
+    },
+    {
+      id: 'ai-token-cost',
+      name: 'AI API Token & Inference Cost Calculator (2026)',
+      category: 'AI & Dev',
+      description: 'Compare GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and DeepSeek API token rates & monthly spend.',
+      keywords: ['ai cost calculator', 'gpt4o token pricing', 'claude 3.5 pricing', 'llm api cost', 'token calculator'],
+      component: AiTokenCostCalculator
     }
   ];
 
@@ -270,7 +279,7 @@ export default function App() {
               </div>
               <div className="flex items-center gap-6">
                 <span>Built for 2026 E-Commerce & Creators</span>
-                <span className="font-mono text-[#ff8c3a]">v2.0.0 (14 Utilities)</span>
+                <span className="font-mono text-[#ff8c3a]">v2.1.0 (15 Utilities)</span>
               </div>
             </footer>
           </div>

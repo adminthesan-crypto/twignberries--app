@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Twignberries Daily Workspace & SEO ToolHub",
-  "version": "2.0.0",
-  "description": "Zero-signup 2026 suite of 14 utilities: Amazon FBA, TikTok Shop, ROAS, Shopify, Patreon, SaaS LTV, Etsy, Stripe, PayPal, GST, Invoices, & PDF.",
+  "version": "2.1.0",
+  "description": "Zero-signup 2026 suite of 15 utilities: AI API Cost, Amazon FBA, TikTok Shop, ROAS, Shopify, Patreon, SaaS LTV, Etsy, Stripe, PayPal, GST, Invoices, & PDF.",
   "action": {
     "default_popup": "index.html",
     "default_title": "Open Twignberries Workspace"
