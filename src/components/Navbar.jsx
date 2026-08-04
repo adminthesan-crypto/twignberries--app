@@ -12,7 +12,7 @@ const CATEGORIES = [
   { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
 ];
 
-export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory }) {
+export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory, toolsCount = 100 }) {
   return (
     <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 100, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}

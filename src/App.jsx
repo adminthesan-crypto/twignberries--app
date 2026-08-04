@@ -1684,7 +1684,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
 
       {/* Culture Meme Widget */}
       <div style={{ marginBottom: 40 }}>
-        <CultureMemeWidget />
+        <CultureMemeWidget toolsCount={TOOLS.length} />
       </div>
 
 
@@ -1833,6 +1833,7 @@ export default function App() {
         onOpenSearch={() => setIsSearchOpen(true)}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
+        toolsCount={TOOLS.length}
       />
 
       {/* Body */}
