@@ -33,6 +33,7 @@ import SvgToImageTool from './tools/SvgToImageTool';
 import SocialImageCropperTool from './tools/SocialImageCropperTool';
 import ColorPaletteTool from './tools/ColorPaletteTool';
 import JsonFormatterTool from './tools/JsonFormatterTool';
+import RegexTesterTool from './tools/RegexTesterTool';
 import OpenGraphPreviewTool from './tools/OpenGraphPreviewTool';
 import PdfTextExtractorTool from './tools/PdfTextExtractorTool';
 import PdfCropTool from './tools/PdfCropTool';
