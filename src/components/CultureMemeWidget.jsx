@@ -167,21 +167,21 @@ export default function CultureMemeWidget() {
         </div>
       </div>
 
-      {/* Footer strip: Support / Buy Me a Coffee prompt */}
-      <div className="px-5 py-2.5 bg-[#fffdf5] border-t border-[#ffeeba] flex items-center justify-between text-xs">
-        <span style={{ color: '#856404', fontWeight: 600 }}>
+      {/* Footer strip: Support prompt */}
+      <div className="px-5 py-2.5 bg-[#f8f6ff] border-t border-[#e2d9ff] flex items-center justify-between text-xs">
+        <span style={{ color: '#5521e8', fontWeight: 600 }}>
           💡 Like our 100 free offline utilities?
         </span>
         <a
-          href="https://buymeacoffee.com"
+          href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: '#856404', fontWeight: 700, textDecoration: 'underline',
+            color: '#5521e8', fontWeight: 700, textDecoration: 'underline',
             display: 'inline-flex', alignItems: 'center', gap: 4
           }}
         >
-          <span>☕ Buy the creator a coffee →</span>
+          <span>⚡ Back Pahruli's open development →</span>
         </a>
       </div>
     </div>

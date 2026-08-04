@@ -1535,8 +1535,8 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
           <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none' }}>
             Explore all {tools.length} tools →
           </a>
-          <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
-            ☕ Buy me a coffee
+          <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
+            ⚡ Back Pahruli
           </a>
         </div>
 
@@ -1748,13 +1748,13 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             — Someone who got tired of doing this by hand.
           </span>
           <a
-            href="https://buymeacoffee.com"
+            href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#6161ff', textDecoration: 'none' }}
             className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
           >
-            <span>☕ Buy the creator a coffee →</span>
+            <span>⚡ Back Pahruli's open development →</span>
           </a>
         </div>
       </div>
@@ -1924,8 +1924,8 @@ export default function App() {
                   <h3>pahruli</h3>
                   <p>100 offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
                   <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
-                    <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
-                      ☕ Buy me a coffee
+                    <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
+                      ⚡ Back Pahruli
                     </a>
                   </div>
                 </div>
@@ -1953,7 +1953,7 @@ export default function App() {
                 {/* Resources column */}
                 <div className="pb-footer-col">
                   <h4>Resources</h4>
-                  <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer">Support Us</a>
+                  <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer">Back Our Development</a>
                   <a href="#">Privacy</a>
                   <a href="#">Changelog</a>
                 </div>

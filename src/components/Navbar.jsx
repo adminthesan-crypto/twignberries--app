@@ -81,28 +81,28 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
         {/* Right: Monday.com CTA Pills */}
         <div className="flex items-center gap-2 sm:gap-3">
           <a
-            href="https://buymeacoffee.com"
+            href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: 6,
-              padding: '7px 14px',
+              padding: '7px 15px',
               borderRadius: 99,
-              background: '#fff3cd',
-              border: '1px solid #ffeeba',
-              color: '#856404',
+              background: '#f4efff',
+              border: '1px solid #dcd1ff',
+              color: '#5521e8',
               fontSize: 12.5,
               fontWeight: 700,
               textDecoration: 'none',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
+              boxShadow: '0 2px 6px rgba(97,97,255,0.06)',
               transition: 'all 0.15s ease'
             }}
-            title="Support free offline utility development"
+            title="Back Pahruli's free offline development via Stripe"
           >
-            <span>☕</span>
-            <span className="hidden sm:inline">Buy me a coffee</span>
+            <span>⚡</span>
+            <span className="hidden sm:inline">Back Pahruli</span>
           </a>
           <button
             onClick={() => onSelectCategory('All')}
