@@ -39,6 +39,26 @@ import PdfTextExtractorTool from './tools/PdfTextExtractorTool';
 import PdfCropTool from './tools/PdfCropTool';
 import PdfBookletTool from './tools/PdfBookletTool';
 import PdfToImageTool from './tools/PdfToImageTool';
+import CompressPdfTool from './tools/CompressPdfTool';
+import WordToPdfTool from './tools/WordToPdfTool';
+import PdfToWordTool from './tools/PdfToWordTool';
+import ExcelToPdfTool from './tools/ExcelToPdfTool';
+import PdfToExcelTool from './tools/PdfToExcelTool';
+import PowerPointToPdfTool from './tools/PowerPointToPdfTool';
+import PdfToPowerPointTool from './tools/PdfToPowerPointTool';
+import UnlockPdfTool from './tools/UnlockPdfTool';
+import PdfToPdfATool from './tools/PdfToPdfATool';
+import RepairPdfTool from './tools/RepairPdfTool';
+import RedactPdfTool from './tools/RedactPdfTool';
+import SignPdfTool from './tools/SignPdfTool';
+import EditPdfTool from './tools/EditPdfTool';
+import PdfFormsTool from './tools/PdfFormsTool';
+import ScanToPdfTool from './tools/ScanToPdfTool';
+import OcrPdfTool from './tools/OcrPdfTool';
+import ComparePdfTool from './tools/ComparePdfTool';
+import AiPdfSummarizerTool from './tools/AiPdfSummarizerTool';
+import TranslatePdfTool from './tools/TranslatePdfTool';
+import HtmlToPdfTool from './tools/HtmlToPdfTool';
 import Base64ImageTool from './tools/Base64ImageTool';
 import CssGradientTool from './tools/CssGradientTool';
 import ImagePaletteTool from './tools/ImagePaletteTool';
@@ -65,6 +85,26 @@ import TimezonePlannerTool from './tools/TimezonePlannerTool';
 import QrCodeGeneratorTool from './tools/QrCodeGeneratorTool';
 import EmailSubjectTool from './tools/EmailSubjectTool';
 import AdCopyCounterTool from './tools/AdCopyCounterTool';
+import CropImageTool from './tools/CropImageTool';
+import ConvertToJpgTool from './tools/ConvertToJpgTool';
+import ConvertFromJpgTool from './tools/ConvertFromJpgTool';
+import RotateImageTool from './tools/RotateImageTool';
+import WatermarkImageTool from './tools/WatermarkImageTool';
+import PhotoEditorTool from './tools/PhotoEditorTool';
+import UpscaleImageTool from './tools/UpscaleImageTool';
+import RemoveBackgroundTool from './tools/RemoveBgImageTool';
+import MemeGeneratorTool from './tools/MemeGeneratorTool';
+import HtmlToImageTool from './tools/HtmlToImageTool';
+import BlurFaceTool from './tools/BlurFaceTool';
+import ImageColorPickerTool from './tools/ImageColorPickerTool';
+import ImageSplitterTool from './tools/ImageSplitterTool';
+import ImageMetadataExifTool from './tools/ImageMetadataExifTool';
+import SvgToPngConverterTool from './tools/SvgToPngConverterTool';
+import ImageRoundCornersTool from './tools/ImageRoundCornersTool';
+import ImageToBase64BulkTool from './tools/ImageToBase64BulkTool';
+import ImageNoiseReducerTool from './tools/ImageNoiseReducerTool';
+import ImageDuotoneTool from './tools/ImageDuotoneTool';
+import ImageCollageMakerTool from './tools/ImageCollageMakerTool';
 import CultureMemeWidget from './components/CultureMemeWidget';
 
 /* ─── Tool Definitions ───────────────────────────────────── */
@@ -555,6 +595,247 @@ const TOOLS = [
     ),
     component: PdfToImageTool,
   },
+  // ─── PDF Suite Expansion (20 New Tools) ───
+  {
+    id: 'compress-pdf',
+    name: 'Compress PDF File Size Optimizer',
+    category: 'PDF Tools',
+    description: 'Compress PDF files with Extreme, Recommended, or High Quality presets offline.',
+    keywords: ['compress pdf', 'reduce pdf size', 'shrink pdf', 'pdf optimizer'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+    ),
+    component: CompressPdfTool,
+  },
+  {
+    id: 'word-to-pdf',
+    name: 'Word / Markdown to PDF Converter',
+    category: 'PDF Tools',
+    description: 'Convert DOCX text, Markdown, or notes into clean A4 PDF documents offline.',
+    keywords: ['word to pdf', 'doc to pdf', 'markdown to pdf', 'text to pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+    ),
+    component: WordToPdfTool,
+  },
+  {
+    id: 'pdf-to-word',
+    name: 'PDF to Word (.doc) Exporter',
+    category: 'PDF Tools',
+    description: 'Extract layout text and paragraphs from PDF documents into editable Word files.',
+    keywords: ['pdf to word', 'pdf to doc', 'export pdf text'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+    ),
+    component: PdfToWordTool,
+  },
+  {
+    id: 'excel-to-pdf',
+    name: 'Excel & CSV Spreadsheet to PDF',
+    category: 'PDF Tools',
+    description: 'Convert CSV/Excel tables into beautifully formatted tabular PDF reports offline.',
+    keywords: ['excel to pdf', 'csv to pdf', 'spreadsheet pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+    ),
+    component: ExcelToPdfTool,
+  },
+  {
+    id: 'pdf-to-excel',
+    name: 'PDF Table to Excel / CSV Exporter',
+    category: 'PDF Tools',
+    description: 'Extract tables and structured data from PDF documents into Excel CSV files.',
+    keywords: ['pdf to excel', 'pdf table extractor', 'pdf to csv'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+    ),
+    component: PdfToExcelTool,
+  },
+  {
+    id: 'powerpoint-to-pdf',
+    name: 'PowerPoint Slide to PDF Handout',
+    category: 'PDF Tools',
+    description: 'Convert presentation slide notes and titles into multi-slide PDF handouts.',
+    keywords: ['ppt to pdf', 'powerpoint to pdf', 'presentation pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="M7 21h10"/></svg>
+    ),
+    component: PowerPointToPdfTool,
+  },
+  {
+    id: 'pdf-to-powerpoint',
+    name: 'PDF to PowerPoint Outline Exporter',
+    category: 'PDF Tools',
+    description: 'Extract presentation headings and slide content from PDFs into PPT outlines.',
+    keywords: ['pdf to ppt', 'pdf to powerpoint', 'slide extractor'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="M7 21h10"/></svg>
+    ),
+    component: PdfToPowerPointTool,
+  },
+  {
+    id: 'unlock-pdf',
+    name: 'Unlock PDF & Remove Password',
+    category: 'PDF Tools',
+    description: 'Remove PDF user passwords and print restrictions offline in your browser.',
+    keywords: ['unlock pdf', 'remove pdf password', 'decrypt pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+    ),
+    component: UnlockPdfTool,
+  },
+  {
+    id: 'pdf-to-pdfa',
+    name: 'PDF to PDF/A (ISO 19005-1 Archive)',
+    category: 'PDF Tools',
+    description: 'Convert PDF documents into ISO 19005-1 archival standard for long-term storage.',
+    keywords: ['pdf to pdf/a', 'pdfa converter', 'archive pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+    ),
+    component: PdfToPdfATool,
+  },
+  {
+    id: 'repair-pdf',
+    name: 'Repair & Recover Corrupt PDF',
+    category: 'PDF Tools',
+    description: 'Rebuild damaged PDF cross-reference tables and recover readable document pages.',
+    keywords: ['repair pdf', 'fix pdf', 'corrupt pdf recovery'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    ),
+    component: RepairPdfTool,
+  },
+  {
+    id: 'redact-pdf',
+    name: 'Redact PDF Sensitive Information',
+    category: 'PDF Tools',
+    description: 'Permanently blackout sensitive text, names, SSNs, and numbers offline.',
+    keywords: ['redact pdf', 'blackout pdf', 'censor pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+    ),
+    component: RedactPdfTool,
+  },
+  {
+    id: 'sign-pdf',
+    name: 'Sign PDF & Add Electronic Signature',
+    category: 'PDF Tools',
+    description: 'Draw or type your signature and embed it onto any PDF page offline.',
+    keywords: ['sign pdf', 'e-signature pdf', 'electronic signature'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    ),
+    component: SignPdfTool,
+  },
+  {
+    id: 'edit-pdf',
+    name: 'Edit PDF Text & Annotations',
+    category: 'PDF Tools',
+    description: 'Add custom text notes, colored shapes, callout boxes, and highlights to PDF pages.',
+    keywords: ['edit pdf', 'annotate pdf', 'add text to pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    ),
+    component: EditPdfTool,
+  },
+  {
+    id: 'pdf-forms',
+    name: 'PDF Forms Fillable Builder',
+    category: 'PDF Tools',
+    description: 'Add interactive fillable textboxes, checkboxes, and date fields to static PDFs.',
+    keywords: ['pdf form builder', 'fillable pdf', 'create pdf form'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    ),
+    component: PdfFormsTool,
+  },
+  {
+    id: 'scan-to-pdf',
+    name: 'Scan to PDF Document Creator',
+    category: 'PDF Tools',
+    description: 'Compile mobile scans or photos into clean multi-page document PDFs with contrast filters.',
+    keywords: ['scan to pdf', 'mobile scanner', 'photo to pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    ),
+    component: ScanToPdfTool,
+  },
+  {
+    id: 'ocr-pdf',
+    name: 'OCR PDF Optical Character Recognition',
+    category: 'PDF Tools',
+    description: 'Convert scanned PDF documents and images into selectable plain text offline.',
+    keywords: ['ocr pdf', 'optical character recognition', 'scanned pdf to text'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+    ),
+    component: OcrPdfTool,
+  },
+  {
+    id: 'compare-pdf',
+    name: 'Compare PDF Side-by-Side Document Diff',
+    category: 'PDF Tools',
+    description: 'Compare two PDF versions side-by-side to detect text additions and deletions.',
+    keywords: ['compare pdf', 'pdf diff', 'side by side pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+    ),
+    component: ComparePdfTool,
+  },
+  {
+    id: 'ai-pdf-summarizer',
+    name: 'AI PDF Summarizer & Executive Briefs',
+    category: 'PDF Tools',
+    description: 'Synthesize executive summaries, key takeaways, reading time, and action items offline.',
+    keywords: ['ai pdf summarizer', 'summarize pdf', 'pdf summary'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+    ),
+    component: AiPdfSummarizerTool,
+  },
+  {
+    id: 'translate-pdf',
+    name: 'Translate PDF Document (6 Languages)',
+    category: 'PDF Tools',
+    description: 'Translate PDF documents to Spanish, French, German, Mandarin, or Hindi offline.',
+    keywords: ['translate pdf', 'pdf translator', 'multilingual pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    ),
+    component: TranslatePdfTool,
+  },
+  {
+    id: 'html-to-pdf',
+    name: 'HTML to PDF (Convert Webpages & Markup)',
+    category: 'PDF Tools',
+    description: 'Convert live HTML tags or website URL previews into formatted A4 PDF documents.',
+    keywords: ['html to pdf', 'webpage to pdf', 'convert html pdf'],
+    color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    ),
+    component: HtmlToPdfTool,
+  },
   // ─── Image & Media Suite Expansion ───
   {
     id: 'base64-image',
@@ -639,6 +920,246 @@ const TOOLS = [
       </svg>
     ),
     component: ImageResizerTool,
+  },
+  {
+    id: 'crop-image',
+    name: 'Visual Image Cropper & Aspect Ratio Tool',
+    category: 'Image & Media',
+    description: 'Crop images visually with 16:9, 1:1, 4:5, and custom aspect ratio presets offline.',
+    keywords: ['crop image', 'image cropper', 'trim image', 'aspect ratio crop'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
+    ),
+    component: CropImageTool,
+  },
+  {
+    id: 'convert-to-jpg',
+    name: 'Convert to JPG / JPEG Bulk Converter',
+    category: 'Image & Media',
+    description: 'Bulk convert PNG, WEBP, and SVG images into clean JPG files with white backgrounds.',
+    keywords: ['convert to jpg', 'png to jpg', 'webp to jpg', 'svg to jpg'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    ),
+    component: ConvertToJpgTool,
+  },
+  {
+    id: 'convert-from-jpg',
+    name: 'Convert from JPG to PNG & WEBP',
+    category: 'Image & Media',
+    description: 'Convert JPG images into high-quality PNG or WEBP formats with transparency support.',
+    keywords: ['convert from jpg', 'jpg to png', 'jpg to webp', 'image converter'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    ),
+    component: ConvertFromJpgTool,
+  },
+  {
+    id: 'rotate-image',
+    name: 'Batch Image Rotate & Flip Mirror Tool',
+    category: 'Image & Media',
+    description: 'Rotate images by 90°, 180°, 270° or flip horizontally/vertically in bulk offline.',
+    keywords: ['rotate image', 'flip image', 'mirror image', 'turn photo'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+    ),
+    component: RotateImageTool,
+  },
+  {
+    id: 'watermark-image',
+    name: 'Image Watermark & Copyright Stamper',
+    category: 'Image & Media',
+    description: 'Stamp custom text, copyright notices, or repeating tiled watermarks onto photos.',
+    keywords: ['watermark image', 'stamp photo', 'copyright watermark', 'protect image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+    ),
+    component: WatermarkImageTool,
+  },
+  {
+    id: 'photo-editor',
+    name: 'Offline Photo Filter & Color Adjuster',
+    category: 'Image & Media',
+    description: 'Adjust brightness, contrast, saturation, exposure, and sepia filters offline.',
+    keywords: ['photo editor', 'edit photo', 'brightness contrast', 'image filter'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+    ),
+    component: PhotoEditorTool,
+  },
+  {
+    id: 'upscale-image',
+    name: 'AI-Style Image Upscaler (2x / 4x HD)',
+    category: 'Image & Media',
+    description: 'Upscale low-resolution photos and logos up to 4x resolution with smooth interpolation.',
+    keywords: ['upscale image', 'enlarge photo', 'image resolution booster', 'hd image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+    ),
+    component: UpscaleImageTool,
+  },
+  {
+    id: 'remove-background',
+    name: 'Smart Background Remover / Chroma Key',
+    category: 'Image & Media',
+    description: 'Remove white, green screen, or solid background colors from product photos offline.',
+    keywords: ['remove background', 'bg remover', 'transparent background', 'chroma key'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    ),
+    component: RemoveBackgroundTool,
+  },
+  {
+    id: 'meme-generator',
+    name: 'Meme Generator & Impact Font Captioner',
+    category: 'Image & Media',
+    description: 'Create viral memes with classic top and bottom white impact text and black outlines.',
+    keywords: ['meme generator', 'make meme', 'caption photo', 'impact font meme'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+    ),
+    component: MemeGeneratorTool,
+  },
+  {
+    id: 'html-to-image',
+    name: 'HTML to IMAGE Card & Preview Generator',
+    category: 'Image & Media',
+    description: 'Convert live HTML and inline CSS code snippets into crisp Retina PNG or JPG images.',
+    keywords: ['html to image', 'code to image', 'webpage preview image', 'html card to png'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    ),
+    component: HtmlToImageTool,
+  },
+  {
+    id: 'blur-face',
+    name: 'Blur Face & Privacy Redactor',
+    category: 'Image & Media',
+    description: 'Blur out faces, license plates, addresses, and sensitive details in photos offline.',
+    keywords: ['blur face', 'blur license plate', 'redact image', 'privacy blur photo'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+    ),
+    component: BlurFaceTool,
+  },
+  {
+    id: 'image-color-picker',
+    name: 'Image Color Picker (Pixel Eyedropper)',
+    category: 'Image & Media',
+    description: 'Click any pixel on an uploaded photo to inspect and copy HEX, RGB, and HSL colors.',
+    keywords: ['image color picker', 'eyedropper tool', 'sample color from image', 'hex color picker'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22l5-5"/><path d="M14.5 5.5l4 4"/><path d="M12 8l4 4"/><path d="M8 12l3-3 8-8a2.83 2.83 0 0 0-4-4l-8 8-3 3a2 2 0 0 0-.58 1.41L4 18l4-4a2 2 0 0 0 1.41-.58z"/></svg>
+    ),
+    component: ImageColorPickerTool,
+  },
+  {
+    id: 'image-splitter',
+    name: 'Image Splitter & Instagram Grid Slicer',
+    category: 'Image & Media',
+    description: 'Slice photos into 3x3 Instagram profile grids, 3x1 carousels, or custom tiles offline.',
+    keywords: ['image splitter', 'instagram grid maker', 'split photo', 'slice image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    ),
+    component: ImageSplitterTool,
+  },
+  {
+    id: 'image-metadata-exif',
+    name: 'EXIF Metadata Viewer & Privacy Stripper',
+    category: 'Image & Media',
+    description: 'Inspect camera properties and permanently strip EXIF GPS location data offline.',
+    keywords: ['exif viewer', 'strip exif metadata', 'remove gps photo', 'clean image metadata'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    ),
+    component: ImageMetadataExifTool,
+  },
+  {
+    id: 'svg-to-png',
+    name: 'SVG to PNG / JPG Vector to Raster',
+    category: 'Image & Media',
+    description: 'Convert vector SVG files into high-resolution PNG or JPG images up to 8x DPI.',
+    keywords: ['svg to png converter', 'svg to jpg', 'vector to raster image', 'high res svg'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    ),
+    component: SvgToPngConverterTool,
+  },
+  {
+    id: 'image-round-corners',
+    name: 'Rounded Corners & macOS Shadow Generator',
+    category: 'Image & Media',
+    description: 'Add sleek rounded corners, padding frames, and soft drop shadows to screenshots.',
+    keywords: ['rounded corners image', 'screenshot shadow', 'macos screenshot beautifier'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"/></svg>
+    ),
+    component: ImageRoundCornersTool,
+  },
+  {
+    id: 'image-to-base64-bulk',
+    name: 'Bulk Image to CSS Data URI Encoder',
+    category: 'Image & Media',
+    description: 'Encode multiple icons and images into CSS url() strings and HTML img tags in bulk.',
+    keywords: ['bulk image base64', 'css data uri bulk', 'encode multiple images'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    ),
+    component: ImageToBase64BulkTool,
+  },
+  {
+    id: 'image-noise-reducer',
+    name: 'Image Denoise & Smooth Filter',
+    category: 'Image & Media',
+    description: 'Smooth grainy low-light camera noise and JPEG compression artifacts offline.',
+    keywords: ['image denoise', 'reduce grain photo', 'smooth photo noise', 'de-grain image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/></svg>
+    ),
+    component: ImageNoiseReducerTool,
+  },
+  {
+    id: 'image-duotone',
+    name: 'Duotone & Cyberpunk Color Tint Filter',
+    category: 'Image & Media',
+    description: 'Apply Spotify-style two-color duotone gradients and cyberpunk tints to photos offline.',
+    keywords: ['duotone filter', 'spotify color photo', 'cyberpunk photo filter', 'color tint image'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+    ),
+    component: ImageDuotoneTool,
+  },
+  {
+    id: 'image-collage-maker',
+    name: 'Photo Collage Maker (2, 3, 4 Image Grid)',
+    category: 'Image & Media',
+    description: 'Combine up to 4 photos into side-by-side comparisons, stories, or square grids offline.',
+    keywords: ['photo collage maker', 'combine photos', 'side by side image', 'photo grid maker'],
+    color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+    ),
+    component: ImageCollageMakerTool,
   },
   // ─── AI & Dev Suite Expansion ───
   {
