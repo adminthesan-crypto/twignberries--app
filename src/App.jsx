@@ -1787,9 +1787,17 @@ export default function App() {
     });
   };
 
-  const handleSelectCategory = (cat) => {
+  const handleSelectCategory = (cat, opts = {}) => {
     setSelectedCategory(cat);
     setActiveToolId(null); // go back to grid
+    setTimeout(() => {
+      if (opts.scrollToTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const el = document.getElementById('tools-grid');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   const handleToggleStar = (id) => {

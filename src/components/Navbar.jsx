@@ -18,7 +18,7 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
         {/* Left: Clean Brand Logo */}
-        <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All')}>
+        <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           <div
             style={{
               width: 36, height: 36, borderRadius: 10,
