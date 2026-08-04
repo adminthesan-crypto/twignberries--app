@@ -31,12 +31,12 @@ export default function TikTokShopCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            TikTok Shop Profit &amp; Commission Calculator
+            TikTok Shop wants 6%. Here's what's left.
           </h1>
           <span className="badge badge-brand">6% PLATFORM FEE</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          See exactly what hits your bank account after TikTok's 6% platform fee, creator affiliate cuts, and shipping costs.
+          Commission, affiliate creator cuts, and your actual take-home per sale.
         </p>
       </div>
 
@@ -210,6 +210,8 @@ export default function TikTokShopCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> In 2026, top TikTok Shop affiliates prioritize products offering at least a 15%–20% commission. Pricing for a 60%+ gross margin ensures you stay profitable even during viral spikes.
           </div>
+
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const SL = {
 
 export default function MarkdownEditorTool() {
   const [markdown, setMarkdown] = useState(
-    `# Pahruli — 60 Offline Tools\n\nWelcome to **Pahruli**. We build client-side, zero-signup tools for founders and creators.\n\n## Why use offline tools?\n1. **100% Privacy:** No server uploads.\n2. **Zero Latency:** Runs directly in memory.\n3. **Free Forever:** No accounts needed.\n\n> "Built with a little too much love for spreadsheets & zero tolerance for cloud snooping."\n\n\`\`\`javascript\nconst pahruli = { tools: 60, offline: true };\n\`\`\``
+    `# Pahruli — 100 Offline Tools\n\nWelcome to **Pahruli**. We build client-side, zero-signup tools for founders and creators.\n\n## Why use offline tools?\n1. **100% Privacy:** No server uploads.\n2. **Zero Latency:** Runs directly in memory.\n3. **Free Forever:** No accounts needed.\n\n> "Built by someone who got tired of doing this by hand."\n\n\`\`\`javascript\nconst pahruli = { tools: 100, offline: true };\n\`\`\``
   );
   const [viewMode, setViewMode] = useState('split'); // split, edit, preview
   const [copied, setCopied] = useState(false);

@@ -65,12 +65,12 @@ export default function InvoiceGenerator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Freelance Invoice &amp; PDF Generator
+            A proper invoice, in the time it takes to make tea.
           </h1>
           <span className="badge badge-brand">NO SIGNUP REQUIRED</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Create clean, client-ready freelance invoices in seconds. Enter line items on the left and export from the sticky summary.
+          No login, no "upgrade to export." Fill it in, download it, send it.
         </p>
       </div>
 
@@ -370,6 +370,8 @@ export default function InvoiceGenerator() {
           <div className="insight-block">
             💡 Pro tip: Always specify clear payment terms and due dates on every invoice. Including bank transfer details in the notes section gets you paid up to 40% faster.
           </div>
+
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

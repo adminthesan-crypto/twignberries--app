@@ -58,12 +58,12 @@ export default function GstCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            GST Tax Calculator — Inclusive &amp; Exclusive
+            Is that price with GST or without?
           </h1>
           <span className="badge badge-success">CGST / SGST</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Instant CGST / SGST splits with intuitive inclusive and exclusive modes. No spreadsheets needed.
+          Flip it either direction in one click. No more guessing on a client call.
         </p>
       </div>
 
@@ -260,6 +260,7 @@ export default function GstCalculator() {
           <div className="insight-block">
             💡 Pro tip: For intra-state sales within the same state, GST is split equally into CGST + SGST. For inter-state sales across borders, bill the full percentage as IGST on your invoice.
           </div>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

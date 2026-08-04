@@ -83,7 +83,7 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
             type="text"
             value={query}
             onChange={e => { setQuery(e.target.value); setSelectedIndex(0); }}
-            placeholder="Search 30 PDF, E-Commerce, Dev & SEO utilities..."
+            placeholder="Search 100 PDF, E-Commerce, Dev & SEO utilities..."
             style={{
               flex: 1, background: 'none', border: 'none', outline: 'none',
               color: 'var(--text-1)', fontSize: 15, fontWeight: 500,
@@ -190,7 +190,7 @@ export default function CommandKModal({ isOpen, onClose, tools, onSelectTool, st
             <span>ESC close</span>
           </div>
           <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand)', opacity: 0.8 }}>
-            Twignberries
+            Pahruli
           </span>
         </div>
       </div>

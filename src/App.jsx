@@ -111,9 +111,9 @@ import CultureMemeWidget from './components/CultureMemeWidget';
 const TOOLS = [
   {
     id: 'etsy-fee',
-    name: 'Etsy Fee & Profit Calculator',
+    name: 'What Etsy actually leaves you with',
     category: 'E-Commerce',
-    description: 'Etsy\'s fees are sneaky. Here\'s what you actually keep after their cut.',
+    description: 'Listing fee, 6.5% transaction cut, payment processing, offsite ads — all of it, before you hit publish.',
     keywords: ['etsy margin', 'etsy seller', 'handmade fee', 'profit margin'],
     color: '#f97316', bg: 'rgba(249,115,22,0.12)',
     icon: (
@@ -125,9 +125,9 @@ const TOOLS = [
   },
   {
     id: 'paypal-fee',
-    name: 'PayPal Fee & Net Payout',
+    name: 'PayPal\'s cut, before it surprises you',
     category: 'E-Commerce',
-    description: 'Stop guessing PayPal\'s cut. See exact payouts & reverse-price your invoice.',
+    description: 'Standard rate, micropayment rate, whichever applies — see your real payout first.',
     keywords: ['paypal fee', 'paypal calculator', 'paypal merchant'],
     color: '#3b82f6', bg: 'rgba(59,130,246,0.12)',
     icon: (
@@ -139,9 +139,9 @@ const TOOLS = [
   },
   {
     id: 'stripe-fee',
-    name: 'Stripe Fee & Break-even Solver',
+    name: 'How much to charge to actually break even?',
     category: 'E-Commerce',
-    description: 'Stripe takes a slice of every sale. Know your exact bank deposit before charging.',
+    description: 'Domestic or international, Stripe takes its slice either way. This works backward from your target.',
     keywords: ['stripe payout', 'stripe pricing', 'break even calculator'],
     color: '#6366f1', bg: 'rgba(99,102,241,0.12)',
     icon: (
@@ -153,9 +153,9 @@ const TOOLS = [
   },
   {
     id: 'gst-calculator',
-    name: 'GST Tax Inclusive & Exclusive',
+    name: 'Is that price with GST or without?',
     category: 'E-Commerce',
-    description: 'Instant CGST / SGST tax math without opening a clunky spreadsheet.',
+    description: 'Flip it either direction in one click. No more guessing on a client call.',
     keywords: ['gst exclusive', 'gst inclusive', 'cgst sgst india'],
     color: '#22c55e', bg: 'rgba(34,197,94,0.12)',
     icon: (
@@ -168,9 +168,9 @@ const TOOLS = [
   },
   {
     id: 'amazon-fba',
-    name: 'Amazon FBA Profit Calculator',
+    name: 'FBA fees are a maze. Here\'s the exit.',
     category: 'E-Commerce',
-    description: 'FBA referral cuts take up to 17%. Find your true net margin per unit.',
+    description: 'Fulfilment tier, referral cut, category rules — your real margin after Amazon takes its share.',
     keywords: ['amazon fba', 'amazon referral fee', 'fba calculator'],
     color: '#f59e0b', bg: 'rgba(245,158,11,0.12)',
     icon: (
@@ -182,9 +182,9 @@ const TOOLS = [
   },
   {
     id: 'tiktok-shop',
-    name: 'TikTok Shop Commission Solver',
+    name: 'TikTok Shop wants 6%. Here\'s what\'s left.',
     category: 'E-Commerce',
-    description: 'TikTok\'s 6% cut + creator commissions added up. Know your true take-home.',
+    description: 'Commission, affiliate creator cuts, and your actual take-home per sale.',
     keywords: ['tiktok shop fee', 'tiktok affiliate calculator'],
     color: '#ec4899', bg: 'rgba(236,72,153,0.12)',
     icon: (
@@ -196,9 +196,9 @@ const TOOLS = [
   },
   {
     id: 'shopify-fee',
-    name: 'Shopify Plan Fee Estimator',
+    name: 'Which Shopify plan actually pays for itself?',
     category: 'E-Commerce',
-    description: 'Compare Shopify\'s monthly plans and external gateway fees side-by-side.',
+    description: 'Compare monthly cost against your real card processing rates before you commit.',
     keywords: ['shopify transaction fee', 'shopify basic plan'],
     color: '#10b981', bg: 'rgba(16,185,129,0.12)',
     icon: (
@@ -211,9 +211,9 @@ const TOOLS = [
   },
   {
     id: 'invoice-generator',
-    name: 'Freelance Invoice Generator PDF',
+    name: 'A proper invoice, in the time it takes to make tea.',
     category: 'Freelance',
-    description: 'Clean freelance invoices in 30 seconds. No sign-ups, no watermarks.',
+    description: 'No login, no "upgrade to export." Fill it in, download it, send it.',
     keywords: ['free invoice maker', 'freelance receipt', 'pdf invoice without signup'],
     color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
     icon: (
@@ -1512,7 +1512,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
         <div className="max-w-xl text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
             <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
-            Pahruli — 60 Offline Tools for Founders & Creators
+            Pahruli — 100 Offline Tools for Founders & Creators
           </div>
           <h1 style={{
             fontFamily: 'var(--font-heading)',
@@ -1524,8 +1524,8 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             marginBottom: '20px',
             fontStyle: 'italic'
           }}>
-            Tools that respect your time—<br />
-            <span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontWeight: 800 }}>and your privacy.</span>
+            The fee math sellers actually need—<br />
+            <span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontWeight: 800 }}>No signup. No spreadsheets. No "contact sales."</span>
           </h1>
           <p style={{
             fontSize: '17px',
@@ -1534,7 +1534,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             lineHeight: 1.6,
             marginBottom: '32px'
           }}>
-            60 calculators, fee solvers, and PDF utilities built for sellers and creators. Zero cloud uploads, zero sign-up walls, and no $99/month subscriptions.
+            100 calculators, fee solvers, PDF tools, and image utilities built for people who sell online. Runs in your browser. Doesn't ask for your email. Doesn't save anything anywhere.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a
@@ -1550,7 +1550,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
               Explore all {tools.length} utilities →
             </a>
             <span style={{ fontSize: 13, color: '#868894', fontWeight: 600 }}>
-              ✓ No credit card needed &nbsp;•&nbsp; ✓ Free unlimited use
+              ✓ Free forever &nbsp;•&nbsp; ✓ Bookmark it and forget I exist
             </span>
           </div>
         </div>
@@ -1641,7 +1641,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
       {/* Monday.com Trust Brand Strip */}
       <div className="text-center mb-14">
         <div style={{ fontSize: 12.5, fontWeight: 700, color: '#868894', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 20 }}>
-          Trusted by over 40,000 sellers & creators across major platforms
+          Works with the platforms sellers actually use
         </div>
         <div className="flex flex-wrap items-center justify-center gap-10 opacity-70">
           <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>SHOPIFY</span>
@@ -1660,7 +1660,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             {selectedCategory === 'All' ? 'All Workspace Utilities' : `${selectedCategory} Utilities`}
           </h2>
           <p style={{ fontSize: 14, color: '#676879', marginTop: 2 }}>
-            Click any tool to launch instant interactive solver in your workspace.
+            Pick a tool and get your answer. No accounts, no tutorials, no onboarding emails.
           </p>
         </div>
         <span className="badge" style={{ background: '#eceeff', color: '#6161ff', fontWeight: 700 }}>
@@ -1695,7 +1695,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
       >
         <div className="flex items-center gap-2">
           <span style={{ fontSize: 11.5, fontWeight: 700, color: '#6161ff', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Why Pahruli Exists
+            Why This Exists
           </span>
         </div>
         <p style={{
@@ -1706,11 +1706,11 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
           lineHeight: 1.5,
           fontStyle: 'italic'
         }}>
-          "I got tired of opening five tabs just to figure out if a $35 Etsy listing was actually worth it, or uploading confidential contracts to random online converters just to rotate a single page. So I built this instead."
+          "I kept opening five tabs just to figure out if a $35 listing was actually worth making. Etsy takes a cut, then another cut, then an ad fee if you're not careful. So I built this instead — it does the math in your browser, doesn't ask for your email, and doesn't save anything anywhere. Bookmark it and forget I exist."
         </p>
         <div className="flex items-center justify-between pt-2 flex-wrap gap-4">
           <span style={{ fontSize: 13, fontWeight: 600, color: '#676879' }}>
-            — Built with a little too much love for spreadsheets & local privacy.
+            — Someone who got tired of doing this by hand.
           </span>
           <a
             href="https://buymeacoffee.com"
@@ -1886,10 +1886,10 @@ export default function App() {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <ShieldCheck size={13} color="var(--brand)" />
-                Built with a little too much love for spreadsheets & zero tolerance for cloud snooping
+                Built by someone who got tired of doing this by hand.
               </div>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
-                v6.0.0 · 60 Tools & PDF Suite
+                v8.0.0 · 100 Tools
               </span>
             </footer>
           </div>

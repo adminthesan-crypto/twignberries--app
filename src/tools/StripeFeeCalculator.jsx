@@ -35,12 +35,12 @@ export default function StripeFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Stripe Fee & Break-even Solver
+            How much do you need to charge to actually break even?
           </h1>
           <span className="badge badge-brand">2.9% + 30¢</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Calculate exactly what hits your bank account after Stripe fees, plus a reverse invoice solver.
+          Domestic or international, Stripe takes its slice either way. This works backward from your target.
         </p>
       </div>
 
@@ -184,6 +184,7 @@ export default function StripeFeeCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> SaaS businesses usually absorb these processing fees, but high-ticket agencies often use the break-even solver to invoice the exact processing surcharge to clients.
           </div>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
 
         </div>
       </div>

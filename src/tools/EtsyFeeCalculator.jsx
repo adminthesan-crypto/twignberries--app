@@ -41,12 +41,11 @@ export default function EtsyFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
-            Etsy Fee & Profit Margin Calculator
+            What Etsy actually leaves you with
           </h1>
-          <span className="badge badge-success">2026</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          True net profit after the 6.5% transaction cut, listing fee, payment processing, and offsite ads.
+          Listing fee, 6.5% transaction cut, payment processing, offsite ads if it applies — all of it, before you hit publish.
         </p>
       </div>
 
@@ -141,7 +140,7 @@ export default function EtsyFeeCalculator() {
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em',
               textTransform: 'uppercase', color: 'var(--text-4)', marginBottom: 8 }}>
-              Estimated Net Profit
+              What you actually keep
             </div>
             <div style={{
               fontFamily: 'var(--font-mono)', fontSize: 44, fontWeight: 700,
@@ -216,6 +215,7 @@ export default function EtsyFeeCalculator() {
               Etsy applies its mandatory 6.5% transaction cut to both item price and shipping.
             </p>
           </div>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

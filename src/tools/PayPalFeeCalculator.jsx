@@ -38,12 +38,12 @@ export default function PayPalFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            PayPal Fee & Net Payout Calculator
+            PayPal's cut, before it surprises you
           </h1>
           <span className="badge badge-brand">2.99% + $0.49</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          How much actually hits your bank after PayPal takes its cut — plus a reverse invoice solver.
+          Standard rate, micropayment rate, whichever applies — see your real payout first.
         </p>
       </div>
 
@@ -189,6 +189,7 @@ export default function PayPalFeeCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Micropayments tip:</strong> If you're charging under $10, switching to PayPal's Micropayment rate (4.99% + $0.09) saves money vs the standard $0.49 fixed fee.
           </div>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

@@ -6,8 +6,8 @@ const MEMES = [
     id: '1',
     category: 'PDF & Cloud Privacy',
     tag: 'r/webdev • Top Roast',
-    headline: 'Don\'t upload confidential contracts to cloud converters. Do Twignberries.',
-    content: '"Me uploading an NDA contract to a free cloud PDF converter and receiving a targeted sales email 5 minutes later 🤡"\n\n👉 All 30 Twignberries utilities execute 100% inside your browser RAM. Zero server uploads.',
+    headline: 'Don\'t upload confidential contracts to cloud converters. Do Pahruli.',
+    content: '"Me uploading an NDA contract to a free cloud PDF converter and receiving a targeted sales email 5 minutes later 🤡"\n\n👉 All 100 Pahruli utilities execute 100% inside your browser RAM. Zero server uploads.',
     upvotes: '1.4k',
     comments: '248'
   },
@@ -25,7 +25,7 @@ const MEMES = [
     category: 'Frontend & SVG',
     tag: 'r/ProgrammerHumor • Classic',
     headline: 'Client: "Can you send that logo as a high-res vector?"',
-    content: '*Me renaming logo.png to logo.svg* 📉 💀\n\n👉 When you actually need clean vector rasterization, use Twignberries SVG to 8x Retina PNG/JPG converter offline.',
+    content: '*Me renaming logo.png to logo.svg* 📉 💀\n\n👉 When you actually need clean vector rasterization, use Pahruli SVG to 8x Retina PNG/JPG converter offline.',
     upvotes: '3.9k',
     comments: '589'
   },
@@ -52,7 +52,7 @@ const MEMES = [
     category: 'Indie Hackers & Pricing',
     tag: 'r/indiehackers • Philosophy',
     headline: 'SaaS subscription bloat is real',
-    content: '"Me explaining to my team why we don\'t need a $49/month subscription just to merge two PDF files or format JSON 🛑"\n\n👉 30 Enterprise-Grade Utilities. Free forever. Zero signups.',
+    content: '"Me explaining to my team why we don\'t need a $49/month subscription just to merge two PDF files or format JSON 🛑"\n\n👉 100 Enterprise-Grade Utilities. Free forever. Zero signups.',
     upvotes: '4.1k',
     comments: '604'
   }
@@ -170,7 +170,7 @@ export default function CultureMemeWidget() {
       {/* Footer strip: Support / Buy Me a Coffee prompt */}
       <div className="px-5 py-2.5 bg-[#fffdf5] border-t border-[#ffeeba] flex items-center justify-between text-xs">
         <span style={{ color: '#856404', fontWeight: 600 }}>
-          💡 Like our 30 free offline utilities?
+          💡 Like our 100 free offline utilities?
         </span>
         <a
           href="https://buymeacoffee.com"
@@ -181,7 +181,7 @@ export default function CultureMemeWidget() {
             display: 'inline-flex', alignItems: 'center', gap: 4
           }}
         >
-          <span>☕ Buy me a coffee →</span>
+          <span>☕ Buy the creator a coffee →</span>
         </a>
       </div>
     </div>

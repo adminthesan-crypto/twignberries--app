@@ -43,12 +43,12 @@ export default function ShopifyFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Shopify Fee &amp; Plan Comparison Calculator
+            Which Shopify plan actually pays for itself?
           </h1>
           <span className="badge badge-success">COMPARE PLANS</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Compare Basic, Standard, and Advanced plans to see exactly what hits your bank account after credit card rates and transaction fees.
+          Compare monthly cost against your real card processing rates before you commit.
         </p>
       </div>
 
@@ -208,6 +208,8 @@ export default function ShopifyFeeCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> Upgrading from Shopify Basic ($39) to Shopify Standard ($105) pays for itself automatically once your store revenue exceeds $22,000/month due to the 0.3% CC processing savings.
           </div>
+
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

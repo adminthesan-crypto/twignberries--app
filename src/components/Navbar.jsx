@@ -46,7 +46,7 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
               </span>
             </div>
             <div style={{ fontSize: 11.5, color: '#676879', fontWeight: 500, lineHeight: 1, marginTop: 1 }}>
-              60 offline tools. No cloud uploads. No signups.
+              100 offline tools. No cloud uploads. No signups.
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Search size={15} color="#6161ff" />
-            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 30 utilities...</span>
+            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 100 utilities...</span>
           </div>
           <kbd style={{
             display: 'flex', alignItems: 'center', gap: 3,
