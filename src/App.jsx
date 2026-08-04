@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import CommandKModal from './components/CommandKModal';
+import AdUnit from './components/AdUnit';
+import CompetitorComparisonModal from './components/CompetitorComparisonModal';
+import ViralShareBar from './components/ViralShareBar';
 import { ArrowLeft, Star, ShieldCheck, ExternalLink } from 'lucide-react';
 
 import EtsyFeeCalculator from './tools/EtsyFeeCalculator';
@@ -330,10 +333,10 @@ const TOOLS = [
   },
   {
     id: 'merge-pdf',
-    name: 'Merge PDF Documents',
+    name: 'Merge PDF — Combine Files Offline',
     category: 'PDF Tools',
-    description: 'Combine your PDFs right in your browser. Zero cloud uploads, zero snooping.',
-    keywords: ['merge pdf', 'combine pdf', 'join pdf', 'offline pdf', 'ilovepdf'],
+    description: 'Merge and combine PDF documents in seconds. 100% free, zero file limits, no cloud upload required.',
+    keywords: ['merge pdf', 'pdf merge', 'combine pdf', 'join pdf', 'offline pdf merge', 'smallpdf', 'ilovepdf', 'pdf24'],
     color: '#6161ff', bg: '#eceeff',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -347,7 +350,7 @@ const TOOLS = [
     name: 'Split PDF & Extract Pages',
     category: 'PDF Tools',
     description: 'Extract specific pages or chop up a PDF without waiting on a server.',
-    keywords: ['split pdf', 'extract pages', 'cut pdf', 'page range', 'pdf slicer'],
+    keywords: ['split pdf', 'extract pages', 'cut pdf', 'page range', 'pdf slicer', 'smallpdf'],
     color: '#00c875', bg: 'rgba(0,200,117,0.12)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -358,10 +361,10 @@ const TOOLS = [
   },
   {
     id: 'image-to-pdf',
-    name: 'Image to PDF Converter',
+    name: 'Images to PDF (JPG & PNG to PDF)',
     category: 'PDF Tools',
-    description: 'Turn scattered photos or screenshots into a clean A4 PDF document.',
-    keywords: ['img to pdf', 'jpg to pdf', 'webp to pdf', 'convert image pdf'],
+    description: 'Convert JPG, PNG, and screenshots into a clean A4 PDF document offline in your browser.',
+    keywords: ['images to pdf', 'jpg to pdf', 'png to pdf', 'img to pdf', 'convert image to pdf', 'smallpdf', 'ilovepdf', 'i love pdf', 'pdf24'],
     color: '#fdab3d', bg: 'rgba(253,171,61,0.15)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -583,10 +586,10 @@ const TOOLS = [
   },
   {
     id: 'pdf-to-image',
-    name: 'PDF to High-DPI Image Exporter',
+    name: 'PDF to Images (JPG & PNG Exporter)',
     category: 'PDF Tools',
-    description: 'Convert PDF document pages to PNG or JPEG images at custom DPI.',
-    keywords: ['pdf to png', 'pdf to jpg', 'export pdf image'],
+    description: 'Convert PDF pages to high-resolution JPG or PNG images offline in your browser.',
+    keywords: ['pdf to images', 'pdf to jpg', 'pdf to png', 'export pdf image', 'convert pdf to jpg', 'smallpdf', 'ilovepdf', 'pdf24'],
     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -598,10 +601,10 @@ const TOOLS = [
   // ─── PDF Suite Expansion (20 New Tools) ───
   {
     id: 'compress-pdf',
-    name: 'Compress PDF File Size Optimizer',
+    name: 'Compress PDF — Reduce File Size Offline',
     category: 'PDF Tools',
-    description: 'Compress PDF files with Extreme, Recommended, or High Quality presets offline.',
-    keywords: ['compress pdf', 'reduce pdf size', 'shrink pdf', 'pdf optimizer'],
+    description: 'Compress and reduce PDF file size offline with Recommended, Extreme, or High Quality presets. 100% free.',
+    keywords: ['compress pdf', 'pdf compressor', 'reduce pdf size', 'shrink pdf', 'pdf optimizer', 'smallpdf', 'ilovepdf', 'pdf24'],
     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
@@ -610,10 +613,10 @@ const TOOLS = [
   },
   {
     id: 'word-to-pdf',
-    name: 'Word / Markdown to PDF Converter',
+    name: 'Word to PDF Converter (.docx & Markdown)',
     category: 'PDF Tools',
-    description: 'Convert DOCX text, Markdown, or notes into clean A4 PDF documents offline.',
-    keywords: ['word to pdf', 'doc to pdf', 'markdown to pdf', 'text to pdf'],
+    description: 'Convert Word DOCX, text, or Markdown notes into clean A4 PDF documents offline in seconds.',
+    keywords: ['word to pdf', 'word to pdf converter', 'doc to pdf', 'docx to pdf', 'markdown to pdf', 'smallpdf', 'ilovepdf', 'pdf24'],
     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
@@ -622,10 +625,10 @@ const TOOLS = [
   },
   {
     id: 'pdf-to-word',
-    name: 'PDF to Word (.doc) Exporter',
+    name: 'PDF to Word Converter (.doc & text)',
     category: 'PDF Tools',
-    description: 'Extract layout text and paragraphs from PDF documents into editable Word files.',
-    keywords: ['pdf to word', 'pdf to doc', 'export pdf text'],
+    description: 'Convert PDF documents to editable Word (.doc) files and formatted text offline. 100% free, zero cloud upload.',
+    keywords: ['pdf to word', 'pdf to word converter', 'convert pdf to word', 'pdf to doc', 'export pdf text', 'smallpdf', 'ilovepdf', 'pdf24'],
     color: '#ef4444', bg: 'rgba(239,68,68,0.12)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
@@ -1501,7 +1504,7 @@ function ToolCard({ tool, onClick }) {
 }
 
 /* ─── Home Grid (Monday.com Hero & Workspace Board) ──────── */
-function HomeGrid({ tools, onSelectTool, selectedCategory }) {
+function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
   const filtered = selectedCategory === 'All' ? tools : tools.filter(t => t.category === selectedCategory);
 
   return (
@@ -1531,13 +1534,40 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
           Nothing uploads. Nothing tracks. It's just math.
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginBottom: 16 }}>
           <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none' }}>
             Explore all {tools.length} tools →
           </a>
           <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
             ⚡ Support Pahruli
           </a>
+        </div>
+
+        {/* Why 60M Indians are switching badge */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
+          <button
+            onClick={onOpenComparison}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '8px 18px',
+              borderRadius: 99,
+              background: '#f0fdf4',
+              border: '1.5px solid #86efac',
+              color: '#047857',
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 2px 12px rgba(16, 185, 129, 0.12)',
+              transition: 'transform 0.15s ease',
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            <span>🇮🇳</span>
+            <span>Why 60M Indians are switching from Smallpdf & iLovePDF →</span>
+          </button>
         </div>
 
         {/* Stats row */}
@@ -1687,6 +1717,9 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
         <CultureMemeWidget toolsCount={TOOLS.length} />
       </div>
 
+      {/* Ad Unit / Sponsor Placement on Home Grid */}
+      <AdUnit variant="banner" placement="home-grid" />
+
 
       {/* Grid Section Heading */}
       <div id="tools-grid" className="flex items-center justify-between mb-6 pt-4">
@@ -1767,6 +1800,7 @@ export default function App() {
   const [activeToolId, setActiveToolId] = useState(null); // null = home grid
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
 
   const [starredIds, setStarredIds] = useState(() => {
     try { return JSON.parse(localStorage.getItem('tw_starred') || '[]'); }
@@ -1834,6 +1868,7 @@ export default function App() {
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
         toolsCount={TOOLS.length}
+        onOpenComparison={() => setIsComparisonOpen(true)}
       />
 
       {/* Body */}
@@ -1908,6 +1943,12 @@ export default function App() {
                 <div className="animate-fade-in">
                   <ActiveComponent />
                 </div>
+
+                {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
+                <ViralShareBar toolName={activeTool.name} />
+
+                {/* Tasteful Native Ad / Sponsor Banner below Tool */}
+                <AdUnit variant="banner" placement="tool-footer" />
               </>
             ) : (
               /* Home Grid */
@@ -1915,6 +1956,7 @@ export default function App() {
                 tools={TOOLS}
                 onSelectTool={handleSelectTool}
                 selectedCategory={selectedCategory}
+                onOpenComparison={() => setIsComparisonOpen(true)}
               />
             )}
 
@@ -1986,6 +2028,12 @@ export default function App() {
         tools={TOOLS}
         onSelectTool={handleSelectTool}
         starredIds={starredIds}
+      />
+
+      {/* Competitor Comparison Modal (Why 60M Indians Are Switching) */}
+      <CompetitorComparisonModal
+        isOpen={isComparisonOpen}
+        onClose={() => setIsComparisonOpen(false)}
       />
     </div>
   );

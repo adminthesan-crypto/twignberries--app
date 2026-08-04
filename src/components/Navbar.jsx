@@ -12,7 +12,7 @@ const CATEGORIES = [
   { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
 ];
 
-export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory, toolsCount = 100 }) {
+export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
   return (
     <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
@@ -76,6 +76,27 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
 
         {/* Right: Monday.com CTA Pills */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={onOpenComparison}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '7px 14px',
+              borderRadius: 99,
+              background: '#f0fdf4',
+              border: '1px solid #bbf7d0',
+              color: '#059669',
+              fontSize: 12.5,
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+            title="See how Pahruli compares to Smallpdf & iLovePDF"
+          >
+            <span>🇮🇳</span>
+            <span className="hidden sm:inline">vs. Smallpdf & iLovePDF</span>
+          </button>
           <a
             href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
             target="_blank"
