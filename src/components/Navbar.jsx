@@ -14,7 +14,7 @@ const CATEGORIES = [
 
 export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory, toolsCount = 100 }) {
   return (
-    <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 100, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
+    <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
         {/* Left: Clean Brand Logo */}
