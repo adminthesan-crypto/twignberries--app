@@ -1506,152 +1506,187 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
-      {/* Monday.com Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-14 pt-6 pb-10 border-b border-gray-100">
-        {/* Left: Headline & Description */}
-        <div className="max-w-xl text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#eceeff] text-[#6161ff] font-bold text-xs mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#6161ff] animate-pulse"></span>
-            Pahruli — 100 Offline Tools for Founders & Creators
+      {/* ─── PhantomBuster-Inspired Hero ─── */}
+      <div className="pb-hero">
+        {/* Floating gradient blobs (pure CSS via ::before) */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs mb-8" style={{
+          background: 'rgba(255,255,255,0.7)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,0.9)',
+          color: '#6161ff',
+          boxShadow: '0 2px 12px rgba(97,97,255,0.1)',
+        }}>
+          <span className="w-2 h-2 rounded-full bg-[#00c875] animate-pulse"></span>
+          100 free offline tools — no signup needed
+        </div>
+
+        <h1 className="pb-display">
+          The toolkit<br />
+          sellers <span className="highlight">actually</span><br />
+          bookmark.
+        </h1>
+
+        <p className="pb-subtitle">
+          Fee calculators, PDF tools, and image utilities that run in your browser.
+          Nothing uploads. Nothing tracks. It's just math.
+        </p>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
+          <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none' }}>
+            Explore all {tools.length} tools →
+          </a>
+          <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
+            ☕ Buy me a coffee
+          </a>
+        </div>
+
+        {/* Stats row */}
+        <div className="pb-stats">
+          <div className="pb-stat">
+            <div className="pb-stat-value">100</div>
+            <div className="pb-stat-label">Offline Tools</div>
           </div>
-          <h1 style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '52px',
-            fontWeight: 700,
-            color: '#1f2532',
-            letterSpacing: '-0.03em',
-            lineHeight: 1.12,
-            marginBottom: '20px',
-            fontStyle: 'italic'
-          }}>
-            The fee math sellers actually need—<br />
-            <span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontWeight: 800 }}>No signup. No spreadsheets. No "contact sales."</span>
-          </h1>
-          <p style={{
-            fontSize: '17px',
-            color: '#676879',
-            fontWeight: 500,
-            lineHeight: 1.6,
-            marginBottom: '32px'
-          }}>
-            100 calculators, fee solvers, PDF tools, and image utilities built for people who sell online. Runs in your browser. Doesn't ask for your email. Doesn't save anything anywhere.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <a
-              href="#tools-grid"
-              className="btn-primary"
-              style={{
-                fontSize: 15,
-                padding: '13px 28px',
-                background: 'linear-gradient(90deg, #6161ff, #7f56d9)',
-                textDecoration: 'none'
-              }}
-            >
-              Explore all {tools.length} utilities →
-            </a>
-            <span style={{ fontSize: 13, color: '#868894', fontWeight: 600 }}>
-              ✓ Free forever &nbsp;•&nbsp; ✓ Bookmark it and forget I exist
+          <div className="pb-stat">
+            <div className="pb-stat-value">0</div>
+            <div className="pb-stat-label">Cloud Uploads</div>
+          </div>
+          <div className="pb-stat">
+            <div className="pb-stat-value">$0</div>
+            <div className="pb-stat-label">Forever</div>
+          </div>
+          <div className="pb-stat">
+            <div className="pb-stat-value">6</div>
+            <div className="pb-stat-label">Platform Integrations</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Trust Brand Strip — Polished Third-Party Platforms */}
+      <div className="text-center" style={{ marginBottom: 64, marginTop: 12 }}>
+        <div style={{
+          fontSize: 12, fontWeight: 700, color: '#868894',
+          textTransform: 'uppercase', letterSpacing: '0.08em',
+          marginBottom: 28
+        }}>
+          Works with the platforms sellers actually use
+        </div>
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center',
+          gap: '36px 56px', opacity: 0.85,
+        }}>
+          {/* Shopify */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, cursor: 'default' }}>
+            <span style={{ width: 10, height: 10, borderRadius: 3, background: '#95BF47', display: 'inline-block' }}></span>
+            <span style={{ fontSize: 21, fontWeight: 800, color: '#1a1a2e', letterSpacing: '-0.03em' }}>Shopify</span>
+          </div>
+
+          {/* Amazon */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'default', position: 'relative' }}>
+            <span style={{ fontSize: 21, fontWeight: 800, color: '#1a1a2e', letterSpacing: '-0.04em', lineHeight: 1 }}>amazon</span>
+            <svg width="44" height="9" viewBox="0 0 44 9" style={{ marginTop: 2 }}>
+              <path d="M4 3 C 15 9, 29 9, 40 3" stroke="#FF9900" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+              <path d="M37 1 L 41 3 L 37 6" fill="#FF9900" />
+            </svg>
+          </div>
+
+          {/* Etsy */}
+          <div style={{ cursor: 'default' }}>
+            <span style={{
+              fontFamily: 'Georgia, serif', fontStyle: 'italic',
+              fontSize: 26, fontWeight: 700, color: '#F1641E',
+              letterSpacing: '-0.02em'
+            }}>
+              Etsy
+            </span>
+          </div>
+
+          {/* Stripe */}
+          <div style={{ cursor: 'default' }}>
+            <span style={{ fontSize: 23, fontWeight: 900, color: '#635BFF', letterSpacing: '-0.04em' }}>
+              stripe
+            </span>
+          </div>
+
+          {/* PayPal */}
+          <div style={{ cursor: 'default' }}>
+            <span style={{ fontSize: 22, fontWeight: 900, color: '#003087', letterSpacing: '-0.03em' }}>
+              Pay<span style={{ color: '#0079C1' }}>Pal</span>
+            </span>
+          </div>
+
+          {/* TikTok Shop */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, cursor: 'default' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#25F4EE', display: 'inline-block' }}></span>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FE2C55', display: 'inline-block' }}></span>
+            </div>
+            <span style={{ fontSize: 20, fontWeight: 800, color: '#1a1a2e', letterSpacing: '-0.03em' }}>
+              TikTok Shop
             </span>
           </div>
         </div>
+      </div>
 
-        {/* Right: Monday.com Interactive Status & Meme Snack Stack */}
-        <div className="w-full md:w-auto flex-1 max-w-md flex flex-col gap-6">
-          <div
-            className="p-6 rounded-2xl bg-white border border-[#e6e9ef]"
-            style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)' }}
-          >
-            <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#f0f2f5]">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#ff3d8b]"></span>
-                <span className="w-3 h-3 rounded-full bg-[#fdab3d]"></span>
-                <span className="w-3 h-3 rounded-full bg-[#00c875]"></span>
-                <span style={{ fontSize: 13, fontWeight: 700, color: '#1f2532', marginLeft: 8 }}>
-                  Workspace Live Status
-                </span>
+      {/* Feature Showcase — PhantomBuster glassmorphic cards */}
+      <div className="pb-section-gradient" style={{ marginLeft: -24, marginRight: -24, paddingLeft: 24, paddingRight: 24, marginBottom: 48 }}>
+        <div className="text-center" style={{ marginBottom: 40 }}>
+          <h2 className="pb-display" style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', marginBottom: 12 }}>
+            Three suites.<br />One bookmark.
+          </h2>
+          <p className="pb-subtitle" style={{ marginBottom: 0 }}>
+            Fee calculators for sellers, a full PDF toolkit, and image tools — all running offline in your browser.
+          </p>
+        </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 28,
+          maxWidth: 1100,
+          margin: '0 auto',
+        }}>
+          {/* E-Commerce Card */}
+          <div className="pb-glass-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTool('etsy-fee')}>
+            <img src="/images/feature-ecommerce.jpg" alt="E-Commerce fee calculators" />
+            <div className="pb-glass-card-body">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <span style={{ background: 'rgba(249,115,22,0.12)', color: '#f97316', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>11 TOOLS</span>
               </div>
-              <span className="badge badge-success" style={{ background: '#00c875', color: 'white' }}>
-                Active
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>E-Commerce & Marketplaces</div>
-                  <div style={{ fontSize: 12, color: '#676879' }}>Etsy, Amazon FBA, TikTok Shop, Stripe</div>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                  Done
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Marketing & Paid Growth</div>
-                  <div style={{ fontSize: 12, color: '#676879' }}>ROAS Target, YouTube RPM, UTM Builder</div>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                  Done
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>SaaS & Freelance Utilities</div>
-                  <div style={{ fontSize: 12, color: '#676879' }}>Invoices, SaaS LTV:CAC, Markdown PDF</div>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                  Done
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>ILovePDF Private Suite (100% Client-Side)</div>
-                  <div style={{ fontSize: 12, color: '#676879' }}>Merge, Split, Rotate, Organize, Number, Metadata, Protect</div>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                  Done
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-3 rounded-xl bg-[#f7f9fc] border border-[#e6e9ef]">
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532' }}>Image, AI & SEO Web Utilities</div>
-                  <div style={{ fontSize: 12, color: '#676879' }}>SVG to PNG, Cropper, WCAG, JSON, Regex, OpenGraph</div>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-[#00c875]">
-                  Done
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-4 pt-3 border-t border-[#f0f2f5] flex items-center justify-between text-xs text-[#676879] font-medium">
-              <span>Client-Side Encryption</span>
-              <span className="text-[#6161ff] font-bold">100% Secure</span>
+              <h3>Fee calculators that don't lie to you</h3>
+              <p>Etsy, Amazon FBA, Stripe, PayPal, Shopify, TikTok Shop — every hidden fee exposed before you list.</p>
             </div>
           </div>
 
-          {/* Third-World Product: Interactive Culture & Meme Snack */}
-          <CultureMemeWidget />
+          {/* PDF Suite Card */}
+          <div className="pb-glass-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTool('merge-pdf')}>
+            <img src="/images/feature-pdf-tools.jpg" alt="PDF tools — merge, split, protect, convert" />
+            <div className="pb-glass-card-body">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <span style={{ background: '#eceeff', color: '#6161ff', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>35 TOOLS</span>
+              </div>
+              <h3>Every PDF tool. Zero uploads.</h3>
+              <p>Merge, split, compress, rotate, watermark, password-protect, OCR, convert to Word — all in your browser.</p>
+            </div>
+          </div>
+
+          {/* Image Suite Card */}
+          <div className="pb-glass-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTool('image-crop-resize')}>
+            <img src="/images/feature-image-tools.jpg" alt="Image tools — crop, compress, edit" />
+            <div className="pb-glass-card-body">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <span style={{ background: 'rgba(236,72,153,0.12)', color: '#ec4899', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>29 TOOLS</span>
+              </div>
+              <h3>Image editing without the subscription</h3>
+              <p>Crop, compress, remove backgrounds, add watermarks, make memes, generate collages — no Canva needed.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Monday.com Trust Brand Strip */}
-      <div className="text-center mb-14">
-        <div style={{ fontSize: 12.5, fontWeight: 700, color: '#868894', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 20 }}>
-          Works with the platforms sellers actually use
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-10 opacity-70">
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>SHOPIFY</span>
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>AMAZON</span>
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>ETSY</span>
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>STRIPE</span>
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>PAYPAL</span>
-          <span style={{ fontSize: 18, fontWeight: 900, color: '#323338', letterSpacing: '-0.04em' }}>TIKTOK SHOP</span>
-        </div>
+      {/* Culture Meme Widget */}
+      <div style={{ marginBottom: 40 }}>
+        <CultureMemeWidget />
       </div>
+
 
       {/* Grid Section Heading */}
       <div id="tools-grid" className="flex items-center justify-between mb-6 pt-4">
@@ -1873,25 +1908,63 @@ export default function App() {
               />
             )}
 
-            {/* Footer */}
-            <footer
-              className="no-print"
-              style={{
-                marginTop: 56, paddingTop: 24,
-                borderTop: '1px solid var(--border)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                flexWrap: 'wrap', gap: 12,
-                fontSize: 12, color: 'var(--text-4)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <ShieldCheck size={13} color="var(--brand)" />
-                Built by someone who got tired of doing this by hand.
+            {/* PhantomBuster-Style Multi-Column Footer */}
+            <div className="pb-footer no-print" style={{ marginLeft: -32, marginRight: -32, marginBottom: -28 }}>
+              <div className="pb-footer-grid">
+                {/* Brand column */}
+                <div className="pb-footer-brand">
+                  <h3>pahruli</h3>
+                  <p>100 offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
+                  <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
+                    <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
+                      ☕ Buy me a coffee
+                    </a>
+                  </div>
+                </div>
+
+                {/* Tools column */}
+                <div className="pb-footer-col">
+                  <h4>Tools</h4>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>E-Commerce</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>PDF Suite</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Image Tools</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Developer</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Marketing</a>
+                </div>
+
+                {/* Popular column */}
+                <div className="pb-footer-col">
+                  <h4>Popular</h4>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectTool('etsy-fee'); }}>Etsy Calculator</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectTool('merge-pdf'); }}>Merge PDF</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectTool('invoice-generator'); }}>Invoice Generator</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectTool('stripe-fee'); }}>Stripe Calculator</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectTool('image-crop-resize'); }}>Image Cropper</a>
+                </div>
+
+                {/* Resources column */}
+                <div className="pb-footer-col">
+                  <h4>Resources</h4>
+                  <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer">Support Us</a>
+                  <a href="#">Privacy</a>
+                  <a href="#">Changelog</a>
+                </div>
+
+                {/* About column */}
+                <div className="pb-footer-col">
+                  <h4>About</h4>
+                  <a href="#">100% Client-Side</a>
+                  <a href="#">No Data Collection</a>
+                  <a href="#">Open Source</a>
+                </div>
               </div>
-              <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--brand-light)' }}>
-                v8.0.0 · 100 Tools
-              </span>
-            </footer>
+
+              {/* Bottom bar */}
+              <div className="pb-footer-bottom">
+                <span>© 2026 Pahruli. Free forever.</span>
+                <span style={{ fontFamily: 'var(--font-mono)', color: '#6161ff' }}>v8.0.0 · 100 Tools</span>
+              </div>
+            </div>
           </div>
         </main>
       </div>

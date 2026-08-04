@@ -17,37 +17,34 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
     <header className="nav-panel sticky top-0 z-40 no-print" style={{ background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
-        {/* Left: Monday-style Logo & Status Dots */}
+        {/* Left: Clean Brand Logo */}
         <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All')}>
           <div
             style={{
-              width: 36, height: 36, borderRadius: 12,
+              width: 36, height: 36, borderRadius: 10,
               background: '#6161ff',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 14px rgba(97,97,255,0.3)',
-              position: 'relative'
+              boxShadow: '0 4px 14px rgba(97,97,255,0.25)',
             }}
-            className="flex items-center justify-center"
           >
-            {/* Monday.com iconic 3-bar / dots motif */}
             <div className="flex items-end gap-[3px] h-[18px]">
               <div style={{ width: 4, height: 10, background: '#ff3d8b', borderRadius: 99 }} />
               <div style={{ width: 4, height: 16, background: '#00c875', borderRadius: 99 }} />
               <div style={{ width: 4, height: 13, background: '#fdab3d', borderRadius: 99 }} />
             </div>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: '#1f2532', letterSpacing: '-0.02em', fontStyle: 'italic' }}>
-                pahruli<span style={{ color: '#6161ff', fontStyle: 'normal', fontFamily: 'var(--font)', fontSize: 16, fontWeight: 700 }}>.com</span>
-              </span>
-              <span className="badge badge-success" style={{ fontSize: 10, padding: '2px 8px' }}>
-                Free
-              </span>
-            </div>
-            <div style={{ fontSize: 11.5, color: '#676879', fontWeight: 500, lineHeight: 1, marginTop: 1 }}>
-              100 offline tools. No cloud uploads. No signups.
-            </div>
+          <div className="flex items-center gap-2.5">
+            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 24, color: '#1f2532', letterSpacing: '-0.03em' }}>
+              pahruli<span style={{ color: '#6161ff', fontSize: 17, fontWeight: 700 }}>.com</span>
+            </span>
+            <span style={{
+              fontSize: 11, fontWeight: 700,
+              padding: '3px 9px', borderRadius: 99,
+              background: '#eceeff', color: '#6161ff',
+              letterSpacing: '0.02em'
+            }}>
+              100 Free Tools
+            </span>
           </div>
         </div>
 
@@ -114,17 +111,23 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
           >
             All tools
           </button>
-          <a
-            href="#tools"
+          <button
+            onClick={() => {
+              onSelectCategory('All');
+              const el = document.getElementById('tools-grid');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="btn-primary"
             style={{
               fontSize: 13, padding: '8px 18px',
               background: 'linear-gradient(90deg, #6161ff, #7f56d9)',
-              textDecoration: 'none'
+              border: 'none', cursor: 'pointer',
+              color: 'white', fontWeight: 600,
+              borderRadius: 99,
             }}
           >
             Get Started →
-          </a>
+          </button>
         </div>
       </div>
 
