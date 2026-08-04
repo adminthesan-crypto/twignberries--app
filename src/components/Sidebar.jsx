@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, Clock, ChevronRight } from 'lucide-react';
 
 export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds, recentIds }) {
+  const activeTool = tools.find(t => t.id === activeToolId);
   const starredTools = tools.filter(t => starredIds.includes(t.id));
   const recentTools = recentIds
     .map(id => tools.find(t => t.id === id))
@@ -12,7 +13,11 @@ export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds,
     <aside
       className="no-print shrink-0 overflow-y-auto"
       style={{
-        width: 240,
+        width: 250,
+        position: 'sticky',
+        top: 110,
+        height: 'calc(100vh - 110px)',
+        alignSelf: 'flex-start',
         background: 'var(--bg-sidebar)',
         borderRight: '1px solid var(--border)',
         display: 'flex',
@@ -21,7 +26,52 @@ export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds,
         padding: '20px 14px',
       }}
     >
-      {/* Starred */}
+      {/* 1. Active Tool's Category Section */}
+      {activeTool && (
+        <div style={{ marginBottom: 28 }}>
+          <div style={{
+            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.06em',
+            textTransform: 'uppercase', color: '#6161ff',
+            marginBottom: 10, padding: '0 6px',
+            display: 'flex', alignItems: 'center', gap: 6,
+          }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#6161ff', display: 'inline-block' }} />
+            {activeTool.category}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            {tools
+              .filter(t => t.category === activeTool.category)
+              .map(t => {
+                const isCurrent = t.id === activeToolId;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => onSelectTool(t.id)}
+                    className="sidebar-item"
+                    style={{
+                      background: isCurrent ? '#eceeff' : undefined,
+                      color: isCurrent ? '#6161ff' : undefined,
+                      borderColor: isCurrent ? 'rgba(97,97,255,0.35)' : undefined,
+                      fontWeight: isCurrent ? 700 : 500,
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{t.name}</span>
+                    {isCurrent && (
+                      <span style={{
+                        fontSize: 10, background: '#6161ff', color: '#fff',
+                        padding: '1px 6px', borderRadius: 10, fontWeight: 700
+                      }}>
+                        OPEN
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+          </div>
+        </div>
+      )}
+
+      {/* 2. Starred */}
       <div style={{ marginBottom: 28 }}>
         <div style={{
           fontSize: 11.5, fontWeight: 700, letterSpacing: '0.06em',

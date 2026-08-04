@@ -1517,7 +1517,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
           boxShadow: '0 2px 12px rgba(97,97,255,0.1)',
         }}>
           <span className="w-2 h-2 rounded-full bg-[#00c875] animate-pulse"></span>
-          100 free offline tools — no signup needed
+          {TOOLS.length} free offline tools — no signup needed
         </div>
 
         <h1 className="pb-display">
@@ -1536,14 +1536,14 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             Explore all {tools.length} tools →
           </a>
           <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
-            ⚡ Back Pahruli
+            ⚡ Support Pahruli
           </a>
         </div>
 
         {/* Stats row */}
         <div className="pb-stats">
           <div className="pb-stat">
-            <div className="pb-stat-value">100</div>
+            <div className="pb-stat-value">{TOOLS.length}</div>
             <div className="pb-stat-label">Offline Tools</div>
           </div>
           <div className="pb-stat">
@@ -1754,7 +1754,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory }) {
             style={{ color: '#6161ff', textDecoration: 'none' }}
             className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
           >
-            <span>⚡ Back Pahruli's open development →</span>
+            <span>⚡ Support Pahruli's free tools →</span>
           </a>
         </div>
       </div>
@@ -1785,6 +1785,7 @@ export default function App() {
       try { localStorage.setItem('tw_recent', JSON.stringify(updated)); } catch (e) {}
       return updated;
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectCategory = (cat, opts = {}) => {
@@ -1835,7 +1836,7 @@ export default function App() {
       />
 
       {/* Body */}
-      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', minHeight: 0 }}>
+      <div style={{ flex: 1, display: 'flex' }}>
         {/* Sidebar — only show when a tool is active */}
         {activeToolId && (
           <Sidebar
@@ -1848,7 +1849,7 @@ export default function App() {
         )}
 
         {/* Main content */}
-        <main style={{ flex: 1, overflowY: 'auto', padding: '28px 32px' }}>
+        <main style={{ flex: 1, padding: '28px 32px' }}>
           <div style={{ maxWidth: 960, margin: '0 auto' }}>
 
             {activeToolId && activeTool ? (
@@ -1922,10 +1923,10 @@ export default function App() {
                 {/* Brand column */}
                 <div className="pb-footer-brand">
                   <h3>pahruli</h3>
-                  <p>100 offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
+                  <p>{TOOLS.length} offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
                   <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
                     <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
-                      ⚡ Back Pahruli
+                      ⚡ Support Pahruli
                     </a>
                   </div>
                 </div>
@@ -1933,11 +1934,11 @@ export default function App() {
                 {/* Tools column */}
                 <div className="pb-footer-col">
                   <h4>Tools</h4>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>E-Commerce</a>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>PDF Suite</a>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Image Tools</a>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Developer</a>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveToolId(null); }}>Marketing</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectCategory('E-Commerce', { scrollToTop: true }); }}>E-Commerce</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectCategory('PDF Suite', { scrollToTop: true }); }}>PDF Suite</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectCategory('Image & Media', { scrollToTop: true }); }}>Image Tools</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectCategory('AI & Dev', { scrollToTop: true }); }}>Developer</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); handleSelectCategory('Marketing', { scrollToTop: true }); }}>Marketing</a>
                 </div>
 
                 {/* Popular column */}
@@ -1953,7 +1954,7 @@ export default function App() {
                 {/* Resources column */}
                 <div className="pb-footer-col">
                   <h4>Resources</h4>
-                  <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer">Back Our Development</a>
+                  <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 700, color: '#6161ff' }}>Donate</a>
                   <a href="#">Privacy</a>
                   <a href="#">Changelog</a>
                 </div>
@@ -1970,7 +1971,7 @@ export default function App() {
               {/* Bottom bar */}
               <div className="pb-footer-bottom">
                 <span>© 2026 Pahruli. Free forever.</span>
-                <span style={{ fontFamily: 'var(--font-mono)', color: '#6161ff' }}>v8.0.0 · 100 Tools</span>
+                <span style={{ fontFamily: 'var(--font-mono)', color: '#6161ff' }}>v8.0.0 · {TOOLS.length} Tools</span>
               </div>
             </div>
           </div>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Sparkles, RefreshCw, Copy, Check, Heart, MessageSquare, Share2 } from 'lucide-react';
 
-const MEMES = [
+const getMemes = (toolsCount) => [
   {
     id: '1',
     category: 'PDF & Cloud Privacy',
     tag: 'r/webdev • Top Roast',
     headline: 'Don\'t upload confidential contracts to cloud converters. Do Pahruli.',
-    content: '"Me uploading an NDA contract to a free cloud PDF converter and receiving a targeted sales email 5 minutes later 🤡"\n\n👉 All 100 Pahruli utilities execute 100% inside your browser RAM. Zero server uploads.',
+    content: `"Me uploading an NDA contract to a free cloud PDF converter and receiving a targeted sales email 5 minutes later 🤡"\n\n👉 All ${toolsCount} Pahruli utilities execute 100% inside your browser RAM. Zero server uploads.`,
     upvotes: '1.4k',
     comments: '248'
   },
@@ -52,20 +52,21 @@ const MEMES = [
     category: 'Indie Hackers & Pricing',
     tag: 'r/indiehackers • Philosophy',
     headline: 'SaaS subscription bloat is real',
-    content: '"Me explaining to my team why we don\'t need a $49/month subscription just to merge two PDF files or format JSON 🛑"\n\n👉 100 Enterprise-Grade Utilities. Free forever. Zero signups.',
+    content: `"Me explaining to my team why we don't need a $49/month subscription just to merge two PDF files or format JSON 🛑"\n\n👉 ${toolsCount} Enterprise-Grade Utilities. Free forever. Zero signups.`,
     upvotes: '4.1k',
     comments: '604'
   }
 ];
 
-export default function CultureMemeWidget() {
+export default function CultureMemeWidget({ toolsCount = 100 }) {
+  const memes = getMemes(toolsCount);
   const [index, setIndex] = useState(0);
   const [copied, setCopied] = useState(false);
 
-  const current = MEMES[index];
+  const current = memes[index];
 
   const handleNext = () => {
-    setIndex((prev) => (prev + 1) % MEMES.length);
+    setIndex((prev) => (prev + 1) % memes.length);
   };
 
   const handleCopy = () => {
@@ -170,7 +171,7 @@ export default function CultureMemeWidget() {
       {/* Footer strip: Support prompt */}
       <div className="px-5 py-2.5 bg-[#f8f6ff] border-t border-[#e2d9ff] flex items-center justify-between text-xs">
         <span style={{ color: '#5521e8', fontWeight: 600 }}>
-          💡 Like our 100 free offline utilities?
+          💡 Like our {toolsCount} free offline utilities?
         </span>
         <a
           href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
@@ -181,7 +182,7 @@ export default function CultureMemeWidget() {
             display: 'inline-flex', alignItems: 'center', gap: 4
           }}
         >
-          <span>⚡ Back Pahruli's open development →</span>
+          <span>⚡ Support Pahruli's free tools →</span>
         </a>
       </div>
     </div>

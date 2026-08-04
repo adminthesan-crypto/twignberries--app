@@ -14,7 +14,7 @@ const CATEGORIES = [
 
 export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory }) {
   return (
-    <header className="nav-panel sticky top-0 z-40 no-print" style={{ background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
+    <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 100, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
         {/* Left: Clean Brand Logo */}
@@ -43,40 +43,36 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
               background: '#eceeff', color: '#6161ff',
               letterSpacing: '0.02em'
             }}>
-              100 Free Tools
+              {toolsCount} Free Tools
             </span>
           </div>
         </div>
 
-        {/* Center: Search bar (Cmd+K) */}
-        <button
-          onClick={onOpenSearch}
-          style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            gap: 24, padding: '8px 16px',
-            borderRadius: 99, cursor: 'pointer',
-            background: '#f6f8fa',
-            border: '1.5px solid #e6e9ef',
-            transition: 'all 0.15s ease',
-            minWidth: 260,
-          }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = '#6161ff'; e.currentTarget.style.background = '#ffffff'; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = '#e6e9ef'; e.currentTarget.style.background = '#f6f8fa'; }}
-          title="Search utilities (⌘K)"
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Search size={15} color="#6161ff" />
-            <span style={{ fontSize: 13.5, color: '#676879', fontWeight: 500 }}>Search 100 utilities...</span>
-          </div>
-          <kbd style={{
-            display: 'flex', alignItems: 'center', gap: 3,
-            padding: '2px 8px', borderRadius: 99,
-            background: '#ffffff', border: '1px solid #d0d4e4',
-            fontSize: 11, color: '#676879', fontFamily: 'monospace', fontWeight: 700
-          }}>
-            <Command size={11} /> K
-          </kbd>
-        </button>
+        {/* Center: Command Palette Trigger */}
+        <div className="hidden md:flex items-center flex-1 max-w-md mx-8">
+          <button
+            onClick={onOpenSearch}
+            className="search-trigger w-full"
+            style={{
+              height: 38,
+              borderRadius: 99,
+              background: '#f5f6f8',
+              border: '1px solid #e6e9ef',
+              display: 'flex', alignItems: 'center',
+              padding: '0 14px', gap: 8,
+              color: '#676879', fontSize: 13
+            }}
+          >
+            <span>🔍</span>
+            <span style={{ flex: 1, textAlign: 'left' }}>Search {toolsCount} utilities...</span>
+            <kbd style={{
+              fontSize: 11, padding: '2px 6px', background: '#ffffff',
+              borderRadius: 6, border: '1px solid #dcdce5', color: '#676879', fontWeight: 600
+            }}>
+              ⌘K
+            </kbd>
+          </button>
+        </div>
 
         {/* Right: Monday.com CTA Pills */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -99,10 +95,10 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
               boxShadow: '0 2px 6px rgba(97,97,255,0.06)',
               transition: 'all 0.15s ease'
             }}
-            title="Back Pahruli's free offline development via Stripe"
+            title="Support Pahruli's free offline development via Stripe"
           >
             <span>⚡</span>
-            <span className="hidden sm:inline">Back Pahruli</span>
+            <span className="hidden sm:inline">Support Pahruli</span>
           </a>
           <button
             onClick={() => onSelectCategory('All')}

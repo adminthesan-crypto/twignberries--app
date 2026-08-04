@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
-import { FileText, Plus, Trash2, Printer, Building2, User, Receipt, Calendar } from 'lucide-react';
+import { FileText, Plus, Trash2, Printer, Building2, User, Receipt, Calendar, CreditCard } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
 export default function InvoiceGenerator() {
+  // Sender (Your Business) State
   const [senderName, setSenderName] = useState('Twignberries Creative LLC');
   const [senderEmail, setSenderEmail] = useState('hello@twignberries.com');
+  const [senderAddress, setSenderAddress] = useState('100 Innovation Way, Suite 400\nAustin, TX 78701 USA');
+  const [senderTaxId, setSenderTaxId] = useState('Tax ID: US-88291044');
+
+  // Client (Bill To) State
   const [clientName, setClientName] = useState('Acme Corporation');
   const [clientEmail, setClientEmail] = useState('billing@acmecorp.com');
+  const [clientAddress, setClientAddress] = useState('500 Market Street, 2nd Floor\nSan Francisco, CA 94105 USA');
+  const [clientTaxId, setClientTaxId] = useState('Tax ID: CA-44019200');
+
+  // Invoice Meta State
   const [invoiceNumber, setInvoiceNumber] = useState('INV-2026-001');
   const [invoiceDate, setInvoiceDate] = useState('2026-08-03');
   const [dueDate, setDueDate] = useState('2026-08-17');
   const [currency, setCurrency] = useState('$');
   const [taxRate, setTaxRate] = useState(10);
   const [discountRate, setDiscountRate] = useState(0);
-  const [notes, setNotes] = useState('Thank you for your business! Payment is due within 14 days.');
+  const [notes, setNotes] = useState('Thank you for your business! Please remit payment within 14 days via ACH or bank wire to Account #9928-1042.');
 
+  // Line Items State
   const [items, setItems] = useState([
-    { id: 1, desc: 'Web App UI/UX Design (Twignberries 2026)', qty: 1, rate: 1200 },
-    { id: 2, desc: 'Custom Frontend Development & SEO Setup', qty: 25, rate: 80 }
+    { id: 1, desc: 'Web App UI/UX Design & Prototyping (Twignberries 2026)', qty: 1, rate: 1200 },
+    { id: 2, desc: 'Custom Frontend React Development & Architecture', qty: 25, rate: 80 }
   ]);
 
   const addItem = () => {
@@ -46,315 +56,413 @@ export default function InvoiceGenerator() {
   };
 
   const sectionLabelStyle = {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 700,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
-    color: 'var(--text-4)',
+    color: 'var(--text-3)',
     display: 'flex',
     alignItems: 'center',
-    gap: 7,
+    gap: 8,
     marginBottom: 16,
     paddingBottom: 12,
     borderBottom: '1px solid var(--border)'
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 28, maxWidth: 940, margin: '0 auto' }}>
       {/* Tool header */}
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-          <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
+          <h1 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
             A proper invoice, in the time it takes to make tea.
           </h1>
           <span className="badge badge-brand">NO SIGNUP REQUIRED</span>
         </div>
-        <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          No login, no "upgrade to export." Fill it in, download it, send it.
+        <p style={{ fontSize: 13.5, color: 'var(--text-3)' }}>
+          No login, no "upgrade to export." Fill out your physical address &amp; tax details, add line items, and export a clean PDF.
         </p>
       </div>
 
-      {/* Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
-        {/* Left Column (Inputs / Editor) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {/* Form Card 1: Invoice & Parties */}
-          <div className="form-card">
-            <div style={sectionLabelStyle}>
-              <Building2 size={14} color="var(--brand)" />
-              1. Invoice Details &amp; Parties
+      {/* Main Invoice Editor Container */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {/* Card 1: Invoice Header & Parties (From & Bill To) */}
+        <div className="form-card" style={{ padding: 28 }}>
+          <div style={sectionLabelStyle}>
+            <Building2 size={16} color="#6161ff" />
+            1. Business &amp; Client Details (Including Physical Address &amp; Tax IDs)
+          </div>
+
+          {/* Top Invoice Metadata Row */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+            padding: 16,
+            background: '#f8f9fc',
+            borderRadius: 12,
+            border: '1px solid #eaebf2'
+          }}>
+            <div>
+              <label style={{ display: 'block', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', marginBottom: 6 }}>
+                Invoice Number
+              </label>
+              <input
+                type="text"
+                value={invoiceNumber}
+                onChange={(e) => setInvoiceNumber(e.target.value)}
+                className="glass-input"
+                style={{ fontFamily: 'monospace', fontSize: 13, width: '100%', fontWeight: 600 }}
+              />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-              <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-1">
-                  Invoice Number
-                </label>
-                <input
-                  type="text"
-                  value={invoiceNumber}
-                  onChange={(e) => setInvoiceNumber(e.target.value)}
-                  className="glass-input font-mono text-xs w-full"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-1">
-                  Invoice Date
-                </label>
-                <input
-                  type="date"
-                  value={invoiceDate}
-                  onChange={(e) => setInvoiceDate(e.target.value)}
-                  className="glass-input text-xs w-full"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-1">
-                  Due Date
-                </label>
-                <input
-                  type="date"
-                  value={dueDate}
-                  onChange={(e) => setDueDate(e.target.value)}
-                  className="glass-input text-xs w-full"
-                />
-              </div>
+            <div>
+              <label style={{ display: 'block', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', marginBottom: 6 }}>
+                Invoice Date
+              </label>
+              <input
+                type="date"
+                value={invoiceDate}
+                onChange={(e) => setInvoiceDate(e.target.value)}
+                className="glass-input"
+                style={{ fontSize: 13, width: '100%', fontWeight: 500 }}
+              />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-white/10">
-              <div>
-                <span className="text-xs font-bold text-[#6b7280] uppercase tracking-wider block mb-2">
-                  FROM (YOUR BUSINESS)
-                </span>
-                <div className="space-y-2">
-                  <input
-                    type="text"
-                    value={senderName}
-                    onChange={(e) => setSenderName(e.target.value)}
-                    placeholder="Your Company Name"
-                    className="glass-input text-sm font-semibold w-full"
-                  />
-                  <input
-                    type="email"
-                    value={senderEmail}
-                    onChange={(e) => setSenderEmail(e.target.value)}
-                    placeholder="you@domain.com"
-                    className="glass-input text-xs text-[#9ca3af] w-full"
-                  />
-                </div>
-              </div>
+            <div>
+              <label style={{ display: 'block', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', marginBottom: 6 }}>
+                Due Date
+              </label>
+              <input
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                className="glass-input"
+                style={{ fontSize: 13, width: '100%', fontWeight: 500 }}
+              />
+            </div>
 
-              <div>
-                <span className="text-xs font-bold text-[#6b7280] uppercase tracking-wider block mb-2">
-                  BILL TO (CLIENT)
-                </span>
-                <div className="space-y-2">
-                  <input
-                    type="text"
-                    value={clientName}
-                    onChange={(e) => setClientName(e.target.value)}
-                    placeholder="Client Name or Company"
-                    className="glass-input text-sm font-semibold w-full"
-                  />
-                  <input
-                    type="email"
-                    value={clientEmail}
-                    onChange={(e) => setClientEmail(e.target.value)}
-                    placeholder="billing@client.com"
-                    className="glass-input text-xs text-[#9ca3af] w-full"
-                  />
-                </div>
-              </div>
+            <div>
+              <label style={{ display: 'block', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', marginBottom: 6 }}>
+                Currency
+              </label>
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="glass-input"
+                style={{ fontSize: 13, width: '100%', fontWeight: 600 }}
+              >
+                <option value="$">$ USD</option>
+                <option value="€">€ EUR</option>
+                <option value="£">£ GBP</option>
+                <option value="₹">₹ INR</option>
+                <option value="C$">C$ CAD</option>
+                <option value="A$">A$ AUD</option>
+              </select>
             </div>
           </div>
 
-          {/* Form Card 2: Line Items & Notes */}
-          <div className="form-card">
-            <div style={sectionLabelStyle}>
-              <Receipt size={14} color="var(--brand)" />
-              2. Line Items &amp; Services
-            </div>
+          {/* 2-Column Parties Section: From (You) and Bill To (Client) */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
+            {/* FROM COLUMN */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 18, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: '#1f2532', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6161ff', display: 'inline-block' }} />
+                From (Your Business)
+              </div>
+              
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Company / Sender Name</label>
+                <input
+                  type="text"
+                  value={senderName}
+                  onChange={(e) => setSenderName(e.target.value)}
+                  placeholder="Your Business Name LLC"
+                  className="glass-input"
+                  style={{ fontSize: 13.5, fontWeight: 600, width: '100%' }}
+                />
+              </div>
 
-            <div className="overflow-x-auto mb-4">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-white/10 text-xs font-mono text-[#6b7280]">
-                    <th className="py-2.5 px-2">DESCRIPTION</th>
-                    <th className="py-2.5 px-2 text-right w-20">QTY / HRS</th>
-                    <th className="py-2.5 px-2 text-right w-28">RATE</th>
-                    <th className="py-2.5 px-2 text-right w-28">AMOUNT</th>
-                    <th className="py-2.5 px-1 w-8 no-print"></th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5 font-mono text-sm">
-                  {items.map((item) => (
-                    <tr key={item.id} className="group">
-                      <td className="py-2.5 px-2">
-                        <input
-                          type="text"
-                          value={item.desc}
-                          onChange={(e) => updateItem(item.id, 'desc', e.target.value)}
-                          className="w-full bg-transparent text-white font-sans focus:outline-none border-b border-transparent focus:border-[#ff6b00]"
-                        />
-                      </td>
-                      <td className="py-2.5 px-2 text-right">
-                        <input
-                          type="number"
-                          value={item.qty}
-                          onChange={(e) => updateItem(item.id, 'qty', e.target.value)}
-                          className="w-16 bg-transparent text-right text-white focus:outline-none border-b border-transparent focus:border-[#ff6b00]"
-                        />
-                      </td>
-                      <td className="py-2.5 px-2 text-right">
-                        <input
-                          type="number"
-                          value={item.rate}
-                          onChange={(e) => updateItem(item.id, 'rate', e.target.value)}
-                          className="w-24 bg-transparent text-right text-white focus:outline-none border-b border-transparent focus:border-[#ff6b00]"
-                        />
-                      </td>
-                      <td className="py-2.5 px-2 text-right font-semibold text-white">
-                        {currency}{(Number(item.qty) * Number(item.rate)).toFixed(2)}
-                      </td>
-                      <td className="py-2.5 px-1 text-right no-print">
-                        <button
-                          type="button"
-                          onClick={() => removeItem(item.id)}
-                          className="p-1 rounded text-[#6b7280] hover:text-red-400 transition-colors opacity-80 hover:opacity-100"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Email Address</label>
+                <input
+                  type="email"
+                  value={senderEmail}
+                  onChange={(e) => setSenderEmail(e.target.value)}
+                  placeholder="hello@yourbusiness.com"
+                  className="glass-input"
+                  style={{ fontSize: 13, width: '100%' }}
+                />
+              </div>
 
-            <div className="flex items-center justify-between pb-5 border-b border-white/10 no-print">
-              <button
-                type="button"
-                onClick={addItem}
-                className="btn-secondary text-xs"
-              >
-                <Plus className="w-3.5 h-3.5" /> Add Line Item
-              </button>
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Physical Address (Street, City, ZIP)</label>
+                <textarea
+                  rows={2}
+                  value={senderAddress}
+                  onChange={(e) => setSenderAddress(e.target.value)}
+                  placeholder="Street address, Suite #, City, State, ZIP, Country"
+                  className="glass-input"
+                  style={{ fontSize: 12.5, width: '100%', resize: 'none', lineHeight: 1.4 }}
+                />
+              </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-[#9ca3af]">Currency:</span>
-                <select
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value)}
-                  className="glass-input !w-20 font-mono text-xs"
-                >
-                  <option value="$">$ (USD)</option>
-                  <option value="€">€ (EUR)</option>
-                  <option value="£">£ (GBP)</option>
-                  <option value="₹">₹ (INR)</option>
-                </select>
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Tax ID / VAT Number (Optional)</label>
+                <input
+                  type="text"
+                  value={senderTaxId}
+                  onChange={(e) => setSenderTaxId(e.target.value)}
+                  placeholder="e.g. EIN 12-3456789 or EU VAT Number"
+                  className="glass-input"
+                  style={{ fontSize: 12.5, width: '100%', fontFamily: 'monospace' }}
+                />
               </div>
             </div>
 
-            <div className="pt-4">
-              <label className="text-xs font-bold text-[#6b7280] uppercase tracking-wider block mb-1.5">
-                PAYMENT TERMS &amp; NOTES
-              </label>
-              <textarea
-                rows={2}
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                className="w-full glass-input text-xs text-[#9ca3af] resize-none"
-                placeholder="Include bank details, wire instructions, or payment terms..."
-              />
+            {/* BILL TO COLUMN */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 18, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: '#1f2532', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#00c875', display: 'inline-block' }} />
+                Bill To (Client)
+              </div>
+              
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Client Name / Company</label>
+                <input
+                  type="text"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                  placeholder="Client Corporation Name"
+                  className="glass-input"
+                  style={{ fontSize: 13.5, fontWeight: 600, width: '100%' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Client Email Address</label>
+                <input
+                  type="email"
+                  value={clientEmail}
+                  onChange={(e) => setClientEmail(e.target.value)}
+                  placeholder="billing@clientcompany.com"
+                  className="glass-input"
+                  style={{ fontSize: 13, width: '100%' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Client Physical Address</label>
+                <textarea
+                  rows={2}
+                  value={clientAddress}
+                  onChange={(e) => setClientAddress(e.target.value)}
+                  placeholder="Client Street Address, City, State, ZIP, Country"
+                  className="glass-input"
+                  style={{ fontSize: 12.5, width: '100%', resize: 'none', lineHeight: 1.4 }}
+                />
+              </div>
+
+              <div>
+                <label style={{ fontSize: 11, color: '#676879', fontWeight: 600, display: 'block', marginBottom: 4 }}>Client Tax ID / VAT (Optional)</label>
+                <input
+                  type="text"
+                  value={clientTaxId}
+                  onChange={(e) => setClientTaxId(e.target.value)}
+                  placeholder="Client Tax Registration Number"
+                  className="glass-input"
+                  style={{ fontSize: 12.5, width: '100%', fontFamily: 'monospace' }}
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right Column (Results / Live Preview - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
-          {/* Primary Hero Banner */}
-          <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
-              TOTAL INVOICE AMOUNT
-            </span>
-            <div className="text-4xl font-mono font-bold text-white mb-2">
-              {currency}{total.toFixed(2)}
+        {/* Card 2: Line Items & Services Table */}
+        <div className="form-card" style={{ padding: 28 }}>
+          <div style={sectionLabelStyle}>
+            <Receipt size={16} color="#6161ff" />
+            2. Line Items &amp; Services
+          </div>
+
+          <div style={{ overflowX: 'auto', marginBottom: 16 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr style={{ borderBottom: '2px solid #e6e9ef', textAlign: 'left', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <th style={{ padding: '10px 8px' }}>DESCRIPTION</th>
+                  <th style={{ padding: '10px 8px', textAlign: 'right', width: 110 }}>QTY / HRS</th>
+                  <th style={{ padding: '10px 8px', textAlign: 'right', width: 140 }}>RATE ({currency})</th>
+                  <th style={{ padding: '10px 8px', textAlign: 'right', width: 140 }}>AMOUNT</th>
+                  <th style={{ padding: '10px 4px', width: 40 }} className="no-print"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.id} style={{ borderBottom: '1px solid #f0f2f5' }}>
+                    <td style={{ padding: '12px 8px' }}>
+                      <input
+                        type="text"
+                        value={item.desc}
+                        onChange={(e) => updateItem(item.id, 'desc', e.target.value)}
+                        className="glass-input"
+                        style={{ width: '100%', fontSize: 13.5, fontWeight: 500 }}
+                        placeholder="Service description..."
+                      />
+                    </td>
+                    <td style={{ padding: '12px 8px', textAlign: 'right' }}>
+                      <input
+                        type="number"
+                        value={item.qty}
+                        onChange={(e) => updateItem(item.id, 'qty', e.target.value)}
+                        className="glass-input"
+                        style={{ width: 80, textAlign: 'right', fontSize: 13.5, fontWeight: 600, fontFamily: 'monospace' }}
+                      />
+                    </td>
+                    <td style={{ padding: '12px 8px', textAlign: 'right' }}>
+                      <input
+                        type="number"
+                        value={item.rate}
+                        onChange={(e) => updateItem(item.id, 'rate', e.target.value)}
+                        className="glass-input"
+                        style={{ width: 110, textAlign: 'right', fontSize: 13.5, fontWeight: 600, fontFamily: 'monospace' }}
+                      />
+                    </td>
+                    <td style={{ padding: '12px 8px', textAlign: 'right', fontSize: 14, fontWeight: 700, color: '#1f2532', fontFamily: 'monospace' }}>
+                      {currency}{(Number(item.qty) * Number(item.rate)).toFixed(2)}
+                    </td>
+                    <td style={{ padding: '12px 4px', textAlign: 'center' }} className="no-print">
+                      <button
+                        type="button"
+                        onClick={() => removeItem(item.id)}
+                        title="Remove Item"
+                        style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#c3c6d4', padding: 4 }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#ff3d8b'}
+                        onMouseLeave={e => e.currentTarget.style.color = '#c3c6d4'}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }} className="no-print">
+            <button
+              type="button"
+              onClick={addItem}
+              className="btn-secondary"
+              style={{ fontSize: 13, padding: '8px 16px' }}
+            >
+              <Plus size={15} /> Add Service / Line Item
+            </button>
+          </div>
+        </div>
+
+        {/* Card 3: Notes & Summary / Total Export */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
+          {/* Left: Notes & Bank Instructions */}
+          <div className="form-card" style={{ padding: 28 }}>
+            <div style={sectionLabelStyle}>
+              <CreditCard size={16} color="#6161ff" />
+              3. Payment Terms &amp; Bank Instructions
             </div>
-            <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
-              <span>Client: {clientName || 'N/A'}</span>
-              <span>Due: {dueDate}</span>
+            <label style={{ fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', display: 'block', marginBottom: 8 }}>
+              Bank Wire / Payment Details &amp; Notes
+            </label>
+            <textarea
+              rows={5}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="glass-input"
+              style={{ width: '100%', fontSize: 13, resize: 'none', lineHeight: 1.5 }}
+              placeholder="Include bank ACH/wire details, IBAN, PayPal link, or payment terms..."
+            />
+            
+            <div className="insight-block" style={{ marginTop: 16 }}>
+              💡 Pro tip: Invoices that include full physical business addresses, tax IDs, and clear bank instructions get paid up to 40% faster.
             </div>
           </div>
 
-          {/* Breakdown / Action Card */}
-          <div className="form-card">
-            <div style={sectionLabelStyle}>
-              <FileText size={14} color="var(--brand)" />
-              Summary &amp; Export
+          {/* Right: Summary Card & Print PDF */}
+          <div className="form-card" style={{ padding: 28, background: 'linear-gradient(135deg, #1f2532 0%, #151924 100%)', color: '#ffffff', border: 'none' }}>
+            <div style={{ ...sectionLabelStyle, color: '#a0a8be', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              <FileText size={16} color="#6161ff" />
+              4. Total Due &amp; Export
             </div>
 
-            <div className="space-y-3 font-mono text-sm mb-5">
-              <div className="flex justify-between text-[#9ca3af]">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20, fontFamily: 'monospace', fontSize: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', color: '#a0a8be' }}>
                 <span>Subtotal:</span>
-                <span className="text-white font-semibold">{currency}{subtotal.toFixed(2)}</span>
+                <span style={{ color: '#ffffff', fontWeight: 700 }}>{currency}{subtotal.toFixed(2)}</span>
               </div>
 
-              <div className="flex justify-between items-center text-[#9ca3af] no-print">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#a0a8be' }} className="no-print">
                 <span>Discount (%):</span>
                 <input
                   type="number"
                   value={discountRate}
                   onChange={(e) => setDiscountRate(e.target.value)}
-                  className="glass-input !w-16 !py-0.5 !px-1.5 text-right text-xs"
+                  className="glass-input"
+                  style={{ width: 70, textAlign: 'right', fontSize: 13, padding: '3px 8px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}
                 />
               </div>
               {discountRate > 0 && (
-                <div className="flex justify-between text-xs text-emerald-400">
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: '#00c875' }}>
                   <span>Discount ({discountRate}%):</span>
                   <span>-{currency}{discountAmount.toFixed(2)}</span>
                 </div>
               )}
 
-              <div className="flex justify-between items-center text-[#9ca3af] no-print">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#a0a8be' }} className="no-print">
                 <span>Tax / GST Rate (%):</span>
                 <input
                   type="number"
                   value={taxRate}
                   onChange={(e) => setTaxRate(e.target.value)}
-                  className="glass-input !w-16 !py-0.5 !px-1.5 text-right text-xs"
+                  className="glass-input"
+                  style={{ width: 70, textAlign: 'right', fontSize: 13, padding: '3px 8px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}
                 />
               </div>
               {taxRate > 0 && (
-                <div className="flex justify-between text-xs text-[#9ca3af]">
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: '#a0a8be' }}>
                   <span>Tax ({taxRate}%):</span>
                   <span>+{currency}{taxAmount.toFixed(2)}</span>
                 </div>
               )}
 
-              <div className="h-px bg-white/10 my-2" />
+              <div style={{ height: 1, background: 'rgba(255,255,255,0.12)', margin: '4px 0' }} />
 
-              <div className="flex justify-between items-center text-lg font-bold text-white">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 22, fontWeight: 800 }}>
                 <span>TOTAL DUE:</span>
-                <span className="text-[#ff6b00]">{currency}{total.toFixed(2)}</span>
+                <span style={{ color: '#00c875' }}>{currency}{total.toFixed(2)}</span>
               </div>
             </div>
 
-            <div className="flex flex-col gap-2.5 no-print">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }} className="no-print">
               <button
                 type="button"
                 onClick={handlePrint}
-                className="btn-primary w-full justify-center text-xs"
+                className="btn-primary"
+                style={{
+                  width: '100%', justifyContent: 'center', fontSize: 14, padding: '12px',
+                  background: '#6161ff', fontWeight: 700
+                }}
               >
-                <Printer className="w-4 h-4" />
-                <span>Print Invoice / Save PDF</span>
+                <Printer size={17} />
+                <span>Print Invoice / Save as PDF</span>
               </button>
 
               <CopySummaryButton
                 title={`Invoice Summary — ${invoiceNumber}`}
                 lines={[
                   { label: 'Invoice Number', value: invoiceNumber },
-                  { label: 'From', value: senderName },
-                  { label: 'Bill To', value: clientName },
+                  { label: 'From (Company)', value: senderName },
+                  { label: 'From Address', value: senderAddress.replace(/\n/g, ', ') },
+                  { label: 'Bill To (Client)', value: clientName },
+                  { label: 'Client Address', value: clientAddress.replace(/\n/g, ', ') },
                   { label: 'Invoice Date', value: invoiceDate },
                   { label: 'Due Date', value: dueDate },
                   { label: 'Subtotal', value: `${currency}${subtotal.toFixed(2)}` },
@@ -365,13 +473,6 @@ export default function InvoiceGenerator() {
               />
             </div>
           </div>
-
-          {/* Insight Block */}
-          <div className="insight-block">
-            💡 Pro tip: Always specify clear payment terms and due dates on every invoice. Including bank transfer details in the notes section gets you paid up to 40% faster.
-          </div>
-
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>
