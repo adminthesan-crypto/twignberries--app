@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { FileText, Upload, Download, Copy, Check, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+}
 
 export default function PdfTextExtractorTool() {
   const [file, setFile] = useState(null);
