@@ -4,7 +4,7 @@ import NavbarSearch from './NavbarSearch';
 import AdUnit from './AdUnit';
 
 const CATEGORIES = [
-  { id: 'All',           label: 'All Tools',      icon: LayoutGrid },
+  { id: 'Surprise',      label: 'Surprise Me',    icon: Gift }, // Replaces All Tools
   { id: 'PDF Tools',     label: 'PDF Suite',      icon: Layers },
   { id: 'E-Commerce',    label: 'E-Commerce',     icon: DollarSign },
   { id: 'AI & Dev',      label: 'AI & Dev',       icon: Cpu },
@@ -18,9 +18,9 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
   const [showSurpriseAd, setShowSurpriseAd] = useState(false);
 
   return (
-    <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
+    <header className="nav-panel no-print w-full" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
-      <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto w-full">
         {/* Left: Clean Brand Logo */}
         <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           <div
@@ -53,7 +53,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         </div>
 
         {/* Center: Inline Search Dropdown */}
-        <div className="hidden md:flex items-center flex-1 max-w-md mx-8">
+        <div className="hidden md:flex items-center justify-center w-full max-w-md mx-8">
           <NavbarSearch 
             tools={tools} 
             toolsCount={toolsCount} 
@@ -62,7 +62,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         </div>
 
         {/* Right: Monday.com CTA Pills */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center justify-end gap-2 sm:gap-3 shrink-0 ml-auto">
           <button
             onClick={onOpenComparison}
             style={{
@@ -109,27 +109,6 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             <span className="hidden sm:inline">Support Pahruli</span>
           </a>
           <button
-            onClick={() => setShowSurpriseAd(!showSurpriseAd)}
-            className="animate-pulse"
-            style={{ 
-              fontSize: 13, 
-              padding: '8px 16px',
-              background: 'linear-gradient(45deg, #ff3d8b, #6161ff)',
-              color: 'white',
-              fontWeight: 800,
-              borderRadius: 99,
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              boxShadow: '0 4px 14px rgba(255,61,139,0.3)',
-            }}
-          >
-            <Gift size={16} />
-            Surprise Me
-          </button>
-          <button
             onClick={() => {
               onSelectCategory('All');
               const el = document.getElementById('tools-grid');
@@ -161,6 +140,24 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         }}
       >
         {CATEGORIES.map(cat => {
+          if (cat.id === 'Surprise') {
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setShowSurpriseAd(!showSurpriseAd)}
+                className="cat-pill animate-pulse"
+                style={{
+                  background: 'linear-gradient(45deg, #ff3d8b, #6161ff)',
+                  color: 'white',
+                  border: 'none',
+                  fontWeight: 800
+                }}
+              >
+                <Gift size={14} />
+                {cat.label}
+              </button>
+            );
+          }
           const isActive = selectedCategory === cat.id;
           return (
             <button

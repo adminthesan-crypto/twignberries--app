@@ -1713,17 +1713,13 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
       </div>
 
       {/* Culture Meme Widget */}
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: 48, marginTop: 12 }}>
         <CultureMemeWidget toolsCount={TOOLS.length} />
       </div>
 
-      {/* Ad Unit / Sponsor Placement on Home Grid */}
-      <AdUnit variant="banner" placement="home-grid" />
-
-
       {/* Grid Section Heading */}
-      <div id="tools-grid" className="flex items-center justify-between mb-6 pt-4">
-        <div>
+      <div id="tools-grid" className="flex items-center justify-between mb-8 pt-4 border-t border-[#e6e9ef]">
+        <div className="pt-4">
           <h2 style={{ fontSize: 24, fontWeight: 800, color: '#1f2532', letterSpacing: '-0.03em' }}>
             {selectedCategory === 'All' ? 'All Workspace Utilities' : `${selectedCategory} Utilities`}
           </h2>
@@ -1731,16 +1727,21 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
             Pick a tool and get your answer. No accounts, no tutorials, no onboarding emails.
           </p>
         </div>
-        <span className="badge" style={{ background: '#eceeff', color: '#6161ff', fontWeight: 700 }}>
-          {filtered.length} utilities
-        </span>
+        <div className="pt-4 flex items-center gap-4">
+          {/* Ad Unit / Sponsor Placement on Home Grid */}
+          <AdUnit variant="banner" placement="home-grid" />
+          <span className="badge" style={{ background: '#eceeff', color: '#6161ff', fontWeight: 700 }}>
+            {filtered.length} utilities
+          </span>
+        </div>
       </div>
 
       {/* Grid */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 20,
+        gap: 24,
+        marginBottom: 40
       }}>
         {filtered.map((tool, i) => (
           <ToolCard
@@ -1753,33 +1754,33 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
 
       {/* Point #4: Short 'Why this exists' line in founder's actual voice */}
       <div
-        className="p-8 rounded-2xl bg-white border border-[#e6e9ef]"
+        className="p-10 md:p-14 rounded-3xl bg-white border border-[#e6e9ef]"
         style={{
-          boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
+          boxShadow: '0 12px 48px rgba(0,0,0,0.06)',
           display: 'flex',
           flexDirection: 'column',
-          gap: 12,
-          marginTop: 64,
-          marginBottom: 64
+          gap: 20,
+          marginTop: 80,
+          marginBottom: 80
         }}
       >
         <div className="flex items-center gap-2">
-          <span style={{ fontSize: 11.5, fontWeight: 700, color: '#6161ff', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          <span style={{ fontSize: 12, fontWeight: 800, color: '#6161ff', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
             Why This Exists
           </span>
         </div>
         <p style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 21,
+          fontSize: 24,
           fontWeight: 600,
           color: '#1f2532',
-          lineHeight: 1.5,
+          lineHeight: 1.6,
           fontStyle: 'italic'
         }}>
           "I kept opening five tabs just to figure out if a $35 listing was actually worth making. Etsy takes a cut, then another cut, then an ad fee if you're not careful. So I built this instead — it does the math in your browser, doesn't ask for your email, and doesn't save anything anywhere. Bookmark it and forget I exist."
         </p>
-        <div className="flex items-center justify-between pt-2 flex-wrap gap-4">
-          <span style={{ fontSize: 13, fontWeight: 600, color: '#676879' }}>
+        <div className="flex items-center justify-between pt-6 border-t border-[#f0f2f5] flex-wrap gap-4 mt-2">
+          <span style={{ fontSize: 14, fontWeight: 700, color: '#676879' }}>
             — Someone who got tired of doing this by hand.
           </span>
           <a
@@ -1787,7 +1788,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#6161ff', textDecoration: 'none' }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
           >
             <span>⚡ Support Pahruli's free tools →</span>
           </a>
@@ -1875,35 +1876,35 @@ export default function App() {
         )}
 
         {/* Main content */}
-        <main style={{ flex: 1, padding: '28px 32px' }}>
-          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+        <main style={{ flex: 1, padding: '32px 40px' }}>
+          <div style={{ maxWidth: 1040, margin: '0 auto' }}>
 
             {activeToolId && activeTool ? (
               <>
                 {/* Breadcrumb + actions bar */}
                 <div className="no-print" style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  marginBottom: 24, flexWrap: 'wrap', gap: 12,
+                  marginBottom: 48, flexWrap: 'wrap', gap: 12,
                 }}>
                   <button
                     onClick={() => setActiveToolId(null)}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 6,
-                      fontSize: 13, fontWeight: 500, color: 'var(--text-4)',
+                      fontSize: 14, fontWeight: 600, color: 'var(--text-4)',
                       background: 'none', border: 'none', cursor: 'pointer', padding: 0,
                       transition: 'color 0.13s ease',
                     }}
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--text-1)'}
                     onMouseLeave={e => e.currentTarget.style.color = 'var(--text-4)'}
                   >
-                    <ArrowLeft size={14} />
+                    <ArrowLeft size={16} />
                     All Tools
                   </button>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     {/* Category badge */}
                     <span style={{
-                      fontSize: 11, fontWeight: 600, padding: '3px 9px',
+                      fontSize: 12, fontWeight: 700, padding: '4px 12px',
                       borderRadius: 99, background: 'rgba(255,255,255,0.06)',
                       color: 'var(--text-4)', border: '1px solid var(--border)',
                       letterSpacing: '0.04em', textTransform: 'uppercase',
@@ -1917,25 +1918,25 @@ export default function App() {
                       style={{
                         display: 'flex', alignItems: 'center', gap: 6,
                         fontSize: 13, fontWeight: 600, cursor: 'pointer',
-                        padding: '6px 14px', borderRadius: 8, transition: 'all 0.15s ease',
+                        padding: '8px 16px', borderRadius: 8, transition: 'all 0.15s ease',
                         background: isStarred ? 'rgba(245,158,11,0.12)' : 'rgba(255,255,255,0.04)',
                         color: isStarred ? '#f59e0b' : 'var(--text-4)',
                         border: isStarred ? '1.5px solid rgba(245,158,11,0.3)' : '1.5px solid var(--border)',
                       }}
                     >
-                      <Star size={13} fill={isStarred ? '#f59e0b' : 'none'} />
+                      <Star size={14} fill={isStarred ? '#f59e0b' : 'none'} />
                       {isStarred ? 'Starred' : 'Star this tool'}
                     </button>
                   </div>
                 </div>
 
                 {/* Tool content */}
-                <div className="animate-fade-in mb-10">
+                <div className="animate-fade-in mb-24 min-h-[50vh]">
                   <ActiveComponent />
                 </div>
 
                 {/* Post-Tool Widgets */}
-                <div className="flex flex-col gap-6 mb-16">
+                <div className="flex flex-col gap-10 mt-16 mb-24 border-t border-[#e6e9ef] pt-16">
                   {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
                   <ViralShareBar toolName={activeTool.name} />
 
