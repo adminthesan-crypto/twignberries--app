@@ -53,8 +53,8 @@ export default function ImageToBase64BulkTool() {
             <Code className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Bulk Image to CSS Data URI / Base64 Encoder</h1>
-            <p className="text-sm text-[#9ca3af]">Encode multiple icons and images into CSS url() strings and HTML img tags offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Bulk Image to CSS Data URI / Base64 Encoder</h1>
+            <p className="text-sm text-[#676879]">Encode multiple icons and images into CSS url() strings and HTML img tags offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-cyan-400 font-medium">
@@ -70,7 +70,7 @@ export default function ImageToBase64BulkTool() {
         </div>
       )}
 
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <label className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-cyan-500 text-black font-bold cursor-pointer hover:bg-cyan-400 transition-all text-sm shadow-md">
           <Upload className="w-5 h-5" />
           <span>Upload Icons & Images to Encode (Bulk)</span>
@@ -80,12 +80,12 @@ export default function ImageToBase64BulkTool() {
         {items.length > 0 ? (
           <div className="space-y-4">
             {items.map((it, idx) => (
-              <div key={idx} className="bg-black/40 border border-white/10 rounded-xl p-4 space-y-3">
+              <div key={idx} className="bg-white border border-[#e6e9ef] rounded-xl p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <img src={it.dataUri} alt={it.name} className="w-10 h-10 object-contain rounded bg-white/5 p-1" />
+                    <img src={it.dataUri} alt={it.name} className="w-10 h-10 object-contain rounded bg-white p-1" />
                     <div>
-                      <p className="text-white text-sm font-medium">{it.name}</p>
+                      <p className="text-[#1f2532] text-sm font-medium">{it.name}</p>
                       <p className="text-xs text-[#9ca3af]">{it.size} • Data URI ({it.dataUri.length} characters)</p>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export default function ImageToBase64BulkTool() {
                     <button
                       key={btn.id}
                       onClick={() => copyText(btn.val, btn.id)}
-                      className="py-2 px-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
+                      className="py-2 px-3 rounded-lg bg-white hover:bg-gray-100 border border-[#e6e9ef] text-[#1f2532] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
                     >
                       {copiedIdx === btn.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-cyan-400" />}
                       <span>{btn.label}</span>
@@ -114,7 +114,7 @@ export default function ImageToBase64BulkTool() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-white/10 rounded-xl">
+          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-[#e6e9ef] rounded-xl">
             <p>No images uploaded yet. Select icons or images to generate CSS/HTML Base64 code.</p>
           </div>
         )}

@@ -99,8 +99,8 @@ export default function ConvertToJpgTool() {
             <FileImage className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Convert to JPG (Bulk PNG, WEBP, SVG to JPG)</h1>
-            <p className="text-sm text-[#9ca3af]">Turn PNG, WEBP, GIF, BMP, or SVG files into high-quality JPG images in bulk offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Convert to JPG (Bulk PNG, WEBP, SVG to JPG)</h1>
+            <p className="text-sm text-[#676879]">Turn PNG, WEBP, GIF, BMP, or SVG files into high-quality JPG images in bulk offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-amber-400 font-medium">
@@ -117,7 +117,7 @@ export default function ConvertToJpgTool() {
       )}
 
       {/* Controls */}
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-semibold cursor-pointer hover:bg-amber-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />
@@ -143,11 +143,11 @@ export default function ConvertToJpgTool() {
         {images.length > 0 ? (
           <div className="space-y-3">
             {images.map((img, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-black/40 border border-white/10">
+              <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#e6e9ef]">
                 <div className="flex items-center gap-3 truncate">
-                  <img src={img.url} alt={img.name} className="w-10 h-10 object-contain rounded bg-white/5" />
+                  <img src={img.url} alt={img.name} className="w-10 h-10 object-contain rounded bg-white" />
                   <div className="truncate">
-                    <p className="text-white text-sm font-medium truncate">{img.name}</p>
+                    <p className="text-[#1f2532] text-sm font-medium truncate">{img.name}</p>
                     {converted[idx] && (
                       <p className="text-xs text-emerald-400">Converted to JPG • {converted[idx].size} KB</p>
                     )}
@@ -165,7 +165,7 @@ export default function ConvertToJpgTool() {
                   )}
                   <button
                     onClick={() => handleRemove(idx)}
-                    className="p-1.5 rounded-lg text-red-400 hover:text-red-300 hover:bg-white/5"
+                    className="p-1.5 rounded-lg text-red-400 hover:text-red-300 hover:bg-white"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -174,13 +174,13 @@ export default function ConvertToJpgTool() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-white/10 rounded-xl">
+          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-[#e6e9ef] rounded-xl">
             <p>No images uploaded yet. Select PNG, WEBP, or SVG files to convert to JPG.</p>
           </div>
         )}
 
         {images.length > 0 && (
-          <div className="flex justify-end pt-4 border-t border-white/10">
+          <div className="flex justify-end pt-4 border-t border-[#e6e9ef]">
             <button
               onClick={convertAllToJpg}
               disabled={loading}

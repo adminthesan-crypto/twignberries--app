@@ -132,8 +132,8 @@ export default function EditPdfTool() {
             <Edit3 className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Edit PDF (Add Text, Shapes & Annotations)</h1>
-            <p className="text-sm text-[#9ca3af]">Add custom text labels, callout boxes, stamps, and geometric highlights to any PDF page.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Edit PDF (Add Text, Shapes & Annotations)</h1>
+            <p className="text-sm text-[#676879]">Add custom text labels, callout boxes, stamps, and geometric highlights to any PDF page.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
@@ -150,25 +150,25 @@ export default function EditPdfTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF file here or click to select</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file here or click to select</p>
           <p className="text-xs text-[#9ca3af]">Add custom annotations and shapes directly to PDF pages offline</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-emerald-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">{pageCount} page(s) loaded</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setEditedPdf(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -176,18 +176,18 @@ export default function EditPdfTool() {
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-semibold text-white">Document Annotations:</label>
+              <label className="text-sm font-semibold text-[#1f2532]">Document Annotations:</label>
               <div className="flex gap-2">
                 <button
                   onClick={() => handleAddAnnotation('text')}
-                  className="py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+                  className="py-1.5 px-3 rounded-lg bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-1.5 transition-all"
                 >
                   <Type className="w-4 h-4 text-emerald-400" />
                   <span>Add Text</span>
                 </button>
                 <button
                   onClick={() => handleAddAnnotation('box')}
-                  className="py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+                  className="py-1.5 px-3 rounded-lg bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-1.5 transition-all"
                 >
                   <Square className="w-4 h-4 text-blue-400" />
                   <span>Add Box</span>
@@ -197,7 +197,7 @@ export default function EditPdfTool() {
 
             <div className="space-y-3 max-h-72 overflow-y-auto pr-2">
               {annotations.map((ann, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-black/40 border border-white/10 flex flex-wrap items-center gap-3 text-xs">
+                <div key={idx} className="p-3 rounded-xl bg-white border border-[#e6e9ef] flex flex-wrap items-center gap-3 text-xs">
                   <span className="font-bold text-emerald-400 uppercase">{ann.type}</span>
                   <div className="flex items-center gap-1">
                     <span className="text-[#9ca3af]">Page:</span>
@@ -205,7 +205,7 @@ export default function EditPdfTool() {
                       type="number"
                       value={ann.page}
                       onChange={(e) => handleAnnotationChange(idx, 'page', e.target.value)}
-                      className="w-14 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-14 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   {ann.type === 'text' ? (
@@ -213,7 +213,7 @@ export default function EditPdfTool() {
                       type="text"
                       value={ann.text}
                       onChange={(e) => handleAnnotationChange(idx, 'text', e.target.value)}
-                      className="flex-1 bg-black/60 border border-white/10 rounded px-2 py-1 text-white min-w-[120px]"
+                      className="flex-1 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532] min-w-[120px]"
                     />
                   ) : (
                     <>
@@ -221,14 +221,14 @@ export default function EditPdfTool() {
                         type="number"
                         value={ann.width}
                         onChange={(e) => handleAnnotationChange(idx, 'width', e.target.value)}
-                        className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                        className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                         placeholder="W"
                       />
                       <input
                         type="number"
                         value={ann.height}
                         onChange={(e) => handleAnnotationChange(idx, 'height', e.target.value)}
-                        className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                        className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                         placeholder="H"
                       />
                     </>
@@ -236,7 +236,7 @@ export default function EditPdfTool() {
                   <select
                     value={ann.color}
                     onChange={(e) => handleAnnotationChange(idx, 'color', e.target.value)}
-                    className="bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                    className="bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                   >
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>

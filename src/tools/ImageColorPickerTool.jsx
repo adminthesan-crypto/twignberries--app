@@ -82,8 +82,8 @@ export default function ImageColorPickerTool() {
             <Pipette className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Image Color Picker (Pixel Eyedropper & Palette)</h1>
-            <p className="text-sm text-[#9ca3af]">Click any pixel on an uploaded image to inspect and copy its HEX, RGB, and HSL color values offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Image Color Picker (Pixel Eyedropper & Palette)</h1>
+            <p className="text-sm text-[#676879]">Click any pixel on an uploaded image to inspect and copy its HEX, RGB, and HSL color values offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-sky-400 font-medium">
@@ -100,32 +100,32 @@ export default function ImageColorPickerTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-sky-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-sky-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-sky-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image to sample colors here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image to sample colors here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, WEBP, and SVG</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Pipette className="w-8 h-8 text-sky-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px • Click image to sample</p>
               </div>
             </div>
             <button
               onClick={() => setImage(null)}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Image
             </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-2 bg-black/40 border border-white/10 rounded-xl overflow-auto max-h-96 flex items-center justify-center p-2">
+            <div className="md:col-span-2 bg-white border border-[#e6e9ef] rounded-xl overflow-auto max-h-96 flex items-center justify-center p-2">
               <canvas
                 ref={(node) => {
                   if (node && image) {
@@ -145,11 +145,11 @@ export default function ImageColorPickerTool() {
               />
             </div>
 
-            <div className="bg-black/30 border border-white/10 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+            <div className="bg-white border border-[#e6e9ef] rounded-xl p-5 space-y-4 flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#9ca3af] block mb-2">Picked Color Preview</span>
                 <div
-                  className="w-full h-20 rounded-xl border border-white/20 shadow-inner flex items-center justify-center text-white font-bold text-sm"
+                  className="w-full h-20 rounded-xl border border-[#d0d4e4] shadow-inner flex items-center justify-center text-[#1f2532] font-bold text-sm"
                   style={{ backgroundColor: pickedColor.hex }}
                 >
                   {pickedColor.hex}
@@ -162,14 +162,14 @@ export default function ImageColorPickerTool() {
                   { label: 'RGB', val: pickedColor.rgb },
                   { label: 'HSL', val: pickedColor.hsl },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between bg-black/40 p-2.5 rounded-lg border border-white/5">
+                  <div key={item.label} className="flex items-center justify-between bg-white p-2.5 rounded-lg border border-white/5">
                     <div>
                       <span className="text-[10px] text-[#9ca3af] block">{item.label}</span>
-                      <span className="text-xs font-mono text-white">{item.val}</span>
+                      <span className="text-xs font-mono text-[#1f2532]">{item.val}</span>
                     </div>
                     <button
                       onClick={() => copyToClipboard(item.val)}
-                      className="p-1.5 rounded bg-white/10 hover:bg-white/20 text-white text-xs flex items-center gap-1"
+                      className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs flex items-center gap-1"
                     >
                       {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>

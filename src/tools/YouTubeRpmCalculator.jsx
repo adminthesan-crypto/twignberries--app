@@ -124,8 +124,8 @@ export default function YouTubeRpmCalculator() {
                       onClick={() => handleNicheSelect(preset)}
                       className={`flex items-center justify-between p-3 rounded-xl text-xs font-medium border transition-all ${
                         niche === preset.id
-                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white font-semibold shadow-sm'
-                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-[#1f2532] font-semibold shadow-sm'
+                          : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
                       }`}
                     >
                       <span>{preset.label}</span>
@@ -159,7 +159,7 @@ export default function YouTubeRpmCalculator() {
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
               ESTIMATED MONTHLY EARNINGS
             </span>
-            <div className="text-4xl font-mono font-bold text-white mb-2">
+            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-2">
               ${monthlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
@@ -178,7 +178,7 @@ export default function YouTubeRpmCalculator() {
             <div className="space-y-3 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Daily Average Earnings:</span>
-                <span className="text-white font-semibold">${dailyRevenue.toFixed(2)}</span>
+                <span className="text-[#1f2532] font-semibold">${dailyRevenue.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between text-[#9ca3af]">
@@ -186,11 +186,11 @@ export default function YouTubeRpmCalculator() {
                 <span className="text-[#ff8c3a] font-semibold">${yearlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
               </div>
 
-              <div className="h-px bg-white/10 my-2" />
+              <div className="h-px bg-gray-100 my-2" />
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
                 <span>Gross Advertiser Spend (100%):</span>
-                <span className="text-white font-semibold">${grossAdvertiserSpend.toFixed(2)}</span>
+                <span className="text-[#1f2532] font-semibold">${grossAdvertiserSpend.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
@@ -198,7 +198,7 @@ export default function YouTubeRpmCalculator() {
                 <span className="text-red-400">-${youtubeCut.toFixed(2)}</span>
               </div>
 
-              <div className="flex justify-between items-center text-base font-bold text-emerald-400 pt-2 border-t border-white/10">
+              <div className="flex justify-between items-center text-base font-bold text-emerald-400 pt-2 border-t border-[#e6e9ef]">
                 <span>Creator Payout (55%):</span>
                 <span>${monthlyRevenue.toFixed(2)}</span>
               </div>

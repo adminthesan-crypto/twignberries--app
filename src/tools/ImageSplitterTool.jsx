@@ -97,8 +97,8 @@ export default function ImageSplitterTool() {
             <Grid className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Image Splitter & Grid Slicer (Instagram Carousel & Grids)</h1>
-            <p className="text-sm text-[#9ca3af]">Slice photos into 3x3 Instagram grids, 3x1 carousels, or custom rows/cols offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Image Splitter & Grid Slicer (Instagram Carousel & Grids)</h1>
+            <p className="text-sm text-[#676879]">Slice photos into 3x3 Instagram grids, 3x1 carousels, or custom rows/cols offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-indigo-400 font-medium">
@@ -115,32 +115,32 @@ export default function ImageSplitterTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-indigo-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-indigo-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-indigo-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop photo to slice into a grid here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop photo to slice into a grid here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP photos</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Grid className="w-8 h-8 text-indigo-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setTiles([]); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Photo
             </button>
           </div>
 
           {/* Preset Buttons */}
-          <div className="flex flex-wrap items-center gap-3 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border border-white/5">
             <span className="text-xs font-semibold text-[#9ca3af]">Grid Presets:</span>
             {[
               { label: '3×3 Instagram Profile', r: 3, c: 3 },
@@ -151,7 +151,7 @@ export default function ImageSplitterTool() {
                 key={preset.label}
                 onClick={() => { setRows(preset.r); setCols(preset.c); setTiles([]); }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
-                  rows === preset.r && cols === preset.c ? 'bg-indigo-500 text-black' : 'bg-white/10 text-white'
+                  rows === preset.r && cols === preset.c ? 'bg-indigo-500 text-black' : 'bg-gray-100 text-[#1f2532]'
                 }`}
               >
                 {preset.label}
@@ -171,18 +171,18 @@ export default function ImageSplitterTool() {
           </div>
 
           {tiles.length > 0 && (
-            <div className="space-y-3 pt-4 border-t border-white/10">
+            <div className="space-y-3 pt-4 border-t border-[#e6e9ef]">
               <span className="text-xs font-bold text-emerald-400 block">Sliced Grid Output ({tiles.length} Tiles):</span>
               <div
-                className="grid gap-2 bg-black/40 p-4 rounded-xl border border-white/10"
+                className="grid gap-2 bg-white p-4 rounded-xl border border-[#e6e9ef]"
                 style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
               >
                 {tiles.map((t) => (
-                  <div key={t.idx} className="relative group overflow-hidden rounded border border-white/10 bg-black">
+                  <div key={t.idx} className="relative group overflow-hidden rounded border border-[#e6e9ef] bg-black">
                     <img src={t.url} alt={`Tile ${t.idx}`} className="w-full h-24 object-cover" />
                     <button
                       onClick={() => downloadTile(t)}
-                      className="absolute inset-0 bg-black/60 text-white text-xs font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
+                      className="absolute inset-0 bg-black/60 text-[#1f2532] text-xs font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
                     >
                       Download #{t.idx}
                     </button>

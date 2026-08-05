@@ -103,8 +103,8 @@ export default function RotateImageTool() {
             <RotateCw className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Rotate & Flip IMAGE (90°, 180°, Mirror)</h1>
-            <p className="text-sm text-[#9ca3af]">Rotate multiple JPG, PNG, or WEBP images simultaneously or mirror them horizontally/vertically.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Rotate & Flip IMAGE (90°, 180°, Mirror)</h1>
+            <p className="text-sm text-[#676879]">Rotate multiple JPG, PNG, or WEBP images simultaneously or mirror them horizontally/vertically.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-sky-400 font-medium">
@@ -121,7 +121,7 @@ export default function RotateImageTool() {
       )}
 
       {/* Controls */}
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500 text-black font-semibold cursor-pointer hover:bg-sky-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />
@@ -132,7 +132,7 @@ export default function RotateImageTool() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => { setRotation((rotation + 90) % 360); setProcessed({}); }}
-              className="py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5"
+              className="py-1.5 px-3 rounded-lg bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-1.5"
             >
               <RotateCw className="w-3.5 h-3.5 text-sky-400" />
               <span>Rotate 90° ({rotation}°)</span>
@@ -140,7 +140,7 @@ export default function RotateImageTool() {
             <button
               onClick={() => { setFlipH(!flipH); setProcessed({}); }}
               className={`py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 ${
-                flipH ? 'bg-sky-500 text-black' : 'bg-white/10 text-white hover:bg-white/20'
+                flipH ? 'bg-sky-500 text-black' : 'bg-gray-100 text-[#1f2532] hover:bg-white/20'
               }`}
             >
               <FlipHorizontal className="w-3.5 h-3.5" />
@@ -149,7 +149,7 @@ export default function RotateImageTool() {
             <button
               onClick={() => { setFlipV(!flipV); setProcessed({}); }}
               className={`py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 ${
-                flipV ? 'bg-sky-500 text-black' : 'bg-white/10 text-white hover:bg-white/20'
+                flipV ? 'bg-sky-500 text-black' : 'bg-gray-100 text-[#1f2532] hover:bg-white/20'
               }`}
             >
               <FlipVertical className="w-3.5 h-3.5" />
@@ -161,7 +161,7 @@ export default function RotateImageTool() {
         {images.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {images.map((img, idx) => (
-              <div key={idx} className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden p-2 group flex flex-col items-center">
+              <div key={idx} className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden p-2 group flex flex-col items-center">
                 <img
                   src={processed[idx] ? processed[idx].url : img.url}
                   alt={img.name}
@@ -169,7 +169,7 @@ export default function RotateImageTool() {
                 />
                 <button
                   onClick={() => handleRemove(idx)}
-                  className="absolute top-2 right-2 p-1.5 rounded-lg bg-red-500/80 text-white hover:bg-red-600 transition-all opacity-0 group-hover:opacity-100"
+                  className="absolute top-2 right-2 p-1.5 rounded-lg bg-red-500/80 text-[#1f2532] hover:bg-red-600 transition-all opacity-0 group-hover:opacity-100"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -186,13 +186,13 @@ export default function RotateImageTool() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-white/10 rounded-xl">
+          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-[#e6e9ef] rounded-xl">
             <p>No images selected yet. Upload PNG, JPG, or WEBP photos to rotate and flip.</p>
           </div>
         )}
 
         {images.length > 0 && (
-          <div className="flex justify-end pt-4 border-t border-white/10">
+          <div className="flex justify-end pt-4 border-t border-[#e6e9ef]">
             <button
               onClick={rotateAllImages}
               disabled={loading}

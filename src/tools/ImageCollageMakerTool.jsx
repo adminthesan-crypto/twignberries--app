@@ -121,8 +121,8 @@ export default function ImageCollageMakerTool() {
             <Layout className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Photo Collage Maker (2, 3, 4 Image Layouts)</h1>
-            <p className="text-sm text-[#9ca3af]">Combine up to 4 photos into side-by-side comparisons, Instagram stories, or square grids offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Photo Collage Maker (2, 3, 4 Image Layouts)</h1>
+            <p className="text-sm text-[#676879]">Combine up to 4 photos into side-by-side comparisons, Instagram stories, or square grids offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-amber-400 font-medium">
@@ -138,7 +138,7 @@ export default function ImageCollageMakerTool() {
         </div>
       )}
 
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-semibold cursor-pointer hover:bg-amber-400 transition-all text-sm shadow-md">
             <Plus className="w-4 h-4" />
@@ -156,7 +156,7 @@ export default function ImageCollageMakerTool() {
                 key={l.id}
                 onClick={() => { setLayout(l.id); setCollageUrl(null); }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
-                  layout === l.id ? 'bg-amber-500 text-black' : 'bg-white/10 text-white'
+                  layout === l.id ? 'bg-amber-500 text-black' : 'bg-gray-100 text-[#1f2532]'
                 }`}
               >
                 {l.label}
@@ -168,11 +168,11 @@ export default function ImageCollageMakerTool() {
         {images.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {images.map((img, idx) => (
-              <div key={idx} className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden p-2 group">
+              <div key={idx} className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden p-2 group">
                 <img src={img.url} alt={img.name} className="w-full h-24 object-cover rounded" />
                 <button
                   onClick={() => removeImg(idx)}
-                  className="absolute top-2 right-2 p-1 rounded bg-red-500/80 text-white opacity-0 group-hover:opacity-100 transition-all"
+                  className="absolute top-2 right-2 p-1 rounded bg-red-500/80 text-[#1f2532] opacity-0 group-hover:opacity-100 transition-all"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -180,13 +180,13 @@ export default function ImageCollageMakerTool() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-white/10 rounded-xl">
+          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-[#e6e9ef] rounded-xl">
             <p>No photos added yet. Upload 2, 3, or 4 photos to generate a collage.</p>
           </div>
         )}
 
         {images.length > 0 && (
-          <div className="space-y-4 pt-4 border-t border-white/10">
+          <div className="space-y-4 pt-4 border-t border-[#e6e9ef]">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div>
@@ -211,7 +211,7 @@ export default function ImageCollageMakerTool() {
 
             {collageUrl && (
               <div className="space-y-3 pt-2">
-                <img src={collageUrl} alt="Collage" className="max-h-80 mx-auto object-contain rounded-xl border border-white/10 shadow-lg" />
+                <img src={collageUrl} alt="Collage" className="max-h-80 mx-auto object-contain rounded-xl border border-[#e6e9ef] shadow-lg" />
                 <button
                   onClick={handleDownload}
                   className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"

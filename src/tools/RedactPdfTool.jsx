@@ -104,8 +104,8 @@ export default function RedactPdfTool() {
             <EyeOff className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Redact PDF (Sanitize Sensitive Text)</h1>
-            <p className="text-sm text-[#9ca3af]">Permanently cover confidential text, SSNs, financial numbers, and personal data with black redaction blocks.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Redact PDF (Sanitize Sensitive Text)</h1>
+            <p className="text-sm text-[#676879]">Permanently cover confidential text, SSNs, financial numbers, and personal data with black redaction blocks.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-red-400 font-medium">
@@ -122,25 +122,25 @@ export default function RedactPdfTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-red-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-red-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-red-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF document here or click to select</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF document here or click to select</p>
           <p className="text-xs text-[#9ca3af]">Sanitizes document content offline with solid blackout regions</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-red-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">{pageCount} page(s) available</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setRedactedPdf(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -149,10 +149,10 @@ export default function RedactPdfTool() {
           {/* Box list */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-semibold text-white">Redaction Blackout Zones:</label>
+              <label className="text-sm font-semibold text-[#1f2532]">Redaction Blackout Zones:</label>
               <button
                 onClick={handleAddBox}
-                className="py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
+                className="py-1.5 px-3 rounded-lg bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-1.5 transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add Redaction Box</span>
@@ -161,7 +161,7 @@ export default function RedactPdfTool() {
 
             <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
               {redactBoxes.map((box, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-black/40 border border-white/10 flex flex-wrap items-center gap-3 text-xs">
+                <div key={idx} className="p-3 rounded-xl bg-white border border-[#e6e9ef] flex flex-wrap items-center gap-3 text-xs">
                   <div className="flex items-center gap-1">
                     <span className="text-[#9ca3af]">Page:</span>
                     <input
@@ -170,7 +170,7 @@ export default function RedactPdfTool() {
                       max={pageCount || 1}
                       value={box.page}
                       onChange={(e) => handleBoxChange(idx, 'page', e.target.value)}
-                      className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   <div className="flex items-center gap-1">
@@ -179,7 +179,7 @@ export default function RedactPdfTool() {
                       type="number"
                       value={box.x}
                       onChange={(e) => handleBoxChange(idx, 'x', e.target.value)}
-                      className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   <div className="flex items-center gap-1">
@@ -188,7 +188,7 @@ export default function RedactPdfTool() {
                       type="number"
                       value={box.y}
                       onChange={(e) => handleBoxChange(idx, 'y', e.target.value)}
-                      className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   <div className="flex items-center gap-1">
@@ -197,7 +197,7 @@ export default function RedactPdfTool() {
                       type="number"
                       value={box.width}
                       onChange={(e) => handleBoxChange(idx, 'width', e.target.value)}
-                      className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   <div className="flex items-center gap-1">
@@ -206,7 +206,7 @@ export default function RedactPdfTool() {
                       type="number"
                       value={box.height}
                       onChange={(e) => handleBoxChange(idx, 'height', e.target.value)}
-                      className="w-16 bg-black/60 border border-white/10 rounded px-2 py-1 text-white"
+                      className="w-16 bg-black/60 border border-[#e6e9ef] rounded px-2 py-1 text-[#1f2532]"
                     />
                   </div>
                   <button

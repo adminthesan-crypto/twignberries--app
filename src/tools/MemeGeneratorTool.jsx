@@ -101,8 +101,8 @@ export default function MemeGeneratorTool() {
             <Smile className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Meme Generator (Top & Bottom Impact Captions)</h1>
-            <p className="text-sm text-[#9ca3af]">Create custom viral memes with classic bold Impact text and crisp black stroke outlines offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Meme Generator (Top & Bottom Impact Captions)</h1>
+            <p className="text-sm text-[#676879]">Create custom viral memes with classic bold Impact text and crisp black stroke outlines offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
@@ -119,38 +119,38 @@ export default function MemeGeneratorTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-orange-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-orange-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-orange-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image or photo to meme here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image or photo to meme here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP images</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Smile className="w-8 h-8 text-orange-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setMemeUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Photo
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Top Caption</label>
               <input
                 type="text"
                 value={topText}
                 onChange={(e) => { setTopText(e.target.value); setMemeUrl(null); }}
-                className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-1.5 text-white text-sm font-bold uppercase"
+                className="w-full bg-white border border-[#e6e9ef] rounded-lg px-3 py-1.5 text-[#1f2532] text-sm font-bold uppercase"
               />
             </div>
             <div>
@@ -159,7 +159,7 @@ export default function MemeGeneratorTool() {
                 type="text"
                 value={bottomText}
                 onChange={(e) => { setBottomText(e.target.value); setMemeUrl(null); }}
-                className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-1.5 text-white text-sm font-bold uppercase"
+                className="w-full bg-white border border-[#e6e9ef] rounded-lg px-3 py-1.5 text-[#1f2532] text-sm font-bold uppercase"
               />
             </div>
             <div>
@@ -176,7 +176,7 @@ export default function MemeGeneratorTool() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-            <div className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
+            <div className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
               <img src={memeUrl || image.url} alt="Meme preview" className="max-h-64 object-contain rounded" />
             </div>
           </div>

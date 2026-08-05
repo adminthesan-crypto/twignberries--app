@@ -32,11 +32,11 @@ This document outlines the deliverables and pricing structure for custom fronten
   // Simple clean markdown-to-HTML formatter for headers, bold, italics, tables, and blockquotes
   const parseMarkdownToHtml = (md) => {
     let html = md
-      .replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-white mt-4 mb-2">$1</h3>')
+      .replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-[#1f2532] mt-4 mb-2">$1</h3>')
       .replace(/^## (.*$)/gim, '<h2 class="text-lg font-heading font-bold text-[#ff8c3a] mt-5 mb-2">$1</h2>')
-      .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-heading font-bold text-white pb-2 border-b border-white/10 mb-4">$1</h1>')
-      .replace(/^\> \*(.*)\*/gim, '<blockquote class="border-l-4 border-[#ff6b00] pl-3 py-1.5 my-3 bg-white/5 italic text-sm text-[#9ca3af]">$1</blockquote>')
-      .replace(/\*\*(.*)\*\*/gim, '<strong class="font-bold text-white">$1</strong>')
+      .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-heading font-bold text-[#1f2532] pb-2 border-b border-[#e6e9ef] mb-4">$1</h1>')
+      .replace(/^\> \*(.*)\*/gim, '<blockquote class="border-l-4 border-[#ff6b00] pl-3 py-1.5 my-3 bg-white italic text-sm text-[#9ca3af]">$1</blockquote>')
+      .replace(/\*\*(.*)\*\*/gim, '<strong class="font-bold text-[#1f2532]">$1</strong>')
       .replace(/\*(.*)\*/gim, '<em class="italic text-[#9ca3af]">$1</em>')
       .replace(/^\- (.*$)/gim, '<li class="ml-4 list-disc text-sm py-0.5">$1</li>')
       .replace(/^(?!<h|<ul|<li|<blockquote|<table|<tr|<td|<th)(.*$)/gim, '<p class="text-sm leading-relaxed my-1.5">$1</p>');
@@ -54,12 +54,12 @@ This document outlines the deliverables and pricing structure for custom fronten
           
           if (!inTable) {
             inTable = true;
-            return tableHtml + '<thead><tr class="border-b border-white/20">' +
+            return tableHtml + '<thead><tr class="border-b border-[#d0d4e4]">' +
               cells.map(c => `<th class="py-2 px-2 text-[#9ca3af] font-bold">${c}</th>`).join('') +
               '</tr></thead><tbody>';
           } else {
             return '<tr class="border-b border-white/5">' +
-              cells.map(c => `<td class="py-2 px-2 text-white">${c}</td>`).join('') +
+              cells.map(c => `<td class="py-2 px-2 text-[#1f2532]">${c}</td>`).join('') +
               '</tr>';
           }
         } else if (inTable) {
@@ -136,7 +136,7 @@ This document outlines the deliverables and pricing structure for custom fronten
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
               rows={14}
-              className="w-full glass-input font-mono text-xs text-white leading-relaxed resize-none"
+              className="w-full glass-input font-mono text-xs text-[#1f2532] leading-relaxed resize-none"
               placeholder="Type your markdown here..."
             />
 
@@ -155,7 +155,7 @@ This document outlines the deliverables and pricing structure for custom fronten
 
             {/* Document Canvas */}
             <div
-              className="prose prose-invert max-w-none text-white space-y-2 py-2"
+              className="prose prose-invert max-w-none text-[#1f2532] space-y-2 py-2"
               dangerouslySetInnerHTML={{ __html: parseMarkdownToHtml(markdown) }}
             />
           </div>
@@ -168,7 +168,7 @@ This document outlines the deliverables and pricing structure for custom fronten
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
               DOCUMENT STATUS
             </span>
-            <div className="text-3xl font-mono font-bold text-white mb-2">
+            <div className="text-3xl font-mono font-bold text-[#1f2532] mb-2">
               Ready to Export
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
@@ -187,12 +187,12 @@ This document outlines the deliverables and pricing structure for custom fronten
             <div className="space-y-3 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Character Count:</span>
-                <span className="text-white font-semibold">{charCount.toLocaleString()}</span>
+                <span className="text-[#1f2532] font-semibold">{charCount.toLocaleString()}</span>
               </div>
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
                 <span>Word Count:</span>
-                <span className="text-white font-semibold">{wordCount.toLocaleString()}</span>
+                <span className="text-[#1f2532] font-semibold">{wordCount.toLocaleString()}</span>
               </div>
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
@@ -200,7 +200,7 @@ This document outlines the deliverables and pricing structure for custom fronten
                 <span className="text-emerald-400 font-semibold">100% Client-Side</span>
               </div>
 
-              <div className="h-px bg-white/10 my-2" />
+              <div className="h-px bg-gray-100 my-2" />
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
                 <span>Privacy Status:</span>

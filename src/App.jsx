@@ -1929,15 +1929,18 @@ export default function App() {
                 </div>
 
                 {/* Tool content */}
-                <div className="animate-fade-in">
+                <div className="animate-fade-in mb-10">
                   <ActiveComponent />
                 </div>
 
-                {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
-                <ViralShareBar toolName={activeTool.name} />
+                {/* Post-Tool Widgets */}
+                <div className="flex flex-col gap-6 mb-16">
+                  {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
+                  <ViralShareBar toolName={activeTool.name} />
 
-                {/* Tasteful Native Ad / Sponsor Banner below Tool */}
-                <AdUnit variant="banner" placement="tool-footer" />
+                  {/* Tasteful Native Ad / Sponsor Banner below Tool */}
+                  <AdUnit variant="banner" placement="tool-footer" />
+                </div>
               </>
             ) : (
               /* Home Grid */

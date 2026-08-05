@@ -92,8 +92,8 @@ export default function UpscaleImageTool() {
             <Maximize2 className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Upscale Image (2x & 4x Resolution Enhancer)</h1>
-            <p className="text-sm text-[#9ca3af]">Enlarge your JPG and PNG images up to 4x resolution while maintaining sharpness and visual clarity.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Upscale Image (2x & 4x Resolution Enhancer)</h1>
+            <p className="text-sm text-[#676879]">Enlarge your JPG and PNG images up to 4x resolution while maintaining sharpness and visual clarity.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-teal-400 font-medium">
@@ -110,31 +110,31 @@ export default function UpscaleImageTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-teal-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-teal-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-teal-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image to upscale here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image to upscale here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP images</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Maximize2 className="w-8 h-8 text-teal-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">Original: {image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setUpscaledUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Image
             </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div className="flex items-center gap-2">
               <span className="text-xs font-semibold text-[#9ca3af]">Upscale Scale:</span>
               {[2, 4].map((s) => (
@@ -142,7 +142,7 @@ export default function UpscaleImageTool() {
                   key={s}
                   onClick={() => { setScaleFactor(s); setUpscaledUrl(null); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    scaleFactor === s ? 'bg-teal-500 text-black' : 'bg-white/5 text-[#9ca3af] hover:text-white border border-white/10'
+                    scaleFactor === s ? 'bg-teal-500 text-black' : 'bg-white text-[#9ca3af] hover:text-[#1f2532] border border-[#e6e9ef]'
                   }`}
                 >
                   {s}x Resolution
@@ -150,26 +150,26 @@ export default function UpscaleImageTool() {
               ))}
             </div>
 
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-white">
+            <label className="flex items-center gap-2 cursor-pointer text-xs text-[#1f2532]">
               <input
                 type="checkbox"
                 checked={sharpen}
                 onChange={(e) => { setSharpen(e.target.checked); setUpscaledUrl(null); }}
-                className="rounded bg-black border-white/20 accent-teal-400"
+                className="rounded bg-black border-[#d0d4e4] accent-teal-400"
               />
               <span>Apply Sharpening Filter</span>
             </label>
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-            <div className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
+            <div className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
               <img src={upscaledUrl || image.url} alt="Upscaled preview" className="max-h-64 object-contain rounded" />
             </div>
 
             {upscaledDims && (
-              <div className="bg-black/40 border border-emerald-500/30 rounded-xl p-4 text-center">
+              <div className="bg-white border border-emerald-500/30 rounded-xl p-4 text-center">
                 <span className="text-xs font-bold text-emerald-400 block mb-1">Upscaled Output Dimensions:</span>
-                <p className="text-lg font-bold text-white">{upscaledDims.w} × {upscaledDims.h} px</p>
+                <p className="text-lg font-bold text-[#1f2532]">{upscaledDims.w} × {upscaledDims.h} px</p>
                 <p className="text-xs text-[#9ca3af] mt-0.5">File Size: {upscaledDims.size} KB (PNG Lossless)</p>
               </div>
             )}

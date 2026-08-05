@@ -91,8 +91,8 @@ export default function ImageMetadataExifTool() {
             <Camera className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">EXIF & Metadata Viewer / Privacy Stripper</h1>
-            <p className="text-sm text-[#9ca3af]">Inspect image properties and permanently strip EXIF GPS location and camera headers offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">EXIF & Metadata Viewer / Privacy Stripper</h1>
+            <p className="text-sm text-[#676879]">Inspect image properties and permanently strip EXIF GPS location and camera headers offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
@@ -109,36 +109,36 @@ export default function ImageMetadataExifTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop photo to inspect & clean EXIF metadata here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop photo to inspect & clean EXIF metadata here</p>
           <p className="text-xs text-[#9ca3af]">Supports JPG, JPEG, WEBP, and PNG photos</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Camera className="w-8 h-8 text-emerald-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.size} KB • {image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setExifData(null); setCleanUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Photo
             </button>
           </div>
 
           {exifData && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-black/30 p-5 rounded-xl border border-white/5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-white p-5 rounded-xl border border-white/5">
               {Object.entries(exifData).map(([key, val]) => (
-                <div key={key} className="bg-black/40 p-3 rounded-lg border border-white/5">
+                <div key={key} className="bg-white p-3 rounded-lg border border-white/5">
                   <span className="text-[10px] text-[#9ca3af] block uppercase">{key.replace(/([A-Z])/g, ' $1')}</span>
-                  <span className="text-xs font-semibold text-white mt-1 block truncate">{val}</span>
+                  <span className="text-xs font-semibold text-[#1f2532] mt-1 block truncate">{val}</span>
                 </div>
               ))}
             </div>

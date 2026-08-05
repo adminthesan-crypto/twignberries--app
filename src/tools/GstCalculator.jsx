@@ -89,8 +89,8 @@ export default function GstCalculator() {
                     onClick={() => setCalcType('exclusive')}
                     className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
                       calcType === 'exclusive'
-                        ? 'bg-[#ff6b00] border-[#ff6b00] text-white shadow-sm'
-                        : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                        ? 'bg-[#ff6b00] border-[#ff6b00] text-[#1f2532] shadow-sm'
+                        : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
                     }`}
                   >
                     + Add GST (Exclusive)
@@ -100,8 +100,8 @@ export default function GstCalculator() {
                     onClick={() => setCalcType('inclusive')}
                     className={`py-2.5 px-4 rounded-xl text-xs font-semibold border transition-all ${
                       calcType === 'inclusive'
-                        ? 'bg-[#ff6b00] border-[#ff6b00] text-white shadow-sm'
-                        : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                        ? 'bg-[#ff6b00] border-[#ff6b00] text-[#1f2532] shadow-sm'
+                        : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
                     }`}
                   >
                     - Remove GST (Inclusive)
@@ -121,8 +121,8 @@ export default function GstCalculator() {
                       onClick={() => setCurrency(curr)}
                       className={`w-10 h-10 rounded-xl text-sm font-mono font-bold border transition-all ${
                         currency === curr
-                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white'
-                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-[#1f2532]'
+                          : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
                       }`}
                     >
                       {curr}
@@ -167,8 +167,8 @@ export default function GstCalculator() {
                       onClick={() => setGstRate(slab)}
                       className={`py-2.5 rounded-xl text-sm font-mono font-semibold border transition-all ${
                         gstRate === slab
-                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-white'
-                          : 'bg-white/5 border-white/10 text-[#9ca3af] hover:bg-white/10 hover:text-white'
+                          ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-[#1f2532]'
+                          : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
                       }`}
                     >
                       {slab}%
@@ -187,7 +187,7 @@ export default function GstCalculator() {
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
               TOTAL PAYABLE ({calcType.toUpperCase()})
             </span>
-            <div className="text-4xl font-mono font-bold text-white mb-2">
+            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-2">
               {currency}{grossPrice.toFixed(2)}
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">
@@ -206,7 +206,7 @@ export default function GstCalculator() {
             <div className="space-y-3 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Net Taxable Value:</span>
-                <span className="text-white font-semibold">{currency}{netPrice.toFixed(2)}</span>
+                <span className="text-[#1f2532] font-semibold">{currency}{netPrice.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between text-xs text-[#9ca3af]">
@@ -219,14 +219,14 @@ export default function GstCalculator() {
                 <span className="text-[#ff8c3a]">+{currency}{sgst.toFixed(2)}</span>
               </div>
 
-              <div className="h-px bg-white/10 my-2" />
+              <div className="h-px bg-gray-100 my-2" />
 
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Total GST ({rate}%):</span>
                 <span className="text-[#ff6b00] font-bold">+{currency}{gstAmount.toFixed(2)}</span>
               </div>
 
-              <div className="flex justify-between items-center text-lg font-bold text-white pt-2 border-t border-white/10">
+              <div className="flex justify-between items-center text-lg font-bold text-[#1f2532] pt-2 border-t border-[#e6e9ef]">
                 <span>Final Total:</span>
                 <span className="text-emerald-400">{currency}{grossPrice.toFixed(2)}</span>
               </div>

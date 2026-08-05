@@ -82,8 +82,8 @@ export default function ImageNoiseReducerTool() {
             <Sliders className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Image Denoise & Smooth Filter (Grain Reducer)</h1>
-            <p className="text-sm text-[#9ca3af]">Smooth grainy low-light camera noise and JPEG compression artifacts offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Image Denoise & Smooth Filter (Grain Reducer)</h1>
+            <p className="text-sm text-[#676879]">Smooth grainy low-light camera noise and JPEG compression artifacts offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-teal-400 font-medium">
@@ -100,31 +100,31 @@ export default function ImageNoiseReducerTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-teal-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-teal-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-teal-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop noisy or grainy photo here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop noisy or grainy photo here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP photos</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Sliders className="w-8 h-8 text-teal-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setDenoisedUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Photo
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Denoise Strength ({strength}%)</label>
               <input type="range" min="0" max="100" value={strength} onChange={(e) => { setStrength(Number(e.target.value)); setDenoisedUrl(null); }} className="w-full accent-teal-400" />
@@ -136,7 +136,7 @@ export default function ImageNoiseReducerTool() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-            <div className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
+            <div className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
               <img src={denoisedUrl || image.url} alt="Denoise preview" className="max-h-64 object-contain rounded" />
             </div>
           </div>

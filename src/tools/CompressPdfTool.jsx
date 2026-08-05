@@ -83,8 +83,8 @@ export default function CompressPdfTool() {
             <Minimize2 className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Compress PDF</h1>
-            <p className="text-sm text-[#9ca3af]">Reduce PDF file size while optimizing for maximum document quality.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Compress PDF</h1>
+            <p className="text-sm text-[#676879]">Reduce PDF file size while optimizing for maximum document quality.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
@@ -102,25 +102,25 @@ export default function CompressPdfTool() {
 
       {/* Upload Zone */}
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-emerald-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF file here or click to select</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file here or click to select</p>
           <p className="text-xs text-[#9ca3af]">Supports PDF files up to 100MB — Processed offline</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-emerald-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">Original Size: {formatMB(fileSize)}</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setCompressedPdf(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -128,7 +128,7 @@ export default function CompressPdfTool() {
 
           {/* Compression Levels */}
           <div className="space-y-3">
-            <label className="text-sm font-medium text-white block">Select Compression Level:</label>
+            <label className="text-sm font-medium text-[#1f2532] block">Select Compression Level:</label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {[
                 { id: 'extreme', name: 'Extreme Compression', desc: 'Smallest file size, lower image quality', color: 'border-red-500/40 text-red-400' },
@@ -141,11 +141,11 @@ export default function CompressPdfTool() {
                   onClick={() => setLevel(opt.id)}
                   className={`p-4 rounded-xl border text-left transition-all ${
                     level === opt.id
-                      ? 'bg-white/10 border-emerald-500 ring-2 ring-emerald-500/20'
-                      : 'bg-white/5 border-white/10 hover:border-white/20'
+                      ? 'bg-gray-100 border-emerald-500 ring-2 ring-emerald-500/20'
+                      : 'bg-white border-[#e6e9ef] hover:border-[#d0d4e4]'
                   }`}
                 >
-                  <p className="font-semibold text-white text-sm mb-1">{opt.name}</p>
+                  <p className="font-semibold text-[#1f2532] text-sm mb-1">{opt.name}</p>
                   <p className="text-xs text-[#9ca3af]">{opt.desc}</p>
                 </button>
               ))}
@@ -177,7 +177,7 @@ export default function CompressPdfTool() {
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400" />
                   <div>
-                    <h3 className="text-white font-bold">PDF Successfully Compressed!</h3>
+                    <h3 className="text-[#1f2532] font-bold">PDF Successfully Compressed!</h3>
                     <div className="flex items-center gap-2 text-sm text-[#9ca3af] mt-0.5">
                       <span>{formatMB(fileSize)}</span>
                       <ArrowRight className="w-4 h-4 text-emerald-400" />

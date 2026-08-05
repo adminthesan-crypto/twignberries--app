@@ -79,8 +79,8 @@ export default function AiPdfSummarizerTool() {
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">AI PDF Summarizer (Executive Summary & Key Points)</h1>
-            <p className="text-sm text-[#9ca3af]">Quickly generate concise executive summaries, bullet points, reading time, and action items offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">AI PDF Summarizer (Executive Summary & Key Points)</h1>
+            <p className="text-sm text-[#676879]">Quickly generate concise executive summaries, bullet points, reading time, and action items offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-purple-400 font-medium">
@@ -97,19 +97,19 @@ export default function AiPdfSummarizerTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-purple-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-purple-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF file for AI summary here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file for AI summary here</p>
           <p className="text-xs text-[#9ca3af]">Analyzes document semantics and extracts actionable highlights offline</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-purple-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 {summary && (
                   <p className="text-xs text-[#9ca3af]">
                     {summary.pageCount} pages • {summary.wordCount} words • ~{summary.readingTime} min read
@@ -119,7 +119,7 @@ export default function AiPdfSummarizerTool() {
             </div>
             <button
               onClick={() => { setFile(null); setSummary(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -134,7 +134,7 @@ export default function AiPdfSummarizerTool() {
             <div className="space-y-6">
               {/* Executive Summary Card */}
               <div className="p-5 rounded-xl bg-purple-500/10 border border-purple-500/30 space-y-2">
-                <h3 className="text-white font-bold flex items-center gap-2">
+                <h3 className="text-[#1f2532] font-bold flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-purple-400" />
                   <span>Executive Summary</span>
                 </h3>
@@ -143,13 +143,13 @@ export default function AiPdfSummarizerTool() {
 
               {/* Key Bullet Points */}
               <div className="space-y-3">
-                <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                <h4 className="text-sm font-bold text-[#1f2532] flex items-center gap-2">
                   <List className="w-4 h-4 text-purple-400" />
                   <span>Key Takeaways ({summary.keyPoints.length})</span>
                 </h4>
                 <div className="space-y-2">
                   {summary.keyPoints.map((pt, idx) => (
-                    <div key={idx} className="p-3 rounded-lg bg-black/40 border border-white/10 text-xs text-[#d1d5db] flex items-start gap-2">
+                    <div key={idx} className="p-3 rounded-lg bg-white border border-[#e6e9ef] text-xs text-[#d1d5db] flex items-start gap-2">
                       <span className="text-purple-400 font-bold">•</span>
                       <span>{pt}</span>
                     </div>
@@ -159,13 +159,13 @@ export default function AiPdfSummarizerTool() {
 
               {/* Recommended Action Items */}
               <div className="space-y-3">
-                <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                <h4 className="text-sm font-bold text-[#1f2532] flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>Recommended Action Items</span>
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {summary.actionItems.map((item, idx) => (
-                    <div key={idx} className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs text-[#9ca3af]">
+                    <div key={idx} className="p-3 rounded-lg bg-white border border-[#e6e9ef] text-xs text-[#9ca3af]">
                       <span className="text-emerald-400 font-bold block mb-1">Action #{idx + 1}</span>
                       <span>{item}</span>
                     </div>

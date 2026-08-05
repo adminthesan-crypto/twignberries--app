@@ -100,8 +100,8 @@ export default function CropImageTool() {
             <Crop className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Crop IMAGE (Aspect Ratio & Custom Box)</h1>
-            <p className="text-sm text-[#9ca3af]">Crop JPG, PNG, WEBP, or GIF images with visual rectangle controls and aspect ratio presets.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Crop IMAGE (Aspect Ratio & Custom Box)</h1>
+            <p className="text-sm text-[#676879]">Crop JPG, PNG, WEBP, or GIF images with visual rectangle controls and aspect ratio presets.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-cyan-400 font-medium">
@@ -118,25 +118,25 @@ export default function CropImageTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-cyan-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-cyan-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-cyan-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image file to crop here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image file to crop here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, WEBP, SVG, and GIF</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Crop className="w-8 h-8 text-cyan-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px original</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setCroppedUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace Image
             </button>
@@ -152,7 +152,7 @@ export default function CropImageTool() {
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   aspect === preset
                     ? 'bg-cyan-500 text-black font-bold'
-                    : 'bg-white/5 text-[#9ca3af] hover:text-white border border-white/10'
+                    : 'bg-white text-[#9ca3af] hover:text-[#1f2532] border border-[#e6e9ef]'
                 }`}
               >
                 {preset.toUpperCase()}
@@ -161,7 +161,7 @@ export default function CropImageTool() {
           </div>
 
           {/* Crop Box Sliders */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Left X (%): {cropBox.x}%</label>
               <input
@@ -222,7 +222,7 @@ export default function CropImageTool() {
 
           {/* Preview Container */}
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-            <div className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
+            <div className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
               <img src={image.url} alt="Original" className="max-h-64 object-contain rounded opacity-80" />
               {/* Overlay crop box indicator */}
               <div
@@ -237,7 +237,7 @@ export default function CropImageTool() {
             </div>
 
             {croppedUrl && (
-              <div className="bg-black/40 border border-emerald-500/30 rounded-xl p-3 flex flex-col items-center">
+              <div className="bg-white border border-emerald-500/30 rounded-xl p-3 flex flex-col items-center">
                 <span className="text-xs font-bold text-emerald-400 mb-2">Cropped Output:</span>
                 <img src={croppedUrl} alt="Cropped" className="max-h-56 object-contain rounded" />
               </div>

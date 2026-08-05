@@ -76,8 +76,8 @@ export default function RepairPdfTool() {
             <Wrench className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Repair PDF (Corrupt Document Recovery)</h1>
-            <p className="text-sm text-[#9ca3af]">Repair damaged PDFs, rebuild broken XRef tables, and recover readable pages from corrupt files.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Repair PDF (Corrupt Document Recovery)</h1>
+            <p className="text-sm text-[#676879]">Repair damaged PDFs, rebuild broken XRef tables, and recover readable pages from corrupt files.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-amber-400 font-medium">
@@ -94,32 +94,32 @@ export default function RepairPdfTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-amber-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-amber-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-amber-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop damaged or corrupt PDF file here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop damaged or corrupt PDF file here</p>
           <p className="text-xs text-[#9ca3af]">Reconstructs PDF header, cross-reference tables, and object trees</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-amber-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">{(file.size / 1024).toFixed(1)} KB binary size</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setRepairedPdf(null); setRepairLog([]); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
           </div>
 
           {repairLog.length > 0 && (
-            <div className="bg-black/60 border border-white/10 rounded-xl p-4 font-mono text-xs space-y-1 text-[#9ca3af]">
+            <div className="bg-black/60 border border-[#e6e9ef] rounded-xl p-4 font-mono text-xs space-y-1 text-[#9ca3af]">
               {repairLog.map((log, idx) => (
                 <p key={idx} className={log.includes('SUCCESS') ? 'text-emerald-400 font-bold' : ''}>{log}</p>
               ))}

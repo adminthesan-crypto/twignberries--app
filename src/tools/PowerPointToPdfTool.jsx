@@ -131,8 +131,8 @@ export default function PowerPointToPdfTool() {
             <Presentation className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">PowerPoint to PDF</h1>
-            <p className="text-sm text-[#9ca3af]">Create clean A4 landscape presentation handouts and slide decks offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">PowerPoint to PDF</h1>
+            <p className="text-sm text-[#676879]">Create clean A4 landscape presentation handouts and slide decks offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
@@ -149,15 +149,15 @@ export default function PowerPointToPdfTool() {
       )}
 
       {/* Slide Editor */}
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-white/10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+        <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
           <div>
-            <h3 className="text-white font-semibold">Presentation Slides Outline</h3>
+            <h3 className="text-[#1f2532] font-semibold">Presentation Slides Outline</h3>
             <p className="text-xs text-[#9ca3af]">Edit slide titles and bullet points below</p>
           </div>
           <button
             onClick={handleAddSlide}
-            className="py-2 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-2 transition-all"
+            className="py-2 px-4 rounded-xl bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-2 transition-all"
           >
             <Plus className="w-4 h-4" />
             <span>Add Slide</span>
@@ -166,7 +166,7 @@ export default function PowerPointToPdfTool() {
 
         <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
           {slides.map((slide, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-black/40 border border-white/10 space-y-3">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-[#e6e9ef] space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-orange-400 uppercase tracking-wider">Slide #{idx + 1}</span>
                 {slides.length > 1 && (
@@ -184,20 +184,20 @@ export default function PowerPointToPdfTool() {
                 value={slide.title}
                 onChange={(e) => handleSlideChange(idx, 'title', e.target.value)}
                 placeholder="Slide Title..."
-                className="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-white font-semibold text-sm focus:outline-none focus:border-orange-500"
+                className="w-full bg-white border border-[#e6e9ef] rounded-lg p-2.5 text-[#1f2532] font-semibold text-sm focus:outline-none focus:border-orange-500"
               />
               <textarea
                 value={slide.points}
                 onChange={(e) => handleSlideChange(idx, 'points', e.target.value)}
                 placeholder="Bullet points (one per line)..."
                 rows={3}
-                className="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-[#9ca3af] text-xs focus:outline-none focus:border-orange-500 font-mono"
+                className="w-full bg-white border border-[#e6e9ef] rounded-lg p-2.5 text-[#9ca3af] text-xs focus:outline-none focus:border-orange-500 font-mono"
               />
             </div>
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-[#e6e9ef]">
           <button
             onClick={generatePresentationPdf}
             disabled={loading || slides.length === 0}

@@ -125,8 +125,8 @@ export default function TranslatePdfTool() {
             <Globe className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Translate PDF (Multi-Language Document Translator)</h1>
-            <p className="text-sm text-[#9ca3af]">Translate PDF text into Spanish, French, German, Mandarin, or Hindi while preserving page layout.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Translate PDF (Multi-Language Document Translator)</h1>
+            <p className="text-sm text-[#676879]">Translate PDF text into Spanish, French, German, Mandarin, or Hindi while preserving page layout.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-blue-400 font-medium">
@@ -143,25 +143,25 @@ export default function TranslatePdfTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-blue-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-blue-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF file to translate here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file to translate here</p>
           <p className="text-xs text-[#9ca3af]">Preserves page counts, fonts, and paragraph margins offline</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-blue-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">Ready for translation</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setTranslatedPdf(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -179,8 +179,8 @@ export default function TranslatePdfTool() {
                   onClick={() => { setTargetLang(code); setTranslatedPdf(null); }}
                   className={`p-3 rounded-xl border text-left transition-all ${
                     targetLang === code
-                      ? 'bg-white/10 border-blue-500 ring-2 ring-blue-500/20 text-white font-bold'
-                      : 'bg-white/5 border-white/10 text-[#9ca3af] hover:border-white/20'
+                      ? 'bg-gray-100 border-blue-500 ring-2 ring-blue-500/20 text-[#1f2532] font-bold'
+                      : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:border-[#d0d4e4]'
                   }`}
                 >
                   {name}

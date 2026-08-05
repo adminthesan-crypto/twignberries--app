@@ -90,8 +90,8 @@ export default function ScanToPdfTool() {
             <Camera className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Scan to PDF (Document Scanner)</h1>
-            <p className="text-sm text-[#9ca3af]">Compile document scans or camera photos into clean multi-page PDF files.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Scan to PDF (Document Scanner)</h1>
+            <p className="text-sm text-[#676879]">Compile document scans or camera photos into clean multi-page PDF files.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-teal-400 font-medium">
@@ -108,7 +108,7 @@ export default function ScanToPdfTool() {
       )}
 
       {/* Controls */}
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500 text-black font-semibold cursor-pointer hover:bg-teal-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function ScanToPdfTool() {
             <select
               value={filterMode}
               onChange={(e) => setFilterMode(e.target.value)}
-              className="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1 text-white"
+              className="bg-white border border-[#e6e9ef] rounded-lg px-2.5 py-1 text-[#1f2532]"
             >
               <option value="enhanced">Enhanced Contrast (Doc)</option>
               <option value="original">Original Photo</option>
@@ -134,7 +134,7 @@ export default function ScanToPdfTool() {
         {images.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {images.map((img, idx) => (
-              <div key={idx} className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden p-2 group">
+              <div key={idx} className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden p-2 group">
                 <img
                   src={img.url}
                   alt={img.name}
@@ -144,7 +144,7 @@ export default function ScanToPdfTool() {
                 />
                 <button
                   onClick={() => handleRemoveImage(idx)}
-                  className="absolute top-3 right-3 p-1.5 rounded-lg bg-red-500/80 text-white hover:bg-red-600 transition-all opacity-0 group-hover:opacity-100"
+                  className="absolute top-3 right-3 p-1.5 rounded-lg bg-red-500/80 text-[#1f2532] hover:bg-red-600 transition-all opacity-0 group-hover:opacity-100"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -153,12 +153,12 @@ export default function ScanToPdfTool() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-white/10 rounded-xl">
+          <div className="py-12 text-center text-[#9ca3af] border-2 border-dashed border-[#e6e9ef] rounded-xl">
             <p>No document images selected yet. Upload photos to generate PDF.</p>
           </div>
         )}
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-[#e6e9ef]">
           <button
             onClick={generateScannedPdf}
             disabled={loading || images.length === 0}

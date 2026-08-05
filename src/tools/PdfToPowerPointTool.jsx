@@ -94,8 +94,8 @@ export default function PdfToPowerPointTool() {
             <Presentation className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">PDF to PowerPoint / Slide Notes</h1>
-            <p className="text-sm text-[#9ca3af]">Convert PDF presentation pages into PowerPoint slide outlines and speaker notes.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">PDF to PowerPoint / Slide Notes</h1>
+            <p className="text-sm text-[#676879]">Convert PDF presentation pages into PowerPoint slide outlines and speaker notes.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
@@ -112,25 +112,25 @@ export default function PdfToPowerPointTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-orange-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-orange-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-orange-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop PDF file here or click to select</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file here or click to select</p>
           <p className="text-xs text-[#9ca3af]">Extracts slide headings and bullet points into PowerPoint/Keynote outline format</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Presentation className="w-8 h-8 text-orange-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">{pageCount} slide(s) parsed</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setExtractedDeck(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -147,7 +147,7 @@ export default function PdfToPowerPointTool() {
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400 shrink-0" />
                   <div>
-                    <h3 className="text-white font-bold">Slide Deck Outline Extracted!</h3>
+                    <h3 className="text-[#1f2532] font-bold">Slide Deck Outline Extracted!</h3>
                     <p className="text-xs text-[#9ca3af]">Parsed {pageCount} slide(s) with titles and bullet points.</p>
                   </div>
                 </div>

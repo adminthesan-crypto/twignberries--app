@@ -91,8 +91,8 @@ export default function HtmlToImageTool() {
             <Code className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">HTML to IMAGE (Convert Web Code & Cards)</h1>
-            <p className="text-sm text-[#9ca3af]">Convert live HTML and inline CSS code cards directly into high-DPI Retina PNG or JPG images offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">HTML to IMAGE (Convert Web Code & Cards)</h1>
+            <p className="text-sm text-[#676879]">Convert live HTML and inline CSS code cards directly into high-DPI Retina PNG or JPG images offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-cyan-400 font-medium">
@@ -110,13 +110,13 @@ export default function HtmlToImageTool() {
 
       {/* Editor & Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-5 space-y-4">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-cyan-400">HTML & Inline CSS Markup</span>
             <select
               value={imageFormat}
               onChange={(e) => setImageFormat(e.target.value)}
-              className="bg-black/40 border border-white/10 rounded px-2 py-1 text-xs text-white"
+              className="bg-white border border-[#e6e9ef] rounded px-2 py-1 text-xs text-[#1f2532]"
             >
               <option value="image/png">Retina PNG</option>
               <option value="image/jpeg">JPG Image</option>
@@ -126,7 +126,7 @@ export default function HtmlToImageTool() {
             value={htmlContent}
             onChange={(e) => { setHtmlContent(e.target.value); setRenderedUrl(null); }}
             rows={12}
-            className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white font-mono text-xs focus:border-cyan-500 outline-none"
+            className="w-full bg-white border border-[#e6e9ef] rounded-xl p-4 text-[#1f2532] font-mono text-xs focus:border-cyan-500 outline-none"
           />
           <button
             onClick={convertHtmlToImage}
@@ -147,19 +147,19 @@ export default function HtmlToImageTool() {
           </button>
         </div>
 
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-5 space-y-4 flex flex-col justify-between">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4 flex flex-col justify-between">
           <div>
             <span className="text-xs font-bold text-[#9ca3af] block mb-3">Live HTML Render Preview</span>
             <div
-              className="border border-white/10 rounded-xl p-4 bg-black/40 min-h-[220px] flex items-center justify-center overflow-auto"
+              className="border border-[#e6e9ef] rounded-xl p-4 bg-white min-h-[220px] flex items-center justify-center overflow-auto"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
           </div>
 
           {renderedUrl && (
-            <div className="space-y-3 pt-4 border-t border-white/10">
+            <div className="space-y-3 pt-4 border-t border-[#e6e9ef]">
               <span className="text-xs font-bold text-emerald-400 block">Rendered Output:</span>
-              <img src={renderedUrl} alt="Rendered HTML" className="w-full rounded-xl border border-white/10 bg-black/50" />
+              <img src={renderedUrl} alt="Rendered HTML" className="w-full rounded-xl border border-[#e6e9ef] bg-white" />
               <button
                 onClick={handleDownload}
                 className="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"

@@ -84,8 +84,8 @@ export default function PhotoEditorTool() {
             <Sliders className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Photo Editor (Brightness, Contrast & Filters)</h1>
-            <p className="text-sm text-[#9ca3af]">Adjust photo brightness, contrast, saturation, blur, and sepia color filters offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Photo Editor (Brightness, Contrast & Filters)</h1>
+            <p className="text-sm text-[#676879]">Adjust photo brightness, contrast, saturation, blur, and sepia color filters offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-rose-400 font-medium">
@@ -102,32 +102,32 @@ export default function PhotoEditorTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-rose-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-rose-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-rose-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image to edit here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image to edit here</p>
           <p className="text-xs text-[#9ca3af]">Supports JPG, PNG, and WEBP photos</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Sliders className="w-8 h-8 text-rose-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setEditedUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Photo
             </button>
           </div>
 
           {/* Filter Sliders */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Brightness ({brightness}%)</label>
               <input
@@ -187,7 +187,7 @@ export default function PhotoEditorTool() {
 
           {/* Live CSS filter preview */}
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-            <div className="relative bg-black/40 border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
+            <div className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-2">
               <img
                 src={editedUrl || image.url}
                 alt="Edited preview"

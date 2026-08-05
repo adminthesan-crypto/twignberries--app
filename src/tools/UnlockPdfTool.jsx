@@ -65,8 +65,8 @@ export default function UnlockPdfTool() {
             <Unlock className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Unlock PDF (Remove Password & Permissions)</h1>
-            <p className="text-sm text-[#9ca3af]">Remove owner password restrictions, copy limits, and printing restrictions from your PDF files.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Unlock PDF (Remove Password & Permissions)</h1>
+            <p className="text-sm text-[#676879]">Remove owner password restrictions, copy limits, and printing restrictions from your PDF files.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-red-400 font-medium">
@@ -83,25 +83,25 @@ export default function UnlockPdfTool() {
       )}
 
       {!file ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-red-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-red-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-red-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop locked PDF file here or click to select</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop locked PDF file here or click to select</p>
           <p className="text-xs text-[#9ca3af]">Strips password protection and access restrictions offline</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-red-400" />
               <div>
-                <p className="text-white font-medium">{file.name}</p>
+                <p className="text-[#1f2532] font-medium">{file.name}</p>
                 <p className="text-xs text-[#9ca3af]">Ready for security removal</p>
               </div>
             </div>
             <button
               onClick={() => { setFile(null); setUnlockedPdf(null); setPassword(''); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef] hover:border-[#d0d4e4] transition-all"
             >
               Replace PDF
             </button>
@@ -119,7 +119,7 @@ export default function UnlockPdfTool() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter PDF password if required..."
-                  className="w-full bg-black/50 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-white text-sm focus:outline-none focus:border-red-500"
+                  className="w-full bg-white border border-[#e6e9ef] rounded-xl py-2.5 pl-10 pr-4 text-[#1f2532] text-sm focus:outline-none focus:border-red-500"
                 />
               </div>
             </div>

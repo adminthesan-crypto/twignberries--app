@@ -102,8 +102,8 @@ export default function RemoveBgImageTool() {
             <Eraser className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Remove Background (Transparent PNG Cutout)</h1>
-            <p className="text-sm text-[#9ca3af]">Instantly erase white, green, or solid backgrounds and export a transparent PNG cutout offline.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Remove Background (Transparent PNG Cutout)</h1>
+            <p className="text-sm text-[#676879]">Instantly erase white, green, or solid backgrounds and export a transparent PNG cutout offline.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-fuchsia-400 font-medium">
@@ -120,31 +120,31 @@ export default function RemoveBgImageTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-white/20 hover:border-fuchsia-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-white/[0.02] hover:bg-white/[0.04]">
+        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-fuchsia-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-fuchsia-400 mx-auto mb-3" />
-          <p className="text-white font-medium mb-1">Drop image to remove background here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image to remove background here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP photos</p>
         </label>
       ) : (
-        <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Eraser className="w-8 h-8 text-fuchsia-400" />
               <div>
-                <p className="text-white font-medium">{image.name}</p>
+                <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
             <button
               onClick={() => { setImage(null); setRemovedUrl(null); }}
-              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-white bg-white/5 rounded-lg border border-white/10"
+              className="px-3 py-1.5 text-xs text-[#9ca3af] hover:text-[#1f2532] bg-white rounded-lg border border-[#e6e9ef]"
             >
               Replace Image
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-black/30 p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Background Color to Remove</label>
               <div className="flex items-center gap-3">
@@ -152,7 +152,7 @@ export default function RemoveBgImageTool() {
                   type="color"
                   value={targetColor}
                   onChange={(e) => { setTargetColor(e.target.value); setRemovedUrl(null); }}
-                  className="w-10 h-10 rounded-lg cursor-pointer bg-transparent border border-white/20"
+                  className="w-10 h-10 rounded-lg cursor-pointer bg-transparent border border-[#d0d4e4]"
                 />
                 <div className="flex gap-1.5">
                   {[
@@ -164,7 +164,7 @@ export default function RemoveBgImageTool() {
                       key={preset.hex}
                       onClick={() => { setTargetColor(preset.hex); setRemovedUrl(null); }}
                       className={`px-2.5 py-1 rounded text-xs font-semibold ${
-                        targetColor === preset.hex ? 'bg-fuchsia-500 text-black' : 'bg-white/10 text-white'
+                        targetColor === preset.hex ? 'bg-fuchsia-500 text-black' : 'bg-gray-100 text-[#1f2532]'
                       }`}
                     >
                       {preset.label}
@@ -189,7 +189,7 @@ export default function RemoveBgImageTool() {
 
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
             <div
-              className="relative border border-white/10 rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-4"
+              className="relative border border-[#e6e9ef] rounded-xl overflow-hidden max-h-72 flex items-center justify-center p-4"
               style={{
                 backgroundImage: `radial-gradient(#ffffff22 15%, transparent 16%)`,
                 backgroundSize: '16px 16px',

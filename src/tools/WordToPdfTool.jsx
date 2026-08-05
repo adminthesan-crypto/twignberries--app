@@ -112,8 +112,8 @@ export default function WordToPdfTool() {
             <FileText className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-white">Word / Text to PDF</h1>
-            <p className="text-sm text-[#9ca3af]">Convert Word text, Markdown, or TXT files into cleanly formatted A4 PDF documents.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Word / Text to PDF</h1>
+            <p className="text-sm text-[#676879]">Convert Word text, Markdown, or TXT files into cleanly formatted A4 PDF documents.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-blue-400 font-medium">
@@ -130,9 +130,9 @@ export default function WordToPdfTool() {
       )}
 
       {/* Upload or Paste */}
-      <div className="bg-[#1e1e24] border border-white/10 rounded-2xl p-6 space-y-6">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <label className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white text-sm cursor-pointer transition-all">
+          <label className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#e6e9ef] hover:border-[#d0d4e4] text-[#1f2532] text-sm cursor-pointer transition-all">
             <Upload className="w-4 h-4 text-blue-400" />
             <span>Upload .TXT / .MD File</span>
             <input type="file" accept=".txt,.md,.doc,.docx" onChange={handleFileUpload} className="hidden" />
@@ -145,7 +145,7 @@ export default function WordToPdfTool() {
               <select
                 value={fontSize}
                 onChange={(e) => setFontSize(Number(e.target.value))}
-                className="bg-black/40 border border-white/10 rounded-lg px-2 py-1 text-white"
+                className="bg-white border border-[#e6e9ef] rounded-lg px-2 py-1 text-[#1f2532]"
               >
                 <option value={10}>10pt</option>
                 <option value={12}>12pt</option>
@@ -158,7 +158,7 @@ export default function WordToPdfTool() {
               <select
                 value={lineSpacing}
                 onChange={(e) => setLineSpacing(Number(e.target.value))}
-                className="bg-black/40 border border-white/10 rounded-lg px-2 py-1 text-white"
+                className="bg-white border border-[#e6e9ef] rounded-lg px-2 py-1 text-[#1f2532]"
               >
                 <option value={1.2}>Single</option>
                 <option value={1.4}>1.4x</option>
@@ -173,7 +173,7 @@ export default function WordToPdfTool() {
           onChange={(e) => { setText(e.target.value); setPdfBlob(null); }}
           placeholder="Paste Word document text, Markdown, or upload a .txt/.md file..."
           rows={12}
-          className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white text-sm font-mono focus:outline-none focus:border-blue-500"
+          className="w-full bg-white border border-[#e6e9ef] rounded-xl p-4 text-[#1f2532] text-sm font-mono focus:outline-none focus:border-blue-500"
         />
 
         <div className="flex flex-col sm:flex-row items-center gap-3">
