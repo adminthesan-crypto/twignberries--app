@@ -213,7 +213,7 @@ export default function ImageToPdfTool() {
               <select
                 value={orientation}
                 onChange={e => { setOrientation(e.target.value); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value="portrait">Portrait (A4)</option>
                 <option value="landscape">Landscape (A4)</option>
@@ -227,7 +227,7 @@ export default function ImageToPdfTool() {
               <select
                 value={margin}
                 onChange={e => { setMargin(parseInt(e.target.value, 10)); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value={0}>No Margin (0 pt)</option>
                 <option value={20}>Small Margin (20 pt)</option>
@@ -311,7 +311,7 @@ export default function ImageToPdfTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">PDF Compilation Overview</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -334,7 +334,7 @@ export default function ImageToPdfTool() {
               onClick={handleConvertToPdf}
               disabled={loading}
               className="btn-primary"
-              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Compiling PDF document...' : 'Convert to PDF Now'}
             </button>
@@ -350,7 +350,7 @@ export default function ImageToPdfTool() {
                 href={resultUrl}
                 download="Twignberries-Converted-Images.pdf"
                 className="btn-primary"
-                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Converted PDF
               </a>

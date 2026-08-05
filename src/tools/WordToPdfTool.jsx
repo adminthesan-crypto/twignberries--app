@@ -130,7 +130,7 @@ export default function WordToPdfTool() {
       )}
 
       {/* Upload or Paste */}
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#e6e9ef] hover:border-[#d0d4e4] text-[#1f2532] text-sm cursor-pointer transition-all">
             <Upload className="w-4 h-4 text-blue-400" />

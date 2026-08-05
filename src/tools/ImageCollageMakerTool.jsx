@@ -138,7 +138,7 @@ export default function ImageCollageMakerTool() {
         </div>
       )}
 
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-semibold cursor-pointer hover:bg-amber-400 transition-all text-sm shadow-md">
             <Plus className="w-4 h-4" />
@@ -186,7 +186,7 @@ export default function ImageCollageMakerTool() {
         )}
 
         {images.length > 0 && (
-          <div className="space-y-8 pt-4 border-t border-[#e6e9ef]">
+          <div className="space-y-4 pt-4 border-t border-[#e6e9ef]">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div>

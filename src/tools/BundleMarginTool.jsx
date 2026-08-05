@@ -37,7 +37,7 @@ export default function BundleMarginTool() {
   const markupPct = totalCost > 0 ? (((bundlePrice - totalCost) / totalCost) * 100).toFixed(1) : 0;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -52,7 +52,7 @@ export default function BundleMarginTool() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items list */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <span style={SL}>Bundle Component Items</span>
             <button
@@ -112,8 +112,8 @@ export default function BundleMarginTool() {
         </div>
 
         {/* Pricing & Profit Sidebar */}
-        <div className="space-y-10">
-          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
             <div>
               <div style={SL}>Bundle Selling Price ($ USD)</div>
               <input

@@ -103,11 +103,11 @@ export default function ImageColorPickerTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-sky-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-sky-400 mx-auto mb-3" />
-          <p className="text-[#1f2532] font-medium mb-3">Drop image to sample colors here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop image to sample colors here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, WEBP, and SVG</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Pipette className="w-8 h-8 text-sky-400" />
@@ -145,9 +145,9 @@ export default function ImageColorPickerTool() {
               />
             </div>
 
-            <div className="bg-white border border-[#e6e9ef] rounded-xl p-5 space-y-8 flex flex-col justify-between">
+            <div className="bg-white border border-[#e6e9ef] rounded-xl p-5 space-y-4 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold text-[#9ca3af] block mb-5">Picked Color Preview</span>
+                <span className="text-xs font-bold text-[#9ca3af] block mb-2">Picked Color Preview</span>
                 <div
                   className="w-full h-20 rounded-xl border border-[#d0d4e4] shadow-inner flex items-center justify-center text-[#1f2532] font-bold text-sm"
                   style={{ backgroundColor: pickedColor.hex }}

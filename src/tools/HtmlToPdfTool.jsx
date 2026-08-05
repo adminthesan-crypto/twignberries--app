@@ -115,7 +115,7 @@ export default function HtmlToPdfTool() {
       )}
 
       {/* Mode selector */}
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex gap-3 border-b border-[#e6e9ef] pb-4">
           <button
             onClick={() => { setMode('html'); setPdfBlob(null); }}
@@ -143,7 +143,7 @@ export default function HtmlToPdfTool() {
 
         {mode === 'html' ? (
           <div>
-            <label className="text-xs font-semibold text-[#9ca3af] uppercase tracking-wider block mb-5">
+            <label className="text-xs font-semibold text-[#9ca3af] uppercase tracking-wider block mb-2">
               HTML Code Markup:
             </label>
             <textarea
@@ -156,7 +156,7 @@ export default function HtmlToPdfTool() {
           </div>
         ) : (
           <div>
-            <label className="text-xs font-semibold text-[#9ca3af] uppercase tracking-wider block mb-5">
+            <label className="text-xs font-semibold text-[#9ca3af] uppercase tracking-wider block mb-2">
               Webpage URL:
             </label>
             <input

@@ -96,7 +96,7 @@ export default function SvgOptimizerTool() {
   const savedPercent = origCode.length > 0 ? Math.round((savedBytes / origCode.length) * 100) : 0;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -133,7 +133,7 @@ export default function SvgOptimizerTool() {
           />
         </label>
       ) : (
-        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-10">
+        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
             <div className="flex items-center gap-3">
               <Code className="text-[#6161ff]" size={24} />
@@ -183,7 +183,7 @@ export default function SvgOptimizerTool() {
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-2">
               <span style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase' }}>
                 Optimized SVG Output
               </span>

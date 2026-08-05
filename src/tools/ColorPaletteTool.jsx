@@ -153,7 +153,7 @@ export default function ColorPaletteTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Contrast Ratio</div>
             <span className={`badge ${ratio >= 4.5 ? 'badge-success' : ratio >= 3.0 ? 'badge-brand' : 'badge-danger'}`} style={{ fontSize: 11 }}>
               {ratio >= 4.5 ? 'WCAG AA PASS' : ratio >= 3.0 ? 'LARGE TEXT ONLY' : 'FAIL'}

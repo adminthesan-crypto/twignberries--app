@@ -92,12 +92,12 @@ export default function ComparePdfTool() {
 
       {/* Upload both files */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-8">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-4">
           <h3 className="text-[#1f2532] font-bold text-sm">1. Original PDF Version</h3>
           {!fileA ? (
             <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-xl p-8 text-center cursor-pointer block bg-[#f6f8fa]">
               <input type="file" accept="application/pdf" onChange={(e) => setFileA(e.target.files?.[0])} className="hidden" />
-              <Upload className="w-8 h-8 text-purple-400 mx-auto mb-5" />
+              <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
               <p className="text-[#1f2532] font-medium text-sm">Select Original PDF</p>
             </label>
           ) : (
@@ -110,12 +110,12 @@ export default function ComparePdfTool() {
           )}
         </div>
 
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-8">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-4">
           <h3 className="text-[#1f2532] font-bold text-sm">2. Modified PDF Version</h3>
           {!fileB ? (
             <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-xl p-8 text-center cursor-pointer block bg-[#f6f8fa]">
               <input type="file" accept="application/pdf" onChange={(e) => setFileB(e.target.files?.[0])} className="hidden" />
-              <Upload className="w-8 h-8 text-purple-400 mx-auto mb-5" />
+              <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
               <p className="text-[#1f2532] font-medium text-sm">Select Modified PDF</p>
             </label>
           ) : (
@@ -151,7 +151,7 @@ export default function ComparePdfTool() {
 
       {/* Comparison View */}
       {(textA || textB) && (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#e6e9ef] text-sm">
             <div className="flex items-center gap-3">
               <span className="font-bold text-[#1f2532]">Comparison Report:</span>
@@ -169,7 +169,7 @@ export default function ComparePdfTool() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <h4 className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider mb-5">Original Document Content:</h4>
+              <h4 className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider mb-2">Original Document Content:</h4>
               <textarea
                 value={textA}
                 readOnly
@@ -178,7 +178,7 @@ export default function ComparePdfTool() {
               />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider mb-5">Modified Document Content:</h4>
+              <h4 className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider mb-2">Modified Document Content:</h4>
               <textarea
                 value={textB}
                 readOnly

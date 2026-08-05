@@ -79,7 +79,7 @@ export default function YouTubeRpmCalculator() {
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-5">
+              <div className="flex justify-between items-center mb-2">
                 <label className="text-xs font-medium text-[#9ca3af]">
                   Estimated Monthly Video Views
                 </label>
@@ -113,7 +113,7 @@ export default function YouTubeRpmCalculator() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-5">
+                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
                   Select Content Niche (Average 2026 RPM)
                 </label>
                 <div className="flex flex-col gap-2">
@@ -156,10 +156,10 @@ export default function YouTubeRpmCalculator() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
               ESTIMATED MONTHLY EARNINGS
             </span>
-            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-5">
+            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-2">
               ${monthlyRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">

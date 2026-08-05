@@ -70,7 +70,7 @@ export default function ImageToBase64BulkTool() {
         </div>
       )}
 
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <label className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-cyan-500 text-black font-bold cursor-pointer hover:bg-cyan-400 transition-all text-sm shadow-md">
           <Upload className="w-5 h-5" />
           <span>Upload Icons & Images to Encode (Bulk)</span>
@@ -78,7 +78,7 @@ export default function ImageToBase64BulkTool() {
         </label>
 
         {items.length > 0 ? (
-          <div className="space-y-8">
+          <div className="space-y-4">
             {items.map((it, idx) => (
               <div key={idx} className="bg-white border border-[#e6e9ef] rounded-xl p-4 space-y-3">
                 <div className="flex items-center justify-between">

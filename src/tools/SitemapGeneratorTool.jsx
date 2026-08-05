@@ -56,7 +56,7 @@ export default function SitemapGeneratorTool() {
     .filter((l) => l.trim().startsWith('http')).length;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -70,9 +70,9 @@ export default function SitemapGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+        <div className="space-y-4">
           <div>
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-2">
               <span style={SL}>Page URLs ({urlCount} valid links)</span>
               <span className="text-xs text-[#868894]">One URL per line</span>
             </div>
@@ -130,7 +130,7 @@ export default function SitemapGeneratorTool() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <span style={SL}>Generated sitemap.xml</span>
             <div className="flex items-center gap-2">
               <button

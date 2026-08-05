@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, ShieldCheck, AlertCircle, Smartphone, Monitor, CheckCircle } from 'lucide-react';
 
 const SL = {
-  display: 'block', fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 16
+  fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
 };
 
 export default function EmailSubjectTool() {
@@ -28,7 +28,7 @@ export default function EmailSubjectTool() {
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -42,9 +42,9 @@ export default function EmailSubjectTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+        <div className="space-y-4">
           <div>
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-1">
               <span style={SL}>Email Subject Line</span>
               <span className={`badge ${badgeColor} text-[10px]`}>{charLen} chars • {lenScore}</span>
             </div>
@@ -57,7 +57,7 @@ export default function EmailSubjectTool() {
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-1">
               <span style={SL}>Preview / Preheader Text</span>
               <span className="text-xs text-[#868894]">{preheader.length} chars</span>
             </div>
@@ -95,7 +95,7 @@ export default function EmailSubjectTool() {
         </div>
 
         {/* Live Inbox Previews */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           {/* iOS Mail Mobile View */}
           <div className="p-5 rounded-2xl border border-[#e6e9ef] bg-white shadow-sm space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-[#676879]">

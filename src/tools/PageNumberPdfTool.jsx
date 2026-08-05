@@ -206,7 +206,7 @@ export default function PageNumberPdfTool() {
               <select
                 value={position}
                 onChange={e => { setPosition(e.target.value); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value="bottom-right">Bottom Right Corner</option>
                 <option value="bottom-center">Bottom Center</option>
@@ -221,7 +221,7 @@ export default function PageNumberPdfTool() {
               <select
                 value={colorHex}
                 onChange={e => { setColorHex(e.target.value); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value="#676879">Subtle Gray (Default)</option>
                 <option value="#1f2532">Dark Slate</option>
@@ -250,7 +250,7 @@ export default function PageNumberPdfTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Numbering Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -273,7 +273,7 @@ export default function PageNumberPdfTool() {
               onClick={handleStampPageNumbers}
               disabled={loading}
               className="btn-primary"
-              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Stamping page numbers...' : 'Stamp Page Numbers Now'}
             </button>
@@ -289,7 +289,7 @@ export default function PageNumberPdfTool() {
                 href={resultUrl}
                 download="Twignberries-Numbered.pdf"
                 className="btn-primary"
-                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Numbered PDF
               </a>

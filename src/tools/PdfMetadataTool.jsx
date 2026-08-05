@@ -204,7 +204,7 @@ export default function PdfMetadataTool() {
                 value={meta.title}
                 onChange={e => { setMeta({ ...meta, title: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Q3 Financial Audit Report"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -217,7 +217,7 @@ export default function PdfMetadataTool() {
                 value={meta.author}
                 onChange={e => { setMeta({ ...meta, author: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Acme Legal Department"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
@@ -232,7 +232,7 @@ export default function PdfMetadataTool() {
                 value={meta.subject}
                 onChange={e => { setMeta({ ...meta, subject: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Confidential Agreement"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -245,7 +245,7 @@ export default function PdfMetadataTool() {
                 value={meta.keywords}
                 onChange={e => { setMeta({ ...meta, keywords: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. audit, finance, confidential"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
@@ -260,7 +260,7 @@ export default function PdfMetadataTool() {
                 value={meta.creator}
                 onChange={e => { setMeta({ ...meta, creator: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Twignberries Client Engine"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -273,7 +273,7 @@ export default function PdfMetadataTool() {
                 value={meta.producer}
                 onChange={e => { setMeta({ ...meta, producer: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Twignberries PDF Engine v6.0"
-                style={{ flex: 1, padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
@@ -283,7 +283,7 @@ export default function PdfMetadataTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Metadata Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -306,7 +306,7 @@ export default function PdfMetadataTool() {
               onClick={handleSaveMetadata}
               disabled={loading}
               className="btn-primary"
-              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Saving metadata...' : 'Save & Download Updated PDF'}
             </button>
@@ -322,7 +322,7 @@ export default function PdfMetadataTool() {
                 href={resultUrl}
                 download="Twignberries-Metadata-Updated.pdf"
                 className="btn-primary"
-                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Updated PDF
               </a>

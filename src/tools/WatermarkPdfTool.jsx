@@ -222,7 +222,7 @@ export default function WatermarkPdfTool() {
               <select
                 value={angle}
                 onChange={e => { setAngle(parseInt(e.target.value, 10)); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value={45}>45° Diagonal</option>
                 <option value={0}>0° Horizontal</option>
@@ -237,7 +237,7 @@ export default function WatermarkPdfTool() {
               <select
                 value={colorHex}
                 onChange={e => { setColorHex(e.target.value); setResultUrl(null); }}
-                style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 10, border: '1px solid #d0d4e4', background: '#fff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               >
                 <option value="#e2445c">Alert Red</option>
                 <option value="#6161ff">Monday Violet</option>
@@ -252,7 +252,7 @@ export default function WatermarkPdfTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Watermark Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -275,7 +275,7 @@ export default function WatermarkPdfTool() {
               onClick={handleApplyWatermark}
               disabled={loading || !text.trim()}
               className="btn-primary"
-              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Stamping PDF pages...' : 'Apply Watermark Now'}
             </button>
@@ -291,7 +291,7 @@ export default function WatermarkPdfTool() {
                 href={resultUrl}
                 download="Twignberries-Watermarked-Document.pdf"
                 className="btn-primary"
-                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Watermarked PDF
               </a>

@@ -100,11 +100,11 @@ export default function AiPdfSummarizerTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-purple-400 mx-auto mb-3" />
-          <p className="text-[#1f2532] font-medium mb-3">Drop PDF file for AI summary here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file for AI summary here</p>
           <p className="text-xs text-[#9ca3af]">Analyzes document semantics and extracts actionable highlights offline</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-purple-400" />
@@ -131,7 +131,7 @@ export default function AiPdfSummarizerTool() {
               <span>Running NLP semantic extraction and synthesizing executive summary...</span>
             </div>
           ) : summary && (
-            <div className="space-y-10">
+            <div className="space-y-6">
               {/* Executive Summary Card */}
               <div className="p-5 rounded-xl bg-purple-500/10 border border-purple-500/30 space-y-2">
                 <h3 className="text-[#1f2532] font-bold flex items-center gap-2">
@@ -166,7 +166,7 @@ export default function AiPdfSummarizerTool() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {summary.actionItems.map((item, idx) => (
                     <div key={idx} className="p-3 rounded-lg bg-white border border-[#e6e9ef] text-xs text-[#9ca3af]">
-                      <span className="text-emerald-400 font-bold block mb-3">Action #{idx + 1}</span>
+                      <span className="text-emerald-400 font-bold block mb-1">Action #{idx + 1}</span>
                       <span>{item}</span>
                     </div>
                   ))}

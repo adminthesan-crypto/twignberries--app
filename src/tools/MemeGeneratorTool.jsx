@@ -123,7 +123,7 @@ export default function MemeGeneratorTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-orange-500/50 rounded-2xl p-16 text-center cursor-pointer flex flex-col items-center justify-center transition-all bg-[#f6f8fa] hover:bg-white" style={{ minHeight: 250 }}>
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-12 h-12 text-orange-400 mb-4" />
-          <p className="text-[#1f2532] text-lg font-bold mb-5">Drop image or photo to meme here</p>
+          <p className="text-[#1f2532] text-lg font-bold mb-2">Drop image or photo to meme here</p>
           <p className="text-sm text-[#9ca3af]">Supports PNG, JPG, and WEBP images</p>
         </label>
       ) : (
@@ -146,7 +146,7 @@ export default function MemeGeneratorTool() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Top Caption</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Top Caption</label>
               <input
                 type="text"
                 value={topText}
@@ -155,7 +155,7 @@ export default function MemeGeneratorTool() {
               />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Bottom Caption</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Bottom Caption</label>
               <input
                 type="text"
                 value={bottomText}
@@ -164,7 +164,7 @@ export default function MemeGeneratorTool() {
               />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Text Size ({fontSize}px)</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Text Size ({fontSize}px)</label>
               <input
                 type="range"
                 min="20"

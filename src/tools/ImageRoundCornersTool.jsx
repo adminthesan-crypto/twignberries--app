@@ -124,11 +124,11 @@ export default function ImageRoundCornersTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-violet-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-violet-400 mx-auto mb-3" />
-          <p className="text-[#1f2532] font-medium mb-3">Drop screenshot or photo to beautify here</p>
+          <p className="text-[#1f2532] font-medium mb-1">Drop screenshot or photo to beautify here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP images</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Square className="w-8 h-8 text-violet-400" />
@@ -147,15 +147,15 @@ export default function ImageRoundCornersTool() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-4 rounded-xl border border-white/5 items-center">
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Corner Radius ({radius}%)</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Corner Radius ({radius}%)</label>
               <input type="range" min="0" max="50" value={radius} onChange={(e) => { setRadius(Number(e.target.value)); setProcessedUrl(null); }} className="w-full accent-violet-400" />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Frame Padding ({padding}%)</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Frame Padding ({padding}%)</label>
               <input type="range" min="0" max="60" value={padding} onChange={(e) => { setPadding(Number(e.target.value)); setProcessedUrl(null); }} className="w-full accent-violet-400" />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-3">Frame Color</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-1">Frame Color</label>
               <input type="color" value={bgColor} onChange={(e) => { setBgColor(e.target.value); setProcessedUrl(null); }} className="w-full h-8 bg-transparent rounded cursor-pointer" />
             </div>
             <div>

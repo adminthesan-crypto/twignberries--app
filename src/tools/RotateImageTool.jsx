@@ -121,7 +121,7 @@ export default function RotateImageTool() {
       )}
 
       {/* Controls */}
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500 text-black font-semibold cursor-pointer hover:bg-sky-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />

@@ -149,7 +149,7 @@ export default function PowerPointToPdfTool() {
       )}
 
       {/* Slide Editor */}
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
         <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
           <div>
             <h3 className="text-[#1f2532] font-semibold">Presentation Slides Outline</h3>
@@ -164,7 +164,7 @@ export default function PowerPointToPdfTool() {
           </button>
         </div>
 
-        <div className="space-y-8 max-h-96 overflow-y-auto pr-2">
+        <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
           {slides.map((slide, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-white border border-[#e6e9ef] space-y-3">
               <div className="flex items-center justify-between">

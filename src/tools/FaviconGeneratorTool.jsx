@@ -73,7 +73,7 @@ export default function FaviconGeneratorTool() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -87,7 +87,7 @@ export default function FaviconGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+        <div className="space-y-4">
           <div>
             <div style={SL}>Favicon Text / Brand Initials (1–3 chars)</div>
             <input
@@ -161,7 +161,7 @@ export default function FaviconGeneratorTool() {
         </div>
 
         {/* Live Vector Preview */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm flex flex-col items-center justify-between">
             <span style={SL}>Vector Favicon Live Preview</span>
             <div
@@ -185,7 +185,7 @@ export default function FaviconGeneratorTool() {
           </div>
 
           <div className="p-4 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc]">
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-2">
               <span style={SL}>HTML &lt;head&gt; Tags</span>
               <button
                 onClick={handleCopyHtml}

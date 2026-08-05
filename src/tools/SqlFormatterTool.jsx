@@ -54,7 +54,7 @@ export default function SqlFormatterTool() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -76,7 +76,7 @@ export default function SqlFormatterTool() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <span style={SL}>Raw / Messy SQL Input</span>
             <button
               onClick={handleMinify}
@@ -95,7 +95,7 @@ export default function SqlFormatterTool() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <span style={SL}>Formatted & Standardized SQL</span>
             <button
               onClick={handleCopy}

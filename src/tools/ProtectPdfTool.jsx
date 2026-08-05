@@ -206,7 +206,7 @@ export default function ProtectPdfTool() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             <div>
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-1">
                 <label style={{ fontSize: 13, fontWeight: 600, color: '#1f2532' }}>
                   Document Password (Optional)
                 </label>
@@ -250,7 +250,7 @@ export default function ProtectPdfTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Security Seal Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -273,7 +273,7 @@ export default function ProtectPdfTool() {
               onClick={handleSealPdf}
               disabled={loading}
               className="btn-primary"
-              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Sealing document metadata...' : 'Seal & Protect PDF Now'}
             </button>
@@ -289,7 +289,7 @@ export default function ProtectPdfTool() {
                 href={resultUrl}
                 download="Twignberries-Sealed-Document.pdf"
                 className="btn-primary"
-                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Sealed PDF
               </a>
