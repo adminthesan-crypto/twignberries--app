@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import AdUnit from './components/AdUnit';
 import CompetitorComparisonModal from './components/CompetitorComparisonModal';
+import DownloadShareModal from './components/DownloadShareModal';
 import ViralShareBar from './components/ViralShareBar';
 import { ArrowLeft, Star, ShieldCheck, ExternalLink } from 'lucide-react';
 
@@ -2018,6 +2019,9 @@ export default function App() {
         isOpen={isComparisonOpen}
         onClose={() => setIsComparisonOpen(false)}
       />
+
+      {/* Download / Share Interceptor Modal */}
+      <DownloadShareModal />
     </div>
   );
 }

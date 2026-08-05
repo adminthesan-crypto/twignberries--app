@@ -1,6 +1,7 @@
-import React from 'react';
-import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles, Layers, Image as ImageIcon, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles, Layers, Image as ImageIcon, Globe, Gift, X } from 'lucide-react';
 import NavbarSearch from './NavbarSearch';
+import AdUnit from './AdUnit';
 
 const CATEGORIES = [
   { id: 'All',           label: 'All Tools',      icon: LayoutGrid },
@@ -14,6 +15,8 @@ const CATEGORIES = [
 ];
 
 export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
+  const [showSurpriseAd, setShowSurpriseAd] = useState(false);
+
   return (
     <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
@@ -106,11 +109,25 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             <span className="hidden sm:inline">Support Pahruli</span>
           </a>
           <button
-            onClick={() => onSelectCategory('All')}
-            className="btn-secondary"
-            style={{ fontSize: 13, padding: '8px 16px' }}
+            onClick={() => setShowSurpriseAd(!showSurpriseAd)}
+            className="animate-pulse"
+            style={{ 
+              fontSize: 13, 
+              padding: '8px 16px',
+              background: 'linear-gradient(45deg, #ff3d8b, #6161ff)',
+              color: 'white',
+              fontWeight: 800,
+              borderRadius: 99,
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '0 4px 14px rgba(255,61,139,0.3)',
+            }}
           >
-            All tools
+            <Gift size={16} />
+            Surprise Me
           </button>
           <button
             onClick={() => {
@@ -155,6 +172,41 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             </button>
           );
         })}
+      </div>
+      
+      {/* Surprise Me Dropdown Curtain */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          background: '#ffffff',
+          borderBottom: showSurpriseAd ? '1px solid #e6e9ef' : 'none',
+          boxShadow: showSurpriseAd ? '0 10px 25px rgba(0,0,0,0.1)' : 'none',
+          overflow: 'hidden',
+          maxHeight: showSurpriseAd ? '500px' : '0px',
+          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+          zIndex: -1
+        }}
+      >
+        <div className="max-w-7xl mx-auto p-6 relative">
+          <button 
+            onClick={() => setShowSurpriseAd(false)}
+            className="absolute top-2 right-4 text-gray-400 hover:text-gray-600 bg-gray-100 rounded-full p-1"
+          >
+            <X size={16} />
+          </button>
+          <div className="text-center mb-4">
+            <h3 className="font-extrabold text-xl text-[#1f2532] flex items-center justify-center gap-2">
+              <Sparkles className="text-[#ff3d8b]" /> A Special Surprise Just For You!
+            </h3>
+            <p className="text-gray-500 text-sm mt-1">Thanks for clicking! Check out this awesome offer:</p>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <AdUnit />
+          </div>
+        </div>
       </div>
     </header>
   );
