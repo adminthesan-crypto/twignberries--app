@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Unlock, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2, Lock } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function UnlockPdfTool() {
   const [file, setFile] = useState(null);
   const [password, setPassword] = useState('');
   const [unlockedPdf, setUnlockedPdf] = useState(null);
+  const [unlockedPdfUrl, setUnlockedPdfUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleFileUpload = (e) => {
     setErrorMsg(null);
+    setErrorMsg(null);
     setUnlockedPdf(null);
+    setUnlockedPdfUrl(null);
     const selected = e.target.files?.[0];
     if (!selected) return;
     if (selected.type !== 'application/pdf') {
@@ -37,6 +41,7 @@ export default function UnlockPdfTool() {
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       setUnlockedPdf(blob);
+      setUnlockedPdfUrl(URL.createObjectURL(blob));
     } catch (err) {
       setErrorMsg('Could not unlock PDF. Please verify the password if the document is user-password protected.');
     } finally {
@@ -145,13 +150,20 @@ export default function UnlockPdfTool() {
             </button>
 
             {unlockedPdf && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Unlocked PDF</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Unlocked PDF</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={unlockedPdfUrl} 
+                  fileName={`unlocked-${file.name}`} 
+                  mimeType="application/pdf" 
+                />
+              </div>
             )}
           </div>
         </div>

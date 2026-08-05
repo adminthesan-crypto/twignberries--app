@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { Globe, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -11,6 +12,7 @@ export default function TranslatePdfTool() {
   const [file, setFile] = useState(null);
   const [targetLang, setTargetLang] = useState('es'); // es, fr, de, hi, zh, ar
   const [translatedPdf, setTranslatedPdf] = useState(null);
+  const [translatedPdfUrl, setTranslatedPdfUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -26,6 +28,7 @@ export default function TranslatePdfTool() {
   const handleFileUpload = (e) => {
     setErrorMsg(null);
     setTranslatedPdf(null);
+    setTranslatedPdfUrl(null);
     const selected = e.target.files?.[0];
     if (!selected) return;
     if (selected.type !== 'application/pdf') {
@@ -97,6 +100,7 @@ export default function TranslatePdfTool() {
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       setTranslatedPdf(blob);
+      setTranslatedPdfUrl(URL.createObjectURL(blob));
     } catch (err) {
       setErrorMsg('Could not translate document text.');
     } finally {
@@ -209,13 +213,20 @@ export default function TranslatePdfTool() {
             </button>
 
             {translatedPdf && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Translated PDF</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Translated PDF</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={translatedPdfUrl} 
+                  fileName={`translated-${targetLang}-${file.name}`} 
+                  mimeType="application/pdf" 
+                />
+              </div>
             )}
           </div>
         </div>

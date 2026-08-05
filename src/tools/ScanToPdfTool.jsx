@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Camera, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Trash2, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ScanToPdfTool() {
   const [images, setImages] = useState([]);
@@ -178,13 +179,16 @@ export default function ScanToPdfTool() {
           </button>
 
           {pdfBlob && (
-            <button
-              onClick={handleDownload}
-              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
-            >
-              <Download className="w-5 h-5" />
-              <span>Download PDF Document</span>
-            </button>
+            <div className="flex gap-2 w-full sm:w-auto">
+              <button
+                onClick={handleDownload}
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+              >
+                <Download className="w-5 h-5" />
+                <span>Download PDF Document</span>
+              </button>
+              <NativeShareButton fileUrl={URL.createObjectURL(pdfBlob)} fileName="scanned-document.pdf" mimeType="application/pdf" />
+            </div>
           )}
         </div>
       </div>

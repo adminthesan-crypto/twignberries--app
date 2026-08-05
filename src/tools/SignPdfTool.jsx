@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { PenTool, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2, Trash2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function SignPdfTool() {
   const [file, setFile] = useState(null);
@@ -211,13 +212,20 @@ export default function SignPdfTool() {
             </button>
 
             {signedPdf && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Signed PDF</span>
-              </button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Signed PDF</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={URL.createObjectURL(signedPdf)} 
+                  fileName={`signed-${file.name}`} 
+                  mimeType="application/pdf" 
+                />
+              </div>
             )}
           </div>
         </div>

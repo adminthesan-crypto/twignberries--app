@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Code, CheckCircle2, AlertCircle, Copy, Check, Download, ShieldCheck, Minimize2, Maximize2, FileCode } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -207,15 +208,18 @@ export default function JsonFormatterTool() {
             </div>
           </div>
 
-          <button
-            onClick={handleCopy}
-            disabled={!outputCode || !!errorMsg}
-            className="btn-primary"
-            style={{ width: '100%', marginBottom: 12, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-          >
-            {copied ? <Check size={16} /> : <Copy size={16} />}
-            {copied ? 'Copied to Clipboard!' : `Copy ${mode === 'typescript' ? 'TypeScript' : 'JSON'} Code`}
-          </button>
+          <div className="flex gap-2 mb-3">
+            <button
+              onClick={handleCopy}
+              disabled={!outputCode || !!errorMsg}
+              className="btn-primary"
+              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            >
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+              {copied ? 'Copied to Clipboard!' : `Copy ${mode === 'typescript' ? 'TypeScript' : 'JSON'} Code`}
+            </button>
+            {outputCode && !errorMsg && <NativeShareButton text={outputCode} />}
+          </div>
 
           {outputCode && !errorMsg && (
             <a

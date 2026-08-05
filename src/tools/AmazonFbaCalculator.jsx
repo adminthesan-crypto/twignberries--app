@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Package, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
+import NativeShareButton from '../components/NativeShareButton';
+
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
   color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
@@ -162,18 +164,21 @@ export default function AmazonFbaCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Unit economics breakdown
               </span>
-              <CopySummaryButton
-                title="Amazon FBA Fee & Margin Breakdown"
-                lines={[
-                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
-                  { label: `Referral Fee (${categoryRate}%)`, value: `-$${referralFee.toFixed(2)}` },
-                  { label: 'FBA Fulfillment Fee', value: `-$${fbaFee.toFixed(2)}` },
-                  { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}` },
-                  { label: 'Inbound Shipping', value: `-$${inboundShipping.toFixed(2)}` },
-                  { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
-                  { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` },
-                ]}
-              />
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <CopySummaryButton
+                  title="Amazon FBA Fee & Margin Breakdown"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: `Referral Fee (${categoryRate}%)`, value: `-$${referralFee.toFixed(2)}` },
+                    { label: 'FBA Fulfillment Fee', value: `-$${fbaFee.toFixed(2)}` },
+                    { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}` },
+                    { label: 'Inbound Shipping', value: `-$${inboundShipping.toFixed(2)}` },
+                    { label: 'Net Profit per Unit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
+                    { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` },
+                  ]}
+                />
+                <NativeShareButton text={`Amazon FBA Breakdown\nNet Profit: $${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}%)\nBreak-Even: $${breakEvenPrice.toFixed(2)}`} />
+              </div>
             </div>
 
             {[

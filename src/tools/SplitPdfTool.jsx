@@ -284,7 +284,7 @@ export default function SplitPdfTool() {
               >
                 <Download size={16} /> Download Extracted PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Extracted-Pages.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Extracted-Pages.pdf" mimeType="application/pdf" />
             </div>
             </div>
           )}

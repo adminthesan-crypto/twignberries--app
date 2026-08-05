@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -203,15 +204,18 @@ export default function ImageCompressorTool() {
             <span style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
               ✓ 100% Offline Browser Compression
             </span>
-            <button
-              onClick={handleDownload}
-              disabled={!compressedUrl || loading}
-              className="btn-primary flex items-center gap-2"
-              style={{ padding: '11px 24px', fontSize: 14 }}
-            >
-              <Download size={16} />
-              Download Compressed {format === 'image/webp' ? 'WEBP' : 'JPG'}
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleDownload}
+                disabled={!compressedUrl || loading}
+                className="btn-primary flex items-center gap-2"
+                style={{ padding: '11px 24px', fontSize: 14 }}
+              >
+                <Download size={16} />
+                Download Compressed {format === 'image/webp' ? 'WEBP' : 'JPG'}
+              </button>
+              {compressedUrl && <NativeShareButton fileUrl={compressedUrl} fileName={`${file.name.replace(/\\.[^/.]+$/, '')}_compressed.${format === 'image/webp' ? 'webp' : 'jpg'}`} mimeType={format} />}
+            </div>
           </div>
         </div>
       )}

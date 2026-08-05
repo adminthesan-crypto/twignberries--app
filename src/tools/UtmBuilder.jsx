@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link2, Copy, Check, ExternalLink, Sparkles, AlertCircle, Share2, Target, Zap } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -235,14 +236,17 @@ export default function UtmBuilder() {
               {fullUtmUrl}
             </div>
 
-            <button
-              onClick={handleCopy}
-              className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', height: 44 }}
-            >
-              {copied ? <Check size={16} /> : <Copy size={16} />}
-              <span>{copied ? 'Copied Campaign URL!' : 'Copy Tracking Link'}</span>
-            </button>
+            <div className="flex gap-2 w-full">
+              <button
+                onClick={handleCopy}
+                className="btn-primary"
+                style={{ width: '100%', justifyContent: 'center', height: 44 }}
+              >
+                {copied ? <Check size={16} /> : <Copy size={16} />}
+                <span>{copied ? 'Copied Campaign URL!' : 'Copy Tracking Link'}</span>
+              </button>
+              <NativeShareButton text={fullUtmUrl} />
+            </div>
           </div>
 
           {/* Breakdown Card */}

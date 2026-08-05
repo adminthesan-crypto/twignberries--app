@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Palette, Copy, Check, ShieldCheck } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -184,24 +185,30 @@ export default function CssGradientTool() {
           <div className="space-y-3 pt-2">
             <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
               <code className="font-mono text-xs text-[#1f2532]">background: {cssStr};</code>
-              <button
-                onClick={copyCss}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
-              >
-                {copiedCss ? <Check size={14} /> : <Copy size={14} />}
-                {copiedCss ? 'Copied!' : 'Copy CSS'}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={copyCss}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                >
+                  {copiedCss ? <Check size={14} /> : <Copy size={14} />}
+                  {copiedCss ? 'Copied!' : 'Copy CSS'}
+                </button>
+                <NativeShareButton text={`background: ${cssStr};`} />
+              </div>
             </div>
 
             <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
               <code className="font-mono text-xs text-[#1f2532]">{tailwindStr}</code>
-              <button
-                onClick={copyTailwind}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-[#1f2532] text-xs font-bold hover:bg-white"
-              >
-                {copiedTailwind ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                {copiedTailwind ? 'Copied!' : 'Copy Tailwind'}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={copyTailwind}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-[#1f2532] text-xs font-bold hover:bg-white"
+                >
+                  {copiedTailwind ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
+                  {copiedTailwind ? 'Copied!' : 'Copy Tailwind'}
+                </button>
+                <NativeShareButton text={tailwindStr} />
+              </div>
             </div>
           </div>
         </div>

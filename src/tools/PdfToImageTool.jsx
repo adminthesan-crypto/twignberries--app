@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Image, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 // Initialize PDF.js worker
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
@@ -231,15 +232,24 @@ export default function PdfToImageTool() {
             <span style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
               ✓ 100% Client-Side Canvas Render • Zero Cloud Trace
             </span>
-            <button
-              onClick={handleDownload}
-              disabled={!previewUrl || loading}
-              className="btn-primary flex items-center gap-2"
-              style={{ padding: '11px 24px', fontSize: 14 }}
-            >
-              <Download size={16} />
-              Download Page {selectedPage} ({format === 'image/jpeg' ? 'JPG' : 'PNG'})
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleDownload}
+                disabled={!previewUrl || loading}
+                className="btn-primary flex items-center gap-2"
+                style={{ padding: '11px 24px', fontSize: 14 }}
+              >
+                <Download size={16} />
+                Download Page {selectedPage} ({format === 'image/jpeg' ? 'JPG' : 'PNG'})
+              </button>
+              {previewUrl && !loading && (
+                <NativeShareButton 
+                  fileUrl={previewUrl} 
+                  fileName={`${file.name.replace(/\\.pdf$/i, '')}_page_${selectedPage}.${format === 'image/jpeg' ? 'jpg' : 'png'}`} 
+                  mimeType={format} 
+                />
+              )}
+            </div>
           </div>
         </div>
       )}

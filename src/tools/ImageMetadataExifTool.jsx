@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Camera, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Trash2, Eye } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageMetadataExifTool() {
   const [image, setImage] = useState(null);
@@ -164,13 +165,20 @@ export default function ImageMetadataExifTool() {
             </button>
 
             {cleanUrl && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-teal-400 text-black font-bold hover:bg-teal-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Clean Image (No EXIF)</span>
-              </button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-teal-400 text-black font-bold hover:bg-teal-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Clean Image (No EXIF)</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={cleanUrl} 
+                  fileName={`clean-no-exif-${image.name.replace(/\\.[^/.]+$/, '')}.png`} 
+                  mimeType="image/png" 
+                />
+              </div>
             )}
           </div>
         </div>

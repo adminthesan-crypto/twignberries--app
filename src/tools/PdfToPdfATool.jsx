@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Archive, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function PdfToPdfATool() {
   const [file, setFile] = useState(null);
@@ -129,13 +130,20 @@ export default function PdfToPdfATool() {
             </button>
 
             {pdfABlob && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Archival PDF/A</span>
-              </button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Archival PDF/A</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={URL.createObjectURL(pdfABlob)}
+                  fileName={`pdfA-${file.name}`}
+                  mimeType="application/pdf"
+                />
+              </div>
             )}
           </div>
         </div>

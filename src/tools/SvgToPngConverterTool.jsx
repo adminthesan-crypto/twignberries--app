@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileImage, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, ZoomIn, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function SvgToPngConverterTool() {
   const [svgFile, setSvgFile] = useState(null);
@@ -197,13 +198,20 @@ export default function SvgToPngConverterTool() {
             </button>
 
             {convertedUrl && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download {scale}x High-Res Image</span>
-              </button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download {scale}x High-Res Image</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={convertedUrl} 
+                  fileName={`${svgFile.name.replace(/\.svg$/i, '')}-${scale}x.${format === 'image/png' ? 'png' : 'jpg'}`} 
+                  mimeType={format} 
+                />
+              </div>
             )}
           </div>
         </div>

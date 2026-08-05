@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Pipette, Upload, ShieldCheck, AlertCircle, Copy, Check } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageColorPickerTool() {
   const [image, setImage] = useState(null);
@@ -167,12 +168,15 @@ export default function ImageColorPickerTool() {
                       <span className="text-[10px] text-[#9ca3af] block">{item.label}</span>
                       <span className="text-xs font-mono text-[#1f2532]">{item.val}</span>
                     </div>
-                    <button
-                      onClick={() => copyToClipboard(item.val)}
-                      className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs flex items-center gap-1"
-                    >
-                      {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
+                    <div className="flex gap-1">
+                      <button
+                        onClick={() => copyToClipboard(item.val)}
+                        className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs flex items-center gap-1"
+                      >
+                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                      <NativeShareButton text={item.val} />
+                    </div>
                   </div>
                 ))}
               </div>

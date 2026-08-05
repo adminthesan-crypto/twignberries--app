@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer, Copy, Check, Eye, Code, Sparkles, ShieldCheck } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function PdfMarkdownConverter() {
   const [markdown, setMarkdown] = useState(`# Project Scope & Proposal (2026)
@@ -226,6 +227,7 @@ This document outlines the deliverables and pricing structure for custom fronten
                 {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 <span>{copied ? 'Copied Markdown' : 'Copy Raw Markdown'}</span>
               </button>
+              <NativeShareButton text={markdown} />
 
               <CopySummaryButton
                 title="Markdown Document Statistics"

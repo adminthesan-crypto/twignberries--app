@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Code, Download, ShieldCheck, AlertCircle, RefreshCw, Eye, Sparkles } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function HtmlToImageTool() {
   const [htmlContent, setHtmlContent] = useState(
@@ -160,13 +161,16 @@ export default function HtmlToImageTool() {
             <div className="space-y-3 pt-4 border-t border-[#e6e9ef]">
               <span className="text-xs font-bold text-emerald-400 block">Rendered Output:</span>
               <img src={renderedUrl} alt="Rendered HTML" className="w-full rounded-xl border border-[#e6e9ef] bg-white" />
-              <button
-                onClick={handleDownload}
-                className="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download High-DPI Image</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDownload}
+                  className="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download High-DPI Image</span>
+                </button>
+                <NativeShareButton fileUrl={renderedUrl} fileName={`html-card-preview.${imageFormat === 'image/png' ? 'png' : 'jpg'}`} mimeType={imageFormat} />
+              </div>
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Truck, Package, ShieldCheck, AlertCircle, Info } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -126,8 +127,11 @@ export default function ShippingRateTool() {
               <div className="text-[10px] uppercase font-bold text-[#6161ff]">Est. Base Carrier Cost</div>
               <div className="text-2xl font-mono font-bold text-[#1f2532] mt-0.5">${estCost}</div>
             </div>
-            <div className="text-xs text-[#676879] text-right">
-              ${baseRate.toFixed(2)} base + ${ratePerLb.toFixed(2)}/lb
+            <div className="flex flex-col items-end gap-2">
+              <div className="text-xs text-[#676879] text-right">
+                ${baseRate.toFixed(2)} base + ${ratePerLb.toFixed(2)}/lb
+              </div>
+              <NativeShareButton text={`Shipping Rate Calc:\nDimensions: ${length}x${width}x${height} in\nWeight: ${actualWeight} lbs\nBillable Weight: ${billableWeight.toFixed(2)} lbs\nCost: $${estCost}`} />
             </div>
           </div>
         </div>

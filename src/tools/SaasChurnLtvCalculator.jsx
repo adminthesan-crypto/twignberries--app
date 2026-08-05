@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Users, RefreshCw, TrendingUp, DollarSign, Award, ShieldCheck, AlertCircle, Activity } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -188,20 +189,23 @@ export default function SaasChurnLtvCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 SaaS unit economics
               </span>
-              <CopySummaryButton
-                title="SaaS LTV & Churn Health Summary"
-                lines={[
-                  { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
-                  { label: 'Gross Profit Margin', value: `${grossMargin}%` },
-                  { label: 'Monthly MRR Churn Rate', value: `${monthlyChurn}%` },
-                  { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
-                  { label: 'Customer Retention Span', value: `${customerLifetimeMonths.toFixed(1)} months` },
-                  { label: 'Gross Customer Lifetime Value', value: `$${grossLtv.toFixed(2)}` },
-                  { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
-                  { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
-                  { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title="SaaS LTV & Churn Health Summary"
+                  lines={[
+                    { label: 'Average Revenue per User (ARPU)', value: `$${arpu.toFixed(2)}/mo` },
+                    { label: 'Gross Profit Margin', value: `${grossMargin}%` },
+                    { label: 'Monthly MRR Churn Rate', value: `${monthlyChurn}%` },
+                    { label: 'Customer Acquisition Cost (CAC)', value: `$${cac.toFixed(2)}` },
+                    { label: 'Customer Retention Span', value: `${customerLifetimeMonths.toFixed(1)} months` },
+                    { label: 'Gross Customer Lifetime Value', value: `$${grossLtv.toFixed(2)}` },
+                    { label: 'Net Customer Lifetime Value (LTV)', value: `$${netLtv.toFixed(2)}` },
+                    { label: 'LTV:CAC Health Ratio', value: `${ltvCacRatio.toFixed(2)}x` },
+                    { label: 'CAC Payback Period', value: `${paybackMonths.toFixed(1)} months` },
+                  ]}
+                />
+                <NativeShareButton text={`SaaS LTV & Churn Health Summary\nAverage Revenue per User (ARPU): $${arpu.toFixed(2)}/mo\nGross Profit Margin: ${grossMargin}%\nMonthly MRR Churn Rate: ${monthlyChurn}%\nCustomer Acquisition Cost (CAC): $${cac.toFixed(2)}\nCustomer Retention Span: ${customerLifetimeMonths.toFixed(1)} months\nGross Customer Lifetime Value: $${grossLtv.toFixed(2)}\nNet Customer Lifetime Value (LTV): $${netLtv.toFixed(2)}\nLTV:CAC Health Ratio: ${ltvCacRatio.toFixed(2)}x\nCAC Payback Period: ${paybackMonths.toFixed(1)} months`} />
+              </div>
             </div>
 
             {[

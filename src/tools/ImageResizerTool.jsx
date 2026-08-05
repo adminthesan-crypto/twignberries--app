@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Lock, Unlock } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -249,15 +250,24 @@ export default function ImageResizerTool() {
             <span style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
               ✓ 100% Offline Canvas Resizing
             </span>
-            <button
-              onClick={handleDownload}
-              disabled={!resizedUrl || loading}
-              className="btn-primary flex items-center gap-2"
-              style={{ padding: '11px 24px', fontSize: 14 }}
-            >
-              <Download size={16} />
-              Download ({width}×{height} {format === 'image/jpeg' ? 'JPG' : format === 'image/webp' ? 'WEBP' : 'PNG'})
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleDownload}
+                disabled={!resizedUrl || loading}
+                className="btn-primary flex items-center gap-2"
+                style={{ padding: '11px 24px', fontSize: 14 }}
+              >
+                <Download size={16} />
+                Download ({width}×{height} {format === 'image/jpeg' ? 'JPG' : format === 'image/webp' ? 'WEBP' : 'PNG'})
+              </button>
+              {resizedUrl && !loading && (
+                <NativeShareButton 
+                  fileUrl={resizedUrl} 
+                  fileName={`${file.name.replace(/\\.[^/.]+$/, '')}_${width}x${height}.${format === 'image/jpeg' ? 'jpg' : format === 'image/webp' ? 'webp' : 'png'}`} 
+                  mimeType={format} 
+                />
+              )}
+            </div>
           </div>
         </div>
       )}

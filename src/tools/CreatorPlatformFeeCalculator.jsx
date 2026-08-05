@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, Coffee, DollarSign, Award, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -204,18 +205,23 @@ export default function CreatorPlatformFeeCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Earnings breakdown
               </span>
-              <CopySummaryButton
-                title={`Creator Earnings — ${selected.name}`}
-                lines={[
-                  { label: 'Platform Selected', value: selected.name },
-                  { label: 'Gross Membership Revenue', value: `$${mrr.toFixed(2)}` },
-                  { label: 'Average Pledge Amount', value: `$${avgSupport.toFixed(2)}` },
-                  { label: `Platform Cut (${(selected.cut * 100).toFixed(0)}%)`, value: `-$${platformFeeDollar.toFixed(2)}` },
-                  { label: 'Payment Processing Cut', value: `-$${paymentFeeDollar.toFixed(2)}` },
-                  { label: 'Total Fees & Deductions', value: `-$${totalDeductions.toFixed(2)}` },
-                  { label: 'Net Take-Home Earnings', value: `$${netTakeHome.toFixed(2)}` },
-                ]}
-              />
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <CopySummaryButton
+                  title={`Creator Earnings — ${selected.name}`}
+                  lines={[
+                    { label: 'Platform Selected', value: selected.name },
+                    { label: 'Gross Membership Revenue', value: `$${mrr.toFixed(2)}` },
+                    { label: 'Average Pledge Amount', value: `$${avgSupport.toFixed(2)}` },
+                    { label: `Platform Cut (${(selected.cut * 100).toFixed(0)}%)`, value: `-$${platformFeeDollar.toFixed(2)}` },
+                    { label: 'Payment Processing Cut', value: `-$${paymentFeeDollar.toFixed(2)}` },
+                    { label: 'Total Fees & Deductions', value: `-$${totalDeductions.toFixed(2)}` },
+                    { label: 'Net Take-Home Earnings', value: `$${netTakeHome.toFixed(2)}` },
+                  ]}
+                />
+                <NativeShareButton
+                  text={`Creator Earnings — ${selected.name}\nGross Revenue: $${mrr.toFixed(2)}\nNet Take-Home: $${netTakeHome.toFixed(2)}`}
+                />
+              </div>
             </div>
 
             {[

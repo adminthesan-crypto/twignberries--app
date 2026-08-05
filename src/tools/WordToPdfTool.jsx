@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { FileText, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Type, AlignLeft } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function WordToPdfTool() {
   const [text, setText] = useState('');
@@ -8,6 +9,7 @@ export default function WordToPdfTool() {
   const [fontSize, setFontSize] = useState(12);
   const [lineSpacing, setLineSpacing] = useState(1.4);
   const [pdfBlob, setPdfBlob] = useState(null);
+  const [pdfUrl, setPdfUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -84,6 +86,7 @@ export default function WordToPdfTool() {
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       setPdfBlob(blob);
+      setPdfUrl(URL.createObjectURL(blob));
     } catch (err) {
       setErrorMsg('Could not generate PDF from text.');
     } finally {
@@ -196,13 +199,20 @@ export default function WordToPdfTool() {
           </button>
 
           {pdfBlob && (
-            <button
-              onClick={handleDownload}
-              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-            >
-              <Download className="w-5 h-5" />
-              <span>Download A4 PDF</span>
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleDownload}
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+              >
+                <Download className="w-5 h-5" />
+                <span>Download A4 PDF</span>
+              </button>
+              <NativeShareButton 
+                fileUrl={pdfUrl} 
+                fileName={`${fileName}.pdf`} 
+                mimeType="application/pdf" 
+              />
+            </div>
           )}
         </div>
       </div>

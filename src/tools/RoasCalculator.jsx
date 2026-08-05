@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Target, BarChart2 } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -173,17 +174,20 @@ export default function RoasCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Per-sale breakdown
               </span>
-              <CopySummaryButton
-                title="ROAS & Profitability Target Summary"
-                lines={[
-                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
-                  { label: 'COGS & Fulfillment', value: `$${cogs.toFixed(2)} (${cogsPercent.toFixed(1)}%)` },
-                  { label: 'Ad Spend per Sale (CPA)', value: `$${adSpendPerSale.toFixed(2)}` },
-                  { label: 'Break-Even ROAS Target', value: `${breakEvenRoas.toFixed(2)}x` },
-                  { label: 'Max Allowable Cost per Click (CPC)', value: `$${maxCpc.toFixed(2)}` },
-                  { label: 'Net Profit After Ads', value: `$${netProfitAfterAds.toFixed(2)} (${netMarginPercent.toFixed(1)}% Margin)` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title="ROAS & Profitability Target Summary"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: 'COGS & Fulfillment', value: `$${cogs.toFixed(2)} (${cogsPercent.toFixed(1)}%)` },
+                    { label: 'Ad Spend per Sale (CPA)', value: `$${adSpendPerSale.toFixed(2)}` },
+                    { label: 'Break-Even ROAS Target', value: `${breakEvenRoas.toFixed(2)}x` },
+                    { label: 'Max Allowable Cost per Click (CPC)', value: `$${maxCpc.toFixed(2)}` },
+                    { label: 'Net Profit After Ads', value: `$${netProfitAfterAds.toFixed(2)} (${netMarginPercent.toFixed(1)}% Margin)` },
+                  ]}
+                />
+                <NativeShareButton text={`ROAS & Profitability Target Summary\nSelling Price: $${price.toFixed(2)}\nCOGS & Fulfillment: $${cogs.toFixed(2)} (${cogsPercent.toFixed(1)}%)\nAd Spend per Sale (CPA): $${adSpendPerSale.toFixed(2)}\nBreak-Even ROAS Target: ${breakEvenRoas.toFixed(2)}x\nMax Allowable Cost per Click (CPC): $${maxCpc.toFixed(2)}\nNet Profit After Ads: $${netProfitAfterAds.toFixed(2)} (${netMarginPercent.toFixed(1)}% Margin)`} />
+              </div>
             </div>
 
             {[

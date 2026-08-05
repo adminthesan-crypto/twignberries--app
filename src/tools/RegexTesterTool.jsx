@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Terminal, ShieldCheck, AlertCircle, HelpCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -151,7 +152,10 @@ export default function RegexTesterTool() {
         </div>
 
         <div>
-          <div style={SL}>Match Results ({matches.length} found)</div>
+          <div className="flex items-center justify-between mb-3">
+            <div style={{...SL, marginBottom: 0}}>Match Results ({matches.length} found)</div>
+            {matches.length > 0 && <NativeShareButton text={matches.map(m => m.str).join('\n')} />}
+          </div>
           <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] min-h-[220px] max-h-[300px] overflow-y-auto space-y-2">
             {matches.length === 0 ? (
               <span className="text-xs text-[#868894] font-mono">No regex matches found in test string.</span>

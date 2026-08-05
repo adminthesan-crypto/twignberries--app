@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Share2, Globe, Copy, Check, Upload, Image as ImageIcon, ShieldCheck, Search, MessageSquare } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -252,14 +253,17 @@ export default function OpenGraphPreviewTool() {
             </div>
           </div>
 
-          <button
-            onClick={handleCopyTags}
-            className="btn-primary"
-            style={{ width: '100%', marginBottom: 16, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-          >
-            {copied ? <Check size={16} /> : <Copy size={16} />}
-            {copied ? 'Copied HTML Tags!' : 'Copy HTML Meta Tags'}
-          </button>
+          <div className="flex gap-2 mb-4">
+            <button
+              onClick={handleCopyTags}
+              className="btn-primary"
+              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            >
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+              {copied ? 'Copied HTML Tags!' : 'Copy HTML Meta Tags'}
+            </button>
+            <NativeShareButton text={htmlTags} />
+          </div>
 
           <textarea
             readOnly

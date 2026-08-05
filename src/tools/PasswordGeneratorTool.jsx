@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { KeyRound, Copy, Check, RefreshCw, ShieldCheck, Lock, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -131,6 +132,7 @@ export default function PasswordGeneratorTool() {
             {copied ? <Check size={18} /> : <Copy size={18} />}
             {copied ? 'Copied!' : 'Copy'}
           </button>
+          <NativeShareButton text={password} />
         </div>
       </div>
 

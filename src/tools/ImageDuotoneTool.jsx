@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Palette } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageDuotoneTool() {
   const [image, setImage] = useState(null);
@@ -184,13 +185,16 @@ export default function ImageDuotoneTool() {
             </button>
 
             {duotoneUrl && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Duotone Photo</span>
-              </button>
+              <>
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Duotone Photo</span>
+                </button>
+                <NativeShareButton fileUrl={duotoneUrl} fileName={`${preset}-duotone-${image.name}`} mimeType="image/png" />
+              </>
             )}
           </div>
         </div>

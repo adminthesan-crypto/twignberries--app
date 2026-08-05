@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, ShieldCheck, AlertCircle, HelpCircle, Calendar } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -119,12 +120,15 @@ export default function CronParserTool() {
       </div>
 
       {explanation && (
-        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center gap-4">
-          <Calendar className="text-[#6161ff]" size={32} />
-          <div>
-            <div className="text-xs font-bold uppercase text-[#6161ff]">Human Readable Translation</div>
-            <div className="text-lg font-bold text-[#1f2532] mt-1">{explanation}</div>
+        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Calendar className="text-[#6161ff]" size={32} />
+            <div>
+              <div className="text-xs font-bold uppercase text-[#6161ff]">Human Readable Translation</div>
+              <div className="text-lg font-bold text-[#1f2532] mt-1">{explanation}</div>
+            </div>
           </div>
+          <NativeShareButton text={`Cron Schedule: ${cronExpr}\nMeaning: ${explanation}`} />
         </div>
       )}
 

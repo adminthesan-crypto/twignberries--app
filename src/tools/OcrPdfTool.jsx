@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Scan, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -128,13 +129,16 @@ export default function OcrPdfTool() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-[#1f2532] uppercase tracking-wider">Recognized OCR Output:</span>
-                <button
-                  onClick={handleDownloadTxt}
-                  className="py-1.5 px-4 rounded-xl bg-blue-500 text-white text-xs font-bold hover:bg-blue-600 transition-all flex items-center gap-1.5 shadow"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Text File</span>
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownloadTxt}
+                    className="py-1.5 px-4 rounded-xl bg-blue-500 text-white text-xs font-bold hover:bg-blue-600 transition-all flex items-center gap-1.5 shadow"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download Text File</span>
+                  </button>
+                  <NativeShareButton text={ocrText} />
+                </div>
               </div>
               <textarea
                 value={ocrText}

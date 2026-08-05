@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileText, Plus, Trash2, DollarSign, ShieldCheck, Printer, Download } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -168,11 +169,12 @@ export default function InvoiceTaxTool() {
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center">
+            <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center flex flex-col items-center">
               <div className="text-[10px] uppercase font-bold text-[#6161ff]">Total Invoice Amount Due</div>
-              <div className="text-3xl font-mono font-bold text-[#1f2532] mt-1">
+              <div className="text-3xl font-mono font-bold text-[#1f2532] mt-1 mb-4">
                 {symbol}{finalInvoiceTotal.toFixed(2)}
               </div>
+              <NativeShareButton text={`Invoice Summary\nGross Subtotal: ${symbol}${grossSubtotal.toFixed(2)}\nDiscount: -${symbol}${discountAmt.toFixed(2)}\nTax: +${symbol}${totalTaxAmt.toFixed(2)}\nTotal Due: ${symbol}${finalInvoiceTotal.toFixed(2)}`} />
             </div>
           </div>
         </div>

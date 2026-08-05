@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { FileText, Upload, Download, Copy, Check, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -155,6 +156,7 @@ export default function PdfTextExtractorTool() {
                     <Download size={14} />
                     Download .TXT
                   </button>
+                  <NativeShareButton text={extractedText} />
                 </div>
               </div>
               <textarea

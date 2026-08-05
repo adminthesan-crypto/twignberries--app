@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CreditCard, Layers } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -166,17 +167,20 @@ export default function ShopifyFeeCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Fee breakdown
               </span>
-              <CopySummaryButton
-                title="Shopify Fee & Plan Breakdown"
-                lines={[
-                  { label: 'Selected Plan', value: selectedPlan.name },
-                  { label: 'Monthly Gross Store Revenue', value: `$${monthlyRevenue.toLocaleString()}` },
-                  { label: 'Total Orders / Month', value: `${Math.round(orderCount)} orders` },
-                  { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
-                  { label: 'Third-Party Transaction Fees', value: `$${externalPenalty.toFixed(2)}` },
-                  { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title="Shopify Fee & Plan Breakdown"
+                  lines={[
+                    { label: 'Selected Plan', value: selectedPlan.name },
+                    { label: 'Monthly Gross Store Revenue', value: `$${monthlyRevenue.toLocaleString()}` },
+                    { label: 'Total Orders / Month', value: `${Math.round(orderCount)} orders` },
+                    { label: 'Credit Card Processing Fees', value: `$${totalCcFees.toFixed(2)}` },
+                    { label: 'Third-Party Transaction Fees', value: `$${externalPenalty.toFixed(2)}` },
+                    { label: 'Total Shopify Monthly Cost', value: `$${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)` },
+                  ]}
+                />
+                <NativeShareButton text={`Shopify Fee & Plan Breakdown\nSelected Plan: ${selectedPlan.name}\nMonthly Gross Store Revenue: $${monthlyRevenue.toLocaleString()}\nTotal Orders / Month: ${Math.round(orderCount)} orders\nCredit Card Processing Fees: $${totalCcFees.toFixed(2)}\nThird-Party Transaction Fees: $${externalPenalty.toFixed(2)}\nTotal Shopify Monthly Cost: $${totalShopifyMonthlyCost.toFixed(2)} (${effectiveFeePercent.toFixed(2)}% Effective Cut)`} />
+              </div>
             </div>
 
             {[

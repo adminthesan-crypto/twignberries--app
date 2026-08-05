@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileImage, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Trash2, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ConvertFromJpgTool() {
   const [images, setImages] = useState([]);
@@ -158,12 +159,19 @@ export default function ConvertFromJpgTool() {
 
                 <div className="flex items-center gap-2">
                   {converted[idx] && (
-                    <button
-                      onClick={() => downloadOne(idx)}
-                      className="px-3 py-1.5 rounded-lg bg-emerald-500 text-black text-xs font-bold hover:bg-emerald-400 transition-all"
-                    >
-                      Download {targetFormat === 'image/png' ? 'PNG' : 'WEBP'}
-                    </button>
+                    <>
+                      <button
+                        onClick={() => downloadOne(idx)}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-500 text-black text-xs font-bold hover:bg-emerald-400 transition-all"
+                      >
+                        Download {targetFormat === 'image/png' ? 'PNG' : 'WEBP'}
+                      </button>
+                      <NativeShareButton
+                        fileUrl={converted[idx].url}
+                        fileName={`${(images[idx]?.name || 'image').replace(/\\.[^/.]+$/, '')}.${targetFormat === 'image/png' ? 'png' : 'webp'}`}
+                        mimeType={targetFormat}
+                      />
+                    </>
                   )}
                   <button
                     onClick={() => handleRemove(idx)}

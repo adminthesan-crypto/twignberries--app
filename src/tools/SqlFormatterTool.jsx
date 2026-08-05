@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Database, Copy, Check, RefreshCw, ShieldCheck, AlertCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -97,14 +98,17 @@ export default function SqlFormatterTool() {
         <div>
           <div className="flex items-center justify-between mb-2">
             <span style={SL}>Formatted & Standardized SQL</span>
-            <button
-              onClick={handleCopy}
-              disabled={!formattedSql}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
-            >
-              {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? 'Copied!' : 'Copy SQL'}
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleCopy}
+                disabled={!formattedSql}
+                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+              >
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? 'Copied!' : 'Copy SQL'}
+              </button>
+              <NativeShareButton text={formattedSql} />
+            </div>
           </div>
           <textarea
             value={formattedSql}

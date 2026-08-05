@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { FileText, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2, FileCode } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -136,13 +137,20 @@ export default function PdfToWordTool() {
                     <p className="text-xs text-[#9ca3af]">Extracted text from {pageCount} page(s) into Word-compatible .DOC file.</p>
                   </div>
                 </div>
-                <button
-                  onClick={handleDownloadWord}
-                  className="py-2.5 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 shrink-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Word Document</span>
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownloadWord}
+                    className="py-2.5 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 shrink-0"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Word Document</span>
+                  </button>
+                  <NativeShareButton 
+                    fileUrl={URL.createObjectURL(new Blob([docContent], { type: 'application/msword;charset=utf-8' }))}
+                    fileName={`${file.name.replace(/\\.pdf$/i, '')}-extracted.doc`}
+                    mimeType="application/msword"
+                  />
+                </div>
               </div>
             </div>
           )}

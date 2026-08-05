@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Briefcase, Plus, Trash2, ShieldCheck, DollarSign, Clock, Download } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -184,12 +185,17 @@ export default function ProjectScoperTool() {
               </div>
             </div>
 
-            <button
-              onClick={handleDownloadQuote}
-              className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
-            >
-              <Download size={16} /> Download Proposal .TXT
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleDownloadQuote}
+                className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
+              >
+                <Download size={16} /> Download Proposal .TXT
+              </button>
+              <NativeShareButton 
+                text={generateProposalTxt()}
+              />
+            </div>
           </div>
         </div>
       </div>

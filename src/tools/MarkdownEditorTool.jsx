@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileText, Copy, Check, Download, ShieldCheck, Eye, Edit3 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -105,6 +106,7 @@ export default function MarkdownEditorTool() {
             <Download size={14} />
             Download .MD
           </button>
+          <NativeShareButton text={markdown} />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Minimize2, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2, ArrowRight } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function CompressPdfTool() {
   const [file, setFile] = useState(null);
@@ -189,13 +190,16 @@ export default function CompressPdfTool() {
                   </div>
                 </div>
 
-                <button
-                  onClick={handleDownload}
-                  className="w-full md:w-auto py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-md"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Compressed PDF</span>
-                </button>
+                <div className="flex gap-2 w-full md:w-auto">
+                  <button
+                    onClick={handleDownload}
+                    className="w-full md:w-auto py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-md"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Compressed PDF</span>
+                  </button>
+                  <NativeShareButton fileUrl={compressedPdf ? URL.createObjectURL(compressedPdf) : ''} fileName={`compressed-${file?.name || 'document.pdf'}`} mimeType="application/pdf" />
+                </div>
               </div>
             </div>
           )}

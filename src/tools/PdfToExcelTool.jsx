@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Table, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2, FileSpreadsheet } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -147,13 +148,16 @@ export default function PdfToExcelTool() {
                     <p className="text-xs text-[#9ca3af]">Extracted {rowCount} table row(s) into spreadsheet CSV format.</p>
                   </div>
                 </div>
-                <button
-                  onClick={handleDownloadCsv}
-                  className="py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/20 shrink-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download CSV Spreadsheet</span>
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownloadCsv}
+                    className="py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/20 shrink-0"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download CSV Spreadsheet</span>
+                  </button>
+                  <NativeShareButton text={csvContent} />
+                </div>
               </div>
             </div>
           )}

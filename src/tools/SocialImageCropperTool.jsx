@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Crop, Upload, Image as ImageIcon, Download, ShieldCheck, AlertCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -251,14 +252,21 @@ export default function SocialImageCropperTool() {
           </div>
 
           {resultUrl && file && (
-            <a
-              href={resultUrl}
-              download={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`}
-              className="btn-primary"
-              style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-            >
-              <Download size={16} /> Download {preset.width}×{preset.height} JPG
-            </a>
+            <div className="flex gap-2 w-full">
+              <a
+                href={resultUrl}
+                download={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`}
+                className="btn-primary"
+                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+              >
+                <Download size={16} /> Download {preset.width}×{preset.height} JPG
+              </a>
+              <NativeShareButton 
+                fileUrl={resultUrl} 
+                fileName={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`} 
+                mimeType="image/jpeg" 
+              />
+            </div>
           )}
 
           <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">

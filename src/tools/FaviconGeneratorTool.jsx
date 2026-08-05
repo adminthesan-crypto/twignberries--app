@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Download, ShieldCheck, Code, Copy, Check } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -175,6 +176,7 @@ export default function FaviconGeneratorTool() {
               >
                 <Download size={14} /> Download favicon.svg
               </button>
+              <NativeShareButton text={svgCode} />
               <button
                 onClick={handleDownloadManifest}
                 className="flex-1 h-11 rounded-xl border border-[#6161ff] text-[#6161ff] font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#eceeff]"

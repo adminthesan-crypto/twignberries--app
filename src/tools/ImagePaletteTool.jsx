@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, Upload, Copy, Check, ShieldCheck, AlertCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -138,7 +139,12 @@ export default function ImagePaletteTool() {
             </div>
 
             <div>
-              <div style={SL}>Extracted Dominant Palette (Click Hex to Copy)</div>
+              <div className="flex items-center justify-between mb-3">
+                <div style={{ ...SL, marginBottom: 0 }}>Extracted Dominant Palette (Click Hex to Copy)</div>
+                {colors.length > 0 && (
+                  <NativeShareButton text={colors.join(', ')} />
+                )}
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 {colors.map((hex, i) => (
                   <button

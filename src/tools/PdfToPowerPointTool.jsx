@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Presentation, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, CheckCircle2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -151,13 +152,18 @@ export default function PdfToPowerPointTool() {
                     <p className="text-xs text-[#9ca3af]">Parsed {pageCount} slide(s) with titles and bullet points.</p>
                   </div>
                 </div>
-                <button
-                  onClick={handleDownloadDeckText}
-                  className="py-2.5 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center gap-2 shadow-lg shadow-orange-500/20 shrink-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Presentation Outline (.MD)</span>
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownloadDeckText}
+                    className="py-2.5 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center gap-2 shadow-lg shadow-orange-500/20 shrink-0"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Presentation Outline (.MD)</span>
+                  </button>
+                  <NativeShareButton 
+                    text={`# ${file.name.toUpperCase()} — PRESENTATION SLIDES OUTLINE\n\n` + extractedDeck.map(slide => `## SLIDE ${slide.number}: ${slide.title}\n` + slide.notes.map(note => `  - ${note}\n`).join('') + `\n--------------------------------------------\n\n`).join('')}
+                  />
+                </div>
               </div>
             </div>
           )}

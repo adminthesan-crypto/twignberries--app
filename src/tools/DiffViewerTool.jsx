@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GitCompare, Copy, Check, ShieldCheck, ArrowRightLeft } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -82,7 +83,10 @@ export default function DiffViewerTool() {
       {/* Diff Table */}
       <div className="rounded-2xl border border-[#e6e9ef] overflow-hidden shadow-sm bg-white">
         <div className="p-4 bg-[#f5f6f8] border-b border-[#e6e9ef] flex items-center justify-between">
-          <span style={SL}>Side-by-Side Diff Analysis</span>
+          <div className="flex items-center gap-4">
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879' }}>Side-by-Side Diff Analysis</span>
+            <NativeShareButton text={`Original:\n${origText}\n\nModified:\n${modText}`} />
+          </div>
           <div className="flex items-center gap-4 text-xs font-bold">
             <span className="flex items-center gap-1 text-green-700">
               <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" /> Added

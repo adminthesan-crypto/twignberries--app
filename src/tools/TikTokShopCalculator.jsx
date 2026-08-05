@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -24,6 +25,15 @@ export default function TikTokShopCalculator() {
   const netProfit = netSellerRevenue - cogs;
   const marginPercent = price > 0 ? ((netProfit / price) * 100) : 0;
   const breakEvenPrice = (cogs + shippingSubsidy) / (1 - ((platformFeePercent + affiliateCut) / 100));
+
+  const summaryText = `TikTok Shop Fee & Margin Breakdown
+Selling Price: $${price.toFixed(2)}
+Platform Fee (${platformFeePercent}%): -$${tiktokPlatformFee.toFixed(2)}
+Creator Commission (${affiliateCut}%): -$${creatorCommission.toFixed(2)}
+Shipping Subsidy: -$${shippingSubsidy.toFixed(2)}
+Unit COGS: -$${cogs.toFixed(2)}
+Net Profit: $${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)
+Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -168,18 +178,21 @@ export default function TikTokShopCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Per-order breakdown
               </span>
-              <CopySummaryButton
-                title="TikTok Shop Fee & Margin Breakdown"
-                lines={[
-                  { label: 'Selling Price', value: `$${price.toFixed(2)}` },
-                  { label: `Platform Fee (${platformFeePercent}%)`, value: `-$${tiktokPlatformFee.toFixed(2)}` },
-                  { label: `Creator Commission (${affiliateCut}%)`, value: `-$${creatorCommission.toFixed(2)}` },
-                  { label: 'Shipping Subsidy', value: `-$${shippingSubsidy.toFixed(2)}` },
-                  { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}` },
-                  { label: 'Net Profit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
-                  { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title="TikTok Shop Fee & Margin Breakdown"
+                  lines={[
+                    { label: 'Selling Price', value: `$${price.toFixed(2)}` },
+                    { label: `Platform Fee (${platformFeePercent}%)`, value: `-$${tiktokPlatformFee.toFixed(2)}` },
+                    { label: `Creator Commission (${affiliateCut}%)`, value: `-$${creatorCommission.toFixed(2)}` },
+                    { label: 'Shipping Subsidy', value: `-$${shippingSubsidy.toFixed(2)}` },
+                    { label: 'Unit COGS', value: `-$${cogs.toFixed(2)}` },
+                    { label: 'Net Profit', value: `$${netProfit.toFixed(2)} (${marginPercent.toFixed(1)}% Margin)` },
+                    { label: 'Break-Even Selling Price', value: `$${breakEvenPrice.toFixed(2)}` },
+                  ]}
+                />
+                <NativeShareButton text={summaryText} />
+              </div>
             </div>
 
             {[

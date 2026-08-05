@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileText, Copy, Check, Download, ShieldCheck, AlertCircle, ArrowLeftRight } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -177,14 +178,17 @@ export default function CsvJsonTool() {
         <div>
           <div className="flex items-center justify-between mb-2">
             <span style={SL}>Converted Output</span>
-            <button
-              onClick={handleCopy}
-              disabled={!outputVal}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
-            >
-              {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? 'Copied!' : 'Copy Result'}
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={handleCopy}
+                disabled={!outputVal}
+                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+              >
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? 'Copied!' : 'Copy Result'}
+              </button>
+              <NativeShareButton text={outputVal} />
+            </div>
           </div>
           <textarea
             value={outputVal}

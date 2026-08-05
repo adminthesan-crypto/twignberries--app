@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { QrCode, Download, ShieldCheck, Palette, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -197,12 +198,19 @@ export default function QrCodeGeneratorTool() {
             />
           </div>
 
-          <button
-            onClick={handleDownloadSvg}
-            className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
-          >
-            <Download size={16} /> Download Vector .SVG
-          </button>
+          <div className="flex gap-2 w-full mt-4">
+            <button
+              onClick={handleDownloadSvg}
+              className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
+            >
+              <Download size={16} /> Download Vector .SVG
+            </button>
+            <NativeShareButton 
+              fileUrl={URL.createObjectURL(new Blob([generateSvgStr()], { type: 'image/svg+xml;charset=utf-8' }))}
+              fileName="pahruli_qrcode.svg"
+              mimeType="image/svg+xml"
+            />
+          </div>
         </div>
       </div>
     </div>

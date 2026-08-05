@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CreditCard, ArrowRightLeft, Info } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
-
+import NativeShareButton from '../components/NativeShareButton';
 const SL = { /* section label style */
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
   color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
@@ -158,15 +158,18 @@ export default function PayPalFeeCalculator() {
           <div className="form-card" style={{ padding: 18 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
-              <CopySummaryButton title="PayPal Fee & Net Payout"
-                lines={[
-                  { label: 'Gross invoice', value: `$${grossAmount.toFixed(2)}` },
-                  { label: `Percentage fee (${(percentFee*100).toFixed(2)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
-                  { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
-                  { label: 'Total PayPal cut', value: `-$${totalFee.toFixed(2)}` },
-                  { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton title="PayPal Fee & Net Payout"
+                  lines={[
+                    { label: 'Gross invoice', value: `$${grossAmount.toFixed(2)}` },
+                    { label: `Percentage fee (${(percentFee*100).toFixed(2)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
+                    { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
+                    { label: 'Total PayPal cut', value: `-$${totalFee.toFixed(2)}` },
+                    { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
+                  ]}
+                />
+                <NativeShareButton text={`PayPal Fee & Net Payout\nGross invoice: $${grossAmount.toFixed(2)}\nPercentage fee: -$${(grossAmount*percentFee).toFixed(2)}\nFixed fee: -$${fixedFee.toFixed(2)}\nTotal PayPal cut: -$${totalFee.toFixed(2)}\nYou receive: $${netPayout.toFixed(2)}`} />
+              </div>
             </div>
             {[
               { label: 'Customer pays', value: `$${grossAmount.toFixed(2)}`, color: 'var(--text-2)', bold: true },

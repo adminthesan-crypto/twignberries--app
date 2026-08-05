@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CreditCard, ArrowRightLeft } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -153,15 +154,18 @@ export default function StripeFeeCalculator() {
           <div className="form-card" style={{ padding: 18 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
-              <CopySummaryButton title="Stripe Fee & Net Payout"
-                lines={[
-                  { label: 'Gross charge', value: `$${grossAmount.toFixed(2)}` },
-                  { label: `Percentage fee (${(percentFee*100).toFixed(1)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
-                  { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
-                  { label: 'Total Stripe cut', value: `-$${totalStripeFee.toFixed(2)}` },
-                  { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton title="Stripe Fee & Net Payout"
+                  lines={[
+                    { label: 'Gross charge', value: `$${grossAmount.toFixed(2)}` },
+                    { label: `Percentage fee (${(percentFee*100).toFixed(1)}%)`, value: `-$${(grossAmount*percentFee).toFixed(2)}` },
+                    { label: 'Fixed fee', value: `-$${fixedFee.toFixed(2)}` },
+                    { label: 'Total Stripe cut', value: `-$${totalStripeFee.toFixed(2)}` },
+                    { label: 'You receive', value: `$${netPayout.toFixed(2)}` },
+                  ]}
+                />
+                <NativeShareButton text={`Stripe Fee & Net Payout\nGross charge: $${grossAmount.toFixed(2)}\nPercentage fee (${(percentFee*100).toFixed(1)}%): -$${(grossAmount*percentFee).toFixed(2)}\nFixed fee: -$${fixedFee.toFixed(2)}\nTotal Stripe cut: -$${totalStripeFee.toFixed(2)}\nYou receive: $${netPayout.toFixed(2)}`} />
+              </div>
             </div>
             {[
               { label: 'Customer pays', value: `$${grossAmount.toFixed(2)}`, color: 'var(--text-2)', bold: true },

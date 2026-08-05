@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, ShieldCheck, AlertCircle, Smartphone, Monitor, CheckCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -81,7 +82,10 @@ export default function EmailSubjectTool() {
 
           {/* Spam check */}
           <div className="p-4 rounded-xl border border-[#e6e9ef] bg-white space-y-2">
-            <span style={SL}>Spam Trigger Word Inspection</span>
+            <div className="flex justify-between items-start">
+              <span style={SL}>Spam Trigger Word Inspection</span>
+              <NativeShareButton text={`Subject: ${subject}\nPreheader: ${preheader}\nSender: ${sender}`} />
+            </div>
             {foundSpam.length === 0 ? (
               <div className="flex items-center gap-2 text-xs font-bold text-green-700">
                 <CheckCircle size={16} /> No obvious spam trigger keywords detected.

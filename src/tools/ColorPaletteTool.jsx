@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Palette, CheckCircle2, XCircle, Copy, Check, ShieldCheck } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -192,14 +193,17 @@ export default function ColorPaletteTool() {
             </div>
           </div>
 
-          <button
-            onClick={() => handleCopy(`${fg} / ${bg} (Ratio ${ratio}:1)`)}
-            className="btn-primary"
-            style={{ width: '100%', background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-          >
-            {copiedHex ? <Check size={16} /> : <Copy size={16} />}
-            {copiedHex ? 'Copied Specs!' : 'Copy WCAG Specs Report'}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => handleCopy(`${fg} / ${bg} (Ratio ${ratio}:1)`)}
+              className="btn-primary"
+              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            >
+              {copiedHex ? <Check size={16} /> : <Copy size={16} />}
+              {copiedHex ? 'Copied Specs!' : 'Copy WCAG Specs Report'}
+            </button>
+            <NativeShareButton text={`${fg} / ${bg} (Ratio ${ratio}:1)`} />
+          </div>
 
           <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />

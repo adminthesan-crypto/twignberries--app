@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DollarSign, TrendingUp, PieChart, Info } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function EtsyFeeCalculator() {
   const [salePrice, setSalePrice] = useState(35);
@@ -164,16 +165,19 @@ export default function EtsyFeeCalculator() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
                 textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee Breakdown</span>
-              <CopySummaryButton
-                title="Etsy Fee & Margin Calculation"
-                lines={[
-                  { label: 'Selling Price', value: `$${Number(salePrice).toFixed(2)}` },
-                  { label: 'Etsy Transaction Cut (6.5%)', value: `$${transactionFee.toFixed(2)}` },
-                  { label: 'Payment Processing Fee', value: `$${paymentFee.toFixed(2)}` },
-                  { label: 'Total Etsy Fees', value: `$${totalFees.toFixed(2)} (${etsyCutPercent}%)` },
-                  { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${profitMargin}% Margin)` },
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title="Etsy Fee & Margin Calculation"
+                  lines={[
+                    { label: 'Selling Price', value: `$${Number(salePrice).toFixed(2)}` },
+                    { label: 'Etsy Transaction Cut (6.5%)', value: `$${transactionFee.toFixed(2)}` },
+                    { label: 'Payment Processing Fee', value: `$${paymentFee.toFixed(2)}` },
+                    { label: 'Total Etsy Fees', value: `$${totalFees.toFixed(2)} (${etsyCutPercent}%)` },
+                    { label: 'Net Profit per Sale', value: `$${netProfit.toFixed(2)} (${profitMargin}% Margin)` },
+                  ]}
+                />
+                <NativeShareButton text={`Etsy Calculation: Net Profit $${netProfit.toFixed(2)} (${profitMargin}%)`} />
+              </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

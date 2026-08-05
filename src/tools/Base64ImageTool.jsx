@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Image, Upload, Download, Copy, Check, ShieldCheck, AlertCircle } from 'lucide-react';
 
+import NativeShareButton from '../components/NativeShareButton';
+
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
 };
@@ -139,13 +141,16 @@ export default function Base64ImageTool() {
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase' }}>
                   Base64 Data URI ({base64Str.length.toLocaleString()} characters)
                 </span>
-                <button
-                  onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
-                >
-                  {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                  {copied ? 'Copied!' : 'Copy Base64'}
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleCopy}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
+                  >
+                    {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
+                    {copied ? 'Copied!' : 'Copy Base64'}
+                  </button>
+                  <NativeShareButton text={base64Str} />
+                </div>
               </div>
               <textarea
                 value={base64Str}
@@ -177,14 +182,17 @@ export default function Base64ImageTool() {
                 alt="Decoded Base64"
                 className="max-h-[320px] rounded-lg shadow-md border border-[#e6e9ef]"
               />
-              <button
-                onClick={handleDownloadDecoded}
-                className="btn-primary flex items-center gap-2"
-                style={{ padding: '11px 24px', fontSize: 14 }}
-              >
-                <Download size={16} />
-                Download Decoded Image (.PNG)
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDownloadDecoded}
+                  className="btn-primary flex items-center gap-2"
+                  style={{ padding: '11px 24px', fontSize: 14 }}
+                >
+                  <Download size={16} />
+                  Download Decoded Image (.PNG)
+                </button>
+                <NativeShareButton fileUrl={base64Str} fileName="decoded_image.png" />
+              </div>
             </div>
           )}
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Plus, Trash2, Printer, Building2, User, Receipt, Calendar, CreditCard } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function InvoiceGenerator() {
   // Sender (Your Business) State
@@ -442,18 +443,21 @@ export default function InvoiceGenerator() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }} className="no-print">
-              <button
-                type="button"
-                onClick={handlePrint}
-                className="btn-primary"
-                style={{
-                  width: '100%', justifyContent: 'center', fontSize: 14, padding: '12px',
-                  background: '#6161ff', fontWeight: 700
-                }}
-              >
-                <Printer size={17} />
-                <span>Print Invoice / Save as PDF</span>
-              </button>
+              <div style={{ display: 'flex', gap: 10 }}>
+                <button
+                  type="button"
+                  onClick={handlePrint}
+                  className="btn-primary"
+                  style={{
+                    flex: 1, justifyContent: 'center', fontSize: 14, padding: '12px',
+                    background: '#6161ff', fontWeight: 700
+                  }}
+                >
+                  <Printer size={17} />
+                  <span>Print Invoice / Save as PDF</span>
+                </button>
+                <NativeShareButton text={`Invoice Summary — ${invoiceNumber}\nFrom: ${senderName}\nTo: ${clientName}\nTotal Due: ${currency}${total.toFixed(2)}\nDue Date: ${dueDate}`} />
+              </div>
 
               <CopySummaryButton
                 title={`Invoice Summary — ${invoiceNumber}`}

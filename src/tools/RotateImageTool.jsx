@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RotateCw, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Trash2, FlipHorizontal, FlipVertical } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function RotateImageTool() {
   const [images, setImages] = useState([]);
@@ -175,12 +176,15 @@ export default function RotateImageTool() {
                 </button>
                 <p className="text-[11px] text-[#9ca3af] truncate max-w-full mt-1">{img.name}</p>
                 {processed[idx] && (
-                  <button
-                    onClick={() => downloadOne(idx)}
-                    className="w-full mt-2 py-1 rounded bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400"
-                  >
-                    Download
-                  </button>
+                  <div className="flex flex-col gap-2 w-full mt-2">
+                    <button
+                      onClick={() => downloadOne(idx)}
+                      className="w-full py-1 rounded bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400"
+                    >
+                      Download
+                    </button>
+                    <NativeShareButton fileUrl={processed[idx].url} fileName={`rotated-${images[idx]?.name || 'image'}`} mimeType={images[idx]?.file?.type || 'image/png'} />
+                  </div>
                 )}
               </div>
             ))}

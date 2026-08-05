@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PlaySquare, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Copy, Check } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function YouTubeRpmCalculator() {
   const [views, setViews] = useState(150000); // monthly views
@@ -205,14 +206,19 @@ export default function YouTubeRpmCalculator() {
             </div>
 
             <div className="flex flex-col gap-2.5">
-              <button
-                type="button"
-                onClick={handleCopy}
-                className="btn-secondary w-full justify-center text-xs"
-              >
-                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                <span>{copied ? 'Copied Revenue Summary' : 'Copy Estimate Summary'}</span>
-              </button>
+              <div className="flex gap-2 w-full">
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  className="btn-secondary flex-1 justify-center text-xs"
+                >
+                  {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  <span>{copied ? 'Copied Revenue Summary' : 'Copy Estimate Summary'}</span>
+                </button>
+                <NativeShareButton 
+                  text={`YouTube AdSense Estimate: $${monthlyRevenue.toFixed(2)}/mo ($${yearlyRevenue.toFixed(2)}/yr) | ${Number(views).toLocaleString()} views @ $${Number(rpm).toFixed(2)} RPM`} 
+                />
+              </div>
 
               <CopySummaryButton
                 title="YouTube AdSense RPM Revenue Projection"

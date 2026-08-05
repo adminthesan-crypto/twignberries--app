@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, LayoutGrid } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -218,14 +219,17 @@ export default function PdfBookletTool() {
                 {loading ? 'Imposing...' : `Generate ${layout.toUpperCase()} Sheet`}
               </button>
               {imposedPdfUrl && (
-                <button
-                  onClick={handleDownload}
-                  className="btn-primary flex items-center gap-2"
-                  style={{ padding: '11px 24px', fontSize: 14 }}
-                >
-                  <Download size={16} />
-                  Download Imposed PDF
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownload}
+                    className="btn-primary flex items-center gap-2"
+                    style={{ padding: '11px 24px', fontSize: 14 }}
+                  >
+                    <Download size={16} />
+                    Download Imposed PDF
+                  </button>
+                  <NativeShareButton fileUrl={imposedPdfUrl} fileName={`${file.name.replace(/\.pdf$/i, '')}_${layout}_imposed.pdf`} />
+                </div>
               )}
             </div>
           </div>

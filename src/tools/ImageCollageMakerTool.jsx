@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Trash2, Plus } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageCollageMakerTool() {
   const [images, setImages] = useState([]);
@@ -212,13 +213,16 @@ export default function ImageCollageMakerTool() {
             {collageUrl && (
               <div className="space-y-3 pt-2">
                 <img src={collageUrl} alt="Collage" className="max-h-80 mx-auto object-contain rounded-xl border border-[#e6e9ef] shadow-lg" />
-                <button
-                  onClick={handleDownload}
-                  className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
-                >
-                  <Download className="w-5 h-5" />
-                  <span>Download Photo Collage</span>
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownload}
+                    className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>Download Photo Collage</span>
+                  </button>
+                  <NativeShareButton fileUrl={collageUrl} fileName={`photo-collage.png`} mimeType="image/png" />
+                </div>
               </div>
             )}
           </div>

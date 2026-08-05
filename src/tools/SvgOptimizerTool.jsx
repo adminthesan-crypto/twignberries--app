@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Code, Upload, Download, Copy, Check, ShieldCheck, AlertCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -202,6 +203,7 @@ export default function SvgOptimizerTool() {
                   <Download size={14} />
                   Download .SVG
                 </button>
+                <NativeShareButton text={optimizedCode} />
               </div>
             </div>
             <textarea

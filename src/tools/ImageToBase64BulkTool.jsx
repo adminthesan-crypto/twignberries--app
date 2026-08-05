@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Code, Upload, Download, ShieldCheck, AlertCircle, Copy, Check, Trash2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageToBase64BulkTool() {
   const [items, setItems] = useState([]);
@@ -100,14 +101,16 @@ export default function ImageToBase64BulkTool() {
                     { label: 'Copy CSS url(...)', val: it.cssUrl, id: `css-${idx}` },
                     { label: 'Copy HTML <img> Tag', val: it.htmlImg, id: `html-${idx}` },
                   ].map((btn) => (
-                    <button
-                      key={btn.id}
-                      onClick={() => copyText(btn.val, btn.id)}
-                      className="py-2 px-3 rounded-lg bg-white hover:bg-gray-100 border border-[#e6e9ef] text-[#1f2532] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
-                    >
-                      {copiedIdx === btn.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-cyan-400" />}
-                      <span>{btn.label}</span>
-                    </button>
+                    <div key={btn.id} className="flex gap-1 w-full">
+                      <button
+                        onClick={() => copyText(btn.val, btn.id)}
+                        className="flex-1 py-2 px-3 rounded-lg bg-white hover:bg-gray-100 border border-[#e6e9ef] text-[#1f2532] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
+                      >
+                        {copiedIdx === btn.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-cyan-400" />}
+                        <span>{btn.label}</span>
+                      </button>
+                      <NativeShareButton text={btn.val} />
+                    </div>
                   ))}
                 </div>
               </div>

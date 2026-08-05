@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calculator, Percent, Copy, Check, ShieldCheck, ArrowRightLeft, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function GstCalculator() {
   const [amount, setAmount] = useState(1000);
@@ -242,17 +243,20 @@ export default function GstCalculator() {
                 <span>{copied ? 'Copied Tax Summary' : 'Copy Summary Text'}</span>
               </button>
 
-              <CopySummaryButton
-                title={`GST Tax Calculation Report (${rate}% Slab)`}
-                lines={[
-                  { label: 'Calculation Mode', value: calcType === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
-                  { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
-                  { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
-                  { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
-                  { label: 'Total GST Amount', value: `${currency}${gstAmount.toFixed(2)} (${rate}%)` },
-                  { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
-                ]}
-              />
+              <div className="flex gap-2">
+                <CopySummaryButton
+                  title={`GST Tax Calculation Report (${rate}% Slab)`}
+                  lines={[
+                    { label: 'Calculation Mode', value: calcType === 'exclusive' ? 'GST Exclusive (Added)' : 'GST Inclusive (Included)' },
+                    { label: 'Net Taxable Value', value: `${currency}${netPrice.toFixed(2)}` },
+                    { label: 'CGST (Central Tax)', value: `${currency}${cgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                    { label: 'SGST (State Tax)', value: `${currency}${sgst.toFixed(2)} (${(rate / 2).toFixed(1)}%)` },
+                    { label: 'Total GST Amount', value: `${currency}${gstAmount.toFixed(2)} (${rate}%)` },
+                    { label: 'Final Total Price (Inc. GST)', value: `${currency}${grossPrice.toFixed(2)}` }
+                  ]}
+                />
+                <NativeShareButton text={`Net Price: ${currency}${netPrice.toFixed(2)} | GST (${rate}%): ${currency}${gstAmount.toFixed(2)} | Total: ${currency}${grossPrice.toFixed(2)}`} />
+              </div>
             </div>
           </div>
 

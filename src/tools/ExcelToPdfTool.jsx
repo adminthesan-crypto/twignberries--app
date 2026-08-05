@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { Table, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, FileSpreadsheet } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ExcelToPdfTool() {
   const [csvData, setCsvData] = useState([]);
@@ -216,13 +217,16 @@ export default function ExcelToPdfTool() {
             </button>
 
             {pdfBlob && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download PDF Report</span>
-              </button>
+              <>
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download PDF Report</span>
+                </button>
+                <NativeShareButton fileUrl={URL.createObjectURL(pdfBlob)} fileName={`${fileName}.pdf`} mimeType="application/pdf" />
+              </>
             )}
           </div>
         </div>

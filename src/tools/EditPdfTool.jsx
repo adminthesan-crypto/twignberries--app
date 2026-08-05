@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { Edit3, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, Plus, Trash2, Type, Square } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function EditPdfTool() {
   const [file, setFile] = useState(null);
@@ -274,13 +275,20 @@ export default function EditPdfTool() {
             </button>
 
             {editedPdf && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Edited PDF</span>
-              </button>
+              <>
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Edited PDF</span>
+                </button>
+                <NativeShareButton
+                  fileUrl={URL.createObjectURL(editedPdf)}
+                  fileName={`edited-${file.name}`}
+                  mimeType="application/pdf"
+                />
+              </>
             )}
           </div>
         </div>

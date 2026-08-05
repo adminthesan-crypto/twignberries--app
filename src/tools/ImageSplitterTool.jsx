@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Layers } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function ImageSplitterTool() {
   const [image, setImage] = useState(null);
@@ -180,12 +181,19 @@ export default function ImageSplitterTool() {
                 {tiles.map((t) => (
                   <div key={t.idx} className="relative group overflow-hidden rounded border border-[#e6e9ef] bg-black">
                     <img src={t.url} alt={`Tile ${t.idx}`} className="w-full h-24 object-cover" />
-                    <button
-                      onClick={() => downloadTile(t)}
-                      className="absolute inset-0 bg-black/60 text-[#1f2532] text-xs font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
-                    >
-                      Download #{t.idx}
-                    </button>
+                    <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all">
+                      <button
+                        onClick={() => downloadTile(t)}
+                        className="text-white text-xs font-bold hover:underline"
+                      >
+                        Download #{t.idx}
+                      </button>
+                      <NativeShareButton 
+                        fileUrl={t.url} 
+                        fileName={`tile-${t.row}x${t.col}-${image.name}`} 
+                        mimeType="image/png" 
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

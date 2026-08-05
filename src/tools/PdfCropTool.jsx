@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw, Sliders } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -219,14 +220,17 @@ export default function PdfCropTool() {
                 {loading ? 'Cropping...' : 'Apply Crop Box'}
               </button>
               {croppedPdfUrl && (
-                <button
-                  onClick={handleDownload}
-                  className="btn-primary flex items-center gap-2"
-                  style={{ padding: '11px 24px', fontSize: 14 }}
-                >
-                  <Download size={16} />
-                  Download Cropped PDF
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDownload}
+                    className="btn-primary flex items-center gap-2"
+                    style={{ padding: '11px 24px', fontSize: 14 }}
+                  >
+                    <Download size={16} />
+                    Download Cropped PDF
+                  </button>
+                  <NativeShareButton fileUrl={croppedPdfUrl} fileName={`${file.name.replace(/\.pdf$/i, '')}_cropped.pdf`} />
+                </div>
               )}
             </div>
           </div>

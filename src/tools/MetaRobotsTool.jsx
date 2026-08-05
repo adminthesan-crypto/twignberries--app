@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Globe, Copy, Check, ShieldCheck, Download, Code } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -217,6 +218,7 @@ Sitemap: ${sitemapUrl}`;
                   Download robots.txt
                 </button>
               )}
+              <NativeShareButton text={currentCode} />
             </div>
           </div>
           <textarea

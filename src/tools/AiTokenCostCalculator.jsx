@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Cpu, Zap, DollarSign, BarChart2, Layers, AlertCircle, TrendingUp, ShieldCheck } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
+import NativeShareButton from '../components/NativeShareButton';
+
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
   color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
@@ -274,19 +276,22 @@ export default function AiTokenCostCalculator() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Cost breakdown
               </span>
-              <CopySummaryButton
-                title={`AI Token Cost — ${selected.name}`}
-                lines={[
-                  { label: 'Foundation Model', value: selected.name },
-                  { label: 'Input Tokens per Req', value: `${inputTokens} tokens` },
-                  { label: 'Output Tokens per Req', value: `${outputTokens} tokens` },
-                  { label: 'Daily Request Volume', value: `${dailyRequests.toLocaleString()} req/day` },
-                  { label: 'Cost per 1,000 Requests', value: `$${costPer1kReq.toFixed(4)}` },
-                  { label: 'Daily Spend', value: `$${dailyCost.toFixed(2)}/day` },
-                  { label: 'Projected Monthly Spend', value: `$${monthlyCost.toFixed(2)}/mo` },
-                  { label: 'Projected Annual Spend', value: `$${annualCost.toFixed(2)}/yr` },
-                ]}
-              />
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <CopySummaryButton
+                  title={`AI Token Cost — ${selected.name}`}
+                  lines={[
+                    { label: 'Foundation Model', value: selected.name },
+                    { label: 'Input Tokens per Req', value: `${inputTokens} tokens` },
+                    { label: 'Output Tokens per Req', value: `${outputTokens} tokens` },
+                    { label: 'Daily Request Volume', value: `${dailyRequests.toLocaleString()} req/day` },
+                    { label: 'Cost per 1,000 Requests', value: `$${costPer1kReq.toFixed(4)}` },
+                    { label: 'Daily Spend', value: `$${dailyCost.toFixed(2)}/day` },
+                    { label: 'Projected Monthly Spend', value: `$${monthlyCost.toFixed(2)}/mo` },
+                    { label: 'Projected Annual Spend', value: `$${annualCost.toFixed(2)}/yr` },
+                  ]}
+                />
+                <NativeShareButton text={`AI Token Cost — ${selected.name}\nDaily Spend: $${dailyCost.toFixed(2)}/day\nProjected Monthly Spend: $${monthlyCost.toFixed(2)}/mo`} />
+              </div>
             </div>
 
             {[

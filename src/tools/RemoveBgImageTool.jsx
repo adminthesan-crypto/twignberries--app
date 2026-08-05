@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eraser, Upload, Download, ShieldCheck, AlertCircle, RefreshCw, Sliders, Check } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 export default function RemoveBgImageTool() {
   const [image, setImage] = useState(null);
@@ -220,13 +221,20 @@ export default function RemoveBgImageTool() {
             </button>
 
             {removedUrl && (
-              <button
-                onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Transparent PNG</span>
-              </button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download Transparent PNG</span>
+                </button>
+                <NativeShareButton 
+                  fileUrl={removedUrl} 
+                  fileName={`transparent-${image.name.replace(/\\.[^/.]+$/, '')}.png`} 
+                  mimeType="image/png" 
+                />
+              </div>
             )}
           </div>
         </div>

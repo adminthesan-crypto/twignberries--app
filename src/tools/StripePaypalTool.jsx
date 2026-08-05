@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CreditCard, DollarSign, ShieldCheck, AlertCircle, ArrowRightLeft } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -135,6 +136,9 @@ export default function StripePaypalTool() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-end mt-4">
+        <NativeShareButton text={`Stripe vs PayPal Comparison for $${amount}\nStripe Fee: $${s.fee} (Net: $${s.net})\nPayPal Fee: $${p.fee} (Net: $${p.net})\nWinner: ${winner}`} />
       </div>
     </div>
   );
