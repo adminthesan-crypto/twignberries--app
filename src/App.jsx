@@ -1936,13 +1936,16 @@ export default function App() {
                 </div>
 
                 {/* Post-Tool Widgets */}
-                <div className="flex flex-col gap-10 mt-16 mb-32 border-t border-[#e6e9ef] pt-16" style={{ paddingBottom: '120px' }}>
+                <div className="flex flex-col gap-10 mt-16 border-t border-[#e6e9ef] pt-16">
                   {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
                   <ViralShareBar toolName={activeTool.name} />
 
                   {/* Tasteful Native Ad / Sponsor Banner below Tool */}
                   <AdUnit variant="banner" placement="tool-footer" />
                 </div>
+
+                {/* Spacer to guarantee separation from footer */}
+                <div style={{ height: 120 }} />
               </>
             ) : (
               /* Home Grid */
@@ -1955,7 +1958,7 @@ export default function App() {
             )}
 
             {/* PhantomBuster-Style Multi-Column Footer */}
-            <div className="pb-footer no-print" style={{ marginLeft: -32, marginRight: -32, marginBottom: -28, marginTop: 40 }}>
+            <div className="pb-footer no-print" style={{ marginLeft: -40, marginRight: -40, marginBottom: -32, marginTop: 40 }}>
               <div className="pb-footer-grid">
                 {/* Brand column */}
                 <div className="pb-footer-brand">
