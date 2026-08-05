@@ -1931,7 +1931,7 @@ export default function App() {
                 </div>
 
                 {/* Tool content */}
-                <div className="animate-fade-in mb-24 min-h-[50vh]">
+                <div className="animate-fade-in mb-24 min-h-[50vh] pahruli-tool-container">
                   <ActiveComponent />
                 </div>
 

@@ -793,3 +793,19 @@ input[type="checkbox"], input[type="radio"] {
     border: none !important; box-shadow: none !important;
   }
 }
+
+/* ─── Global Tool Form Spacing Overrides (De-cluttering) ─── */
+.pahruli-tool-container .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse)) !important;
+}
+
+.pahruli-tool-container .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse)) !important;
+}
+
+.pahruli-tool-container .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(3.5rem * var(--tw-space-y-reverse)) !important;
+}
