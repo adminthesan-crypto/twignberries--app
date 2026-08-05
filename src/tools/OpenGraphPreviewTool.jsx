@@ -238,7 +238,7 @@ export default function OpenGraphPreviewTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-5">
             <div style={SL} className="mb-0">SEO Status</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>ALL TAGS VALID</span>
           </div>

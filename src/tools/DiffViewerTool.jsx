@@ -45,7 +45,7 @@ export default function DiffViewerTool() {
   const rows = computeDiff(origText, modText);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>

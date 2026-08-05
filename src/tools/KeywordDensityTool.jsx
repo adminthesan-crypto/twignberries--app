@@ -96,7 +96,7 @@ export default function KeywordDensityTool() {
   const stats = analyzeText(text);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -111,7 +111,7 @@ export default function KeywordDensityTool() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-5">
             <span style={SL}>Content / Article Text</span>
             <span className="text-xs font-mono text-[#868894]">
               {stats.wordsCount} Words • {stats.charCount} Chars
@@ -126,9 +126,9 @@ export default function KeywordDensityTool() {
           />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-10">
           {/* Readability Box */}
-          <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] space-y-4">
+          <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] space-y-8">
             <div className="flex items-center gap-2">
               <BookOpen className="text-[#6161ff]" size={20} />
               <span className="font-bold text-sm text-[#1f2532]">Readability & Structure</span>

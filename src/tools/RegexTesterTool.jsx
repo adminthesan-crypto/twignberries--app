@@ -60,7 +60,7 @@ export default function RegexTesterTool() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -81,7 +81,7 @@ export default function RegexTesterTool() {
       )}
 
       {/* Pattern Input & Flags */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
         <div>
           <div style={SL}>Regular Expression Pattern</div>
           <div className="flex items-center gap-2">

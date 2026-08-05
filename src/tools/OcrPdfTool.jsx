@@ -98,11 +98,11 @@ export default function OcrPdfTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-blue-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="application/pdf" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-          <p className="text-[#1f2532] font-medium mb-1">Drop PDF file for OCR recognition here</p>
+          <p className="text-[#1f2532] font-medium mb-3">Drop PDF file for OCR recognition here</p>
           <p className="text-xs text-[#9ca3af]">Extracts layout text and characters into clean plain text offline</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <FileText className="w-8 h-8 text-blue-400" />
@@ -125,7 +125,7 @@ export default function OcrPdfTool() {
               <span>Scanning document pages and performing optical text alignment...</span>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-8">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-[#1f2532] uppercase tracking-wider">Recognized OCR Output:</span>
                 <button

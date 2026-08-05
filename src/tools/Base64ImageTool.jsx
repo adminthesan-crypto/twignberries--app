@@ -58,7 +58,7 @@ export default function Base64ImageTool() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -120,7 +120,7 @@ export default function Base64ImageTool() {
             />
           </label>
         ) : (
-          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-10">
             <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
               <div className="flex items-center gap-3">
                 <Image className="text-[#6161ff]" size={24} />
@@ -135,7 +135,7 @@ export default function Base64ImageTool() {
             </div>
 
             <div>
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-5">
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase' }}>
                   Base64 Data URI ({base64Str.length.toLocaleString()} characters)
                 </span>
@@ -157,7 +157,7 @@ export default function Base64ImageTool() {
           </div>
         )
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-10">
           <div>
             <div style={SL}>Paste Base64 Data URI</div>
             <textarea

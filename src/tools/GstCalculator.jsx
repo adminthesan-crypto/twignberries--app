@@ -80,7 +80,7 @@ export default function GstCalculator() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                <label className="block text-xs font-medium text-[#9ca3af] mb-5">
                   Tax Mode
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -110,7 +110,7 @@ export default function GstCalculator() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                <label className="block text-xs font-medium text-[#9ca3af] mb-5">
                   Currency Symbol
                 </label>
                 <div className="flex gap-2">
@@ -156,7 +156,7 @@ export default function GstCalculator() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#9ca3af] mb-2">
+                <label className="block text-xs font-medium text-[#9ca3af] mb-5">
                   Select GST Slab Rate (%)
                 </label>
                 <div className="grid grid-cols-5 gap-2">
@@ -184,10 +184,10 @@ export default function GstCalculator() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-3">
               TOTAL PAYABLE ({calcType.toUpperCase()})
             </span>
-            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-2">
+            <div className="text-4xl font-mono font-bold text-[#1f2532] mb-5">
               {currency}{grossPrice.toFixed(2)}
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">

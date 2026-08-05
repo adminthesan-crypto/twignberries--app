@@ -49,7 +49,7 @@ export default function StripePaypalTool() {
   const winner = Number(s.fee) < Number(p.fee) ? 'Stripe' : Number(p.fee) < Number(s.fee) ? 'PayPal' : 'Tie';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>

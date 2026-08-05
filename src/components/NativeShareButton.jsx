@@ -7,7 +7,7 @@ export default function NativeShareButton({
   mimeType, 
   text, 
   buttonText = "Share",
-  className = "w-full sm:w-auto py-3 px-6 rounded-xl bg-indigo-500 text-white font-bold hover:bg-indigo-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20"
+  className = "flex-1 w-full sm:w-auto py-3 px-6 rounded-xl bg-indigo-500 text-white font-bold hover:bg-indigo-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20"
 }) {
   const [sharing, setSharing] = useState(false);
   const [supported, setSupported] = useState(false);

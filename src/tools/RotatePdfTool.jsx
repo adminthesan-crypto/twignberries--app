@@ -224,7 +224,7 @@ export default function RotatePdfTool() {
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-5">
             <div style={SL} className="mb-0">Rotation Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
           </div>
@@ -247,7 +247,7 @@ export default function RotatePdfTool() {
               onClick={handleRotatePdf}
               disabled={loading}
               className="btn-primary"
-              style={{ width: '100%', marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
+              style={{ flex: 1, marginBottom: 16, background: 'linear-gradient(90deg, #6161ff, #7f56d9)' }}
             >
               {loading ? 'Rotating pages...' : 'Rotate PDF Now'}
             </button>
@@ -263,7 +263,7 @@ export default function RotatePdfTool() {
                 href={resultUrl}
                 download="Twignberries-Rotated.pdf"
                 className="btn-primary"
-                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Rotated PDF
               </a>

@@ -121,11 +121,11 @@ export default function CropImageTool() {
         <label className="border-2 border-dashed border-[#d0d4e4] hover:border-cyan-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-cyan-400 mx-auto mb-3" />
-          <p className="text-[#1f2532] font-medium mb-1">Drop image file to crop here</p>
+          <p className="text-[#1f2532] font-medium mb-3">Drop image file to crop here</p>
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, WEBP, SVG, and GIF</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-10">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
             <div className="flex items-center gap-3">
               <Crop className="w-8 h-8 text-cyan-400" />
@@ -163,7 +163,7 @@ export default function CropImageTool() {
           {/* Crop Box Sliders */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-4 rounded-xl border border-white/5">
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-1">Left X (%): {cropBox.x}%</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-3">Left X (%): {cropBox.x}%</label>
               <input
                 type="range"
                 min="0"
@@ -177,7 +177,7 @@ export default function CropImageTool() {
               />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-1">Top Y (%): {cropBox.y}%</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-3">Top Y (%): {cropBox.y}%</label>
               <input
                 type="range"
                 min="0"
@@ -191,7 +191,7 @@ export default function CropImageTool() {
               />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-1">Width (%): {cropBox.w}%</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-3">Width (%): {cropBox.w}%</label>
               <input
                 type="range"
                 min="10"
@@ -205,7 +205,7 @@ export default function CropImageTool() {
               />
             </div>
             <div>
-              <label className="text-[11px] text-[#9ca3af] block mb-1">Height (%): {cropBox.h}%</label>
+              <label className="text-[11px] text-[#9ca3af] block mb-3">Height (%): {cropBox.h}%</label>
               <input
                 type="range"
                 min="10"
@@ -238,7 +238,7 @@ export default function CropImageTool() {
 
             {croppedUrl && (
               <div className="bg-white border border-emerald-500/30 rounded-xl p-3 flex flex-col items-center">
-                <span className="text-xs font-bold text-emerald-400 mb-2">Cropped Output:</span>
+                <span className="text-xs font-bold text-emerald-400 mb-5">Cropped Output:</span>
                 <img src={croppedUrl} alt="Cropped" className="max-h-56 object-contain rounded" />
               </div>
             )}

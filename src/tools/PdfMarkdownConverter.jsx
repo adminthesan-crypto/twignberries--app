@@ -32,8 +32,8 @@ This document outlines the deliverables and pricing structure for custom fronten
   // Simple clean markdown-to-HTML formatter for headers, bold, italics, tables, and blockquotes
   const parseMarkdownToHtml = (md) => {
     let html = md
-      .replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-[#1f2532] mt-4 mb-2">$1</h3>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-lg font-heading font-bold text-[#ff8c3a] mt-5 mb-2">$1</h2>')
+      .replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-[#1f2532] mt-4 mb-5">$1</h3>')
+      .replace(/^## (.*$)/gim, '<h2 class="text-lg font-heading font-bold text-[#ff8c3a] mt-5 mb-5">$1</h2>')
       .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-heading font-bold text-[#1f2532] pb-2 border-b border-[#e6e9ef] mb-4">$1</h1>')
       .replace(/^\> \*(.*)\*/gim, '<blockquote class="border-l-4 border-[#ff6b00] pl-3 py-1.5 my-3 bg-white italic text-sm text-[#9ca3af]">$1</blockquote>')
       .replace(/\*\*(.*)\*\*/gim, '<strong class="font-bold text-[#1f2532]">$1</strong>')
@@ -165,10 +165,10 @@ This document outlines the deliverables and pricing structure for custom fronten
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }} className="no-print">
           {/* Primary Hero Banner / Preview */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-3">
               DOCUMENT STATUS
             </span>
-            <div className="text-3xl font-mono font-bold text-[#1f2532] mb-2">
+            <div className="text-3xl font-mono font-bold text-[#1f2532] mb-5">
               Ready to Export
             </div>
             <div className="flex items-center justify-between text-xs text-[#9ca3af] font-mono">

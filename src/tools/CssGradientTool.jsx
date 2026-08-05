@@ -55,7 +55,7 @@ export default function CssGradientTool() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -81,7 +81,7 @@ export default function CssGradientTool() {
         </div>
 
         {/* Controls */}
-        <div className="space-y-6">
+        <div className="space-y-10">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div style={SL}>Gradient Type</div>

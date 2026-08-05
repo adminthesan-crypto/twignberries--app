@@ -110,7 +110,7 @@ export default function HtmlToImageTool() {
 
       {/* Editor & Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-8">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-cyan-400">HTML & Inline CSS Markup</span>
             <select
@@ -147,7 +147,7 @@ export default function HtmlToImageTool() {
           </button>
         </div>
 
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4 flex flex-col justify-between">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-8 flex flex-col justify-between">
           <div>
             <span className="text-xs font-bold text-[#9ca3af] block mb-3">Live HTML Render Preview</span>
             <div

@@ -88,7 +88,7 @@ export default function PasswordGeneratorTool() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -102,7 +102,7 @@ export default function PasswordGeneratorTool() {
       </div>
 
       {/* Output card */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
         <div className="flex items-center justify-between">
           <span style={SL}>Generated Password / Passphrase</span>
           <span className={`badge ${badgeColor} text-[10px]`}>
@@ -136,7 +136,7 @@ export default function PasswordGeneratorTool() {
 
       {/* Controls */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
           <div style={SL}>Generation Mode</div>
           <div className="flex gap-2">
             <button
@@ -162,9 +162,9 @@ export default function PasswordGeneratorTool() {
           </div>
 
           {mode === 'random' ? (
-            <div className="space-y-4 pt-2">
+            <div className="space-y-8 pt-2">
               <div>
-                <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-1">
+                <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-3">
                   <span>Password Length</span>
                   <span>{length} characters</span>
                 </div>
@@ -209,9 +209,9 @@ export default function PasswordGeneratorTool() {
               </div>
             </div>
           ) : (
-            <div className="space-y-4 pt-2">
+            <div className="space-y-8 pt-2">
               <div>
-                <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-1">
+                <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-3">
                   <span>Number of Words</span>
                   <span>{wordCount} words</span>
                 </div>

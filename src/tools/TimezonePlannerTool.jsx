@@ -50,7 +50,7 @@ export default function TimezonePlannerTool() {
   const allWorking = members.every((m) => isWorkingHour(getLocalHour(m.offset, utcHour)));
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
@@ -64,7 +64,7 @@ export default function TimezonePlannerTool() {
       </div>
 
       {/* UTC Hour Slider */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Clock className="text-[#6161ff]" size={20} />
@@ -97,7 +97,7 @@ export default function TimezonePlannerTool() {
       </div>
 
       {/* Team Members List */}
-      <div className="space-y-4">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <span style={SL}>Distributed Team Locations</span>
           <button
@@ -118,7 +118,7 @@ export default function TimezonePlannerTool() {
                 key={idx}
                 className={`p-5 rounded-2xl border-2 transition ${
                   working ? 'border-green-400 bg-white shadow-sm' : 'border-[#e6e9ef] bg-[#fbfbfc] opacity-90'
-                } space-y-4`}
+                } space-y-8`}
               >
                 <div className="flex items-center justify-between">
                   <input
