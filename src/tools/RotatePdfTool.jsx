@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { RotateCw, Upload, FileText, Download, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -257,6 +258,7 @@ export default function RotatePdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 PDF rotated successfully!
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Rotated.pdf"
@@ -265,6 +267,8 @@ export default function RotatePdfTool() {
               >
                 <Download size={16} /> Download Rotated PDF
               </a>
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Rotated.pdf" />
+            </div>
             </div>
           )}
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Sliders, Upload, FileText, Download, ShieldCheck, AlertCircle, Trash2, RefreshCcw, Copy } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -302,6 +303,7 @@ export default function OrganizePdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 PDF organized successfully ({newCount} pages)!
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Organized.pdf"
@@ -310,6 +312,8 @@ export default function OrganizePdfTool() {
               >
                 <Download size={16} /> Download Organized PDF
               </a>
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Organized.pdf" />
+            </div>
             </div>
           )}
 

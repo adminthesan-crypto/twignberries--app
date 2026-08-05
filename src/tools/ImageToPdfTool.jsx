@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Image as ImageIcon, Upload, ArrowUp, ArrowDown, Trash2, Download, ShieldCheck, AlertCircle } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -344,6 +345,7 @@ export default function ImageToPdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 Generated {images.length}-page PDF successfully!
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Converted-Images.pdf"
@@ -352,6 +354,8 @@ export default function ImageToPdfTool() {
               >
                 <Download size={16} /> Download Converted PDF
               </a>
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Converted-Images.pdf" />
+            </div>
             </div>
           )}
 

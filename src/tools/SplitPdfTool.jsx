@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Scissors, Upload, FileText, Download, AlertCircle, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -274,6 +275,7 @@ export default function SplitPdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 Extracted {extractedCount} {extractedCount === 1 ? 'page' : 'pages'} successfully!
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Extracted-Pages.pdf"
@@ -282,6 +284,8 @@ export default function SplitPdfTool() {
               >
                 <Download size={16} /> Download Extracted PDF
               </a>
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Extracted-Pages.pdf" />
+            </div>
             </div>
           )}
 

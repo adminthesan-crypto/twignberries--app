@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { Eye, Upload, FileText, Download, ShieldCheck, AlertCircle, Trash2, Edit3 } from 'lucide-react';
+import NativeShareButton from '../components/NativeShareButton';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -316,6 +317,7 @@ export default function PdfMetadataTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 PDF metadata updated & scrubbed!
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Metadata-Updated.pdf"
@@ -324,6 +326,8 @@ export default function PdfMetadataTool() {
               >
                 <Download size={16} /> Download Updated PDF
               </a>
+              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Metadata-Updated.pdf" />
+            </div>
             </div>
           )}
 
