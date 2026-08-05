@@ -81,7 +81,7 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
       className="w-full rounded-2xl bg-white border border-[#e6e9ef] overflow-hidden"
       style={{
         boxShadow: '0 10px 30px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03)',
-        borderLeft: '4px solid #6161ff'
+        borderTop: '4px solid #6161ff'
       }}
     >
       {/* Header bar */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, Command, LayoutGrid, DollarSign, Cpu, FileText, Link2, Sparkles, Layers, Image as ImageIcon, Globe } from 'lucide-react';
+import NavbarSearch from './NavbarSearch';
 
 const CATEGORIES = [
   { id: 'All',           label: 'All Tools',      icon: LayoutGrid },
@@ -12,7 +13,7 @@ const CATEGORIES = [
   { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
 ];
 
-export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
+export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
   return (
     <header className="nav-panel no-print" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
@@ -48,30 +49,13 @@ export default function Navbar({ onOpenSearch, selectedCategory, onSelectCategor
           </div>
         </div>
 
-        {/* Center: Command Palette Trigger */}
+        {/* Center: Inline Search Dropdown */}
         <div className="hidden md:flex items-center flex-1 max-w-md mx-8">
-          <button
-            onClick={onOpenSearch}
-            className="search-trigger w-full"
-            style={{
-              height: 38,
-              borderRadius: 99,
-              background: '#f5f6f8',
-              border: '1px solid #e6e9ef',
-              display: 'flex', alignItems: 'center',
-              padding: '0 14px', gap: 8,
-              color: '#676879', fontSize: 13
-            }}
-          >
-            <span>🔍</span>
-            <span style={{ flex: 1, textAlign: 'left' }}>Search {toolsCount} utilities...</span>
-            <kbd style={{
-              fontSize: 11, padding: '2px 6px', background: '#ffffff',
-              borderRadius: 6, border: '1px solid #dcdce5', color: '#676879', fontWeight: 600
-            }}>
-              ⌘K
-            </kbd>
-          </button>
+          <NavbarSearch 
+            tools={tools} 
+            toolsCount={toolsCount} 
+            onSelectTool={onSelectTool} 
+          />
         </div>
 
         {/* Right: Monday.com CTA Pills */}

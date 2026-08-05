@@ -67,7 +67,7 @@ Sitemap: ${sitemapUrl}`;
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3 mb-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -80,7 +80,7 @@ Sitemap: ${sitemapUrl}`;
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#e6e9ef]">
+      <div className="flex border-b border-[#e6e9ef] mb-8">
         <button
           onClick={() => setTab('meta')}
           className={`px-6 py-3 font-bold text-sm border-b-2 transition ${

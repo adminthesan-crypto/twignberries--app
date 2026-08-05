@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import CommandKModal from './components/CommandKModal';
 import AdUnit from './components/AdUnit';
 import CompetitorComparisonModal from './components/CompetitorComparisonModal';
 import ViralShareBar from './components/ViralShareBar';
@@ -1713,7 +1712,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
       </div>
 
       {/* Culture Meme Widget */}
-      <div style={{ marginBottom: 40 }}>
+      <div style={{ marginBottom: 24 }}>
         <CultureMemeWidget toolsCount={TOOLS.length} />
       </div>
 
@@ -1753,12 +1752,14 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
 
       {/* Point #4: Short 'Why this exists' line in founder's actual voice */}
       <div
-        className="mt-16 p-8 rounded-2xl bg-white border border-[#e6e9ef]"
+        className="p-8 rounded-2xl bg-white border border-[#e6e9ef]"
         style={{
           boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
           display: 'flex',
           flexDirection: 'column',
-          gap: 12
+          gap: 12,
+          marginTop: 64,
+          marginBottom: 64
         }}
       >
         <div className="flex items-center gap-2">
@@ -1799,7 +1800,6 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
 export default function App() {
   const [activeToolId, setActiveToolId] = useState(null); // null = home grid
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
 
   const [starredIds, setStarredIds] = useState(() => {
@@ -1844,18 +1844,6 @@ export default function App() {
     });
   };
 
-  // Cmd+K
-  useEffect(() => {
-    const handler = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setIsSearchOpen(p => !p);
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, []);
-
   const activeTool = TOOLS.find(t => t.id === activeToolId);
   const ActiveComponent = activeTool?.component;
   const isStarred = activeTool ? starredIds.includes(activeTool.id) : false;
@@ -1864,7 +1852,8 @@ export default function App() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-app)' }}>
       {/* Navbar */}
       <Navbar
-        onOpenSearch={() => setIsSearchOpen(true)}
+        tools={TOOLS}
+        onSelectTool={handleSelectTool}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
         toolsCount={TOOLS.length}
@@ -2020,15 +2009,6 @@ export default function App() {
           </div>
         </main>
       </div>
-
-      {/* Cmd+K Search */}
-      <CommandKModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        tools={TOOLS}
-        onSelectTool={handleSelectTool}
-        starredIds={starredIds}
-      />
 
       {/* Competitor Comparison Modal (Why 60M Indians Are Switching) */}
       <CompetitorComparisonModal
