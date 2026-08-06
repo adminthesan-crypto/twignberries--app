@@ -12,6 +12,7 @@ export default function MomCreatorTool() {
   // Whisper specific states
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcribeStatus, setTranscribeStatus] = useState('');
+  const [summarizeStatus, setSummarizeStatus] = useState('');
   const worker = useRef(null);
 
   useEffect(() => {
@@ -19,22 +20,51 @@ export default function MomCreatorTool() {
       worker.current = new WhisperWorker();
       worker.current.addEventListener('message', (e) => {
         const data = e.data;
-        if (data.status === 'loading') {
-          setTranscribeStatus('Initializing Whisper AI model (Offline)...');
-        } else if (data.status === 'processing') {
-          setTranscribeStatus('Transcribing audio... (This happens 100% locally)');
-        } else if (data.status === 'complete') {
-          setTranscript(prev => (prev ? prev + '\n\n' + data.text : data.text).trim());
-          setIsTranscribing(false);
-          setTranscribeStatus('');
-        } else if (data.status === 'error') {
-          console.error(data.error);
-          setIsTranscribing(false);
-          setTranscribeStatus(`Error: ${data.error}`);
-        } else if (data.status === 'progress') {
-           setTranscribeStatus(`Downloading AI model: ${Math.round(data.progress)}%`);
-        } else if (data.status === 'initiate' || data.status === 'download' || data.status === 'done') {
-           setTranscribeStatus(`Fetching model weights...`);
+        if (data.type === 'transcribe') {
+          if (data.status === 'loading') {
+            setTranscribeStatus('Initializing Whisper AI model (Offline)...');
+          } else if (data.status === 'processing') {
+            setTranscribeStatus('Transcribing audio... (This happens 100% locally)');
+          } else if (data.status === 'complete') {
+            setTranscript(prev => (prev ? prev + '\n\n' + data.text : data.text).trim());
+            setIsTranscribing(false);
+            setTranscribeStatus('');
+          } else if (data.status === 'error') {
+            console.error(data.error);
+            setIsTranscribing(false);
+            setTranscribeStatus(`Error: ${data.error}`);
+          } else if (data.status === 'progress') {
+             setTranscribeStatus(`Downloading AI model: ${Math.round(data.progress)}%`);
+          } else if (data.status === 'initiate' || data.status === 'download' || data.status === 'done') {
+             setTranscribeStatus(`Fetching model weights...`);
+          }
+        } else if (data.type === 'summarize') {
+          if (data.status === 'loading') {
+            setSummarizeStatus('Initializing DistilBART Summarization AI...');
+          } else if (data.status === 'processing') {
+            setSummarizeStatus('Generating Minutes (Offline NLP)...');
+          } else if (data.status === 'complete') {
+            let formattedText = '';
+            if (template === 'standard') {
+              formattedText = `MINUTES OF MEETING\n\nAI GENERATED SUMMARY:\n${data.text}\n\n`;
+            } else if (template === 'action') {
+              formattedText = `ACTION ITEMS & COMMITMENTS\n\n${data.text.split('. ').map(s => `- [ ] ${s}`).join('\n')}`;
+            } else if (template === 'executive') {
+              formattedText = `EXECUTIVE SUMMARY\n\n${data.text}`;
+            }
+            setResult(formattedText);
+            setLoading(false);
+            setSummarizeStatus('');
+          } else if (data.status === 'error') {
+            console.error(data.error);
+            setResult(`Error generating summary: ${data.error}`);
+            setLoading(false);
+            setSummarizeStatus('');
+          } else if (data.status === 'progress') {
+             setSummarizeStatus(`Downloading Summarization model: ${Math.round(data.progress)}%`);
+          } else if (data.status === 'initiate' || data.status === 'download' || data.status === 'done') {
+             setSummarizeStatus(`Fetching summarization weights...`);
+          }
         }
       });
     }
@@ -87,43 +117,14 @@ export default function MomCreatorTool() {
   const generateMom = () => {
     if (!transcript.trim()) return;
     setLoading(true);
+    setSummarizeStatus('Starting Summarization AI...');
     
-    setTimeout(() => {
-      const sentences = transcript.split(/[.!?\n]+/).map(s => s.trim()).filter(s => s.length > 10);
-      
-      const actionKeywords = ['will', 'need to', 'assign', 'deadline', 'tomorrow', 'next week', 'task', 'action'];
-      const decisionKeywords = ['decided', 'agreed', 'approved', 'resolved', 'finalized'];
-      const discussionKeywords = ['discuss', 'think', 'maybe', 'perhaps', 'consider', 'why'];
-
-      const actionItems = sentences.filter(s => actionKeywords.some(k => s.toLowerCase().includes(k)));
-      const decisions = sentences.filter(s => decisionKeywords.some(k => s.toLowerCase().includes(k)));
-      const discussions = sentences.filter(s => discussionKeywords.some(k => s.toLowerCase().includes(k)));
-      
-      const safeActions = actionItems.length > 0 ? actionItems.slice(0, 5) : ["Review transcript for manual action items."];
-      const safeDecisions = decisions.length > 0 ? decisions.slice(0, 3) : ["No explicit decisions detected."];
-      const safeDiscussions = discussions.length > 0 ? discussions.slice(0, 5) : sentences.slice(0, 5);
-      const safeOverview = sentences.slice(0, 3).join('. ') + '.';
-
-      let formattedText = '';
-
-      if (template === 'standard') {
-        formattedText = `MINUTES OF MEETING\n\n`;
-        formattedText += `OVERVIEW:\n${safeOverview}\n\n`;
-        formattedText += `KEY DISCUSSION POINTS:\n` + safeDiscussions.map(d => `- ${d}`).join('\n') + `\n\n`;
-        formattedText += `ACTION ITEMS:\n` + safeActions.map(a => `- [ ] ${a}`).join('\n');
-      } else if (template === 'action') {
-        formattedText = `ACTION ITEMS & COMMITMENTS\n\n`;
-        formattedText += safeActions.map(a => `- [ ] ${a}`).join('\n\n');
-        if (actionItems.length === 0) formattedText += "No specific action items were detected by the offline NLP. Please review the transcript.";
-      } else if (template === 'executive') {
-        formattedText = `EXECUTIVE SUMMARY\n\n`;
-        formattedText += `TOP DECISIONS:\n` + safeDecisions.map(d => `- ${d}`).join('\n') + `\n\n`;
-        formattedText += `CRITICAL TAKEAWAYS:\n` + safeDiscussions.slice(0, 3).map(d => `- ${d}`).join('\n');
-      }
-
-      setResult(formattedText);
-      setLoading(false);
-    }, 800);
+    // Use the Web Worker for true offline AI summarization
+    worker.current.postMessage({
+      type: 'summarize',
+      text: transcript,
+      template: template
+    });
   };
 
   const handleDownloadTxt = () => {
@@ -252,7 +253,7 @@ export default function MomCreatorTool() {
             className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 disabled:opacity-50 transition-all flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20"
           >
             {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
-            {loading ? 'Analyzing semantics...' : 'Generate Minutes'}
+            {loading ? summarizeStatus : 'Generate Minutes'}
           </button>
 
           {result && (
