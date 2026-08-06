@@ -22,7 +22,6 @@ import ShopifyFeeCalculator from './tools/ShopifyFeeCalculator';
 import CreatorPlatformFeeCalculator from './tools/CreatorPlatformFeeCalculator';
 import SaasChurnLtvCalculator from './tools/SaasChurnLtvCalculator';
 import AiTokenCostCalculator from './tools/AiTokenCostCalculator';
-import MomCreatorTool from './tools/MomCreatorTool';
 
 import MergePdfTool from './tools/MergePdfTool';
 import SplitPdfTool from './tools/SplitPdfTool';
@@ -331,24 +330,6 @@ const TOOLS = [
       </svg>
     ),
     component: AiTokenCostCalculator,
-  },
-  {
-    id: 'mom-creator',
-    name: 'Minutes of Meeting (MoM) Creator',
-    category: 'AI & Dev',
-    description: 'Instantly format raw meeting transcripts into structured Minutes, Action Items, or Executive Summaries.',
-    keywords: ['mom creator', 'meeting minutes', 'transcript summarizer', 'action items extractor'],
-    color: '#06b6d4', bg: 'rgba(6,182,212,0.12)',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <path d="M14 2v6h6"/>
-        <path d="M16 13H8"/>
-        <path d="M16 17H8"/>
-        <path d="M10 9H8"/>
-      </svg>
-    ),
-    component: MomCreatorTool,
   },
   {
     id: 'merge-pdf',
