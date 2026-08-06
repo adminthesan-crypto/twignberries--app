@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
-import { Sparkles, FileText, Download, CheckCircle2, List, ShieldCheck, RefreshCw, Layers } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Sparkles, FileText, Download, CheckCircle2, List, ShieldCheck, RefreshCw, Layers, Upload, Mic } from 'lucide-react';
 import NativeShareButton from '../components/NativeShareButton';
+import WhisperWorker from '../workers/whisper.worker.js?worker';
 
 export default function MomCreatorTool() {
   const [transcript, setTranscript] = useState('');
   const [template, setTemplate] = useState('standard');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  // Whisper specific states
+  const [isTranscribing, setIsTranscribing] = useState(false);
+  const [transcribeStatus, setTranscribeStatus] = useState('');
+  const worker = useRef(null);
+
+  useEffect(() => {
+    if (!worker.current) {
+      worker.current = new WhisperWorker();
+      worker.current.addEventListener('message', (e) => {
+        const data = e.data;
+        if (data.status === 'loading') {
+          setTranscribeStatus('Initializing Whisper AI model (Offline)...');
+        } else if (data.status === 'processing') {
+          setTranscribeStatus('Transcribing audio... (This happens 100% locally)');
+        } else if (data.status === 'complete') {
+          setTranscript(prev => (prev ? prev + '\n\n' + data.text : data.text).trim());
+          setIsTranscribing(false);
+          setTranscribeStatus('');
+        } else if (data.status === 'error') {
+          console.error(data.error);
+          setIsTranscribing(false);
+          setTranscribeStatus(`Error: ${data.error}`);
+        } else if (data.status === 'progress') {
+           setTranscribeStatus(`Downloading AI model: ${Math.round(data.progress)}%`);
+        } else if (data.status === 'initiate' || data.status === 'download' || data.status === 'done') {
+           setTranscribeStatus(`Fetching model weights...`);
+        }
+      });
+    }
+  }, []);
 
   const templates = [
     { id: 'standard', name: 'Standard Format', desc: 'Overview, Discussion Points, and Action Items' },
@@ -14,11 +46,48 @@ export default function MomCreatorTool() {
     { id: 'executive', name: 'Executive Summary', desc: 'Top decisions and critical takeaways' }
   ];
 
+  const handleFileUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    setIsTranscribing(true);
+    setTranscribeStatus('Decoding audio locally...');
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+      
+      let audioData;
+      if (audioBuffer.numberOfChannels === 2) {
+        const SCALING_FACTOR = Math.sqrt(2);
+        const left = audioBuffer.getChannelData(0);
+        const right = audioBuffer.getChannelData(1);
+        audioData = new Float32Array(left.length);
+        for (let i = 0; i < left.length; ++i) {
+          audioData[i] = SCALING_FACTOR * (left[i] + right[i]) / 2;
+        }
+      } else {
+        audioData = audioBuffer.getChannelData(0);
+      }
+
+      worker.current.postMessage({
+        type: 'transcribe',
+        audioData: audioData
+      });
+
+    } catch (error) {
+      console.error(error);
+      setTranscribeStatus('Failed to decode audio file. Make sure it is a valid audio/video format.');
+      setIsTranscribing(false);
+    }
+  };
+
   const generateMom = () => {
     if (!transcript.trim()) return;
     setLoading(true);
     
-    // Simulate slight delay for heavy text processing feeling
     setTimeout(() => {
       const sentences = transcript.split(/[.!?\n]+/).map(s => s.trim()).filter(s => s.length > 10);
       
@@ -30,7 +99,6 @@ export default function MomCreatorTool() {
       const decisions = sentences.filter(s => decisionKeywords.some(k => s.toLowerCase().includes(k)));
       const discussions = sentences.filter(s => discussionKeywords.some(k => s.toLowerCase().includes(k)));
       
-      // Fallbacks if transcript is too short or doesn't match well
       const safeActions = actionItems.length > 0 ? actionItems.slice(0, 5) : ["Review transcript for manual action items."];
       const safeDecisions = decisions.length > 0 ? decisions.slice(0, 3) : ["No explicit decisions detected."];
       const safeDiscussions = discussions.length > 0 ? discussions.slice(0, 5) : sentences.slice(0, 5);
@@ -75,16 +143,16 @@ export default function MomCreatorTool() {
       <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 border border-blue-500/20 rounded-2xl p-6 md:p-8">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-500">
-            <Sparkles className="w-5 h-5" />
+            <Mic className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Minutes of Meeting (MoM) Creator</h1>
-            <p className="text-sm text-[#676879]">Instantly format raw meeting transcripts into structured Minutes, Action Items, or Executive Summaries.</p>
+            <h1 className="text-2xl font-heading font-bold text-[#1f2532]">Free AI Meeting Minutes Generator</h1>
+            <p className="text-sm text-[#676879]">Generate professional AI meeting minutes automatically from any recording.</p>
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs text-blue-500 font-medium">
           <ShieldCheck className="w-4 h-4" />
-          <span>100% Client-Side Privacy — Processed offline in your browser with zero data leaks.</span>
+          <span>100% Client-Side Privacy — Whisper AI transcribes offline in your browser. Audio never leaves your device.</span>
         </div>
       </div>
 
@@ -125,25 +193,66 @@ export default function MomCreatorTool() {
 
         {/* Right Column: Editor & Result */}
         <div className="md:col-span-2 space-y-6">
+          
+          {/* File Upload Zone */}
+          <div className="bg-[#f6f8fa] border-2 border-dashed border-[#d0d4e4] rounded-2xl p-8 text-center relative hover:border-blue-500/50 transition-colors">
+             <input 
+               type="file" 
+               accept="audio/*,video/*" 
+               onChange={handleFileUpload} 
+               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+               disabled={isTranscribing}
+             />
+             
+             {isTranscribing ? (
+               <div className="flex flex-col items-center justify-center space-y-3 pointer-events-none">
+                 <RefreshCw className="w-8 h-8 text-blue-500 animate-spin" />
+                 <p className="text-sm font-bold text-[#1f2532]">{transcribeStatus}</p>
+                 <div className="w-full max-w-xs h-2 bg-gray-200 rounded-full overflow-hidden">
+                   <div className="h-full bg-blue-500 animate-pulse w-full"></div>
+                 </div>
+               </div>
+             ) : (
+               <div className="flex flex-col items-center justify-center space-y-3 pointer-events-none">
+                 <div className="w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-blue-500">
+                   <Upload className="w-5 h-5" />
+                 </div>
+                 <div>
+                   <p className="text-sm font-bold text-[#1f2532]">Drag and drop your audio/video file here</p>
+                   <p className="text-xs text-[#676879] mt-1">Or click to browse (MP3, WAV, MP4)</p>
+                 </div>
+                 <button className="px-5 py-2 rounded-full bg-blue-500 text-white font-bold text-sm pointer-events-auto shadow-md">
+                   Upload File
+                 </button>
+               </div>
+             )}
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="flex-1 h-px bg-[#e6e9ef]"></div>
+            <span className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider">OR PASTE TEXT</span>
+            <div className="flex-1 h-px bg-[#e6e9ef]"></div>
+          </div>
+
           <div className="bg-white border border-[#e6e9ef] rounded-2xl p-1 overflow-hidden focus-within:border-blue-500 transition-colors shadow-sm">
             <div className="bg-[#f8f9fa] border-b border-[#e6e9ef] p-3 flex items-center gap-2 text-xs font-bold text-[#676879]">
-              <FileText className="w-4 h-4" /> Raw Transcript
+              <FileText className="w-4 h-4" /> Transcript
             </div>
             <textarea
               value={transcript}
               onChange={(e) => setTranscript(e.target.value)}
-              placeholder="Paste your meeting transcript here (Zoom, Teams, Google Meet)..."
-              className="w-full h-64 p-4 text-sm text-[#1f2532] bg-white resize-none focus:outline-none"
+              placeholder="Your transcribed text will appear here. You can also paste an existing transcript..."
+              className="w-full h-48 p-4 text-sm text-[#1f2532] bg-white resize-none focus:outline-none"
             />
           </div>
 
           <button
             onClick={generateMom}
-            disabled={!transcript.trim() || loading}
+            disabled={!transcript.trim() || loading || isTranscribing}
             className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 disabled:opacity-50 transition-all flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20"
           >
             {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
-            {loading ? 'Processing offline...' : 'Generate Minutes'}
+            {loading ? 'Analyzing semantics...' : 'Generate Minutes'}
           </button>
 
           {result && (
