@@ -21,25 +21,11 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
     <header className="nav-panel no-print w-full" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto w-full">
-        {/* Left: Clean Brand Logo */}
         <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
-          <div
-            style={{
-              width: 36, height: 36, borderRadius: 10,
-              background: '#6161ff',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 14px rgba(97,97,255,0.25)',
-            }}
-          >
-            <div className="flex items-end gap-[3px] h-[18px]">
-              <div style={{ width: 4, height: 10, background: '#ff3d8b', borderRadius: 99 }} />
-              <div style={{ width: 4, height: 16, background: '#00c875', borderRadius: 99 }} />
-              <div style={{ width: 4, height: 13, background: '#fdab3d', borderRadius: 99 }} />
-            </div>
-          </div>
+          <img src="/logo.jpg" alt="Pahruli Logo" className="w-9 h-9 rounded-xl shadow-[0_4px_14px_rgba(0,180,216,0.25)] object-cover" />
           <div className="flex items-center gap-2.5">
             <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 24, color: '#1f2532', letterSpacing: '-0.03em' }}>
-              pahruli<span style={{ color: '#6161ff', fontSize: 17, fontWeight: 700 }}>.com</span>
+              pahruli<span style={{ color: '#00b4d8', fontSize: 17, fontWeight: 700 }}>.com</span>
             </span>
             <span style={{
               fontSize: 11, fontWeight: 700,
