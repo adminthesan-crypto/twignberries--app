@@ -1661,10 +1661,10 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
       {/* Feature Showcase — PhantomBuster glassmorphic cards */}
       <div className="pb-section-gradient" style={{ marginLeft: -24, marginRight: -24, paddingLeft: 24, paddingRight: 24, marginBottom: 48 }}>
         <div className="text-center" style={{ marginBottom: 40 }}>
-          <h2 className="pb-display" style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', marginBottom: 12 }}>
+          <h2 className="pb-display" style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', marginBottom: 12, color: '#1a1a2e' }}>
             Three suites.<br />One bookmark.
           </h2>
-          <p className="pb-subtitle" style={{ marginBottom: 0 }}>
+          <p className="pb-subtitle" style={{ marginBottom: 0, color: '#555' }}>
             Fee calculators for sellers, a full PDF toolkit, and image tools — all running offline in your browser.
           </p>
         </div>
@@ -1932,12 +1932,12 @@ export default function App() {
                 </div>
 
                 {/* Tool content */}
-                <div className="animate-fade-in mb-24 min-h-[50vh] pahruli-tool-container">
+                <div className="animate-fade-in pahruli-tool-container" style={{ minHeight: '50vh', marginBottom: 96 }}>
                   <ActiveComponent />
                 </div>
 
                 {/* Post-Tool Widgets */}
-                <div className="flex flex-col gap-10 mt-16 border-t border-[#e6e9ef] pt-16">
+                <div className="flex flex-col gap-10 border-t border-[#e6e9ef]" style={{ marginTop: 64, paddingTop: 64 }}>
                   {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
                   <ViralShareBar toolName={activeTool.name} />
 

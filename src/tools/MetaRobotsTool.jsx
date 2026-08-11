@@ -81,7 +81,7 @@ Sitemap: ${sitemapUrl}`;
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#e6e9ef] mb-8">
+      <div className="flex gap-6 border-b border-[#e6e9ef] mb-8">
         <button
           onClick={() => setTab('meta')}
           className={`px-6 py-3 font-bold text-sm border-b-2 transition ${
