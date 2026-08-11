@@ -97,7 +97,7 @@ export default function MemeGeneratorTool() {
     <div className="max-w-4xl mx-auto flex flex-col gap-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400">
             <Smile className="w-5 h-5" />
           </div>
@@ -106,14 +106,14 @@ export default function MemeGeneratorTool() {
             <p className="text-sm text-[#676879]">Create custom viral memes with classic bold Impact text and crisp black stroke outlines offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-orange-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Memes are created offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -129,7 +129,7 @@ export default function MemeGeneratorTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 flex flex-col gap-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <Smile className="w-8 h-8 text-orange-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{image.name}</p>
@@ -144,7 +144,7 @@ export default function MemeGeneratorTool() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 rounded-xl border border-white/5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-6 rounded-xl border border-white/5">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Top Caption</label>
               <input
@@ -182,11 +182,11 @@ export default function MemeGeneratorTool() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
             <button
               onClick={generateMeme}
               disabled={loading}
-              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-orange-500/20"
             >
               {loading ? (
                 <>
@@ -205,7 +205,7 @@ export default function MemeGeneratorTool() {
               <button
                 onClick={handleDownload}
                 disabled={!image}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-orange-500/20"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Meme</span>
@@ -217,7 +217,7 @@ export default function MemeGeneratorTool() {
                 fileName="meme.png"
                 mimeType="image/png"
                 buttonText="Share Meme"
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-white border border-[#d0d4e4] text-[#1f2532] font-bold hover:bg-[#f6f8fa] transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-white border border-[#d0d4e4] text-[#1f2532] font-bold hover:bg-[#f6f8fa] transition-all flex items-center justify-center gap-3 shadow-sm"
               />
             )}
           </div>

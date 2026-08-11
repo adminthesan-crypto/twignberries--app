@@ -68,7 +68,7 @@ Sitemap: ${sitemapUrl}`;
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3 mb-6">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6 mb-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -106,7 +106,7 @@ Sitemap: ${sitemapUrl}`;
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {tab === 'meta' ? (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
               <div style={SL}>Page Title ({title.length} chars)</div>
               <input
@@ -124,7 +124,7 @@ Sitemap: ${sitemapUrl}`;
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 rows={3}
-                className="w-full p-3 rounded-lg border border-[#d0d4e4] text-sm text-[#1f2532]"
+                className="w-full p-6 rounded-lg border border-[#d0d4e4] text-sm text-[#1f2532]"
               />
               <span className="text-xs text-[#868894]">Recommended: 120–160 characters</span>
             </div>
@@ -163,7 +163,7 @@ Sitemap: ${sitemapUrl}`;
             </div>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
               <div style={SL}>Sitemap URL</div>
               <input
@@ -174,9 +174,9 @@ Sitemap: ${sitemapUrl}`;
               />
             </div>
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-6 pt-2">
               <div style={SL}>Crawl Disallow Rules</div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-[#1f2532] cursor-pointer">
+              <label className="flex items-center gap-3 text-sm font-semibold text-[#1f2532] cursor-pointer">
                 <input
                   type="checkbox"
                   checked={disallowAdmin}
@@ -185,7 +185,7 @@ Sitemap: ${sitemapUrl}`;
                 />
                 Disallow /admin/ and /api/ paths
               </label>
-              <label className="flex items-center gap-2 text-sm font-semibold text-[#1f2532] cursor-pointer">
+              <label className="flex items-center gap-3 text-sm font-semibold text-[#1f2532] cursor-pointer">
                 <input
                   type="checkbox"
                   checked={disallowTmp}
@@ -201,10 +201,10 @@ Sitemap: ${sitemapUrl}`;
         <div>
           <div className="flex items-center justify-between mb-2">
             <span style={SL}>Generated Code Output</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                className="flex items-center gap-3.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 {copied ? 'Copied!' : 'Copy Code'}
@@ -212,7 +212,7 @@ Sitemap: ${sitemapUrl}`;
               {tab === 'robots' && (
                 <button
                   onClick={handleDownloadRobots}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#6161ff] text-[#6161ff] text-xs font-bold hover:bg-[#eceeff]"
+                  className="flex items-center gap-3.5 px-3 py-1 rounded-lg border border-[#6161ff] text-[#6161ff] text-xs font-bold hover:bg-[#eceeff]"
                 >
                   <Download size={14} />
                   Download robots.txt
@@ -225,7 +225,7 @@ Sitemap: ${sitemapUrl}`;
             value={currentCode}
             readOnly
             rows={16}
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
           />
         </div>
       </div>

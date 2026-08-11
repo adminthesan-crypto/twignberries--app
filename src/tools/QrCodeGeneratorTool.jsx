@@ -91,8 +91,8 @@ export default function QrCodeGeneratorTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -105,7 +105,7 @@ export default function QrCodeGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
             <div style={SL}>Destination URL or Text Payload</div>
             <input
@@ -117,10 +117,10 @@ export default function QrCodeGeneratorTool() {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div style={SL}>QR Code Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={fgColor}
@@ -138,7 +138,7 @@ export default function QrCodeGeneratorTool() {
 
             <div>
               <div style={SL}>Background Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={bgColor}
@@ -155,7 +155,7 @@ export default function QrCodeGeneratorTool() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div style={SL}>Error Correction Level</div>
               <select
@@ -198,10 +198,10 @@ export default function QrCodeGeneratorTool() {
             />
           </div>
 
-          <div className="flex gap-2 w-full mt-4">
+          <div className="flex gap-6 w-full mt-4">
             <button
               onClick={handleDownloadSvg}
-              className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
+              className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-3 hover:bg-[#4e4ee0]"
             >
               <Download size={16} /> Download Vector .SVG
             </button>

@@ -97,7 +97,7 @@ export default function KeywordDensityTool() {
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -122,18 +122,18 @@ export default function KeywordDensityTool() {
             onChange={(e) => setText(e.target.value)}
             rows={16}
             placeholder="Paste your blog post or landing page copy here..."
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
           />
         </div>
 
         <div className="space-y-6">
           {/* Readability Box */}
-          <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] space-y-4">
-            <div className="flex items-center gap-2">
+          <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] space-y-6">
+            <div className="flex items-center gap-3">
               <BookOpen className="text-[#6161ff]" size={20} />
               <span className="font-bold text-sm text-[#1f2532]">Readability & Structure</span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
               <div>
                 <div className="text-[10px] uppercase font-bold text-[#676879]">Flesch Reading Score</div>
                 <div className="text-2xl font-bold text-[#6161ff] mt-0.5">{stats.fkScore}/100</div>
@@ -150,7 +150,7 @@ export default function KeywordDensityTool() {
           </div>
 
           {/* Top Single Keywords */}
-          <div className="p-5 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-3">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
             <div className="flex items-center justify-between">
               <span style={SL}>Top 1-Word Keyword Density</span>
               <span className="text-[11px] text-[#868894]">Excluding stop words</span>
@@ -159,7 +159,7 @@ export default function KeywordDensityTool() {
               {stats.topWords.map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between text-xs font-mono border-b border-[#f0f2f5] pb-1.5">
                   <span className="font-bold text-[#1f2532]">{item.word}</span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-6">
                     <span className="text-[#676879]">{item.count}×</span>
                     <span className="badge badge-brand text-[10px]">{item.percent}%</span>
                   </div>
@@ -169,13 +169,13 @@ export default function KeywordDensityTool() {
           </div>
 
           {/* Top 2-Word Phrases */}
-          <div className="p-5 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-3">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
             <span style={SL}>Top 2-Word Keyword Phrases</span>
             <div className="space-y-2">
               {stats.bigrams.map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between text-xs font-mono border-b border-[#f0f2f5] pb-1.5">
                   <span className="font-bold text-[#1f2532]">{item.phrase}</span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-6">
                     <span className="text-[#676879]">{item.count}×</span>
                     <span className="badge badge-success text-[10px]">{item.percent}%</span>
                   </div>

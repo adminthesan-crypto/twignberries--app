@@ -195,7 +195,7 @@ export default function ImageToPdfTool() {
           </label>
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 16, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -205,7 +205,7 @@ export default function ImageToPdfTool() {
         {/* Page Layout Settings */}
         <div className="form-card">
           <div style={SL}>2. PDF Page Settings</div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Page Orientation
@@ -250,7 +250,7 @@ export default function ImageToPdfTool() {
               </button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {images.map((img, idx) => (
                 <div
                   key={img.id}
@@ -260,7 +260,7 @@ export default function ImageToPdfTool() {
                     border: '1px solid #e6e9ef'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                     <img
                       src={img.previewUrl}
                       alt={img.name}
@@ -309,8 +309,8 @@ export default function ImageToPdfTool() {
       </div>
 
       {/* Right Column: Sticky Live Action & Results */}
-      <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
+      <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div className="glass-card" style={{ padding: 26, border: '2px solid #e6e9ef' }}>
           <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">PDF Compilation Overview</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
@@ -341,11 +341,11 @@ export default function ImageToPdfTool() {
           )}
 
           {resultUrl && (
-            <div style={{ padding: '16px', borderRadius: 14, background: '#f3f5ff', border: '1px solid rgba(97,97,255,0.3)', textAlign: 'center' }}>
+            <div style={{ padding: '24px', borderRadius: 14, background: '#f3f5ff', border: '1px solid rgba(97,97,255,0.3)', textAlign: 'center' }}>
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 Generated {images.length}-page PDF successfully!
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Converted-Images.pdf"
@@ -359,7 +359,7 @@ export default function ImageToPdfTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Encrypted browser-memory image layout. Zero cloud retention.</span>
           </div>

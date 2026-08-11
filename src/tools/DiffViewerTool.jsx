@@ -46,9 +46,9 @@ export default function DiffViewerTool() {
   const rows = computeDiff(origText, modText);
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
-        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={24} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
             100% Client-Side Code & Text Diff Comparator
@@ -59,14 +59,14 @@ export default function DiffViewerTool() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
           <div style={SL}>Original Text / Code</div>
           <textarea
             value={origText}
             onChange={(e) => setOrigText(e.target.value)}
             rows={8}
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
           />
         </div>
         <div>
@@ -75,26 +75,26 @@ export default function DiffViewerTool() {
             value={modText}
             onChange={(e) => setModText(e.target.value)}
             rows={8}
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
           />
         </div>
       </div>
 
       {/* Diff Table */}
       <div className="rounded-2xl border border-[#e6e9ef] overflow-hidden shadow-sm bg-white">
-        <div className="p-4 bg-[#f5f6f8] border-b border-[#e6e9ef] flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="p-6 bg-[#f5f6f8] border-b border-[#e6e9ef] flex items-center justify-between">
+          <div className="flex items-center gap-6">
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879' }}>Side-by-Side Diff Analysis</span>
             <NativeShareButton text={`Original:\n${origText}\n\nModified:\n${modText}`} />
           </div>
-          <div className="flex items-center gap-4 text-xs font-bold">
-            <span className="flex items-center gap-1 text-green-700">
+          <div className="flex items-center gap-6 text-xs font-bold">
+            <span className="flex items-center gap-3 text-green-700">
               <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" /> Added
             </span>
-            <span className="flex items-center gap-1 text-amber-700">
+            <span className="flex items-center gap-3 text-amber-700">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" /> Changed
             </span>
-            <span className="flex items-center gap-1 text-red-700">
+            <span className="flex items-center gap-3 text-red-700">
               <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block" /> Removed
             </span>
           </div>

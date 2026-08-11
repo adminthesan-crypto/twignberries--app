@@ -57,8 +57,8 @@ export default function SitemapGeneratorTool() {
     .filter((l) => l.trim().startsWith('http')).length;
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -71,7 +71,7 @@ export default function SitemapGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
             <div className="flex items-center justify-between mb-2">
               <span style={SL}>Page URLs ({urlCount} valid links)</span>
@@ -82,11 +82,11 @@ export default function SitemapGeneratorTool() {
               onChange={(e) => setUrlsText(e.target.value)}
               rows={12}
               placeholder="https://pahruli.com/..."
-              className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+              className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-6">
             <div>
               <div style={SL}>Change Frequency</div>
               <select
@@ -117,7 +117,7 @@ export default function SitemapGeneratorTool() {
 
             <div>
               <div style={SL}>Last Modified</div>
-              <label className="flex items-center gap-2 h-11 px-3 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] cursor-pointer bg-white">
+              <label className="flex items-center gap-3 h-11 px-3 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] cursor-pointer bg-white">
                 <input
                   type="checkbox"
                   checked={includeLastmod}
@@ -133,17 +133,17 @@ export default function SitemapGeneratorTool() {
         <div>
           <div className="flex items-center justify-between mb-2">
             <span style={SL}>Generated sitemap.xml</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                className="flex items-center gap-3.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 {copied ? 'Copied!' : 'Copy XML'}
               </button>
               <button
                 onClick={handleDownloadXml}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#6161ff] text-[#6161ff] text-xs font-bold hover:bg-[#eceeff]"
+                className="flex items-center gap-3.5 px-3 py-1 rounded-lg border border-[#6161ff] text-[#6161ff] text-xs font-bold hover:bg-[#eceeff]"
               >
                 <Download size={14} />
                 Download .XML
@@ -155,7 +155,7 @@ export default function SitemapGeneratorTool() {
             value={xmlOutput}
             readOnly
             rows={16}
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
           />
         </div>
       </div>

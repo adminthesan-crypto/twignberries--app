@@ -142,7 +142,7 @@ export default function MomCreatorTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 border border-blue-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-500">
             <Mic className="w-5 h-5" />
           </div>
@@ -151,7 +151,7 @@ export default function MomCreatorTool() {
             <p className="text-sm text-[#676879]">Generate professional AI meeting minutes automatically from any recording.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-blue-500 font-medium">
+        <div className="flex items-center gap-3 text-xs text-blue-500 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Whisper AI transcribes offline in your browser. Audio never leaves your device.</span>
         </div>
@@ -160,18 +160,18 @@ export default function MomCreatorTool() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Column: Input Settings */}
         <div className="md:col-span-1 space-y-6">
-          <div className="bg-white border border-[#e6e9ef] rounded-2xl p-5 shadow-sm space-y-4">
-            <h3 className="font-bold text-[#1f2532] flex items-center gap-2">
+          <div className="bg-white border border-[#e6e9ef] rounded-2xl p-6 shadow-sm space-y-6">
+            <h3 className="font-bold text-[#1f2532] flex items-center gap-3">
               <Layers className="w-4 h-4 text-blue-500" /> Output Template
             </h3>
             
-            <div className="space-y-3">
+            <div className="space-y-6">
               {templates.map(t => (
                 <label 
                   key={t.id} 
-                  className={`block p-3 rounded-xl border-2 cursor-pointer transition-all ${template === t.id ? 'border-blue-500 bg-blue-50' : 'border-[#e6e9ef] hover:border-[#d0d4e4] bg-white'}`}
+                  className={`block p-6 rounded-xl border-2 cursor-pointer transition-all ${template === t.id ? 'border-blue-500 bg-blue-50' : 'border-[#e6e9ef] hover:border-[#d0d4e4] bg-white'}`}
                 >
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="flex items-center gap-3 mb-1">
                     <input 
                       type="radio" 
                       name="template" 
@@ -206,7 +206,7 @@ export default function MomCreatorTool() {
              />
              
              {isTranscribing ? (
-               <div className="flex flex-col items-center justify-center space-y-3 pointer-events-none">
+               <div className="flex flex-col items-center justify-center space-y-6 pointer-events-none">
                  <RefreshCw className="w-8 h-8 text-blue-500 animate-spin" />
                  <p className="text-sm font-bold text-[#1f2532]">{transcribeStatus}</p>
                  <div className="w-full max-w-xs h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -214,7 +214,7 @@ export default function MomCreatorTool() {
                  </div>
                </div>
              ) : (
-               <div className="flex flex-col items-center justify-center space-y-3 pointer-events-none">
+               <div className="flex flex-col items-center justify-center space-y-6 pointer-events-none">
                  <div className="w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-blue-500">
                    <Upload className="w-5 h-5" />
                  </div>
@@ -229,28 +229,28 @@ export default function MomCreatorTool() {
              )}
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <div className="flex-1 h-px bg-[#e6e9ef]"></div>
             <span className="text-xs font-bold text-[#9ca3af] uppercase tracking-wider">OR PASTE TEXT</span>
             <div className="flex-1 h-px bg-[#e6e9ef]"></div>
           </div>
 
           <div className="bg-white border border-[#e6e9ef] rounded-2xl p-1 overflow-hidden focus-within:border-blue-500 transition-colors shadow-sm">
-            <div className="bg-[#f8f9fa] border-b border-[#e6e9ef] p-3 flex items-center gap-2 text-xs font-bold text-[#676879]">
+            <div className="bg-[#f8f9fa] border-b border-[#e6e9ef] p-6 flex items-center gap-3 text-xs font-bold text-[#676879]">
               <FileText className="w-4 h-4" /> Transcript
             </div>
             <textarea
               value={transcript}
               onChange={(e) => setTranscript(e.target.value)}
               placeholder="Your transcribed text will appear here. You can also paste an existing transcript..."
-              className="w-full h-48 p-4 text-sm text-[#1f2532] bg-white resize-none focus:outline-none"
+              className="w-full h-48 p-6 text-sm text-[#1f2532] bg-white resize-none focus:outline-none"
             />
           </div>
 
           <button
             onClick={generateMom}
             disabled={!transcript.trim() || loading || isTranscribing}
-            className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 disabled:opacity-50 transition-all flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20"
+            className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 disabled:opacity-50 transition-all flex justify-center items-center gap-3 shadow-lg shadow-blue-500/20"
           >
             {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
             {loading ? summarizeStatus : 'Generate Minutes'}
@@ -258,8 +258,8 @@ export default function MomCreatorTool() {
 
           {result && (
             <div className="bg-white border border-[#e6e9ef] rounded-2xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="bg-[#f8f9fa] border-b border-[#e6e9ef] p-4 flex items-center justify-between">
-                <h3 className="font-bold text-[#1f2532] flex items-center gap-2">
+              <div className="bg-[#f8f9fa] border-b border-[#e6e9ef] p-6 flex items-center justify-between">
+                <h3 className="font-bold text-[#1f2532] flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500" /> Generated Minutes
                 </h3>
               </div>
@@ -268,11 +268,11 @@ export default function MomCreatorTool() {
                   {result}
                 </pre>
               </div>
-              <div className="bg-[#f8f9fa] border-t border-[#e6e9ef] p-4">
-                <div className="flex gap-2">
+              <div className="bg-[#f8f9fa] border-t border-[#e6e9ef] p-6">
+                <div className="flex gap-3">
                   <button
                     onClick={handleDownloadTxt}
-                    className="flex-1 py-3 px-4 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-gray-800 transition-all flex justify-center items-center gap-2"
+                    className="flex-1 py-3 px-4 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-gray-800 transition-all flex justify-center items-center gap-3"
                   >
                     <Download className="w-4 h-4" /> Download .TXT
                   </button>

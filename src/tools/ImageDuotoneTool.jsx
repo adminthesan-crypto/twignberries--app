@@ -97,7 +97,7 @@ export default function ImageDuotoneTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-pink-500/10 border border-pink-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400">
             <Palette className="w-5 h-5" />
           </div>
@@ -106,14 +106,14 @@ export default function ImageDuotoneTool() {
             <p className="text-sm text-[#676879]">Apply stylish Spotify-style two-color duotone gradients and cyberpunk tints to photos offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-pink-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-pink-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Color filters are mapped offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -129,7 +129,7 @@ export default function ImageDuotoneTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <Palette className="w-8 h-8 text-pink-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{image.name}</p>
@@ -144,7 +144,7 @@ export default function ImageDuotoneTool() {
             </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border border-white/5">
+          <div className="flex flex-wrap items-center gap-6 bg-white p-6 rounded-xl border border-white/5">
             <span className="text-xs font-semibold text-[#9ca3af]">Duotone Theme:</span>
             {Object.entries(presets).map(([key, item]) => (
               <button
@@ -165,11 +165,11 @@ export default function ImageDuotoneTool() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pt-6 border-t border-[#e6e9ef]">
             <button
               onClick={applyDuotone}
               disabled={loading}
-              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-pink-500 text-black font-bold hover:bg-pink-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-pink-500/20"
+              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-pink-500 text-black font-bold hover:bg-pink-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-pink-500/20"
             >
               {loading ? (
                 <>
@@ -188,7 +188,7 @@ export default function ImageDuotoneTool() {
               <>
                 <button
                   onClick={handleDownload}
-                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download Duotone Photo</span>

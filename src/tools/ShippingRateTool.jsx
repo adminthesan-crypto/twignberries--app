@@ -21,8 +21,8 @@ export default function ShippingRateTool() {
   const isDimCharged = Number(dimWeight) > Number(actualWeight);
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -35,9 +35,9 @@ export default function ShippingRateTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
           <div style={SL}>Package Dimensions (Inches)</div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-6">
             <div>
               <span className="text-xs font-semibold text-[#676879]">Length (in)</span>
               <input
@@ -67,7 +67,7 @@ export default function ShippingRateTool() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-2">
+          <div className="grid grid-cols-2 gap-6 pt-2">
             <div>
               <div style={SL}>Actual Scale Weight (lbs)</div>
               <input
@@ -109,25 +109,25 @@ export default function ShippingRateTool() {
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-[#f5f6f8]">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl bg-[#f5f6f8]">
               <span className="text-[10px] uppercase font-bold text-[#676879]">Dim Weight</span>
               <div className="text-lg font-mono font-bold text-[#1f2532] mt-0.5">{dimWeight} lbs</div>
               <span className="text-[11px] text-[#868894]">({length}×{width}×{height}) / {dimDivisor}</span>
             </div>
-            <div className="p-4 rounded-xl bg-[#f5f6f8]">
+            <div className="p-6 rounded-xl bg-[#f5f6f8]">
               <span className="text-[10px] uppercase font-bold text-[#676879]">Actual Weight</span>
               <div className="text-lg font-mono font-bold text-[#1f2532] mt-0.5">{actualWeight} lbs</div>
               <span className="text-[11px] text-[#868894]">Scale measurement</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between">
+          <div className="p-6 rounded-xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between">
             <div>
               <div className="text-[10px] uppercase font-bold text-[#6161ff]">Est. Base Carrier Cost</div>
               <div className="text-2xl font-mono font-bold text-[#1f2532] mt-0.5">${estCost}</div>
             </div>
-            <div className="flex flex-col items-end gap-2">
+            <div className="flex flex-col items-end gap-3">
               <div className="text-xs text-[#676879] text-right">
                 ${baseRate.toFixed(2)} base + ${ratePerLb.toFixed(2)}/lb
               </div>

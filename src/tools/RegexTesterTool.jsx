@@ -61,8 +61,8 @@ export default function RegexTesterTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -75,17 +75,17 @@ export default function RegexTesterTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
       )}
 
       {/* Pattern Input & Flags */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
         <div>
           <div style={SL}>Regular Expression Pattern</div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span className="font-mono text-lg font-bold text-[#868894]">/</span>
             <input
               type="text"
@@ -104,7 +104,7 @@ export default function RegexTesterTool() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-xs font-bold text-[#676879]">
+        <div className="flex items-center gap-6 text-xs font-bold text-[#676879]">
           <span>Quick Flags:</span>
           <button
             onClick={() => toggleFlag('g')}
@@ -147,7 +147,7 @@ export default function RegexTesterTool() {
             onChange={(e) => setTestText(e.target.value)}
             rows={10}
             placeholder="Enter text to test pattern against..."
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
           />
         </div>
 
@@ -156,14 +156,14 @@ export default function RegexTesterTool() {
             <div style={{...SL, marginBottom: 0}}>Match Results ({matches.length} found)</div>
             {matches.length > 0 && <NativeShareButton text={matches.map(m => m.str).join('\n')} />}
           </div>
-          <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] min-h-[220px] max-h-[300px] overflow-y-auto space-y-2">
+          <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] min-h-[220px] max-h-[300px] overflow-y-auto space-y-2">
             {matches.length === 0 ? (
               <span className="text-xs text-[#868894] font-mono">No regex matches found in test string.</span>
             ) : (
               matches.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded-lg bg-white border border-[#e6e9ef] shadow-sm flex flex-col gap-1"
+                  className="p-4 rounded-lg bg-white border border-[#e6e9ef] shadow-sm flex flex-col gap-2"
                 >
                   <div className="flex items-center justify-between">
                     <span className="badge badge-brand text-[10px]">Match #{idx + 1}</span>

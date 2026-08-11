@@ -93,7 +93,7 @@ export default function ImageSplitterTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10 border border-indigo-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
             <Grid className="w-5 h-5" />
           </div>
@@ -102,14 +102,14 @@ export default function ImageSplitterTool() {
             <p className="text-sm text-[#676879]">Slice photos into 3x3 Instagram grids, 3x1 carousels, or custom rows/cols offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-indigo-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-indigo-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Images are sliced offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-4 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -125,7 +125,7 @@ export default function ImageSplitterTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <Grid className="w-8 h-8 text-indigo-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{image.name}</p>
@@ -141,7 +141,7 @@ export default function ImageSplitterTool() {
           </div>
 
           {/* Preset Buttons */}
-          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border border-white/5">
+          <div className="flex flex-wrap items-center gap-6 bg-white p-6 rounded-xl border border-white/5">
             <span className="text-xs font-semibold text-[#9ca3af]">Grid Presets:</span>
             {[
               { label: '3×3 Instagram Profile', r: 3, c: 3 },
@@ -160,7 +160,7 @@ export default function ImageSplitterTool() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <label className="text-[11px] text-[#9ca3af] block mb-1">Columns ({cols})</label>
               <input type="range" min="1" max="6" value={cols} onChange={(e) => { setCols(Number(e.target.value)); setTiles([]); }} className="w-full accent-indigo-400" />
@@ -172,16 +172,16 @@ export default function ImageSplitterTool() {
           </div>
 
           {tiles.length > 0 && (
-            <div className="space-y-3 pt-4 border-t border-[#e6e9ef]">
+            <div className="space-y-6 pt-6 border-t border-[#e6e9ef]">
               <span className="text-xs font-bold text-emerald-400 block">Sliced Grid Output ({tiles.length} Tiles):</span>
               <div
-                className="grid gap-2 bg-white p-4 rounded-xl border border-[#e6e9ef]"
+                className="grid gap-4 bg-white p-6 rounded-xl border border-[#e6e9ef]"
                 style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
               >
                 {tiles.map((t) => (
                   <div key={t.idx} className="relative group overflow-hidden rounded border border-[#e6e9ef] bg-black">
                     <img src={t.url} alt={`Tile ${t.idx}`} className="w-full h-24 object-cover" />
-                    <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all">
+                    <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
                       <button
                         onClick={() => downloadTile(t)}
                         className="text-white text-xs font-bold hover:underline"
@@ -200,11 +200,11 @@ export default function ImageSplitterTool() {
             </div>
           )}
 
-          <div className="flex justify-end pt-2">
+          <div className="flex justify-end pt-6 border-t border-[#e6e9ef]">
             <button
               onClick={performSplit}
               disabled={loading}
-              className="py-3 px-6 rounded-xl bg-indigo-500 text-black font-bold hover:bg-indigo-400 transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/20"
+              className="py-3 px-6 rounded-xl bg-indigo-500 text-black font-bold hover:bg-indigo-400 transition-all flex items-center gap-3 shadow-lg shadow-indigo-500/20"
             >
               {loading ? (
                 <>

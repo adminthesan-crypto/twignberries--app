@@ -66,9 +66,9 @@ export default function AiTokenCostCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* ── Left Column (Inputs) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Card 1: Select LLM Model */}
           <div className="form-card">
@@ -103,7 +103,7 @@ export default function AiTokenCostCalculator() {
             </div>
 
             <div style={{
-              padding: 14,
+              padding: 24,
               borderRadius: 10,
               background: 'rgba(255,255,255,0.02)',
               border: '1px solid var(--border)',
@@ -132,7 +132,7 @@ export default function AiTokenCostCalculator() {
               <Zap size={13} color="var(--brand)" /> 2. Token Volume &amp; Request Scale
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 20 }}>
               <div>
                 <label>Avg. input tokens / request</label>
                 <input
@@ -195,7 +195,7 @@ export default function AiTokenCostCalculator() {
               Monthly API expenditure forecast at <strong style={{ color: 'var(--text-2)' }}>{dailyRequests.toLocaleString()} req/day</strong> ({inputTokens} in / {outputTokens} out):
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {comparisonList.map((item) => {
                 const widthPercent = Math.max(5, Math.min(100, (item.monthly / maxMonthly) * 100));
                 const isCurrent = item.key === modelKey;
@@ -229,7 +229,7 @@ export default function AiTokenCostCalculator() {
         </div>
 
         {/* ── Right Column (Results - Sticky) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           
           {/* Primary Hero Banner */}
           <div style={{
@@ -271,8 +271,8 @@ export default function AiTokenCostCalculator() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+          <div className="form-card" style={{ padding: 24 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Cost breakdown
               </span>

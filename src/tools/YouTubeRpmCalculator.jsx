@@ -69,9 +69,9 @@ export default function YouTubeRpmCalculator() {
       </div>
 
       {/* Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* Left Column (Inputs / Editor) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {/* Form Card 1: Monthly Views */}
           <div className="form-card">
             <div style={sectionLabelStyle}>
@@ -112,18 +112,18 @@ export default function YouTubeRpmCalculator() {
               2. Niche Benchmarks &amp; RPM Rate
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               <div>
                 <label className="block text-xs font-medium text-[#9ca3af] mb-2">
                   Select Content Niche (Average 2026 RPM)
                 </label>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-3">
                   {nicheRpmPresets.map((preset) => (
                     <button
                       key={preset.id}
                       type="button"
                       onClick={() => handleNicheSelect(preset)}
-                      className={`flex items-center justify-between p-3 rounded-xl text-xs font-medium border transition-all ${
+                      className={`flex items-center justify-between p-6 rounded-xl text-xs font-medium border transition-all ${
                         niche === preset.id
                           ? 'bg-[#ff6b00]/20 border-[#ff6b00] text-[#1f2532] font-semibold shadow-sm'
                           : 'bg-white border-[#e6e9ef] text-[#9ca3af] hover:bg-gray-100 hover:text-[#1f2532]'
@@ -154,7 +154,7 @@ export default function YouTubeRpmCalculator() {
         </div>
 
         {/* Right Column (Results / Live Preview - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
@@ -176,7 +176,7 @@ export default function YouTubeRpmCalculator() {
               Revenue Breakdown
             </div>
 
-            <div className="space-y-3 font-mono text-sm mb-5">
+            <div className="space-y-6 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Daily Average Earnings:</span>
                 <span className="text-[#1f2532] font-semibold">${dailyRevenue.toFixed(2)}</span>
@@ -205,8 +205,8 @@ export default function YouTubeRpmCalculator() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-2.5">
-              <div className="flex gap-2 w-full">
+            <div className="flex flex-col gap-3.5">
+              <div className="flex gap-3 w-full">
                 <button
                   type="button"
                   onClick={handleCopy}

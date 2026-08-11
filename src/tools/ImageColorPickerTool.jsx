@@ -78,7 +78,7 @@ export default function ImageColorPickerTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-sky-500/10 via-cyan-500/10 to-sky-500/10 border border-sky-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-sky-500/20 flex items-center justify-center text-sky-400">
             <Pipette className="w-5 h-5" />
           </div>
@@ -87,14 +87,14 @@ export default function ImageColorPickerTool() {
             <p className="text-sm text-[#676879]">Click any pixel on an uploaded image to inspect and copy its HEX, RGB, and HSL color values offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-sky-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-sky-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Color sampling is processed offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -110,7 +110,7 @@ export default function ImageColorPickerTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <Pipette className="w-8 h-8 text-sky-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{image.name}</p>
@@ -125,7 +125,7 @@ export default function ImageColorPickerTool() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 bg-white border border-[#e6e9ef] rounded-xl overflow-auto max-h-96 flex items-center justify-center p-2">
               <canvas
                 ref={(node) => {
@@ -146,7 +146,7 @@ export default function ImageColorPickerTool() {
               />
             </div>
 
-            <div className="bg-white border border-[#e6e9ef] rounded-xl p-5 space-y-4 flex flex-col justify-between">
+            <div className="bg-white border border-[#e6e9ef] rounded-xl p-6 space-y-6 flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#9ca3af] block mb-2">Picked Color Preview</span>
                 <div
@@ -168,10 +168,10 @@ export default function ImageColorPickerTool() {
                       <span className="text-[10px] text-[#9ca3af] block">{item.label}</span>
                       <span className="text-xs font-mono text-[#1f2532]">{item.val}</span>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-3">
                       <button
                         onClick={() => copyToClipboard(item.val)}
-                        className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs flex items-center gap-1"
+                        className="p-1.5 rounded bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs flex items-center gap-3"
                       >
                         {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                       </button>

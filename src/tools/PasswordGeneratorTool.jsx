@@ -90,7 +90,7 @@ export default function PasswordGeneratorTool() {
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -103,7 +103,7 @@ export default function PasswordGeneratorTool() {
       </div>
 
       {/* Output card */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
         <div className="flex items-center justify-between">
           <span style={SL}>Generated Password / Passphrase</span>
           <span className={`badge ${badgeColor} text-[10px]`}>
@@ -111,7 +111,7 @@ export default function PasswordGeneratorTool() {
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
           <input
             type="text"
             readOnly
@@ -127,7 +127,7 @@ export default function PasswordGeneratorTool() {
           </button>
           <button
             onClick={handleCopy}
-            className="h-14 px-6 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center gap-2 hover:bg-[#4e4ee0]"
+            className="h-14 px-6 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center gap-3 hover:bg-[#4e4ee0]"
           >
             {copied ? <Check size={18} /> : <Copy size={18} />}
             {copied ? 'Copied!' : 'Copy'}
@@ -138,9 +138,9 @@ export default function PasswordGeneratorTool() {
 
       {/* Controls */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
           <div style={SL}>Generation Mode</div>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <button
               onClick={() => setMode('random')}
               className={`flex-1 py-2.5 rounded-lg text-xs font-bold border transition ${
@@ -164,7 +164,7 @@ export default function PasswordGeneratorTool() {
           </div>
 
           {mode === 'random' ? (
-            <div className="space-y-4 pt-2">
+            <div className="space-y-6 pt-2">
               <div>
                 <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-1">
                   <span>Password Length</span>
@@ -181,7 +181,7 @@ export default function PasswordGeneratorTool() {
               </div>
 
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-xs font-bold text-[#1f2532] cursor-pointer">
+                <label className="flex items-center gap-3 text-xs font-bold text-[#1f2532] cursor-pointer">
                   <input
                     type="checkbox"
                     checked={useUpper}
@@ -190,7 +190,7 @@ export default function PasswordGeneratorTool() {
                   />
                   Include Uppercase Letters (A–Z)
                 </label>
-                <label className="flex items-center gap-2 text-xs font-bold text-[#1f2532] cursor-pointer">
+                <label className="flex items-center gap-3 text-xs font-bold text-[#1f2532] cursor-pointer">
                   <input
                     type="checkbox"
                     checked={useNumbers}
@@ -199,7 +199,7 @@ export default function PasswordGeneratorTool() {
                   />
                   Include Numbers (0–9)
                 </label>
-                <label className="flex items-center gap-2 text-xs font-bold text-[#1f2532] cursor-pointer">
+                <label className="flex items-center gap-3 text-xs font-bold text-[#1f2532] cursor-pointer">
                   <input
                     type="checkbox"
                     checked={useSymbols}
@@ -211,7 +211,7 @@ export default function PasswordGeneratorTool() {
               </div>
             </div>
           ) : (
-            <div className="space-y-4 pt-2">
+            <div className="space-y-6 pt-2">
               <div>
                 <div className="flex justify-between text-xs font-bold text-[#1f2532] mb-1">
                   <span>Number of Words</span>
@@ -229,7 +229,7 @@ export default function PasswordGeneratorTool() {
 
               <div>
                 <span className="text-xs font-bold text-[#1f2532]">Word Separator</span>
-                <div className="flex gap-2 mt-1">
+                <div className="flex gap-3 mt-1">
                   {['-', '_', '.', ' '].map((s) => (
                     <button
                       key={s}
@@ -249,8 +249,8 @@ export default function PasswordGeneratorTool() {
           )}
         </div>
 
-        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex flex-col justify-center space-y-3">
-          <div className="flex items-center gap-2 text-[#6161ff] font-bold text-sm">
+        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex flex-col justify-center space-y-6">
+          <div className="flex items-center gap-3 text-[#6161ff] font-bold text-sm">
             <Lock size={18} /> Zero-Knowledge Client Security
           </div>
           <p className="text-xs text-[#676879] leading-relaxed">

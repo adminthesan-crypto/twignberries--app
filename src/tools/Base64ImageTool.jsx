@@ -60,9 +60,9 @@ export default function Base64ImageTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
-        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={24} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
             100% Client-Side Base64 Image Encoder & Decoder
@@ -74,7 +74,7 @@ export default function Base64ImageTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -122,9 +122,9 @@ export default function Base64ImageTool() {
             />
           </label>
         ) : (
-          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
-            <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
-              <div className="flex items-center gap-3">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-8">
+            <div className="flex items-center justify-between flex-wrap gap-6 pb-4 border-b border-[#f0f2f5]">
+              <div className="flex items-center gap-6">
                 <Image className="text-[#6161ff]" size={24} />
                 <div style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>{file.name}</div>
               </div>
@@ -141,10 +141,10 @@ export default function Base64ImageTool() {
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase' }}>
                   Base64 Data URI ({base64Str.length.toLocaleString()} characters)
                 </span>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
+                    className="flex items-center gap-3.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
                   >
                     {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
                     {copied ? 'Copied!' : 'Copy Base64'}
@@ -156,7 +156,7 @@ export default function Base64ImageTool() {
                 value={base64Str}
                 readOnly
                 rows={8}
-                className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
+                className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
               />
             </div>
           </div>
@@ -170,22 +170,22 @@ export default function Base64ImageTool() {
               onChange={(e) => handleDecodeInput(e.target.value)}
               placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
               rows={6}
-              className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+              className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
             />
           </div>
 
           {base64Str && base64Str.startsWith('data:image/') && (
-            <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm flex flex-col items-center gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm flex flex-col items-center gap-6">
               <span style={SL}>Decoded Image Preview</span>
               <img
                 src={base64Str}
                 alt="Decoded Base64"
                 className="max-h-[320px] rounded-lg shadow-md border border-[#e6e9ef]"
               />
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <button
                   onClick={handleDownloadDecoded}
-                  className="btn-primary flex items-center gap-2"
+                  className="btn-primary flex items-center gap-3"
                   style={{ padding: '11px 24px', fontSize: 14 }}
                 >
                   <Download size={16} />

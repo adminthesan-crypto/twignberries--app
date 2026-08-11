@@ -125,7 +125,7 @@ export default function PdfBookletTool() {
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -138,7 +138,7 @@ export default function PdfBookletTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -162,8 +162,8 @@ export default function PdfBookletTool() {
         </label>
       ) : (
         <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
-          <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between flex-wrap gap-6 pb-4 border-b border-[#f0f2f5]">
+            <div className="flex items-center gap-6">
               <FileText className="text-[#6161ff]" size={24} />
               <div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>{file.name}</div>
@@ -180,10 +180,10 @@ export default function PdfBookletTool() {
 
           <div>
             <div style={SL}>Imposition Layout</div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
               <button
                 onClick={() => { setLayout('2up'); setImposedPdfUrl(null); }}
-                className={`p-4 rounded-xl border-2 text-left transition ${
+                className={`p-6 rounded-xl border-2 text-left transition ${
                   layout === '2up'
                     ? 'border-[#6161ff] bg-[#f5f6ff] text-[#1f2532]'
                     : 'border-[#e6e9ef] bg-white text-[#676879] hover:bg-gray-50'
@@ -194,7 +194,7 @@ export default function PdfBookletTool() {
               </button>
               <button
                 onClick={() => { setLayout('4up'); setImposedPdfUrl(null); }}
-                className={`p-4 rounded-xl border-2 text-left transition ${
+                className={`p-6 rounded-xl border-2 text-left transition ${
                   layout === '4up'
                     ? 'border-[#6161ff] bg-[#f5f6ff] text-[#1f2532]'
                     : 'border-[#e6e9ef] bg-white text-[#676879] hover:bg-gray-50'
@@ -210,7 +210,7 @@ export default function PdfBookletTool() {
             <span style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
               ✓ Reduces {totalPages} pages down to {Math.ceil(totalPages / (layout === '2up' ? 2 : 4))} printed sheets
             </span>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <button
                 onClick={handleGenerateImposition}
                 disabled={loading}
@@ -219,10 +219,10 @@ export default function PdfBookletTool() {
                 {loading ? 'Imposing...' : `Generate ${layout.toUpperCase()} Sheet`}
               </button>
               {imposedPdfUrl && (
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
                     onClick={handleDownload}
-                    className="btn-primary flex items-center gap-2"
+                    className="btn-primary flex items-center gap-3"
                     style={{ padding: '11px 24px', fontSize: 14 }}
                   >
                     <Download size={16} />

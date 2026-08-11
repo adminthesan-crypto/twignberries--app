@@ -58,9 +58,9 @@ export default function UtmBuilder() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* ── Left Column (Inputs) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Card 1: Destination URL & Campaign Name */}
           <div className="form-card">
@@ -103,7 +103,7 @@ export default function UtmBuilder() {
               <Target size={13} color="var(--brand)" /> 2. Traffic Source &amp; Medium
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 16 }}>
               <div>
                 <label>Campaign source * (utm_source)</label>
                 <input
@@ -172,7 +172,7 @@ export default function UtmBuilder() {
               <Zap size={13} color="var(--brand)" /> 3. Advanced Attribution (Optional)
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 0 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 0 }}>
               <div>
                 <label>Campaign term (utm_term)</label>
                 <input
@@ -206,11 +206,11 @@ export default function UtmBuilder() {
         </div>
 
         {/* ── Right Column (Results - Sticky) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           
           {/* Primary Hero Banner */}
           <div style={{
-            padding: 24, borderRadius: 16, textAlign: 'center',
+            padding: 26, borderRadius: 16, textAlign: 'center',
             background: 'linear-gradient(135deg,rgba(255,92,0,0.08),rgba(255,92,0,0.03))',
             border: '1px solid rgba(255,92,0,0.2)',
           }}>
@@ -236,7 +236,7 @@ export default function UtmBuilder() {
               {fullUtmUrl}
             </div>
 
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-3 w-full">
               <button
                 onClick={handleCopy}
                 className="btn-primary"
@@ -250,7 +250,7 @@ export default function UtmBuilder() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Tag breakdown

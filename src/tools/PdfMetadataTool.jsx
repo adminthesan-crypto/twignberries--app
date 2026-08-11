@@ -145,7 +145,7 @@ export default function PdfMetadataTool() {
             </label>
           ) : (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <FileText size={20} />
                 </div>
@@ -168,7 +168,7 @@ export default function PdfMetadataTool() {
           )}
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 24, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 24 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -194,7 +194,7 @@ export default function PdfMetadataTool() {
             )}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Document Title
@@ -204,7 +204,7 @@ export default function PdfMetadataTool() {
                 value={meta.title}
                 onChange={e => { setMeta({ ...meta, title: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Q3 Financial Audit Report"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -217,12 +217,12 @@ export default function PdfMetadataTool() {
                 value={meta.author}
                 onChange={e => { setMeta({ ...meta, author: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Acme Legal Department"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Subject / Category
@@ -232,7 +232,7 @@ export default function PdfMetadataTool() {
                 value={meta.subject}
                 onChange={e => { setMeta({ ...meta, subject: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Confidential Agreement"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -245,12 +245,12 @@ export default function PdfMetadataTool() {
                 value={meta.keywords}
                 onChange={e => { setMeta({ ...meta, keywords: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. audit, finance, confidential"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Software Creator Tag
@@ -260,7 +260,7 @@ export default function PdfMetadataTool() {
                 value={meta.creator}
                 onChange={e => { setMeta({ ...meta, creator: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Twignberries Client Engine"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
 
@@ -273,7 +273,7 @@ export default function PdfMetadataTool() {
                 value={meta.producer}
                 onChange={e => { setMeta({ ...meta, producer: e.target.value }); setResultUrl(null); }}
                 placeholder="e.g. Twignberries PDF Engine v6.0"
-                style={{ width: '100%', padding: '12px 16px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
+                style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
           </div>
@@ -317,12 +317,12 @@ export default function PdfMetadataTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 PDF metadata updated & scrubbed!
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Metadata-Updated.pdf"
                 className="btn-primary"
-                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Updated PDF
               </a>
@@ -331,7 +331,7 @@ export default function PdfMetadataTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Browser-memory metadata scrubbing. Zero cloud retention.</span>
           </div>

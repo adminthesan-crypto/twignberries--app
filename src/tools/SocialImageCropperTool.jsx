@@ -100,7 +100,7 @@ export default function SocialImageCropperTool() {
               htmlFor="crop-upload"
               style={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                padding: '36px 20px', border: '2px dashed #d0d4e4', borderRadius: 16,
+                padding: '36px 26px', border: '2px dashed #d0d4e4', borderRadius: 16,
                 background: '#f6f8fa', cursor: 'pointer', transition: 'all 0.15s ease',
                 textAlign: 'center'
               }}
@@ -123,8 +123,8 @@ export default function SocialImageCropperTool() {
               />
             </label>
           ) : (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <ImageIcon size={20} />
                 </div>
@@ -147,7 +147,7 @@ export default function SocialImageCropperTool() {
           )}
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 16, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -158,7 +158,7 @@ export default function SocialImageCropperTool() {
         <div className="form-card">
           <div style={SL}>2. Social Media Platform Aspect Ratios</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
             {PRESETS.map(p => (
               <button
                 key={p.id}
@@ -180,7 +180,7 @@ export default function SocialImageCropperTool() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Fit Mode
@@ -227,7 +227,7 @@ export default function SocialImageCropperTool() {
 
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
+        <div className="glass-card" style={{ padding: 26, border: '2px solid #e6e9ef' }}>
           <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Social Crop Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
@@ -243,7 +243,7 @@ export default function SocialImageCropperTool() {
           </div>
 
           <div style={{
-            padding: '12px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef',
+            padding: '24px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef',
             display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 180,
             marginBottom: 16, overflow: 'hidden'
           }}>
@@ -252,7 +252,7 @@ export default function SocialImageCropperTool() {
           </div>
 
           {resultUrl && file && (
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-3 w-full">
               <a
                 href={resultUrl}
                 download={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`}
@@ -269,7 +269,7 @@ export default function SocialImageCropperTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Browser-canvas image resizing. Zero cloud storage.</span>
           </div>

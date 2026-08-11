@@ -136,7 +136,7 @@ export default function MergePdfTool() {
           </label>
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 24, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 24 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -156,7 +156,7 @@ export default function MergePdfTool() {
               </button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {files.map((file, idx) => (
                 <div
                   key={file.id}
@@ -166,7 +166,7 @@ export default function MergePdfTool() {
                     border: '1px solid #e6e9ef'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                     <div style={{ width: 34, height: 34, borderRadius: 10, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <FileText size={18} />
                     </div>
@@ -180,7 +180,7 @@ export default function MergePdfTool() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexShrink: 0 }}>
                     <button
                       onClick={() => moveUp(idx)}
                       disabled={idx === 0}
@@ -249,12 +249,12 @@ export default function MergePdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 Merged {files.length} files ({totalPages} pages) successfully!
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={mergedPdfUrl}
                 download="Twignberries-Merged-Document.pdf"
                 className="btn-primary"
-                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Merged PDF
               </a>
@@ -263,7 +263,7 @@ export default function MergePdfTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Encrypted browser-memory compilation. Zero cloud data retention.</span>
           </div>

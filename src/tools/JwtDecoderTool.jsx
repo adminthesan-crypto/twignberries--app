@@ -74,7 +74,7 @@ export default function JwtDecoderTool() {
 
   return (
     <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -87,7 +87,7 @@ export default function JwtDecoderTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -97,12 +97,12 @@ export default function JwtDecoderTool() {
         <div className="flex items-center justify-between mb-2">
           <span style={SL}>Encoded JWT Token</span>
           {status === 'valid' && (
-            <span className="badge badge-success flex items-center gap-1">
+            <span className="badge badge-success flex items-center gap-3">
               <CheckCircle size={12} /> Token Active & Valid
             </span>
           )}
           {status === 'expired' && (
-            <span className="badge badge-danger flex items-center gap-1">
+            <span className="badge badge-danger flex items-center gap-3">
               <Clock size={12} /> Token Expired
             </span>
           )}
@@ -112,28 +112,28 @@ export default function JwtDecoderTool() {
           onChange={(e) => setToken(e.target.value)}
           rows={4}
           placeholder="Paste eyJ..."
-          className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+          className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <div style={SL}>Decoded Header (ALGORITHM & TYPE)</div>
-          <pre className="p-4 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc] font-mono text-xs text-[#1f2532] overflow-x-auto min-h-[160px]">
+          <pre className="p-6 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc] font-mono text-xs text-[#1f2532] overflow-x-auto min-h-[160px]">
             {JSON.stringify(header, null, 2)}
           </pre>
         </div>
 
         <div>
           <div style={SL}>Decoded Payload (CLAIMS & USER DATA)</div>
-          <pre className="p-4 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc] font-mono text-xs text-[#1f2532] overflow-x-auto min-h-[160px]">
+          <pre className="p-6 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc] font-mono text-xs text-[#1f2532] overflow-x-auto min-h-[160px]">
             {JSON.stringify(payload, null, 2)}
           </pre>
         </div>
       </div>
 
       {payload.exp && (
-        <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between flex-wrap gap-4">
+        <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between flex-wrap gap-6">
           <div className="text-xs font-bold text-[#676879]">
             Issued At (iat): <span className="font-mono text-[#1f2532]">{formatTimestamp(payload.iat)}</span>
           </div>

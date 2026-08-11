@@ -144,14 +144,14 @@ export default function SvgToImageTool() {
             rows={8}
             placeholder="Paste raw <svg>...</svg> XML code here..."
             style={{
-              width: '100%', padding: '12px', borderRadius: 12, border: '1px solid #d0d4e4',
+              width: '100%', padding: '24px', borderRadius: 12, border: '1px solid #d0d4e4',
               background: '#f6f8fa', fontFamily: 'var(--font-mono)', fontSize: 13, color: '#1f2532',
               resize: 'vertical'
             }}
           />
 
           {errorMsg && (
-            <div style={{ marginTop: 12, padding: '10px 14px', borderRadius: 10, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 24, padding: '10px 14px', borderRadius: 10, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
               <AlertCircle size={15} />
               <span>{errorMsg}</span>
             </div>
@@ -162,12 +162,12 @@ export default function SvgToImageTool() {
         <div className="form-card">
           <div style={SL}>2. Scale Resolution & Image Format</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 8 }}>
                 Resolution Scale
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
                 {[
                   { id: 1, label: '1x' },
                   { id: 2, label: '2x' },
@@ -223,8 +223,8 @@ export default function SvgToImageTool() {
       </div>
 
       {/* Right Column: Sticky Live Action & Results */}
-      <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
+      <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div className="glass-card" style={{ padding: 26, border: '2px solid #e6e9ef' }}>
           <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">SVG Export Summary</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
@@ -240,7 +240,7 @@ export default function SvgToImageTool() {
           </div>
 
           <div style={{
-            padding: '16px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef',
+            padding: '24px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef',
             display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 160,
             marginBottom: 16, overflow: 'hidden'
           }}>
@@ -249,7 +249,7 @@ export default function SvgToImageTool() {
           </div>
 
           {resultUrl && (
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-3 w-full">
               <a
                 href={resultUrl}
                 download={`Twignberries-SVG-Export-${scale}x.${format === 'jpeg' ? 'jpg' : 'png'}`}
@@ -266,7 +266,7 @@ export default function SvgToImageTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>HTML5 canvas rasterization. Zero cloud uploads.</span>
           </div>

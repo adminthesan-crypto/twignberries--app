@@ -37,9 +37,9 @@ export default function BundleMarginTool() {
   const markupPct = totalCost > 0 ? (((bundlePrice - totalCost) / totalCost) * 100).toFixed(1) : 0;
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
-        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={24} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
             100% Client-Side Product Bundle Margin & Discount Calculator
@@ -52,22 +52,22 @@ export default function BundleMarginTool() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items list */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center justify-between">
             <span style={SL}>Bundle Component Items</span>
             <button
               onClick={addItem}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+              className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
             >
               <Plus size={14} /> Add Product
             </button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-6">
             {items.map((it, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-4"
+                className="p-6 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-6"
               >
                 <input
                   type="text"
@@ -75,7 +75,7 @@ export default function BundleMarginTool() {
                   onChange={(e) => updateItem(idx, 'name', e.target.value)}
                   className="flex-1 h-10 px-3 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532]"
                 />
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <span className="text-[10px] uppercase font-bold text-[#868894]">COGS:</span>
                   <input
                     type="number"
@@ -84,7 +84,7 @@ export default function BundleMarginTool() {
                     className="w-20 h-10 px-2 rounded-lg border border-[#d0d4e4] font-mono text-xs font-bold text-[#1f2532]"
                   />
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <span className="text-[10px] uppercase font-bold text-[#868894]">MSRP:</span>
                   <input
                     type="number"
@@ -105,15 +105,15 @@ export default function BundleMarginTool() {
             ))}
           </div>
 
-          <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
+          <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
             <span className="text-xs font-bold text-[#676879]">Combined MSRP Value:</span>
             <span className="font-mono text-base font-bold text-[#1f2532]">${totalRetail.toFixed(2)}</span>
           </div>
         </div>
 
         {/* Pricing & Profit Sidebar */}
-        <div className="space-y-6">
-          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+        <div className="space-y-8">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
             <div>
               <div style={SL}>Bundle Selling Price ($ USD)</div>
               <input
@@ -124,7 +124,7 @@ export default function BundleMarginTool() {
               />
             </div>
 
-            <div className="pt-4 border-t border-[#f0f2f5] space-y-3">
+            <div className="pt-4 border-t border-[#f0f2f5] space-y-6">
               <div className="flex justify-between text-xs">
                 <span className="text-[#676879]">Customer Savings</span>
                 <span className="font-mono font-bold text-green-700">
@@ -141,7 +141,7 @@ export default function BundleMarginTool() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between">
+            <div className="p-6 rounded-xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between">
               <div>
                 <div className="text-[10px] uppercase font-bold text-[#6161ff]">Profit Margin</div>
                 <div className="text-2xl font-bold text-[#1f2532] mt-0.5">{marginPct}%</div>

@@ -127,7 +127,7 @@ export default function PowerPointToPdfTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-orange-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400">
             <Presentation className="w-5 h-5" />
           </div>
@@ -136,14 +136,14 @@ export default function PowerPointToPdfTool() {
             <p className="text-sm text-[#676879]">Create clean A4 landscape presentation handouts and slide decks offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-orange-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Presentation slides are generated offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -158,22 +158,22 @@ export default function PowerPointToPdfTool() {
           </div>
           <button
             onClick={handleAddSlide}
-            className="py-2 px-4 rounded-xl bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-2 transition-all"
+            className="py-2 px-4 rounded-xl bg-gray-100 hover:bg-white/20 text-[#1f2532] text-xs font-semibold flex items-center gap-3 transition-all"
           >
             <Plus className="w-4 h-4" />
             <span>Add Slide</span>
           </button>
         </div>
 
-        <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
+        <div className="space-y-6 max-h-96 overflow-y-auto pr-2">
           {slides.map((slide, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-white border border-[#e6e9ef] space-y-3">
+            <div key={idx} className="p-6 rounded-xl bg-white border border-[#e6e9ef] space-y-6">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-orange-400 uppercase tracking-wider">Slide #{idx + 1}</span>
                 {slides.length > 1 && (
                   <button
                     onClick={() => handleRemoveSlide(idx)}
-                    className="text-red-400 hover:text-red-300 text-xs flex items-center gap-1"
+                    className="text-red-400 hover:text-red-300 text-xs flex items-center gap-3"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>Remove</span>
@@ -198,11 +198,11 @@ export default function PowerPointToPdfTool() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-[#e6e9ef]">
+        <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 border-t border-[#e6e9ef]">
           <button
             onClick={generatePresentationPdf}
             disabled={loading || slides.length === 0}
-            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-orange-500/20"
           >
             {loading ? (
               <>
@@ -218,10 +218,10 @@ export default function PowerPointToPdfTool() {
           </button>
 
           {pdfBlob && (
-            <div className="flex gap-2 w-full sm:w-auto">
+            <div className="flex gap-6 w-full sm:w-auto">
               <button
                 onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Slides PDF</span>

@@ -170,7 +170,7 @@ export default function OpenGraphPreviewTool() {
           <div style={{ padding: '24px', borderRadius: 16, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
             {activePlatform === 'google' && (
               <div style={{ maxWidth: 560, background: '#fff', padding: 18, borderRadius: 12, border: '1px solid #e6e9ef', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 4 }}>
                   <div style={{ width: 26, height: 26, borderRadius: 13, background: '#eceeff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, color: '#6161ff' }}>
                     W
                   </div>
@@ -207,7 +207,7 @@ export default function OpenGraphPreviewTool() {
                 <div style={{ height: 250, background: '#e6e9ef', overflow: 'hidden' }}>
                   <img src={imgSrc} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <div style={{ padding: '12px 16px', background: '#eef3f8' }}>
+                <div style={{ padding: '24px 26px', background: '#eef3f8' }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#000000', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {title}
                   </div>
@@ -221,7 +221,7 @@ export default function OpenGraphPreviewTool() {
                 <div style={{ height: 250, background: '#e6e9ef', overflow: 'hidden' }}>
                   <img src={imgSrc} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <div style={{ padding: '12px 16px', background: '#f0f2f5' }}>
+                <div style={{ padding: '24px 26px', background: '#f0f2f5' }}>
                   <div style={{ fontSize: 11, color: '#65676b', textTransform: 'uppercase', fontWeight: 700 }}>{domain}</div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: '#050505', marginTop: 2 }}>
                     {title}
@@ -253,11 +253,11 @@ export default function OpenGraphPreviewTool() {
             </div>
           </div>
 
-          <div className="flex gap-2 mb-4">
+          <div className="flex gap-3 mb-4">
             <button
               onClick={handleCopyTags}
               className="btn-primary"
-              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
               {copied ? 'Copied HTML Tags!' : 'Copy HTML Meta Tags'}
@@ -272,7 +272,7 @@ export default function OpenGraphPreviewTool() {
             style={{ width: '100%', padding: '10px', borderRadius: 8, background: '#1f2532', color: '#00c875', fontFamily: 'var(--font-mono)', fontSize: 11, border: 'none' }}
           />
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>100% browser-memory SEO card simulator.</span>
           </div>

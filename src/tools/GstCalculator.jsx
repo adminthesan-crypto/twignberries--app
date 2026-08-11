@@ -71,7 +71,7 @@ export default function GstCalculator() {
       {/* Grid Layout */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
         {/* Left Column (Inputs / Editor) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {/* Form Card 1: Mode & Currency */}
           <div className="form-card">
             <div style={sectionLabelStyle}>
@@ -79,12 +79,12 @@ export default function GstCalculator() {
               1. Calculation Mode &amp; Currency
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               <div>
                 <label className="block text-xs font-medium text-[#9ca3af] mb-2">
                   Tax Mode
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setCalcType('exclusive')}
@@ -114,7 +114,7 @@ export default function GstCalculator() {
                 <label className="block text-xs font-medium text-[#9ca3af] mb-2">
                   Currency Symbol
                 </label>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   {['₹', '$', '€', '£'].map((curr) => (
                     <button
                       key={curr}
@@ -141,7 +141,7 @@ export default function GstCalculator() {
               2. Amount &amp; Standard GST Slab
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               <div>
                 <label className="block text-xs font-medium text-[#9ca3af] mb-1.5">
                   {calcType === 'exclusive' ? 'Net Amount Before Tax' : 'Total Invoice Amount With Tax'} ({currency})
@@ -160,7 +160,7 @@ export default function GstCalculator() {
                 <label className="block text-xs font-medium text-[#9ca3af] mb-2">
                   Select GST Slab Rate (%)
                 </label>
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-5 gap-3">
                   {[3, 5, 12, 18, 28].map((slab) => (
                     <button
                       key={slab}
@@ -182,7 +182,7 @@ export default function GstCalculator() {
         </div>
 
         {/* Right Column (Results / Live Preview - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
@@ -204,7 +204,7 @@ export default function GstCalculator() {
               Tax Breakdown
             </div>
 
-            <div className="space-y-3 font-mono text-sm mb-5">
+            <div className="space-y-6 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Net Taxable Value:</span>
                 <span className="text-[#1f2532] font-semibold">{currency}{netPrice.toFixed(2)}</span>
@@ -233,7 +233,7 @@ export default function GstCalculator() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3.5">
               <button
                 type="button"
                 onClick={handleCopy}
@@ -243,7 +243,7 @@ export default function GstCalculator() {
                 <span>{copied ? 'Copied Tax Summary' : 'Copy Summary Text'}</span>
               </button>
 
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title={`GST Tax Calculation Report (${rate}% Slab)`}
                   lines={[
@@ -264,7 +264,7 @@ export default function GstCalculator() {
           <div className="insight-block">
             💡 Pro tip: For intra-state sales within the same state, GST is split equally into CGST + SGST. For inter-state sales across borders, bill the full percentage as IGST on your invoice.
           </div>
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

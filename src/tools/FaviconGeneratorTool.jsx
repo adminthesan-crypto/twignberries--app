@@ -74,8 +74,8 @@ export default function FaviconGeneratorTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -88,7 +88,7 @@ export default function FaviconGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
             <div style={SL}>Favicon Text / Brand Initials (1–3 chars)</div>
             <input
@@ -100,10 +100,10 @@ export default function FaviconGeneratorTool() {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div style={SL}>Background Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={bgColor}
@@ -121,7 +121,7 @@ export default function FaviconGeneratorTool() {
 
             <div>
               <div style={SL}>Text Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={textColor}
@@ -169,29 +169,29 @@ export default function FaviconGeneratorTool() {
               className="w-32 h-32 rounded-2xl border border-[#e6e9ef] shadow-md flex items-center justify-center my-4 overflow-hidden bg-white"
               dangerouslySetInnerHTML={{ __html: svgCode }}
             />
-            <div className="flex gap-3 w-full mt-2">
+            <div className="flex gap-6 w-full mt-2">
               <button
                 onClick={handleDownloadSvg}
-                className="flex-1 h-11 rounded-xl bg-[#6161ff] text-white font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
+                className="flex-1 h-11 rounded-xl bg-[#6161ff] text-white font-bold text-xs flex items-center justify-center gap-3 hover:bg-[#4e4ee0]"
               >
                 <Download size={14} /> Download favicon.svg
               </button>
               <NativeShareButton text={svgCode} />
               <button
                 onClick={handleDownloadManifest}
-                className="flex-1 h-11 rounded-xl border border-[#6161ff] text-[#6161ff] font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#eceeff]"
+                className="flex-1 h-11 rounded-xl border border-[#6161ff] text-[#6161ff] font-bold text-xs flex items-center justify-center gap-3 hover:bg-[#eceeff]"
               >
                 <Download size={14} /> site.webmanifest
               </button>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc]">
+          <div className="p-6 rounded-xl border border-[#e6e9ef] bg-[#fbfbfc]">
             <div className="flex items-center justify-between mb-2">
               <span style={SL}>HTML &lt;head&gt; Tags</span>
               <button
                 onClick={handleCopyHtml}
-                className="text-xs font-bold text-[#6161ff] hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-[#6161ff] hover:underline flex items-center gap-3"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 {copied ? 'Copied!' : 'Copy Tags'}

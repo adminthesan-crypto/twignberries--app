@@ -119,7 +119,7 @@ export default function SplitPdfTool() {
               htmlFor="split-upload"
               style={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                padding: '36px 20px', border: '2px dashed #d0d4e4', borderRadius: 16,
+                padding: '36px 26px', border: '2px dashed #d0d4e4', borderRadius: 16,
                 background: '#f6f8fa', cursor: 'pointer', transition: 'all 0.15s ease',
                 textAlign: 'center'
               }}
@@ -142,8 +142,8 @@ export default function SplitPdfTool() {
               />
             </label>
           ) : (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <FileText size={20} />
                 </div>
@@ -166,7 +166,7 @@ export default function SplitPdfTool() {
           )}
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 16, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -177,7 +177,7 @@ export default function SplitPdfTool() {
           <div className="form-card">
             <div style={SL}>2. Select Pages to Extract</div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
               <button
                 type="button"
                 onClick={() => { setMode('range'); setResultUrl(null); }}
@@ -224,7 +224,7 @@ export default function SplitPdfTool() {
                   onChange={e => { setRangeInput(e.target.value); setResultUrl(null); }}
                   placeholder="e.g. 1-3, 5, 8-10"
                   style={{
-                    width: '100%', padding: '12px 16px', borderRadius: 12,
+                    width: '100%', padding: '24px 26px', borderRadius: 12,
                     border: '1px solid #d0d4e4', background: '#ffffff',
                     fontSize: 14, fontWeight: 600, color: '#1f2532'
                   }}
@@ -240,7 +240,7 @@ export default function SplitPdfTool() {
 
       {/* Right Column: Sticky Live Action & Results */}
       <div style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div className="glass-card" style={{ padding: 24, border: '2px solid #e6e9ef' }}>
+        <div className="glass-card" style={{ padding: 26, border: '2px solid #e6e9ef' }}>
           <div className="flex items-center justify-between mb-2">
             <div style={SL} className="mb-0">Extraction Overview</div>
             <span className="badge badge-success" style={{ fontSize: 11 }}>100% Offline</span>
@@ -256,7 +256,7 @@ export default function SplitPdfTool() {
           </div>
 
           {!file ? (
-            <div style={{ padding: '12px 14px', borderRadius: 12, background: '#f6f8fa', border: '1px dashed #d0d4e4', color: '#676879', fontSize: 13, fontWeight: 500, textAlign: 'center', marginBottom: 16 }}>
+            <div style={{ padding: '24px', borderRadius: 12, background: '#f6f8fa', border: '1px dashed #d0d4e4', color: '#676879', fontSize: 13, fontWeight: 500, textAlign: 'center', marginBottom: 16 }}>
               Upload a PDF document to begin extracting pages.
             </div>
           ) : (
@@ -275,7 +275,7 @@ export default function SplitPdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 Extracted {extractedCount} {extractedCount === 1 ? 'page' : 'pages'} successfully!
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Extracted-Pages.pdf"
@@ -289,7 +289,7 @@ export default function SplitPdfTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Encrypted browser-memory page slicing. Zero cloud retention.</span>
           </div>

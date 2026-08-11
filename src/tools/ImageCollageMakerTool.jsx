@@ -117,7 +117,7 @@ export default function ImageCollageMakerTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400">
             <Layout className="w-5 h-5" />
           </div>
@@ -126,28 +126,28 @@ export default function ImageCollageMakerTool() {
             <p className="text-sm text-[#676879]">Combine up to 4 photos into side-by-side comparisons, Instagram stories, or square grids offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-amber-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-amber-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Photo collages are stitched offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-semibold cursor-pointer hover:bg-amber-400 transition-all text-sm shadow-md">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <label className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-semibold cursor-pointer hover:bg-amber-400 transition-all text-sm shadow-md">
             <Plus className="w-4 h-4" />
             <span>Add Photos ({images.length}/4)</span>
             <input type="file" accept="image/*" multiple onChange={handleFileUpload} className="hidden" />
           </label>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-6">
             {[
               { id: '2-side', label: '2 Side-by-Side' },
               { id: '3-story', label: '3 Vertical Stack' },
@@ -167,7 +167,7 @@ export default function ImageCollageMakerTool() {
         </div>
 
         {images.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
             {images.map((img, idx) => (
               <div key={idx} className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden p-2 group">
                 <img src={img.url} alt={img.name} className="w-full h-24 object-cover rounded" />
@@ -187,9 +187,9 @@ export default function ImageCollageMakerTool() {
         )}
 
         {images.length > 0 && (
-          <div className="space-y-4 pt-4 border-t border-[#e6e9ef]">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
+          <div className="space-y-6 pt-6 border-t border-[#e6e9ef]">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-6">
                 <div>
                   <label className="text-[10px] text-[#9ca3af] block">Border Gap ({gap}px)</label>
                   <input type="range" min="0" max="60" value={gap} onChange={(e) => { setGap(Number(e.target.value)); setCollageUrl(null); }} className="accent-amber-400" />
@@ -203,7 +203,7 @@ export default function ImageCollageMakerTool() {
               <button
                 onClick={generateCollage}
                 disabled={loading}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-amber-500 text-black font-bold hover:bg-amber-400 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-amber-500 text-black font-bold hover:bg-amber-400 transition-all flex items-center justify-center gap-3"
               >
                 {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Layout className="w-5 h-5" />}
                 <span>Render Photo Collage</span>
@@ -211,12 +211,12 @@ export default function ImageCollageMakerTool() {
             </div>
 
             {collageUrl && (
-              <div className="space-y-3 pt-2">
+              <div className="space-y-6 pt-2">
                 <img src={collageUrl} alt="Collage" className="max-h-80 mx-auto object-contain rounded-xl border border-[#e6e9ef] shadow-lg" />
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
                     onClick={handleDownload}
-                    className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3"
                   >
                     <Download className="w-5 h-5" />
                     <span>Download Photo Collage</span>

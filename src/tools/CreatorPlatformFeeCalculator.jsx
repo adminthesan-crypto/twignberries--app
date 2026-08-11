@@ -50,9 +50,9 @@ export default function CreatorPlatformFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* ── Left Column (Inputs) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Card 1: Creator Revenue */}
           <div className="form-card">
@@ -132,7 +132,7 @@ export default function CreatorPlatformFeeCalculator() {
                     key={item.key}
                     onClick={() => setPlatform(item.key)}
                     style={{
-                      padding: 12,
+                      padding: 24,
                       borderRadius: 10,
                       border: active ? '1.5px solid var(--brand)' : '1px solid var(--border)',
                       background: active ? 'rgba(255,92,0,0.06)' : 'rgba(255,255,255,0.02)',
@@ -158,7 +158,7 @@ export default function CreatorPlatformFeeCalculator() {
         </div>
 
         {/* ── Right Column (Results - Sticky) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           
           {/* Primary Hero Banner */}
           <div style={{
@@ -200,8 +200,8 @@ export default function CreatorPlatformFeeCalculator() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+          <div className="form-card" style={{ padding: 24 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Earnings breakdown
               </span>

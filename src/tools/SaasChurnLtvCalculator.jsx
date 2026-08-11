@@ -43,9 +43,9 @@ export default function SaasChurnLtvCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* ── Left Column (Inputs) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Card 1: Revenue & Acquisition Cost */}
           <div className="form-card">
@@ -53,7 +53,7 @@ export default function SaasChurnLtvCalculator() {
               <Users size={13} color="var(--brand)" /> 1. Revenue &amp; Acquisition Cost
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 0 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 0 }}>
               <div>
                 <label>ARPU (monthly per user) ($)</label>
                 <input
@@ -140,7 +140,7 @@ export default function SaasChurnLtvCalculator() {
         </div>
 
         {/* ── Right Column (Results - Sticky) ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           
           {/* Primary Hero Banner */}
           <div style={{
@@ -184,12 +184,12 @@ export default function SaasChurnLtvCalculator() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 SaaS unit economics
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title="SaaS LTV & Churn Health Summary"
                   lines={[

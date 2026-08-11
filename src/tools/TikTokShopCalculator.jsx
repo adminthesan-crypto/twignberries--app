@@ -50,9 +50,9 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* Left Column (Inputs) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
             <div style={SL}>
               <ShoppingBag size={13} color="var(--brand)" /> 1. Selling Price &amp; Creator Cut
@@ -111,7 +111,7 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
               </select>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
               <div>
                 <label>Unit COGS ($)</label>
                 <input
@@ -138,10 +138,10 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
         </div>
 
         {/* Right Column (Results - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div style={{
-            padding: 24, borderRadius: 16, textAlign: 'center',
+            padding: 26, borderRadius: 16, textAlign: 'center',
             background: netProfit >= 0 ? 'linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.03))' : 'linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03))',
             border: netProfit >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
           }}>
@@ -158,7 +158,7 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
 
           {/* Secondary Target Banner */}
           <div style={{
-            padding: 18, borderRadius: 14,
+            padding: 24, borderRadius: 14,
             background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 6 }}>
@@ -173,12 +173,12 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Per-order breakdown
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title="TikTok Shop Fee & Margin Breakdown"
                   lines={[
@@ -224,7 +224,7 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> In 2026, top TikTok Shop affiliates prioritize products offering at least a 15%–20% commission. Pricing for a 60%+ gross margin ensures you stay profitable even during viral spikes.
           </div>
 
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

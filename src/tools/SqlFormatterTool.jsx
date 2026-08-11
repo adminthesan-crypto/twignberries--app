@@ -55,8 +55,8 @@ export default function SqlFormatterTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -69,7 +69,7 @@ export default function SqlFormatterTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -91,18 +91,18 @@ export default function SqlFormatterTool() {
             onChange={(e) => setInputSql(e.target.value)}
             rows={14}
             placeholder="Paste your raw SQL query here..."
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-white focus:outline-none focus:border-[#6161ff]"
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-2">
             <span style={SL}>Formatted & Standardized SQL</span>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={handleCopy}
                 disabled={!formattedSql}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                className="flex items-center gap-3.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 {copied ? 'Copied!' : 'Copy SQL'}
@@ -115,7 +115,7 @@ export default function SqlFormatterTool() {
             readOnly
             rows={14}
             placeholder="Formatted query will appear here..."
-            className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
+            className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
           />
         </div>
       </div>

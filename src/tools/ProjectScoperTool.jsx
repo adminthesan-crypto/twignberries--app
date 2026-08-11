@@ -70,8 +70,8 @@ export default function ProjectScoperTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -84,22 +84,22 @@ export default function ProjectScoperTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center justify-between">
             <span style={SL}>Project Deliverables & Phases</span>
             <button
               onClick={addPhase}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+              className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
             >
               <Plus size={14} /> Add Phase
             </button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-6">
             {phases.map((p, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-4 flex-wrap"
+                className="p-6 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-6 flex-wrap"
               >
                 <input
                   type="text"
@@ -107,7 +107,7 @@ export default function ProjectScoperTool() {
                   onChange={(e) => updatePhase(idx, 'name', e.target.value)}
                   className="flex-1 min-w-[200px] h-10 px-3 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532]"
                 />
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-3.5">
                   <Clock size={14} className="text-[#868894]" />
                   <input
                     type="number"
@@ -117,7 +117,7 @@ export default function ProjectScoperTool() {
                   />
                   <span className="text-[11px] font-bold text-[#676879]">hrs</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-3.5">
                   <DollarSign size={14} className="text-[#868894]" />
                   <input
                     type="number"
@@ -139,7 +139,7 @@ export default function ProjectScoperTool() {
             ))}
           </div>
 
-          <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
+          <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
             <span className="text-xs font-bold text-[#676879]">Base Billable Total:</span>
             <span className="font-mono text-base font-bold text-[#1f2532]">
               {totalBaseHours} hrs • ${totalBaseCost.toFixed(2)}
@@ -163,7 +163,7 @@ export default function ProjectScoperTool() {
               </span>
             </div>
 
-            <div className="pt-4 border-t border-[#f0f2f5] space-y-3">
+            <div className="pt-4 border-t border-[#f0f2f5] space-y-6">
               <div className="flex justify-between text-xs">
                 <span className="text-[#676879]">Base Labor Cost</span>
                 <span className="font-mono font-bold text-[#1f2532]">${totalBaseCost.toFixed(2)}</span>
@@ -178,17 +178,17 @@ export default function ProjectScoperTool() {
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center">
+            <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center">
               <div className="text-[10px] uppercase font-bold text-[#6161ff]">Total Recommended Quote</div>
               <div className="text-3xl font-mono font-bold text-[#1f2532] mt-1">
                 ${finalQuote.toFixed(2)}
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={handleDownloadQuote}
-                className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#4e4ee0]"
+                className="w-full h-12 rounded-xl bg-[#6161ff] text-white font-bold text-sm flex items-center justify-center gap-3 hover:bg-[#4e4ee0]"
               >
                 <Download size={16} /> Download Proposal .TXT
               </button>

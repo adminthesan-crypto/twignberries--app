@@ -45,10 +45,10 @@ export default function StripeFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 24, alignItems: 'start' }}>
 
         {/* ── Left ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Calculator */}
           <div className="form-card">
@@ -65,7 +65,7 @@ export default function StripeFeeCalculator() {
               <label>Card origin & currency</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
-                  padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+                  padding: 20, borderRadius: 8, border: '1.5px solid var(--border-md)',
                   background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
                   <input type="checkbox" checked={isInternational}
                     onChange={e => setIsInternational(e.target.checked)} style={{ width: 'auto' }} />
@@ -80,7 +80,7 @@ export default function StripeFeeCalculator() {
                 </label>
 
                 <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
-                  padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+                  padding: 20, borderRadius: 8, border: '1.5px solid var(--border-md)',
                   background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
                   <input type="checkbox" checked={currencyConv}
                     onChange={e => setCurrencyConv(e.target.checked)} style={{ width: 'auto' }} />
@@ -114,11 +114,11 @@ export default function StripeFeeCalculator() {
         </div>
 
         {/* ── Right: Results ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
 
           {/* Main Result */}
           <div style={{
-            padding: 24, borderRadius: 16, textAlign: 'center',
+            padding: 26, borderRadius: 16, textAlign: 'center',
             background: netPayout >= 0 ? 'linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03))' : 'linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.03))',
             border: netPayout >= 0 ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(239,68,68,0.2)',
           }}>
@@ -135,7 +135,7 @@ export default function StripeFeeCalculator() {
 
           {/* Solver Result */}
           <div style={{
-            padding: 20, borderRadius: 14,
+            padding: 24, borderRadius: 14,
             background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 8 }}>
@@ -151,10 +151,10 @@ export default function StripeFeeCalculator() {
           </div>
 
           {/* Breakdown */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton title="Stripe Fee & Net Payout"
                   lines={[
                     { label: 'Gross charge', value: `$${grossAmount.toFixed(2)}` },
@@ -188,7 +188,7 @@ export default function StripeFeeCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> SaaS businesses usually absorb these processing fees, but high-ticket agencies often use the break-even solver to invoice the exact processing surcharge to clients.
           </div>
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
 
         </div>
       </div>

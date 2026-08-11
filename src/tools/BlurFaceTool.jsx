@@ -112,7 +112,7 @@ export default function BlurFaceTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-red-500/10 via-rose-500/10 to-red-500/10 border border-red-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400">
             <EyeOff className="w-5 h-5" />
           </div>
@@ -121,14 +121,14 @@ export default function BlurFaceTool() {
             <p className="text-sm text-[#676879]">Easily blur out faces, license plates, addresses, and sensitive details in photos offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-red-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-red-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Photos and privacy redactions are processed offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -142,16 +142,16 @@ export default function BlurFaceTool() {
           <p className="text-xs text-[#9ca3af]">Supports PNG, JPG, and WEBP photos</p>
         </label>
       ) : (
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-8">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <EyeOff className="w-8 h-8 text-red-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{image.name}</p>
                 <p className="text-xs text-[#9ca3af]">{image.width} × {image.height} px</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <button
                 onClick={addBlurBox}
                 className="px-3 py-1.5 text-xs font-bold bg-red-500 text-black rounded-lg hover:bg-red-400"
@@ -168,9 +168,9 @@ export default function BlurFaceTool() {
           </div>
 
           {/* Region Sliders */}
-          <div className="space-y-3">
+          <div className="space-y-6">
             {blurBoxes.map((box, idx) => (
-              <div key={idx} className="grid grid-cols-2 md:grid-cols-5 gap-3 bg-white p-3 rounded-xl border border-white/5 items-center">
+              <div key={idx} className="grid grid-cols-2 md:grid-cols-5 gap-6 bg-white p-6 rounded-xl border border-white/5 items-center">
                 <span className="text-xs font-bold text-red-400">Region #{idx + 1}</span>
                 <div>
                   <label className="text-[10px] text-[#9ca3af]">X (%): {box.x}%</label>
@@ -209,11 +209,11 @@ export default function BlurFaceTool() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
             <button
               onClick={applyPrivacyBlur}
               disabled={loading}
-              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-red-500 text-black font-bold hover:bg-red-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+              className="w-full sm:w-auto py-3 px-6 rounded-xl bg-red-500 text-black font-bold hover:bg-red-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-red-500/20"
             >
               {loading ? (
                 <>
@@ -229,10 +229,10 @@ export default function BlurFaceTool() {
             </button>
 
             {processedUrl && (
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <button
                   onClick={handleDownload}
-                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download Redacted Photo</span>

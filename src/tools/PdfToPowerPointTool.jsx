@@ -90,7 +90,7 @@ export default function PdfToPowerPointTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400">
             <Presentation className="w-5 h-5" />
           </div>
@@ -99,14 +99,14 @@ export default function PdfToPowerPointTool() {
             <p className="text-sm text-[#676879]">Convert PDF presentation pages into PowerPoint slide outlines and speaker notes.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-orange-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-orange-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Presentation slides are analyzed offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -122,7 +122,7 @@ export default function PdfToPowerPointTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <Presentation className="w-8 h-8 text-orange-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{file.name}</p>
@@ -138,24 +138,24 @@ export default function PdfToPowerPointTool() {
           </div>
 
           {loading ? (
-            <div className="py-12 text-center text-[#9ca3af] flex flex-col items-center gap-3">
+            <div className="py-12 text-center text-[#9ca3af] flex flex-col items-center gap-6">
               <RefreshCw className="w-8 h-8 animate-spin text-orange-400" />
               <span>Analyzing PDF slide layout and extracting speaker notes...</span>
             </div>
           ) : (
             <div className="space-y-6">
-              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
+              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 flex items-center justify-between gap-6">
+                <div className="flex items-center gap-6">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400 shrink-0" />
                   <div>
                     <h3 className="text-[#1f2532] font-bold">Slide Deck Outline Extracted!</h3>
                     <p className="text-xs text-[#9ca3af]">Parsed {pageCount} slide(s) with titles and bullet points.</p>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
                     onClick={handleDownloadDeckText}
-                    className="py-2.5 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center gap-2 shadow-lg shadow-orange-500/20 shrink-0"
+                    className="py-2.5 px-6 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition-all flex items-center gap-3 shadow-lg shadow-orange-500/20 shrink-0"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download Presentation Outline (.MD)</span>

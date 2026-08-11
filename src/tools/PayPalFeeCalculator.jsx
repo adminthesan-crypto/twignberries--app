@@ -50,7 +50,7 @@ export default function PayPalFeeCalculator() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 20, alignItems: 'start' }}>
 
         {/* ── Left ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
           {/* Calculator */}
           <div className="form-card">
@@ -65,7 +65,7 @@ export default function PayPalFeeCalculator() {
 
             <div style={{ marginBottom: 16 }}>
               <label>Account type</label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
                 {[
                   { id: 'standard',  label: 'Standard',     sub: '2.99% + 49¢' },
                   { id: 'micro',     label: 'Micropayment', sub: '4.99% + 9¢' },
@@ -87,7 +87,7 @@ export default function PayPalFeeCalculator() {
             </div>
 
             <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10,
-              padding: 12, borderRadius: 8, border: '1.5px solid var(--border-md)',
+              padding: 24, borderRadius: 8, border: '1.5px solid var(--border-md)',
               background: 'rgba(255,255,255,0.02)', marginBottom: 0 }}>
               <input type="checkbox" checked={isInternational}
                 onChange={e => setIsInternational(e.target.checked)} style={{ width: 'auto' }} />
@@ -118,7 +118,7 @@ export default function PayPalFeeCalculator() {
         </div>
 
         {/* ── Right: Results ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
 
           {/* Main result */}
           <div style={{
@@ -158,7 +158,7 @@ export default function PayPalFeeCalculator() {
           <div className="form-card" style={{ padding: 18 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee breakdown</span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton title="PayPal Fee & Net Payout"
                   lines={[
                     { label: 'Gross invoice', value: `$${grossAmount.toFixed(2)}` },
@@ -192,7 +192,7 @@ export default function PayPalFeeCalculator() {
           <div className="insight-block">
             <strong style={{ color: 'var(--text-2)' }}>💡 Micropayments tip:</strong> If you're charging under $10, switching to PayPal's Micropayment rate (4.99% + $0.09) saves money vs the standard $0.49 fixed fee.
           </div>
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 20, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

@@ -97,8 +97,8 @@ export default function SvgOptimizerTool() {
   const savedPercent = origCode.length > 0 ? Math.round((savedBytes / origCode.length) * 100) : 0;
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -111,7 +111,7 @@ export default function SvgOptimizerTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -135,8 +135,8 @@ export default function SvgOptimizerTool() {
         </label>
       ) : (
         <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
-          <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between flex-wrap gap-6 pb-4 border-b border-[#f0f2f5]">
+            <div className="flex items-center gap-6">
               <Code className="text-[#6161ff]" size={24} />
               <div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>{file.name}</div>
@@ -153,8 +153,8 @@ export default function SvgOptimizerTool() {
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-4">
-            <label className="flex items-center gap-2 text-sm font-semibold text-[#1f2532] cursor-pointer">
+          <div className="flex flex-wrap gap-6">
+            <label className="flex items-center gap-3 text-sm font-semibold text-[#1f2532] cursor-pointer">
               <input
                 type="checkbox"
                 checked={stripComments}
@@ -163,7 +163,7 @@ export default function SvgOptimizerTool() {
               />
               Strip Comments (&lt;!-- --&gt;)
             </label>
-            <label className="flex items-center gap-2 text-sm font-semibold text-[#1f2532] cursor-pointer">
+            <label className="flex items-center gap-3 text-sm font-semibold text-[#1f2532] cursor-pointer">
               <input
                 type="checkbox"
                 checked={stripMetadata}
@@ -172,7 +172,7 @@ export default function SvgOptimizerTool() {
               />
               Strip Editor Metadata & XML Headers
             </label>
-            <label className="flex items-center gap-2 text-sm font-semibold text-[#1f2532] cursor-pointer">
+            <label className="flex items-center gap-3 text-sm font-semibold text-[#1f2532] cursor-pointer">
               <input
                 type="checkbox"
                 checked={formatWhitespace}
@@ -188,17 +188,17 @@ export default function SvgOptimizerTool() {
               <span style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase' }}>
                 Optimized SVG Output
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <button
                   onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
+                  className="flex items-center gap-3.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532] hover:bg-gray-50"
                 >
                   {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
                   {copied ? 'Copied!' : 'Copy Code'}
                 </button>
                 <button
                   onClick={handleDownload}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                  className="flex items-center gap-3.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
                 >
                   <Download size={14} />
                   Download .SVG
@@ -210,7 +210,7 @@ export default function SvgOptimizerTool() {
               value={optimizedCode}
               readOnly
               rows={10}
-              className="w-full p-4 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
+              className="w-full p-6 rounded-xl border border-[#d0d4e4] font-mono text-xs text-[#1f2532] bg-[#fbfbfc] focus:outline-none"
             />
           </div>
         </div>

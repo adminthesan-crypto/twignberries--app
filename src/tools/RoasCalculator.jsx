@@ -47,15 +47,15 @@ export default function RoasCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* Left Column (Inputs) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
             <div style={SL}>
               <Target size={13} color="var(--brand)" /> 1. Unit Economics &amp; Margin
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
               <div>
                 <label>Selling price ($)</label>
                 <input
@@ -134,7 +134,7 @@ export default function RoasCalculator() {
         </div>
 
         {/* Right Column (Results - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div style={{
             padding: 24, borderRadius: 16, textAlign: 'center',
@@ -154,7 +154,7 @@ export default function RoasCalculator() {
 
           {/* Secondary Target Banner */}
           <div style={{
-            padding: 18, borderRadius: 14,
+            padding: 24, borderRadius: 14,
             background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 6 }}>
@@ -169,12 +169,12 @@ export default function RoasCalculator() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Per-sale breakdown
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title="ROAS & Profitability Target Summary"
                   lines={[

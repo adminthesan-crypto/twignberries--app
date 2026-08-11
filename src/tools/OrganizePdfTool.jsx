@@ -155,7 +155,7 @@ export default function OrganizePdfTool() {
             </label>
           ) : (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', borderRadius: 14, background: '#f7f9fc', border: '1px solid #e6e9ef' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24, minWidth: 0 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <FileText size={20} />
                 </div>
@@ -178,7 +178,7 @@ export default function OrganizePdfTool() {
           )}
 
           {errorMsg && (
-            <div style={{ marginTop: 16, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 24, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 24 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -189,7 +189,7 @@ export default function OrganizePdfTool() {
         <div className="form-card">
           <div style={SL}>2. Select Organization Operation</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 20 }}>
             <button
               type="button"
               onClick={() => { setMode('delete'); setResultUrl(null); }}
@@ -241,7 +241,7 @@ export default function OrganizePdfTool() {
                 onChange={e => { setPagesToDelete(e.target.value); setResultUrl(null); }}
                 placeholder="e.g. 2, 5-7"
                 style={{
-                  width: '100%', padding: '12px 16px', borderRadius: 12,
+                  width: '100%', padding: '24px 26px', borderRadius: 12,
                   border: '1px solid #d0d4e4', background: '#ffffff',
                   fontSize: 14, fontWeight: 700, color: '#1f2532'
                 }}
@@ -303,12 +303,12 @@ export default function OrganizePdfTool() {
               <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
                 🎉 PDF organized successfully ({newCount} pages)!
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
                 download="Twignberries-Organized.pdf"
                 className="btn-primary"
-                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+                style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Organized PDF
               </a>
@@ -317,7 +317,7 @@ export default function OrganizePdfTool() {
             </div>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Browser-memory page manipulation. Zero server retention.</span>
           </div>

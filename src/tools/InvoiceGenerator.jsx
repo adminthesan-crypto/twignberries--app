@@ -98,9 +98,9 @@ export default function InvoiceGenerator() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: 16,
+            gap: 24,
             marginBottom: 24,
-            padding: 16,
+            padding: 24,
             background: '#f8f9fc',
             borderRadius: 12,
             border: '1px solid #eaebf2'
@@ -167,7 +167,7 @@ export default function InvoiceGenerator() {
           {/* 2-Column Parties Section: From (You) and Bill To (Client) */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
             {/* FROM COLUMN */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 18, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 24, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
               <div style={{ fontSize: 12, fontWeight: 800, color: '#1f2532', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6161ff', display: 'inline-block' }} />
                 From (Your Business)
@@ -223,7 +223,7 @@ export default function InvoiceGenerator() {
             </div>
 
             {/* BILL TO COLUMN */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 18, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 24, background: '#ffffff', borderRadius: 12, border: '1px solid #e6e9ef' }}>
               <div style={{ fontSize: 12, fontWeight: 800, color: '#1f2532', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#00c875', display: 'inline-block' }} />
                 Bill To (Client)
@@ -287,7 +287,7 @@ export default function InvoiceGenerator() {
             2. Line Items &amp; Services
           </div>
 
-          <div style={{ overflowX: 'auto', marginBottom: 16 }}>
+          <div style={{ overflowX: 'auto', marginBottom: 24 }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr style={{ borderBottom: '2px solid #e6e9ef', textAlign: 'left', fontSize: 11.5, fontWeight: 700, color: '#676879', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
@@ -350,7 +350,7 @@ export default function InvoiceGenerator() {
             </table>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }} className="no-print">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }} className="no-print">
             <button
               type="button"
               onClick={addItem}
@@ -394,7 +394,7 @@ export default function InvoiceGenerator() {
               4. Total Due &amp; Export
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20, fontFamily: 'monospace', fontSize: 14 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24, marginBottom: 20, fontFamily: 'monospace', fontSize: 14 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#a0a8be' }}>
                 <span>Subtotal:</span>
                 <span style={{ color: '#ffffff', fontWeight: 700 }}>{currency}{subtotal.toFixed(2)}</span>

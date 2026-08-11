@@ -54,7 +54,7 @@ export default function EtsyFeeCalculator() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
 
         {/* ── Left: Inputs ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
           {/* Section 1: Price */}
           <div className="form-card">
@@ -62,7 +62,7 @@ export default function EtsyFeeCalculator() {
               <DollarSign size={13} color="var(--brand)" />
               Selling Price & Shipping
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
               <div>
                 <label>Item Selling Price ({currency})</label>
                 <input type="number" step="0.01" value={salePrice}
@@ -82,7 +82,7 @@ export default function EtsyFeeCalculator() {
               <TrendingUp size={13} color="#22c55e" />
               Your Production Costs
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
               <div>
                 <label>Item Material / Craft Cost ({currency})</label>
                 <input type="number" step="0.01" value={itemCost}
@@ -129,7 +129,7 @@ export default function EtsyFeeCalculator() {
         </div>
 
         {/* ── Right: Results ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
 
           {/* Net profit banner */}
           <div style={{
@@ -165,7 +165,7 @@ export default function EtsyFeeCalculator() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
                 textTransform: 'uppercase', color: 'var(--text-4)' }}>Fee Breakdown</span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title="Etsy Fee & Margin Calculation"
                   lines={[
@@ -208,7 +208,7 @@ export default function EtsyFeeCalculator() {
 
           {/* Tip */}
           <div style={{
-            padding: '14px 16px', borderRadius: 12,
+            padding: '24px', borderRadius: 12,
             background: 'rgba(249,115,22,0.05)', border: '1px solid rgba(249,115,22,0.15)',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
@@ -219,7 +219,7 @@ export default function EtsyFeeCalculator() {
               Etsy applies its mandatory 6.5% transaction cut to both item price and shipping.
             </p>
           </div>
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

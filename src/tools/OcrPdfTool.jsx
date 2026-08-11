@@ -73,7 +73,7 @@ export default function OcrPdfTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 border border-blue-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
             <Scan className="w-5 h-5" />
           </div>
@@ -82,14 +82,14 @@ export default function OcrPdfTool() {
             <p className="text-sm text-[#676879]">Convert scanned PDF documents into selectable, searchable plaintext offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-blue-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-blue-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Document characters are recognized offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -105,7 +105,7 @@ export default function OcrPdfTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <FileText className="w-8 h-8 text-blue-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{file.name}</p>
@@ -121,18 +121,18 @@ export default function OcrPdfTool() {
           </div>
 
           {loading ? (
-            <div className="py-12 text-center text-[#9ca3af] flex flex-col items-center gap-3">
+            <div className="py-12 text-center text-[#9ca3af] flex flex-col items-center gap-6">
               <RefreshCw className="w-8 h-8 animate-spin text-blue-400" />
               <span>Scanning document pages and performing optical text alignment...</span>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-[#1f2532] uppercase tracking-wider">Recognized OCR Output:</span>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
                     onClick={handleDownloadTxt}
-                    className="py-1.5 px-4 rounded-xl bg-blue-500 text-white text-xs font-bold hover:bg-blue-600 transition-all flex items-center gap-1.5 shadow"
+                    className="py-1.5 px-4 rounded-xl bg-blue-500 text-white text-xs font-bold hover:bg-blue-600 transition-all flex items-center gap-3.5 shadow"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download Text File</span>
@@ -144,7 +144,7 @@ export default function OcrPdfTool() {
                 value={ocrText}
                 readOnly
                 rows={12}
-                className="w-full bg-white border border-[#e6e9ef] rounded-xl p-4 text-[#1f2532] font-mono text-xs focus:outline-none"
+                className="w-full bg-white border border-[#e6e9ef] rounded-xl p-6 text-[#1f2532] font-mono text-xs focus:outline-none"
               />
             </div>
           )}

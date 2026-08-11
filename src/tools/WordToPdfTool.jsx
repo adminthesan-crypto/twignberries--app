@@ -110,7 +110,7 @@ export default function WordToPdfTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 border border-blue-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
             <FileText className="w-5 h-5" />
           </div>
@@ -119,14 +119,14 @@ export default function WordToPdfTool() {
             <p className="text-sm text-[#676879]">Convert Word text, Markdown, or TXT files into cleanly formatted A4 PDF documents.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-blue-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-blue-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Documents are converted offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -134,15 +134,15 @@ export default function WordToPdfTool() {
 
       {/* Upload or Paste */}
       <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <label className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#e6e9ef] hover:border-[#d0d4e4] text-[#1f2532] text-sm cursor-pointer transition-all">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <label className="flex items-center gap-3 px-4 py-2 rounded-xl bg-white border border-[#e6e9ef] hover:border-[#d0d4e4] text-[#1f2532] text-sm cursor-pointer transition-all">
             <Upload className="w-4 h-4 text-blue-400" />
             <span>Upload .TXT / .MD File</span>
             <input type="file" accept=".txt,.md,.doc,.docx" onChange={handleFileUpload} className="hidden" />
           </label>
 
-          <div className="flex items-center gap-4 text-sm text-[#9ca3af]">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-6 text-sm text-[#9ca3af]">
+            <div className="flex items-center gap-3">
               <Type className="w-4 h-4 text-blue-400" />
               <span>Font:</span>
               <select
@@ -155,7 +155,7 @@ export default function WordToPdfTool() {
                 <option value={14}>14pt</option>
               </select>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <AlignLeft className="w-4 h-4 text-blue-400" />
               <span>Spacing:</span>
               <select
@@ -176,14 +176,14 @@ export default function WordToPdfTool() {
           onChange={(e) => { setText(e.target.value); setPdfBlob(null); }}
           placeholder="Paste Word document text, Markdown, or upload a .txt/.md file..."
           rows={12}
-          className="w-full bg-white border border-[#e6e9ef] rounded-xl p-4 text-[#1f2532] text-sm font-mono focus:outline-none focus:border-blue-500"
+          className="w-full bg-white border border-[#e6e9ef] rounded-xl p-6 text-[#1f2532] text-sm font-mono focus:outline-none focus:border-blue-500"
         />
 
-        <div className="flex flex-col sm:flex-row items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-center gap-6">
           <button
             onClick={generatePdf}
             disabled={loading || !text.trim()}
-            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 disabled:opacity-50 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 disabled:opacity-50 transition-all flex items-center justify-center gap-3 shadow-lg shadow-blue-500/20"
           >
             {loading ? (
               <>
@@ -199,10 +199,10 @@ export default function WordToPdfTool() {
           </button>
 
           {pdfBlob && (
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
               >
                 <Download className="w-5 h-5" />
                 <span>Download A4 PDF</span>

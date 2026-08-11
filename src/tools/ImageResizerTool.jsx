@@ -123,8 +123,8 @@ export default function ImageResizerTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -137,7 +137,7 @@ export default function ImageResizerTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-4 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -161,8 +161,8 @@ export default function ImageResizerTool() {
         </label>
       ) : (
         <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
-          <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between flex-wrap gap-6 pb-4 border-b border-[#f0f2f5]">
+            <div className="flex items-center gap-6">
               <Image className="text-[#6161ff]" size={24} />
               <div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>{file.name}</div>
@@ -179,7 +179,7 @@ export default function ImageResizerTool() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 items-end">
             <div>
               <div style={SL}>Width (px)</div>
               <input
@@ -205,7 +205,7 @@ export default function ImageResizerTool() {
             <div>
               <button
                 onClick={() => setLockAspect(!lockAspect)}
-                className={`w-full h-11 rounded-lg border flex items-center justify-center gap-2 text-xs font-bold transition ${
+                className={`w-full h-11 rounded-lg border flex items-center justify-center gap-3 text-xs font-bold transition ${
                   lockAspect
                     ? 'border-[#6161ff] bg-[#f5f6ff] text-[#6161ff]'
                     : 'border-[#d0d4e4] bg-white text-[#676879]'
@@ -231,9 +231,9 @@ export default function ImageResizerTool() {
           </div>
 
           {/* Preview Area */}
-          <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex flex-col items-center justify-center min-h-[300px]">
+          <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex flex-col items-center justify-center min-h-[300px]">
             {loading ? (
-              <div className="flex flex-col items-center gap-3 text-[#676879]">
+              <div className="flex flex-col items-center gap-6 text-[#676879]">
                 <RefreshCw className="animate-spin text-[#6161ff]" size={32} />
                 <span className="text-sm font-bold">Resizing image...</span>
               </div>
@@ -246,15 +246,15 @@ export default function ImageResizerTool() {
             ) : null}
           </div>
 
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex items-center justify-between pt-6 border-t border-[#f0f2f5]">
             <span style={{ fontSize: 13, color: '#676879', fontWeight: 600 }}>
               ✓ 100% Offline Canvas Resizing
             </span>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={handleDownload}
                 disabled={!resizedUrl || loading}
-                className="btn-primary flex items-center gap-2"
+                className="btn-primary flex items-center gap-3"
                 style={{ padding: '11px 24px', fontSize: 14 }}
               >
                 <Download size={16} />

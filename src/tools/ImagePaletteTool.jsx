@@ -76,8 +76,8 @@ export default function ImagePaletteTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -90,7 +90,7 @@ export default function ImagePaletteTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-4 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
@@ -114,8 +114,8 @@ export default function ImagePaletteTool() {
         </label>
       ) : (
         <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
-          <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#f0f2f5]">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between flex-wrap gap-6 pb-4 border-b border-[#f0f2f5]">
+            <div className="flex items-center gap-6">
               <Image className="text-[#6161ff]" size={24} />
               <div style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>{file.name}</div>
             </div>
@@ -128,7 +128,7 @@ export default function ImagePaletteTool() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="flex flex-col items-center p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef]">
+            <div className="flex flex-col items-center p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef]">
               {previewUrl && (
                 <img
                   src={previewUrl}
@@ -145,14 +145,14 @@ export default function ImagePaletteTool() {
                   <NativeShareButton text={colors.join(', ')} />
                 )}
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-5">
                 {colors.map((hex, i) => (
                   <button
                     key={hex}
                     onClick={() => copyToClipboard(hex)}
-                    className="flex items-center justify-between p-3 rounded-xl border border-[#e6e9ef] hover:border-[#6161ff] transition bg-white shadow-sm"
+                    className="flex items-center justify-between p-6 rounded-xl border border-[#e6e9ef] hover:border-[#6161ff] transition bg-white shadow-sm"
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-6">
                       <div
                         className="w-7 h-7 rounded-lg border border-black/10 shadow-inner"
                         style={{ backgroundColor: hex }}

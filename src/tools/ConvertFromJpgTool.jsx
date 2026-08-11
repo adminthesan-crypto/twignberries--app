@@ -98,7 +98,7 @@ export default function ConvertFromJpgTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-yellow-500/10 border border-yellow-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-400">
             <FileImage className="w-5 h-5" />
           </div>
@@ -107,29 +107,29 @@ export default function ConvertFromJpgTool() {
             <p className="text-sm text-[#676879]">Turn JPG and JPEG images into lossless PNG or modern WEBP files in bulk offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-yellow-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-yellow-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Images are converted offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       {/* Controls */}
-      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-yellow-500 text-black font-semibold cursor-pointer hover:bg-yellow-400 transition-all text-sm shadow-md">
+      <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <label className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-yellow-500 text-black font-semibold cursor-pointer hover:bg-yellow-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />
             <span>Upload JPG / JPEG Images</span>
             <input type="file" accept="image/jpeg,image/jpg" multiple onChange={handleFileUpload} className="hidden" />
           </label>
 
-          <div className="flex items-center gap-3 text-sm text-[#9ca3af]">
+          <div className="flex items-center gap-6 text-sm text-[#9ca3af]">
             <Sliders className="w-4 h-4 text-yellow-400" />
             <span>Target Format:</span>
             <select
@@ -144,10 +144,10 @@ export default function ConvertFromJpgTool() {
         </div>
 
         {images.length > 0 ? (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {images.map((img, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#e6e9ef]">
-                <div className="flex items-center gap-3 truncate">
+              <div key={idx} className="flex items-center justify-between p-6 rounded-xl bg-white border border-[#e6e9ef]">
+                <div className="flex items-center gap-6 truncate">
                   <img src={img.url} alt={img.name} className="w-10 h-10 object-contain rounded bg-white" />
                   <div className="truncate">
                     <p className="text-[#1f2532] text-sm font-medium truncate">{img.name}</p>
@@ -157,7 +157,7 @@ export default function ConvertFromJpgTool() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   {converted[idx] && (
                     <>
                       <button
@@ -194,7 +194,7 @@ export default function ConvertFromJpgTool() {
             <button
               onClick={convertAllFromJpg}
               disabled={loading}
-              className="py-3 px-6 rounded-xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition-all flex items-center gap-2 shadow-lg shadow-yellow-500/20"
+              className="py-3 px-6 rounded-xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition-all flex items-center gap-3 shadow-lg shadow-yellow-500/20"
             >
               {loading ? (
                 <>

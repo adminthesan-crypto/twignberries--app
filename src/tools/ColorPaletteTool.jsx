@@ -54,8 +54,8 @@ export default function ColorPaletteTool() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
       {/* Left Column: Color Inputs & Accessibility Results */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-        <div className="form-card">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+        <div className="form-card" style={{ padding: '24px' }}>
           <div style={SL}>1. Foreground & Background Color Pairing</div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
@@ -111,14 +111,14 @@ export default function ColorPaletteTool() {
             <div style={{ fontSize: 14, lineHeight: 1.6, opacity: 0.9 }}>
               This is normal body paragraph text. Sufficient contrast ensures readability for users with visual impairments or screen glare.
             </div>
-            <div style={{ fontSize: 12, fontWeight: 700, marginTop: 12, opacity: 0.8 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, marginTop: 24, opacity: 0.8 }}>
               Large bold caption text (18pt / 24px+)
             </div>
           </div>
         </div>
 
         {/* WCAG Compliance Checks Card */}
-        <div className="form-card">
+        <div className="form-card" style={{ padding: '24px' }}>
           <div style={SL}>2. WCAG 2.1 Accessibility Compliance Breakdown</div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
@@ -193,7 +193,7 @@ export default function ColorPaletteTool() {
             </div>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <button
               onClick={() => handleCopy(`${fg} / ${bg} (Ratio ${ratio}:1)`)}
               className="btn-primary"
@@ -205,7 +205,7 @@ export default function ColorPaletteTool() {
             <NativeShareButton text={`${fg} / ${bg} (Ratio ${ratio}:1)`} />
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>100% offline relative luminance calculation.</span>
           </div>

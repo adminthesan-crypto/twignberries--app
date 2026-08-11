@@ -163,7 +163,7 @@ This document outlines the deliverables and pricing structure for custom fronten
         </div>
 
         {/* Right Column (Results / Live Preview - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }} className="no-print">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }} className="no-print">
           {/* Primary Hero Banner / Preview */}
           <div className="form-card" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.12), rgba(18, 22, 36, 0.9))', borderColor: 'rgba(255, 107, 0, 0.3)' }}>
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff8c3a] block mb-1">
@@ -185,7 +185,7 @@ This document outlines the deliverables and pricing structure for custom fronten
               Document Actions &amp; Stats
             </div>
 
-            <div className="space-y-3 font-mono text-sm mb-5">
+            <div className="space-y-6 font-mono text-sm mb-5">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>Character Count:</span>
                 <span className="text-[#1f2532] font-semibold">{charCount.toLocaleString()}</span>
@@ -209,7 +209,7 @@ This document outlines the deliverables and pricing structure for custom fronten
               </div>
             </div>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3.5">
               <button
                 type="button"
                 onClick={handlePrint}

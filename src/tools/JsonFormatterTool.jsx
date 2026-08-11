@@ -108,7 +108,7 @@ export default function JsonFormatterTool() {
         <div className="form-card">
           <div className="flex items-center justify-between mb-3">
             <div style={SL} className="mb-0">1. Raw JSON Input</div>
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 24 }}>
               <button
                 type="button"
                 onClick={() => setInputJson(SAMPLE_JSON)}
@@ -139,7 +139,7 @@ export default function JsonFormatterTool() {
           />
 
           {errorMsg && (
-            <div style={{ marginTop: 12, padding: '12px 16px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginTop: 20, padding: '24px 26px', borderRadius: 12, background: '#fff2f4', border: '1px solid #e2445c', color: '#e2445c', fontSize: 13.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 24 }}>
               <AlertCircle size={16} />
               <span>{errorMsg}</span>
             </div>
@@ -151,7 +151,7 @@ export default function JsonFormatterTool() {
           <div className="flex items-center justify-between mb-3">
             <div style={SL} className="mb-0">2. Output Operation & Code View</div>
 
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 24 }}>
               {[
                 { id: 'beautify', label: 'Beautify', icon: <Maximize2 size={13} /> },
                 { id: 'minify', label: 'Minify', icon: <Minimize2 size={13} /> },
@@ -208,12 +208,12 @@ export default function JsonFormatterTool() {
             </div>
           </div>
 
-          <div className="flex gap-2 mb-3">
+          <div className="flex gap-3 mb-3">
             <button
               onClick={handleCopy}
               disabled={!outputCode || !!errorMsg}
               className="btn-primary"
-              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+              style={{ flex: 1, background: '#6161ff', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
               {copied ? 'Copied to Clipboard!' : `Copy ${mode === 'typescript' ? 'TypeScript' : 'JSON'} Code`}
@@ -226,13 +226,13 @@ export default function JsonFormatterTool() {
               href={`data:text/plain;charset=utf-8,${encodeURIComponent(outputCode)}`}
               download={`twignberries-${mode}.${mode === 'typescript' ? 'ts' : 'json'}`}
               className="btn-primary"
-              style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+              style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
             >
               <Download size={16} /> Download .{mode === 'typescript' ? 'ts' : 'json'} File
             </a>
           )}
 
-          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-2 text-xs text-[#676879] font-medium">
+          <div className="mt-4 pt-4 border-t border-[#f0f2f5] flex items-center gap-3 text-xs text-[#676879] font-medium">
             <ShieldCheck size={14} color="#00c875" />
             <span>Local V8 parser. Zero cloud transmission.</span>
           </div>

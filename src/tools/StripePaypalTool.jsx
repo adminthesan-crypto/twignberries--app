@@ -50,8 +50,8 @@ export default function StripePaypalTool() {
   const winner = Number(s.fee) < Number(p.fee) ? 'Stripe' : Number(p.fee) < Number(s.fee) ? 'PayPal' : 'Tie';
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -99,7 +99,7 @@ export default function StripePaypalTool() {
             <span className="text-lg font-bold text-[#1f2532]">Stripe Payments</span>
             {winner === 'Stripe' && <span className="badge badge-success">Cheaper by ${Math.abs(diffFee)}</span>}
           </div>
-          <div className="space-y-3">
+          <div className="space-y-6">
             <div className="flex justify-between text-sm">
               <span className="text-[#676879]">Rate Structure</span>
               <span className="font-mono font-bold text-[#1f2532]">{s.ratePct}% + ${s.fixed.toFixed(2)}</span>
@@ -121,7 +121,7 @@ export default function StripePaypalTool() {
             <span className="text-lg font-bold text-[#1f2532]">PayPal Commerce</span>
             {winner === 'PayPal' && <span className="badge badge-success">Cheaper by ${Math.abs(diffFee)}</span>}
           </div>
-          <div className="space-y-3">
+          <div className="space-y-6">
             <div className="flex justify-between text-sm">
               <span className="text-[#676879]">Rate Structure</span>
               <span className="font-mono font-bold text-[#1f2532]">{p.ratePct}% + ${p.fixed.toFixed(2)}</span>

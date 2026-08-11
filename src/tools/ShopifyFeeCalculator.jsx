@@ -53,9 +53,9 @@ export default function ShopifyFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
         {/* Left Column (Inputs) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
             <div style={SL}>
               <Layers size={13} color="var(--brand)" /> 1. Monthly Store Volume
@@ -104,7 +104,7 @@ export default function ShopifyFeeCalculator() {
 
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: 14, borderRadius: 10, background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--border)'
+              padding: 24, borderRadius: 10, background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--border)'
             }}>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)' }}>Use Shopify Payments?</div>
@@ -127,7 +127,7 @@ export default function ShopifyFeeCalculator() {
         </div>
 
         {/* Right Column (Results - Sticky) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, position: 'sticky', top: 20 }}>
           {/* Primary Hero Banner */}
           <div style={{
             padding: 24, borderRadius: 16, textAlign: 'center',
@@ -147,7 +147,7 @@ export default function ShopifyFeeCalculator() {
 
           {/* Secondary Cost Summary */}
           <div style={{
-            padding: 18, borderRadius: 14,
+            padding: 24, borderRadius: 14,
             background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)',
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#60a5fa', marginBottom: 6 }}>
@@ -162,12 +162,12 @@ export default function ShopifyFeeCalculator() {
           </div>
 
           {/* Breakdown Card */}
-          <div className="form-card" style={{ padding: 18 }}>
+          <div className="form-card" style={{ padding: 24 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-4)' }}>
                 Fee breakdown
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <CopySummaryButton
                   title="Shopify Fee & Plan Breakdown"
                   lines={[
@@ -213,7 +213,7 @@ export default function ShopifyFeeCalculator() {
             <strong style={{ color: 'var(--text-2)' }}>💡 Pro tip:</strong> Upgrading from Shopify Basic ($39) to Shopify Standard ($105) pays for itself automatically once your store revenue exceeds $22,000/month due to the 0.3% CC processing savings.
           </div>
 
-          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 12, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
+          <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
     </div>

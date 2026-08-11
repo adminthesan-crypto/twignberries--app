@@ -71,8 +71,8 @@ export default function CronParserTool() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -85,13 +85,13 @@ export default function CronParserTool() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-2 text-sm font-semibold">
+        <div className="p-6 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-center gap-3 text-sm font-semibold">
           <AlertCircle size={18} />
           {errorMsg}
         </div>
       )}
 
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
         <div>
           <div style={SL}>Cron Schedule Expression</div>
           <input
@@ -105,7 +105,7 @@ export default function CronParserTool() {
 
         <div>
           <div style={SL}>Common Preset Schedules</div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {presets.map((p) => (
               <button
                 key={p.label}
@@ -120,8 +120,8 @@ export default function CronParserTool() {
       </div>
 
       {explanation && (
-        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+        <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] flex items-center justify-between gap-6">
+          <div className="flex items-center gap-6">
             <Calendar className="text-[#6161ff]" size={32} />
             <div>
               <div className="text-xs font-bold uppercase text-[#6161ff]">Human Readable Translation</div>
@@ -133,11 +133,11 @@ export default function CronParserTool() {
       )}
 
       {fields.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-6">
           {fields.map((f, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-xl bg-white border border-[#e6e9ef] shadow-sm text-center flex flex-col gap-1"
+              className="p-6 rounded-xl bg-white border border-[#e6e9ef] shadow-sm text-center flex flex-col gap-3"
             >
               <span className="text-[10px] font-bold uppercase text-[#868894]">{f.name}</span>
               <span className="font-mono text-lg font-bold text-[#6161ff]">{f.val}</span>

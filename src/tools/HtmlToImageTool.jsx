@@ -87,7 +87,7 @@ export default function HtmlToImageTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 border border-cyan-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400">
             <Code className="w-5 h-5" />
           </div>
@@ -96,14 +96,14 @@ export default function HtmlToImageTool() {
             <p className="text-sm text-[#676879]">Convert live HTML and inline CSS code cards directly into high-DPI Retina PNG or JPG images offline.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-cyan-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-cyan-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — HTML rendering happens offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -111,7 +111,7 @@ export default function HtmlToImageTool() {
 
       {/* Editor & Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-cyan-400">HTML & Inline CSS Markup</span>
             <select
@@ -127,12 +127,12 @@ export default function HtmlToImageTool() {
             value={htmlContent}
             onChange={(e) => { setHtmlContent(e.target.value); setRenderedUrl(null); }}
             rows={12}
-            className="w-full bg-white border border-[#e6e9ef] rounded-xl p-4 text-[#1f2532] font-mono text-xs focus:border-cyan-500 outline-none"
+            className="w-full bg-white border border-[#e6e9ef] rounded-xl p-6 text-[#1f2532] font-mono text-xs focus:border-cyan-500 outline-none"
           />
           <button
             onClick={convertHtmlToImage}
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+            className="w-full py-3 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/20"
           >
             {loading ? (
               <>
@@ -148,23 +148,23 @@ export default function HtmlToImageTool() {
           </button>
         </div>
 
-        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-5 space-y-4 flex flex-col justify-between">
+        <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6 flex flex-col justify-between">
           <div>
             <span className="text-xs font-bold text-[#9ca3af] block mb-3">Live HTML Render Preview</span>
             <div
-              className="border border-[#e6e9ef] rounded-xl p-4 bg-white min-h-[220px] flex items-center justify-center overflow-auto"
+              className="border border-[#e6e9ef] rounded-xl p-6 bg-white min-h-[220px] flex items-center justify-center overflow-auto"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
           </div>
 
           {renderedUrl && (
-            <div className="space-y-3 pt-4 border-t border-[#e6e9ef]">
+            <div className="space-y-6 pt-4 border-t border-[#e6e9ef]">
               <span className="text-xs font-bold text-emerald-400 block">Rendered Output:</span>
               <img src={renderedUrl} alt="Rendered HTML" className="w-full rounded-xl border border-[#e6e9ef] bg-white" />
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <button
                   onClick={handleDownload}
-                  className="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all flex items-center justify-center gap-3"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download High-DPI Image</span>

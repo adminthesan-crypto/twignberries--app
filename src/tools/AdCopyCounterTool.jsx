@@ -23,9 +23,9 @@ export default function AdCopyCounterTool() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
-        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-6">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={24} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
             100% Client-Side Ad Copy Character Limit & Visual Meter
@@ -36,14 +36,14 @@ export default function AdCopyCounterTool() {
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {limits.map((item, idx) => {
           const len = item.text.length;
           const pct = Math.min(100, (len / item.max) * 100);
           const over = len > item.max;
 
           return (
-            <div key={idx} className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-3">
+            <div key={idx} className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
               <div className="flex items-center justify-between">
                 <span style={SL}>{item.label}</span>
                 <span
@@ -75,11 +75,11 @@ export default function AdCopyCounterTool() {
               </div>
 
               {over ? (
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-red-600">
+                <div className="flex items-center gap-3.5 text-xs font-semibold text-red-600">
                   <AlertCircle size={14} /> Exceeds {item.max} char limit! This copy will be truncated by the advertising platform.
                 </div>
               ) : (
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-green-700">
+                <div className="flex items-center gap-3.5 text-xs font-semibold text-green-700">
                   <CheckCircle size={14} /> Within platform limits. Safe for deployment.
                 </div>
               )}

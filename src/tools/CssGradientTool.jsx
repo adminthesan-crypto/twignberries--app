@@ -56,8 +56,8 @@ export default function CssGradientTool() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -83,10 +83,10 @@ export default function CssGradientTool() {
 
         {/* Controls */}
         <div className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div style={SL}>Gradient Type</div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setType('linear')}
                   className={`h-10 rounded-lg text-xs font-bold border transition ${
@@ -125,10 +125,10 @@ export default function CssGradientTool() {
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div style={SL}>Start Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={color1}
@@ -146,7 +146,7 @@ export default function CssGradientTool() {
 
             <div>
               <div style={SL}>End Color</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <input
                   type="color"
                   value={color2}
@@ -165,12 +165,12 @@ export default function CssGradientTool() {
 
           <div>
             <div style={SL}>Curated Brand Presets</div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {presets.map((p) => (
                 <button
                   key={p.name}
                   onClick={() => { setColor1(p.c1); setColor2(p.c2); }}
-                  className="px-3 py-1.5 rounded-lg border border-[#e6e9ef] hover:border-[#6161ff] text-xs font-bold text-[#1f2532] flex items-center gap-2 bg-white shadow-sm"
+                  className="px-3 py-1.5 rounded-lg border border-[#e6e9ef] hover:border-[#6161ff] text-xs font-bold text-[#1f2532] flex items-center gap-3 bg-white shadow-sm"
                 >
                   <div
                     className="w-3.5 h-3.5 rounded-full"
@@ -182,13 +182,13 @@ export default function CssGradientTool() {
             </div>
           </div>
 
-          <div className="space-y-3 pt-2">
-            <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
+          <div className="space-y-6 pt-2">
+            <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
               <code className="font-mono text-xs text-[#1f2532]">background: {cssStr};</code>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <button
                   onClick={copyCss}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                  className="flex items-center gap-3.5 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
                 >
                   {copiedCss ? <Check size={14} /> : <Copy size={14} />}
                   {copiedCss ? 'Copied!' : 'Copy CSS'}
@@ -197,12 +197,12 @@ export default function CssGradientTool() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
+            <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] flex items-center justify-between">
               <code className="font-mono text-xs text-[#1f2532]">{tailwindStr}</code>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <button
                   onClick={copyTailwind}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-[#1f2532] text-xs font-bold hover:bg-white"
+                  className="flex items-center gap-3.5 px-3 py-1.5 rounded-lg border border-[#d0d4e4] text-[#1f2532] text-xs font-bold hover:bg-white"
                 >
                   {copiedTailwind ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
                   {copiedTailwind ? 'Copied!' : 'Copy Tailwind'}

@@ -79,7 +79,7 @@ export default function CompressPdfTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Minimize2 className="w-5 h-5" />
           </div>
@@ -88,14 +88,14 @@ export default function CompressPdfTool() {
             <p className="text-sm text-[#676879]">Reduce PDF file size while optimizing for maximum document quality.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-emerald-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Your PDFs never leave your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -112,7 +112,7 @@ export default function CompressPdfTool() {
       ) : (
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-[#e6e9ef]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <FileText className="w-8 h-8 text-emerald-400" />
               <div>
                 <p className="text-[#1f2532] font-medium">{file.name}</p>
@@ -128,9 +128,9 @@ export default function CompressPdfTool() {
           </div>
 
           {/* Compression Levels */}
-          <div className="space-y-3">
+          <div className="space-y-6">
             <label className="text-sm font-medium text-[#1f2532] block">Select Compression Level:</label>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { id: 'extreme', name: 'Extreme Compression', desc: 'Smallest file size, lower image quality', color: 'border-red-500/40 text-red-400' },
                 { id: 'recommended', name: 'Recommended', desc: 'Good quality, significant size reduction', color: 'border-emerald-500/40 text-emerald-400' },
@@ -140,7 +140,7 @@ export default function CompressPdfTool() {
                   key={opt.id}
                   type="button"
                   onClick={() => setLevel(opt.id)}
-                  className={`p-4 rounded-xl border text-left transition-all ${
+                  className={`p-6 rounded-xl border text-left transition-all ${
                     level === opt.id
                       ? 'bg-gray-100 border-emerald-500 ring-2 ring-emerald-500/20'
                       : 'bg-white border-[#e6e9ef] hover:border-[#d0d4e4]'
@@ -158,7 +158,7 @@ export default function CompressPdfTool() {
             <button
               onClick={handleCompress}
               disabled={loading}
-              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
             >
               {loading ? (
                 <>
@@ -173,13 +173,13 @@ export default function CompressPdfTool() {
               )}
             </button>
           ) : (
-            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5 space-y-4">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
+            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 space-y-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-6">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400" />
                   <div>
                     <h3 className="text-[#1f2532] font-bold">PDF Successfully Compressed!</h3>
-                    <div className="flex items-center gap-2 text-sm text-[#9ca3af] mt-0.5">
+                    <div className="flex items-center gap-3 text-sm text-[#9ca3af] mt-0.5">
                       <span>{formatMB(fileSize)}</span>
                       <ArrowRight className="w-4 h-4 text-emerald-400" />
                       <span className="text-emerald-400 font-bold">{formatMB(compressedSize)}</span>
@@ -190,10 +190,10 @@ export default function CompressPdfTool() {
                   </div>
                 </div>
 
-                <div className="flex gap-2 w-full md:w-auto">
+                <div className="flex gap-3 w-full md:w-auto">
                   <button
                     onClick={handleDownload}
-                    className="w-full md:w-auto py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-md"
+                    className="w-full md:w-auto py-2.5 px-6 rounded-xl bg-emerald-400 text-black font-bold hover:bg-emerald-300 transition-all flex items-center justify-center gap-3 shadow-md"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download Compressed PDF</span>

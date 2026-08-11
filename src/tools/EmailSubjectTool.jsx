@@ -29,9 +29,9 @@ export default function EmailSubjectTool() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
-        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
+        <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={24} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
             100% Client-Side Email Subject Line & Inbox Preview Checker
@@ -43,7 +43,7 @@ export default function EmailSubjectTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
             <div className="flex items-center justify-between mb-1">
               <span style={SL}>Email Subject Line</span>
@@ -66,7 +66,7 @@ export default function EmailSubjectTool() {
               value={preheader}
               onChange={(e) => setPreheader(e.target.value)}
               rows={3}
-              className="w-full p-3 rounded-xl border border-[#d0d4e4] text-xs text-[#1f2532] focus:outline-none focus:border-[#6161ff]"
+              className="w-full p-6 rounded-xl border border-[#d0d4e4] text-xs text-[#1f2532] focus:outline-none focus:border-[#6161ff]"
             />
           </div>
 
@@ -81,17 +81,17 @@ export default function EmailSubjectTool() {
           </div>
 
           {/* Spam check */}
-          <div className="p-4 rounded-xl border border-[#e6e9ef] bg-white space-y-2">
+          <div className="p-6 rounded-xl border border-[#e6e9ef] bg-white space-y-2">
             <div className="flex justify-between items-start">
               <span style={SL}>Spam Trigger Word Inspection</span>
               <NativeShareButton text={`Subject: ${subject}\nPreheader: ${preheader}\nSender: ${sender}`} />
             </div>
             {foundSpam.length === 0 ? (
-              <div className="flex items-center gap-2 text-xs font-bold text-green-700">
+              <div className="flex items-center gap-3 text-xs font-bold text-green-700">
                 <CheckCircle size={16} /> No obvious spam trigger keywords detected.
               </div>
             ) : (
-              <div className="flex items-center gap-2 text-xs font-bold text-red-700">
+              <div className="flex items-center gap-3 text-xs font-bold text-red-700">
                 <AlertCircle size={16} /> Caution — Detected spam trigger words: {foundSpam.join(', ')}
               </div>
             )}
@@ -101,11 +101,11 @@ export default function EmailSubjectTool() {
         {/* Live Inbox Previews */}
         <div className="space-y-6">
           {/* iOS Mail Mobile View */}
-          <div className="p-5 rounded-2xl border border-[#e6e9ef] bg-white shadow-sm space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#676879]">
+          <div className="p-6 rounded-2xl border border-[#e6e9ef] bg-white shadow-sm space-y-4">
+            <div className="flex items-center gap-3 text-xs font-bold text-[#676879]">
               <Smartphone size={16} className="text-[#6161ff]" /> iOS Mail Mobile Preview (iPhone 16 Pro)
             </div>
-            <div className="p-4 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] max-w-sm mx-auto shadow-inner space-y-1">
+            <div className="p-6 rounded-xl bg-[#f5f6f8] border border-[#e6e9ef] max-w-sm mx-auto shadow-inner space-y-1">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-sm text-[#1f2532] truncate">{sender}</span>
                 <span className="text-[11px] text-[#868894]">9:41 AM</span>
@@ -120,11 +120,11 @@ export default function EmailSubjectTool() {
           </div>
 
           {/* Gmail Desktop View */}
-          <div className="p-5 rounded-2xl border border-[#e6e9ef] bg-white shadow-sm space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#676879]">
+          <div className="p-6 rounded-2xl border border-[#e6e9ef] bg-white shadow-sm space-y-4">
+            <div className="flex items-center gap-3 text-xs font-bold text-[#676879]">
               <Monitor size={16} className="text-[#6161ff]" /> Gmail Web Desktop Row Preview
             </div>
-            <div className="p-3 rounded-lg bg-white border border-[#d0d4e4] flex items-center gap-3 text-xs overflow-hidden">
+            <div className="p-6 rounded-lg bg-white border border-[#d0d4e4] flex items-center gap-6 text-xs overflow-hidden">
               <span className="font-bold text-[#1f2532] w-40 shrink-0 truncate">{sender}</span>
               <div className="flex-1 truncate">
                 <span className="font-bold text-[#1f2532]">{subject}</span>

@@ -50,8 +50,8 @@ export default function TimezonePlannerTool() {
   const allWorking = members.every((m) => isWorkingHour(getLocalHour(m.offset, utcHour)));
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -64,9 +64,9 @@ export default function TimezonePlannerTool() {
       </div>
 
       {/* UTC Hour Slider */}
-      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Clock className="text-[#6161ff]" size={20} />
             <span className="font-bold text-sm text-[#1f2532]">Select Meeting Reference Time (UTC)</span>
           </div>
@@ -86,23 +86,23 @@ export default function TimezonePlannerTool() {
         />
 
         {allWorking ? (
-          <div className="p-3 rounded-xl bg-green-50 border border-green-200 text-green-700 text-xs font-bold flex items-center gap-2">
+          <div className="p-6 rounded-xl bg-green-50 border border-green-200 text-green-700 text-xs font-bold flex items-center gap-3">
             <Sun size={16} /> Golden Working Hour! All team members are in normal daytime working hours (8 AM – 6 PM).
           </div>
         ) : (
-          <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold flex items-center gap-2">
+          <div className="p-6 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold flex items-center gap-3">
             <Moon size={16} /> Outside overlap hours for some team members. Adjust UTC time slider to find a daytime slot.
           </div>
         )}
       </div>
 
       {/* Team Members List */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         <div className="flex items-center justify-between">
           <span style={SL}>Distributed Team Locations</span>
           <button
             onClick={addMember}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+            className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
           >
             <Plus size={14} /> Add Location
           </button>
@@ -116,9 +116,9 @@ export default function TimezonePlannerTool() {
             return (
               <div
                 key={idx}
-                className={`p-5 rounded-2xl border-2 transition ${
+                className={`p-6 rounded-2xl border-2 transition ${
                   working ? 'border-green-400 bg-white shadow-sm' : 'border-[#e6e9ef] bg-[#fbfbfc] opacity-90'
-                } space-y-4`}
+                } space-y-6`}
               >
                 <div className="flex items-center justify-between">
                   <input
@@ -167,11 +167,11 @@ export default function TimezonePlannerTool() {
                 <div className="flex items-center justify-between text-xs font-bold">
                   <span>Status:</span>
                   {working ? (
-                    <span className="badge badge-success flex items-center gap-1">
+                    <span className="badge badge-success flex items-center gap-3">
                       <Sun size={12} /> Working Day
                     </span>
                   ) : (
-                    <span className="badge badge-danger flex items-center gap-1">
+                    <span className="badge badge-danger flex items-center gap-3">
                       <Moon size={12} /> Off / Night
                     </span>
                   )}

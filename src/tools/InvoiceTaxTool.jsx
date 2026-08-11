@@ -46,8 +46,8 @@ export default function InvoiceTaxTool() {
   const symbol = currency === 'EUR' ? '€' : currency === 'GBP' ? '£' : currency === 'INR' ? '₹' : '$';
 
   return (
-    <div className="space-y-6">
-      <div className="p-5 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-3">
+    <div className="space-y-8">
+      <div className="p-6 rounded-2xl bg-[#eceeff] border border-[#d5d9fc] flex items-start gap-4">
         <ShieldCheck className="text-[#6161ff] shrink-0 mt-0.5" size={20} />
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, color: '#1f2532' }}>
@@ -60,10 +60,10 @@ export default function InvoiceTaxTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-8">
           <div className="flex items-center justify-between">
             <span style={SL}>Invoice Line Items</span>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-6">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
@@ -76,18 +76,18 @@ export default function InvoiceTaxTool() {
               </select>
               <button
                 onClick={addItem}
-                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                className="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
               >
                 <Plus size={14} /> Add Line
               </button>
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-6">
             {items.map((it, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-3 flex-wrap"
+                className="p-6 rounded-xl bg-white border border-[#e6e9ef] shadow-sm flex items-center gap-6 flex-wrap"
               >
                 <input
                   type="text"
@@ -95,7 +95,7 @@ export default function InvoiceTaxTool() {
                   onChange={(e) => updateItem(idx, 'desc', e.target.value)}
                   className="flex-1 min-w-[180px] h-10 px-3 rounded-lg border border-[#d0d4e4] text-xs font-bold text-[#1f2532]"
                 />
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-3">
                   <span className="text-[10px] uppercase font-bold text-[#868894]">Qty:</span>
                   <input
                     type="number"
@@ -104,7 +104,7 @@ export default function InvoiceTaxTool() {
                     className="w-14 h-10 px-2 rounded-lg border border-[#d0d4e4] font-mono text-xs font-bold text-[#1f2532]"
                   />
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-3">
                   <span className="text-[10px] uppercase font-bold text-[#868894]">Price ({symbol}):</span>
                   <input
                     type="number"
@@ -113,7 +113,7 @@ export default function InvoiceTaxTool() {
                     className="w-20 h-10 px-2 rounded-lg border border-[#d0d4e4] font-mono text-xs font-bold text-[#1f2532]"
                   />
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-3">
                   <span className="text-[10px] uppercase font-bold text-[#868894]">Tax%:</span>
                   <input
                     type="number"
@@ -137,7 +137,7 @@ export default function InvoiceTaxTool() {
 
         {/* Totals Summary */}
         <div className="space-y-6">
-          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-4">
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e9ef] shadow-sm space-y-6">
             <div>
               <div style={SL}>Overall Client Discount (%)</div>
               <input
@@ -148,7 +148,7 @@ export default function InvoiceTaxTool() {
               />
             </div>
 
-            <div className="pt-4 border-t border-[#f0f2f5] space-y-3">
+            <div className="pt-4 border-t border-[#f0f2f5] space-y-6">
               <div className="flex justify-between text-xs">
                 <span className="text-[#676879]">Gross Subtotal</span>
                 <span className="font-mono font-bold text-[#1f2532]">
@@ -169,7 +169,7 @@ export default function InvoiceTaxTool() {
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center flex flex-col items-center">
+            <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center flex flex-col items-center">
               <div className="text-[10px] uppercase font-bold text-[#6161ff]">Total Invoice Amount Due</div>
               <div className="text-3xl font-mono font-bold text-[#1f2532] mt-1 mb-4">
                 {symbol}{finalInvoiceTotal.toFixed(2)}

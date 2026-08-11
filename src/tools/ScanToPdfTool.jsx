@@ -86,7 +86,7 @@ export default function ScanToPdfTool() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-teal-500/10 border border-teal-500/20 rounded-2xl p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-6 mb-3">
           <div className="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400">
             <Camera className="w-5 h-5" />
           </div>
@@ -95,14 +95,14 @@ export default function ScanToPdfTool() {
             <p className="text-sm text-[#676879]">Compile document scans or camera photos into clean multi-page PDF files.</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-teal-400 font-medium">
+        <div className="flex items-center gap-3 text-xs text-teal-400 font-medium">
           <ShieldCheck className="w-4 h-4" />
           <span>100% Client-Side Privacy — Images are compiled offline in your browser.</span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-center gap-3 text-red-300 text-sm">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 flex items-center gap-6 text-red-300 text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{errorMsg}</span>
         </div>
@@ -110,14 +110,14 @@ export default function ScanToPdfTool() {
 
       {/* Controls */}
       <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <label className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500 text-black font-semibold cursor-pointer hover:bg-teal-400 transition-all text-sm shadow-md">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <label className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-teal-500 text-black font-semibold cursor-pointer hover:bg-teal-400 transition-all text-sm shadow-md">
             <Upload className="w-4 h-4" />
             <span>Upload Document Scans / Photos</span>
             <input type="file" accept="image/*" multiple onChange={handleFileUpload} className="hidden" />
           </label>
 
-          <div className="flex items-center gap-2 text-sm text-[#9ca3af]">
+          <div className="flex items-center gap-3 text-sm text-[#9ca3af]">
             <Sliders className="w-4 h-4 text-teal-400" />
             <span>Scan Mode:</span>
             <select
@@ -133,7 +133,7 @@ export default function ScanToPdfTool() {
         </div>
 
         {images.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {images.map((img, idx) => (
               <div key={idx} className="relative bg-white border border-[#e6e9ef] rounded-xl overflow-hidden p-2 group">
                 <img
@@ -159,11 +159,11 @@ export default function ScanToPdfTool() {
           </div>
         )}
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-[#e6e9ef]">
+        <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 border-t border-[#e6e9ef]">
           <button
             onClick={generateScannedPdf}
             disabled={loading || images.length === 0}
-            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-teal-400 text-black font-bold hover:bg-teal-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20"
+            className="w-full sm:w-auto py-3 px-6 rounded-xl bg-teal-400 text-black font-bold hover:bg-teal-300 transition-all flex items-center justify-center gap-3 shadow-lg shadow-teal-500/20"
           >
             {loading ? (
               <>
@@ -179,10 +179,10 @@ export default function ScanToPdfTool() {
           </button>
 
           {pdfBlob && (
-            <div className="flex gap-2 w-full sm:w-auto">
+            <div className="flex gap-4 w-full sm:w-auto">
               <button
                 onClick={handleDownload}
-                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+                className="w-full sm:w-auto py-3 px-6 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-3 shadow-lg shadow-blue-500/20"
               >
                 <Download className="w-5 h-5" />
                 <span>Download PDF Document</span>
