@@ -169,12 +169,24 @@ export default function InvoiceTaxTool() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f6ff] border border-[#d5d9fc] text-center flex flex-col items-center">
-              <div className="text-[10px] uppercase font-bold text-[#6161ff]">Total Invoice Amount Due</div>
-              <div className="text-3xl font-mono font-bold text-[#1f2532] mt-1 mb-4">
+            <div style={{
+              padding: '20px 16px',
+              borderRadius: 16,
+              background: '#f5f6ff',
+              border: '1px solid #d5d9fc',
+              textAlign: 'center',
+            }}>
+              <div style={{ fontSize: 10, textTransform: 'uppercase', fontWeight: 700, color: '#6161ff', letterSpacing: '0.06em', marginBottom: 4 }}>
+                Total Invoice Amount Due
+              </div>
+              <div style={{ fontSize: 28, fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: '#1f2532', marginBottom: 12, wordBreak: 'break-all' }}>
                 {symbol}{finalInvoiceTotal.toFixed(2)}
               </div>
-              <NativeShareButton text={`Invoice Summary\nGross Subtotal: ${symbol}${grossSubtotal.toFixed(2)}\nDiscount: -${symbol}${discountAmt.toFixed(2)}\nTax: +${symbol}${totalTaxAmt.toFixed(2)}\nTotal Due: ${symbol}${finalInvoiceTotal.toFixed(2)}`} />
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <NativeShareButton
+                  text={`Invoice Summary\nGross Subtotal: ${symbol}${grossSubtotal.toFixed(2)}\nDiscount: -${symbol}${discountAmt.toFixed(2)}\nTax: +${symbol}${totalTaxAmt.toFixed(2)}\nTotal Due: ${symbol}${finalInvoiceTotal.toFixed(2)}`}
+                />
+              </div>
             </div>
           </div>
         </div>

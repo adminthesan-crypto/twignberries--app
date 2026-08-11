@@ -110,7 +110,7 @@ export default function CsvJsonTool() {
       )}
 
       {/* Mode Tabs */}
-      <div className="flex border-b border-[#e6e9ef] overflow-x-auto">
+      <div style={{ display: 'flex', gap: 4, borderBottom: '1px solid #e6e9ef', overflowX: 'auto' }}>
         <button
           onClick={() => {
             setDirection('csv-to-json');
@@ -176,15 +176,22 @@ export default function CsvJsonTool() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-2">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
             <span style={SL}>Converted Output</span>
-            <div className="flex gap-3">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <button
                 onClick={handleCopy}
                 disabled={!outputVal}
-                className="flex items-center gap-3.5 px-3 py-1 rounded-lg bg-[#6161ff] text-white text-xs font-bold hover:bg-[#4e4ee0]"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  padding: '6px 12px', borderRadius: 99,
+                  background: outputVal ? '#6161ff' : '#c5c7d4',
+                  color: '#fff', fontSize: 12, fontWeight: 700,
+                  border: 'none', cursor: outputVal ? 'pointer' : 'not-allowed',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? <Check size={13} /> : <Copy size={13} />}
                 {copied ? 'Copied!' : 'Copy Result'}
               </button>
               <NativeShareButton text={outputVal} />
