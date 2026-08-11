@@ -1508,7 +1508,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
   const filtered = selectedCategory === 'All' ? tools : tools.filter(t => t.category === selectedCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <>
       {/* ─── PhantomBuster-Inspired Hero ─── */}
       <div className="pb-hero">
         {/* Floating gradient blobs (pure CSS via ::before) */}
@@ -1592,6 +1592,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
         </div>
       </div>
 
+      <div className="max-w-7xl mx-auto px-6 py-8">
       {/* Trust Brand Strip — Polished Third-Party Platforms */}
       <div className="text-center" style={{ marginBottom: 64, marginTop: 12 }}>
         <div style={{
@@ -1796,6 +1797,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

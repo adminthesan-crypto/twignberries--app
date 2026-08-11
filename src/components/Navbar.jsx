@@ -117,7 +117,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
       {/* Bottom row: Monday.com rounded-full category pills */}
       <div
         style={{
-          display: 'flex', alignItems: 'center', gap: 8,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           padding: '8px 24px 12px',
           borderTop: '1px solid #f0f2f5',
           overflowX: 'auto',
