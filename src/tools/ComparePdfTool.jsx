@@ -95,7 +95,7 @@ export default function ComparePdfTool() {
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <h3 className="text-[#1f2532] font-bold text-sm">1. Original PDF Version</h3>
           {!fileA ? (
-            <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-xl p-8 text-center cursor-pointer block bg-[#f6f8fa]">
+            <label className="dropzone">
               <input type="file" accept="application/pdf" onChange={(e) => setFileA(e.target.files?.[0])} className="hidden" />
               <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
               <p className="text-[#1f2532] font-medium text-sm">Select Original PDF</p>
@@ -113,7 +113,7 @@ export default function ComparePdfTool() {
         <div className="bg-[#f6f8fa] border border-[#e6e9ef] rounded-2xl p-6 space-y-6">
           <h3 className="text-[#1f2532] font-bold text-sm">2. Modified PDF Version</h3>
           {!fileB ? (
-            <label className="border-2 border-dashed border-[#d0d4e4] hover:border-purple-500/50 rounded-xl p-8 text-center cursor-pointer block bg-[#f6f8fa]">
+            <label className="dropzone">
               <input type="file" accept="application/pdf" onChange={(e) => setFileB(e.target.files?.[0])} className="hidden" />
               <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
               <p className="text-[#1f2532] font-medium text-sm">Select Modified PDF</p>

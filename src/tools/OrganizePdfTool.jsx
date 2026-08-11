@@ -141,7 +141,7 @@ export default function OrganizePdfTool() {
               <div style={{ width: 48, height: 48, borderRadius: 14, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
                 <Upload size={22} />
               </div>
-              <span style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>Click to select a PDF document</span>
+              <span className="dropzone-title">Click to select a PDF document</span>
               <span style={{ fontSize: 13, color: '#676879', marginTop: 4 }}>
                 Offline page deletion & organization • Zero cloud uploads
               </span>

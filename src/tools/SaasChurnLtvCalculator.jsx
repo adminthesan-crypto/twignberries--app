@@ -93,7 +93,7 @@ export default function SaasChurnLtvCalculator() {
             <div style={{ marginBottom: 20 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
                 <label style={{ margin: 0 }}>Monthly MRR churn rate (%)</label>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--brand)' }}>
+                <span className="dropzone-title">
                   {monthlyChurn}%
                 </span>
               </div>
@@ -116,7 +116,7 @@ export default function SaasChurnLtvCalculator() {
             <div style={{ marginBottom: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
                 <label style={{ margin: 0 }}>Gross profit margin (%)</label>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--text-1)' }}>
+                <span className="dropzone-title">
                   {grossMargin}%
                 </span>
               </div>

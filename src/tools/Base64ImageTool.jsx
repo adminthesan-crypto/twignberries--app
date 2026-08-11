@@ -106,12 +106,12 @@ export default function Base64ImageTool() {
 
       {mode === 'encode' ? (
         !file ? (
-          <label className="border-2 border-dashed border-[#c3c6d4] hover:border-[#6161ff] rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer bg-[#fbfbfc] hover:bg-[#f5f6ff] transition-all">
-            <Upload className="text-[#6161ff] mb-3" size={36} />
-            <span style={{ fontSize: 16, fontWeight: 700, color: '#1f2532' }}>
+          <label className="dropzone">
+            <div className="dropzone-icon"><Upload size={28} /></div>
+            <span className="dropzone-title">
               Drop Image to generate Base64 data URI
             </span>
-            <span style={{ fontSize: 13, color: '#868894', marginTop: 4 }}>
+            <span className="dropzone-sub">
               PNG, JPG, WEBP, SVG • Zero server uploads
             </span>
             <input

@@ -252,6 +252,80 @@ input[type="checkbox"], input[type="radio"] {
   accent-color: var(--brand);
 }
 
+.glass-card label,
+.form-card label {
+  color: var(--text-2) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+/* ─── Dropzone — bulletproof file-upload area ────────────── */
+.dropzone {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 48px 24px !important;
+  min-height: 200px !important;
+  border: 2px dashed #c3c6d4 !important;
+  border-radius: 20px !important;
+  background: #fbfbfc !important;
+  cursor: pointer !important;
+  transition: border-color 0.15s ease, background 0.15s ease !important;
+  /* Reset all label overrides */
+  margin-bottom: 0 !important;
+  font-weight: normal !important;
+  font-size: 15px !important;
+  color: var(--text-1) !important;
+  width: 100%;
+  gap: 0 !important;
+}
+.dropzone:hover {
+  border-color: #6161ff !important;
+  background: #f5f6ff !important;
+}
+.dropzone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #eceeff;
+  color: #6161ff;
+  margin: 0 auto 16px auto;
+  flex-shrink: 0;
+}
+.dropzone-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #1f2532 !important;
+  margin: 0 0 6px 0 !important;
+  display: block;
+}
+.dropzone-sub {
+  font-size: 13px !important;
+  color: #868894 !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  display: block;
+}
+/* Ensure dropzone labels are NOT overridden by glass-card/form-card selectors */
+.glass-card label.dropzone,
+.form-card label.dropzone,
+label.dropzone {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 15px !important;
+  font-weight: normal !important;
+  margin-bottom: 0 !important;
+  color: var(--text-1) !important;
+}
+
 .glass-card label.flex,
 .form-card label.flex {
   background: var(--bg-section) !important;

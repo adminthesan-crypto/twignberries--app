@@ -165,7 +165,7 @@ export default function AiTokenCostCalculator() {
             <div style={{ marginBottom: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
                 <label style={{ margin: 0 }}>Daily API request volume</label>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 700, color: 'var(--brand)' }}>
+                <span className="dropzone-title">
                   {dailyRequests.toLocaleString()} requests/day
                 </span>
               </div>

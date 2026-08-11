@@ -119,7 +119,7 @@ export default function CropImageTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-cyan-500/50 rounded-2xl p-12 text-center cursor-pointer block transition-all bg-[#f6f8fa] hover:bg-white">
+        <label className="dropzone">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-10 h-10 text-cyan-400 mx-auto mb-3" />
           <p className="text-[#1f2532] font-medium mb-1">Drop image file to crop here</p>

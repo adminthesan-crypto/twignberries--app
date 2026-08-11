@@ -120,7 +120,7 @@ export default function MemeGeneratorTool() {
       )}
 
       {!image ? (
-        <label className="border-2 border-dashed border-[#d0d4e4] hover:border-orange-500/50 rounded-2xl p-16 text-center cursor-pointer flex flex-col items-center justify-center transition-all bg-[#f6f8fa] hover:bg-white" style={{ minHeight: 250 }}>
+        <label className="dropzone">
           <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
           <Upload className="w-12 h-12 text-orange-400 mb-4" />
           <p className="text-[#1f2532] text-lg font-bold mb-2">Drop image or photo to meme here</p>

@@ -109,22 +109,11 @@ export default function MergePdfTool() {
           
           <label
             htmlFor="merge-upload"
-            style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              padding: '36px 20px', border: '2px dashed #d0d4e4', borderRadius: 16,
-              background: '#f6f8fa', cursor: 'pointer', transition: 'all 0.15s ease',
-              textAlign: 'center'
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = '#6161ff'; e.currentTarget.style.background = '#ffffff'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = '#d0d4e4'; e.currentTarget.style.background = '#f6f8fa'; }}
+            className="dropzone"
           >
-            <div style={{ width: 48, height: 48, borderRadius: 14, background: '#eceeff', color: '#6161ff', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
-              <Upload size={22} />
-            </div>
-            <span style={{ fontSize: 15, fontWeight: 700, color: '#1f2532' }}>Click to select or drop PDF files here</span>
-            <span style={{ fontSize: 13, color: '#676879', marginTop: 4 }}>
-              Zero cloud uploads • Files remain in browser memory
-            </span>
+            <div className="dropzone-icon"><Upload size={28} /></div>
+            <span className="dropzone-title">Click to select or drop PDF files here</span>
+            <span className="dropzone-sub">Zero cloud uploads • Files remain in browser memory</span>
             <input
               id="merge-upload"
               type="file"
