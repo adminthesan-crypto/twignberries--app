@@ -1513,11 +1513,11 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
       <div className="pb-hero">
         {/* Floating gradient blobs (pure CSS via ::before) */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs mb-8" style={{
-          background: 'rgba(255,255,255,0.7)',
+          background: 'rgba(255,255,255,0.1)',
           backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.9)',
-          color: '#6161ff',
-          boxShadow: '0 2px 12px rgba(97,97,255,0.1)',
+          border: '1px solid rgba(255,255,255,0.2)',
+          color: '#90e0ef',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
         }}>
           <span className="w-2 h-2 rounded-full bg-[#00c875] animate-pulse"></span>
           {TOOLS.length} free offline tools — no signup needed
@@ -1553,13 +1553,14 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
               gap: 8,
               padding: '8px 18px',
               borderRadius: 99,
-              background: '#f0fdf4',
-              border: '1.5px solid #86efac',
-              color: '#047857',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1.5px solid rgba(255, 255, 255, 0.2)',
+              color: '#ffffff',
+              backdropFilter: 'blur(10px)',
               fontSize: 13,
               fontWeight: 700,
               cursor: 'pointer',
-              boxShadow: '0 2px 12px rgba(16, 185, 129, 0.12)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
               transition: 'transform 0.15s ease',
             }}
             onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
