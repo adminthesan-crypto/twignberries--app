@@ -8,6 +8,8 @@ import ToolPage from './pages/ToolPage';
 import NotFoundPage from './pages/NotFoundPage';
 import TOOLS from './data/toolsData';
 
+import { BackdropProvider } from './contexts/BackdropContext';
+
 // Helper component to render the active tool in the embed layout
 function EmbedToolProxy() {
   const { id } = useParams();
@@ -23,9 +25,10 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router>
-        <Routes>
-          {/* Main Website Routes */}
+      <BackdropProvider>
+        <Router>
+          <Routes>
+            {/* Main Website Routes */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/tool/:id" element={<ToolPage />} />
@@ -38,7 +41,8 @@ function App() {
             <Route path="/embed/:id" element={<EmbedToolProxy />} />
           </Route>
         </Routes>
-      </Router>
+        </Router>
+      </BackdropProvider>
     </HelmetProvider>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { FileText, Upload, ArrowUp, ArrowDown, Trash2, Download, ShieldCheck, AlertCircle } from 'lucide-react';
 import NativeShareButton from '../components/NativeShareButton';
+import { BackdropTrigger } from '../contexts/BackdropContext';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#676879', marginBottom: 12
@@ -99,9 +100,11 @@ export default function MergePdfTool() {
   };
 
   const totalSizeMB = files.reduce((acc, f) => acc + parseFloat(f.size), 0).toFixed(2);
+  const isIdleOrSuccess = files.length === 0 || !!mergedPdfUrl;
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      {isIdleOrSuccess && <BackdropTrigger />}
       {/* Left Column: Input Dropzone & File List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">

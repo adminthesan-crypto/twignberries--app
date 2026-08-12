@@ -34,12 +34,15 @@ function ToolCard({ tool, onClick }) {
   );
 }
 
+import { BackdropTrigger } from '../contexts/BackdropContext';
+
 export default function HomePage() {
   const { selectedCategory, handleSelectCategory, handleSelectTool, onOpenComparison, onOpenDonation } = useOutletContext();
   const filtered = selectedCategory === 'All' ? TOOLS : TOOLS.filter(t => t.category === selectedCategory);
 
   return (
     <main style={{ flex: 1, padding: '32px 40px' }}>
+      <BackdropTrigger />
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
         {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">
