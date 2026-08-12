@@ -46,10 +46,10 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             </svg>
           </div>
           <span style={{
-            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-            fontWeight: 900, fontSize: 25, color: '#0f172a',
-            letterSpacing: '-0.06em', lineHeight: 1,
-            marginLeft: 2,
+            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontWeight: 400, fontSize: 28, color: '#0f172a',
+            letterSpacing: '-0.02em', lineHeight: 1,
+            marginLeft: 4, fontStyle: 'normal',
           }}>
             pahruli<span style={{ color: '#38bdf8' }}>.</span>
           </span>
@@ -140,9 +140,10 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
 
       <div
         style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
           padding: '8px 24px 12px',
           borderTop: '1px solid #f0f2f5',
+          maxWidth: 1040, margin: '0 auto', width: '100%',
         }}
       >
         {CATEGORIES.map(cat => {

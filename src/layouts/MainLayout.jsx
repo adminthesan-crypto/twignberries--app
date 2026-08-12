@@ -73,7 +73,7 @@ export default function MainLayout() {
           <div className="pb-footer-grid">
             {/* Brand column */}
             <div className="pb-footer-brand">
-              <h3>pahruli</h3>
+              <h3 style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, fontSize: 24, letterSpacing: '-0.01em' }}>pahruli<span style={{ color: '#38bdf8' }}>.</span></h3>
               <p>{TOOLS.length} offline tools for builders and creators. Built by a founder who got tired of tracking pixels and subscription fees.</p>
               <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
                 <button onClick={() => setIsDonationModalOpen(true)} className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>

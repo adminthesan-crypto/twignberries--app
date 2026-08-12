@@ -2,52 +2,73 @@ import React, { useState, useEffect } from 'react';
 
 export default function DonationModal({ isOpen, onClose }) {
   const [selectedTier, setSelectedTier] = useState('standard');
-  const [currency, setCurrency] = useState('INR'); // Default to INR based on traffic
+  const [currency, setCurrency] = useState('INR');
+  const [payMethod, setPayMethod] = useState('upi'); // 'upi' or 'card'
   
   useEffect(() => {
-    // Simple mock geolocation based on timezone
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz.includes('Jakarta') || tz.includes('Makassar') || tz.includes('Jayapura')) {
-      setCurrency('IDR');
+      setCurrency('IDR'); setPayMethod('card');
     } else if (tz.includes('Sao_Paulo') || tz.includes('Brazil')) {
-      setCurrency('BRL');
+      setCurrency('BRL'); setPayMethod('card');
     } else if (tz.includes('Manila')) {
-      setCurrency('PHP');
+      setCurrency('PHP'); setPayMethod('card');
     } else if (tz.includes('America/New_York') || tz.includes('America/Los_Angeles') || tz.includes('Europe/London')) {
-      setCurrency('USD');
+      setCurrency('USD'); setPayMethod('card');
     } else {
-      setCurrency('INR'); // Default for India/Others
+      setCurrency('INR'); setPayMethod('upi');
     }
   }, []);
 
   if (!isOpen) return null;
 
   const pricing = {
-    INR: { symbol: '₹', small: 49, standard: 99, high: 249, smallDesc: 'Buy me a cutting chai ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥', paymentMethod: 'UPI / Cards', link: 'https://rzp.io/l/pahruli-inr' },
-    IDR: { symbol: 'Rp', small: '10,000', standard: '25,000', high: '50,000', smallDesc: 'Beli kopi ☕', standardDesc: 'Tanpa iklan 💜', highDesc: 'Dukung fitur baru 🔥', paymentMethod: 'QRIS / GoPay', link: 'https://buy.stripe.com/pahruli-idr' },
-    BRL: { symbol: 'R$', small: 5, standard: 12, high: 30, smallDesc: 'Pague um café ☕', standardDesc: 'Mantenha sem anúncios 💜', highDesc: 'Patrocine uma nova ferramenta 🔥', paymentMethod: 'Pix / Cartão', link: 'https://buy.stripe.com/pahruli-brl' },
-    PHP: { symbol: '₱', small: 50, standard: 120, high: 250, smallDesc: 'Buy me coffee ☕', standardDesc: 'Keep it ad-free 💜', highDesc: 'Sponsor a new tool 🔥', paymentMethod: 'GCash / Maya', link: 'https://buy.stripe.com/pahruli-php' },
-    USD: { symbol: '$', small: 1, standard: 3, high: 5, smallDesc: 'Buy me a coffee ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥', paymentMethod: 'Card / PayPal', link: 'https://buy.stripe.com/pahruli-usd' }
+    INR: {
+      symbol: '₹', small: 49, standard: 99, high: 249,
+      smallDesc: 'Buy me a cutting chai ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
+      upiLink: 'https://rzp.io/l/pahruli-chai',
+      cardLink: 'https://buy.stripe.com/pahruli-inr',
+    },
+    IDR: {
+      symbol: 'Rp', small: '10,000', standard: '25,000', high: '50,000',
+      smallDesc: 'Beli kopi ☕', standardDesc: 'Tanpa iklan 💜', highDesc: 'Dukung fitur baru 🔥',
+      upiLink: null,
+      cardLink: 'https://buy.stripe.com/pahruli-idr',
+    },
+    BRL: {
+      symbol: 'R$', small: 5, standard: 12, high: 30,
+      smallDesc: 'Pague um café ☕', standardDesc: 'Mantenha sem anúncios 💜', highDesc: 'Patrocine uma nova ferramenta 🔥',
+      upiLink: null,
+      cardLink: 'https://buy.stripe.com/pahruli-brl',
+    },
+    PHP: {
+      symbol: '₱', small: 50, standard: 120, high: 250,
+      smallDesc: 'Buy me coffee ☕', standardDesc: 'Keep it ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
+      upiLink: null,
+      cardLink: 'https://buy.stripe.com/pahruli-php',
+    },
+    USD: {
+      symbol: '$', small: 1, standard: 3, high: 5,
+      smallDesc: 'Buy me a coffee ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
+      upiLink: null,
+      cardLink: 'https://buy.stripe.com/pahruli-usd',
+    }
   };
 
-  const currentPricing = pricing[currency];
-
+  const cp = pricing[currency];
   const tiers = [
-    { id: 'small', amount: currentPricing.small, desc: currentPricing.smallDesc },
-    { id: 'standard', amount: currentPricing.standard, desc: currentPricing.standardDesc },
-    { id: 'high', amount: currentPricing.high, desc: currentPricing.highDesc }
+    { id: 'small', amount: cp.small, desc: cp.smallDesc },
+    { id: 'standard', amount: cp.standard, desc: cp.standardDesc },
+    { id: 'high', amount: cp.high, desc: cp.highDesc }
   ];
 
-  const handleDonate = () => {
-    const link = currentPricing.link;
+  const openLink = (url) => {
     try {
-      // First try chrome.tabs API if running in an extension context
       if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.create) {
-        chrome.tabs.create({ url: link });
+        chrome.tabs.create({ url });
       } else {
-        // Fallback to foolproof anchor click
         const a = document.createElement('a');
-        a.href = link;
+        a.href = url;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
         document.body.appendChild(a);
@@ -55,10 +76,17 @@ export default function DonationModal({ isOpen, onClose }) {
         document.body.removeChild(a);
       }
     } catch (e) {
-      window.open(link, '_blank');
+      window.open(url, '_blank');
     }
     onClose();
   };
+
+  const handleDonate = () => {
+    const link = payMethod === 'upi' ? cp.upiLink : cp.cardLink;
+    if (link) openLink(link);
+  };
+
+  const showUpiOption = currency === 'INR';
 
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', backgroundColor: 'rgba(31, 37, 50, 0.6)', backdropFilter: 'blur(8px)' }} onClick={onClose}>
@@ -87,12 +115,13 @@ export default function DonationModal({ isOpen, onClose }) {
 
         {/* Content */}
         <div style={{ padding: '32px' }}>
-          <p style={{ fontSize: '15px', color: '#4d5156', marginBottom: '32px', lineHeight: 1.6, marginTop: 0 }}>
+          <p style={{ fontSize: '15px', color: '#4d5156', marginBottom: '28px', lineHeight: 1.6, marginTop: 0 }}>
             I don't want your email. I don't want your data. I just want to build the fastest offline tools on the internet.
             If Pahruli saved you from a bloated, ad-ridden cloud converter today, consider buying me a chai to fuel the development.
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+          {/* Tier Selection */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '28px' }}>
             {tiers.map((tier) => {
               const isSelected = selectedTier === tier.id;
               return (
@@ -100,44 +129,87 @@ export default function DonationModal({ isOpen, onClose }) {
                   key={tier.id}
                   onClick={() => setSelectedTier(tier.id)}
                   style={{
-                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', borderRadius: '16px', textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s',
+                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', borderRadius: '14px', textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s',
                     border: isSelected ? '2px solid #6161ff' : '2px solid #e6e9ef',
                     backgroundColor: isSelected ? '#f8f6ff' : '#ffffff',
                     boxShadow: isSelected ? '0 4px 14px rgba(97,97,255,0.12)' : 'none',
                     transform: isSelected ? 'scale(1.01)' : 'scale(1)'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: isSelected ? '2.5px solid #6161ff' : '2.5px solid #b4b7c5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      {isSelected && <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#6161ff' }} />}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                    <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: isSelected ? '2.5px solid #6161ff' : '2.5px solid #b4b7c5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      {isSelected && <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#6161ff' }} />}
                     </div>
-                    <span style={{ fontWeight: 600, fontSize: '15.5px', color: isSelected ? '#1f2532' : '#4d5156' }}>
+                    <span style={{ fontWeight: 600, fontSize: '15px', color: isSelected ? '#1f2532' : '#4d5156' }}>
                       {tier.desc}
                     </span>
                   </div>
-                  <span style={{ fontWeight: 800, fontSize: '20px', color: isSelected ? '#6161ff' : '#1f2532' }}>
-                    {currentPricing.symbol}{tier.amount}
+                  <span style={{ fontWeight: 800, fontSize: '19px', color: isSelected ? '#6161ff' : '#1f2532' }}>
+                    {cp.symbol}{tier.amount}
                   </span>
                 </button>
               );
             })}
           </div>
 
+          {/* Payment Method Toggle (only show for Indian users) */}
+          {showUpiOption && (
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', backgroundColor: '#f6f8fa', borderRadius: '12px', padding: '4px' }}>
+              <button
+                onClick={() => setPayMethod('upi')}
+                style={{
+                  flex: 1, padding: '10px 16px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s', border: 'none',
+                  backgroundColor: payMethod === 'upi' ? '#ffffff' : 'transparent',
+                  color: payMethod === 'upi' ? '#1f2532' : '#676879',
+                  boxShadow: payMethod === 'upi' ? '0 2px 8px rgba(0,0,0,0.08)' : 'none',
+                }}
+              >
+                ⚡ UPI / NetBanking
+              </button>
+              <button
+                onClick={() => setPayMethod('card')}
+                style={{
+                  flex: 1, padding: '10px 16px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s', border: 'none',
+                  backgroundColor: payMethod === 'card' ? '#ffffff' : 'transparent',
+                  color: payMethod === 'card' ? '#1f2532' : '#676879',
+                  boxShadow: payMethod === 'card' ? '0 2px 8px rgba(0,0,0,0.08)' : 'none',
+                }}
+              >
+                💳 Card / Stripe
+              </button>
+            </div>
+          )}
+
+          {/* CTA Button */}
           <button
             onClick={handleDonate}
             style={{
-              width: '100%', padding: '18px 24px', borderRadius: '16px', fontWeight: 800, fontSize: '16.5px', color: '#ffffff', border: 'none', cursor: 'pointer',
-              background: 'linear-gradient(135deg, #6161ff, #00b4d8)',
-              boxShadow: '0 8px 24px rgba(97,97,255,0.4)',
+              width: '100%', padding: '18px 24px', borderRadius: '16px', fontWeight: 800, fontSize: '16px', color: '#ffffff', border: 'none', cursor: 'pointer',
+              background: payMethod === 'upi'
+                ? 'linear-gradient(135deg, #6161ff, #00b4d8)'
+                : 'linear-gradient(135deg, #635BFF, #7A73FF)',
+              boxShadow: '0 8px 24px rgba(97,97,255,0.35)',
               transition: 'all 0.2s'
             }}
           >
-            Support {currentPricing.symbol}{currentPricing[selectedTier]} via {currentPricing.paymentMethod}
+            {payMethod === 'upi'
+              ? `Support ${cp.symbol}${cp[selectedTier]} via UPI`
+              : `Support ${cp.symbol}${cp[selectedTier]} via Card`
+            }
           </button>
-          
-          <p style={{ textAlign: 'center', fontSize: '13px', color: '#868894', marginTop: '20px', fontWeight: 600, marginBottom: 0 }}>
-            Secure payments • Cancel anytime • 100% goes to development
-          </p>
+
+          {/* Trust signals */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '20px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '12px', color: '#868894', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              🔒 Secure payments
+            </span>
+            <span style={{ fontSize: '12px', color: '#868894', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              {payMethod === 'upi' ? '⚡ Razorpay' : '💳 Stripe'}
+            </span>
+            <span style={{ fontSize: '12px', color: '#868894', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              💯 100% to development
+            </span>
+          </div>
         </div>
       </div>
     </div>
