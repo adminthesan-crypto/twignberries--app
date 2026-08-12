@@ -4,57 +4,31 @@ import CultureMemeWidget from '../components/CultureMemeWidget';
 import TOOLS from '../data/toolsData';
 
 function ToolCard({ tool, onClick }) {
-  const [hovered, setHovered] = useState(false);
   return (
     <div
       className="tool-card animate-fade-in"
       style={{ '--card-accent': tool.color }}
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
-      <div className="flex items-center justify-between">
-        <div className="tool-card-icon" style={{ background: '#f8fafc', color: tool.color, border: '1px solid #f1f5f9' }}>
-          {tool.icon}
-        </div>
-        <span
-          style={{
-            fontSize: 11,
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            color: 'var(--text-4)'
-          }}
-        >
-          {tool.category}
-        </span>
+      <div className="tool-card-icon" style={{ background: 'var(--bg-section)', color: tool.color, border: '1px solid var(--border)' }}>
+        {tool.icon}
       </div>
       <div style={{ marginTop: 4 }}>
-        <div className="tool-card-name" style={{ fontSize: 16 }}>
-          {tool.marketingCopy || tool.name}
+        <div className="tool-card-name">
+          {tool.name}
         </div>
-        {tool.marketingCopy && (
-          <div style={{ fontSize: 12, fontWeight: 700, color: tool.color, marginTop: 6, letterSpacing: '-0.01em' }}>
-            {tool.name}
-          </div>
-        )}
-        <div className="tool-card-desc" style={{ marginTop: 6, fontSize: 13, color: '#676879' }}>{tool.description}</div>
+        <div className="tool-card-desc" style={{ marginTop: 6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          {tool.description}
+        </div>
       </div>
-      <div
-        className="tool-card-arrow"
-        style={{
-          marginTop: 'auto',
-          paddingTop: 12,
-          borderTop: '1px solid #f0f2f5',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          fontWeight: 700,
-          color: hovered ? '#6161ff' : '#676879'
-        }}
-      >
-        <span>Open utility</span>
-        <span style={{ transform: hovered ? 'translateX(3px)' : 'none', transition: 'transform 0.15s ease' }}>→</span>
+      <div style={{ marginTop: 'auto', paddingTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border)' }}>
+        <span style={{ fontSize: 11, fontWeight: 700, color: tool.color, background: 'var(--brand-dim)', padding: '4px 10px', borderRadius: 'var(--radius-full)' }}>
+          {tool.category}
+        </span>
+        <div className="tool-card-arrow">
+          <span>Open</span>
+          <span className="arrow-icon">→</span>
+        </div>
       </div>
     </div>
   );
@@ -69,21 +43,8 @@ export default function HomePage() {
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
         {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            fontSize: 11,
-            fontWeight: 800,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            marginBottom: 24,
-            color: '#a0aec0',
-          }}>
-            100 FREE TOOLS <span style={{ opacity: 0.5, margin: '0 8px' }}>·</span> 100% OFFLINE
-          </div>
-
-          <h1 className="pb-display" style={{ fontFamily: '"Instrument Serif", serif', fontWeight: 400, letterSpacing: '-0.02em', fontStyle: 'italic', fontSize: 'clamp(48px, 8vw, 84px)', lineHeight: 0.9, marginBottom: '24px' }}>
-            100 tools.<br />
+          <h1 className="pb-display" style={{ fontFamily: '"Instrument Serif", serif', fontWeight: 400, letterSpacing: '-0.04em', fontStyle: 'italic', fontSize: 'clamp(48px, 8vw, 84px)', lineHeight: 0.95, marginBottom: '24px' }}>
+            {TOOLS.length} tools.<br />
             Zero uploads.
           </h1>
 
@@ -93,14 +54,14 @@ export default function HomePage() {
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginBottom: 48 }}>
-            <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none', background: '#fff', color: '#0f172a', fontWeight: 700, padding: '14px 28px', borderRadius: 99 }}>
+            <a href="#tools-grid" className="btn btn-primary" style={{ background: '#ffffff', color: '#0f172a', padding: '14px 28px', borderRadius: 99 }}>
               Explore the toolkit →
             </a>
             <button onClick={() => {
               const randomTool = TOOLS[Math.floor(Math.random() * TOOLS.length)];
-              window.location.href = `/tool/${randomTool.id}`;
-            }} className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.15)', color: '#fff', padding: '14px 28px', borderRadius: 99 }}>
-              Surprise me
+              handleSelectTool(randomTool);
+            }} className="btn btn-ghost" style={{ color: 'rgba(255,255,255,0.7)' }}>
+              Surprise me 🎲
             </button>
           </div>
 

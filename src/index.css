@@ -48,10 +48,22 @@
   --font:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Monday.com Smooth Geometry */
-  --radius-sm:     8px;
-  --radius:        12px;
-  --radius-lg:     20px;
+  /* Monday.com Smooth Geometry & Scale */
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-lg:     16px;
+  --radius-full:   9999px;
+  
+  /* Strict Spacing Scale */
+  --space-1:       4px;
+  --space-2:       8px;
+  --space-3:       12px;
+  --space-4:       16px;
+  --space-6:       24px;
+  --space-8:       32px;
+  --space-12:      48px;
+  --space-16:      64px;
+  --space-24:      96px;
 
   /* Monday.com Signature Floating Shadows */
   --shadow-card:   0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
@@ -187,7 +199,11 @@ html, body {
   align-items: center; gap: 4px;
   transition: color 0.15s ease;
 }
+.tool-card-arrow .arrow-icon {
+  transition: transform 0.15s ease;
+}
 .tool-card:hover .tool-card-arrow { color: var(--brand); }
+.tool-card:hover .tool-card-arrow .arrow-icon { transform: translateX(4px); }
 
 /* ─── Tool Form Cards (inside each tool) ────────────────── */
 .form-card,
@@ -416,31 +432,48 @@ label.dropzone {
   transition: all 0.14s ease !important;
 }
 
-/* ─── Buttons (Monday.com Pill CTA Style) ────────────────── */
-.btn-primary {
-  background: var(--brand);
-  color: #fff;
+/* ─── Buttons (Premium Polish System) ────────────────── */
+.btn {
   font-family: var(--font);
   font-weight: 600;
   font-size: 14px;
   padding: 11px 22px;
-  border-radius: 99px;
-  border: none;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.18s ease;
-  box-shadow: var(--shadow-btn);
+  transition: all 0.15s ease;
   letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
 }
 .btn-primary:hover {
   background: var(--brand-light);
   box-shadow: var(--shadow-btn-h);
   transform: translateY(-1px);
 }
-.btn-primary:active {
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+}
+.btn-ghost:hover {
+  background: var(--bg-input);
+  color: var(--text-1);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+.btn:active {
   transform: translateY(0);
   box-shadow: var(--shadow-btn);
 }

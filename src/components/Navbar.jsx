@@ -11,11 +11,11 @@ const CATEGORIES = [
   { id: 'SEO & Web',     label: 'SEO & Web',      icon: Globe },
   { id: 'Freelance',     label: 'Freelance',      icon: FileText },
   { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
-  { id: 'Surprise',      label: '🎁 Surprise Me', icon: Gift }, // At the end, right side
 ];
 
-export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison, onOpenDonation }) {
+export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, onOpenComparison, onOpenDonation }) {
   const [showSurpriseAd, setShowSurpriseAd] = useState(false);
+  const BrandDot = () => <span style={{ color: 'var(--brand)' }}>.</span>;
 
   return (
     <header className="nav-panel no-print w-full" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
@@ -36,16 +36,16 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             transform: 'skewX(-6deg)',
             display: 'inline-block'
           }}>
-            PAHRULI<span style={{ color: '#ff3d8b' }}>.</span>
+            PAHRULI<BrandDot />
           </span>
           <span style={{
             fontSize: 10, fontWeight: 700,
-            padding: '2px 8px', borderRadius: 99,
-            background: '#f0f2f5', color: '#676879',
+            padding: '2px 8px', borderRadius: 'var(--radius-full)',
+            background: 'var(--bg-input)', color: 'var(--text-3)',
             letterSpacing: '0.04em',
             whiteSpace: 'nowrap',
           }}>
-            {toolsCount} tools
+            {tools.length} tools
           </span>
         </div>
 
@@ -53,7 +53,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         <div className="hidden md:flex items-center justify-center w-full max-w-md mx-8">
           <NavbarSearch 
             tools={tools} 
-            toolsCount={toolsCount} 
+            toolsCount={tools.length} 
             onSelectTool={onSelectTool} 
           />
         </div>
@@ -61,64 +61,16 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         {/* Right: Monday.com CTA Pills */}
         <div className="flex items-center justify-end gap-2 sm:gap-3 shrink-0 ml-auto">
           <button
-            onClick={onOpenComparison}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '7px 14px',
-              borderRadius: 99,
-              background: '#f0fdf4',
-              border: '1px solid #bbf7d0',
-              color: '#059669',
-              fontSize: 12.5,
-              fontWeight: 700,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-            title="See how Pahruli compares to Smallpdf & iLovePDF"
-          >
-            <span>🇮🇳</span>
-            <span className="hidden sm:inline">vs. Smallpdf & iLovePDF</span>
-          </button>
-          <button
             onClick={onOpenDonation}
+            className="btn"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '7px 15px',
-              borderRadius: 99,
               background: '#f4efff',
-              border: '1px solid #dcd1ff',
               color: '#5521e8',
-              fontSize: 12.5,
-              fontWeight: 700,
-              cursor: 'pointer',
-              boxShadow: '0 2px 6px rgba(97,97,255,0.06)',
-              transition: 'all 0.15s ease'
             }}
             title="Support Pahruli's free offline development"
           >
             <span>⚡</span>
             <span className="hidden sm:inline">Support Pahruli</span>
-          </button>
-          <button
-            onClick={() => {
-              onSelectCategory('All');
-              const el = document.getElementById('tools-grid');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="btn-primary"
-            style={{
-              fontSize: 13, padding: '8px 18px',
-              background: 'linear-gradient(90deg, #6161ff, #7f56d9)',
-              border: 'none', cursor: 'pointer',
-              color: 'white', fontWeight: 600,
-              borderRadius: 99,
-            }}
-          >
-            Get Started →
           </button>
         </div>
       </div>
@@ -132,30 +84,6 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         }}
       >
         {CATEGORIES.map((cat, index) => {
-          if (cat.id === 'Surprise') {
-            return (
-              <React.Fragment key={cat.id}>
-                <span style={{ color: '#e2e8f0' }}>·</span>
-                <button
-                  onClick={() => setShowSurpriseAd(!showSurpriseAd)}
-                  style={{
-                    background: 'linear-gradient(135deg, #ff3d8b, #6161ff)',
-                    color: 'white',
-                    border: 'none',
-                    fontWeight: 700,
-                    padding: '4px 12px',
-                    borderRadius: 99,
-                    fontSize: 12,
-                    letterSpacing: '0.01em',
-                    cursor: 'pointer',
-                    boxShadow: '0 2px 8px rgba(255, 61, 139, 0.25)'
-                  }}
-                >
-                  {cat.label}
-                </button>
-              </React.Fragment>
-            );
-          }
           const isActive = selectedCategory === cat.id;
           return (
             <React.Fragment key={cat.id}>
