@@ -26,32 +26,32 @@ export default function DonationModal({ isOpen, onClose }) {
     INR: {
       symbol: '₹', small: 49, standard: 99, high: 249,
       smallDesc: 'Buy me a cutting chai ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
-      upiLink: 'https://rzp.io/l/pahruli-chai',
-      cardLink: 'https://buy.stripe.com/pahruli-inr',
+      upiLink: 'https://razorpay.me/@shriman7048',
+      cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     },
     IDR: {
       symbol: 'Rp', small: '10,000', standard: '25,000', high: '50,000',
       smallDesc: 'Beli kopi ☕', standardDesc: 'Tanpa iklan 💜', highDesc: 'Dukung fitur baru 🔥',
       upiLink: null,
-      cardLink: 'https://buy.stripe.com/pahruli-idr',
+      cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     },
     BRL: {
       symbol: 'R$', small: 5, standard: 12, high: 30,
       smallDesc: 'Pague um café ☕', standardDesc: 'Mantenha sem anúncios 💜', highDesc: 'Patrocine uma nova ferramenta 🔥',
       upiLink: null,
-      cardLink: 'https://buy.stripe.com/pahruli-brl',
+      cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     },
     PHP: {
       symbol: '₱', small: 50, standard: 120, high: 250,
       smallDesc: 'Buy me coffee ☕', standardDesc: 'Keep it ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
       upiLink: null,
-      cardLink: 'https://buy.stripe.com/pahruli-php',
+      cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     },
     USD: {
       symbol: '$', small: 1, standard: 3, high: 5,
       smallDesc: 'Buy me a coffee ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
       upiLink: null,
-      cardLink: 'https://buy.stripe.com/pahruli-usd',
+      cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     }
   };
 
