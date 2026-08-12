@@ -39,80 +39,103 @@ export default function DonationModal({ isOpen, onClose }) {
   ];
 
   const handleDonate = () => {
-    // Redirect to the payment gateway in a new tab
-    window.open(currentPricing.link, '_blank');
+    const link = currentPricing.link;
+    try {
+      // First try chrome.tabs API if running in an extension context
+      if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.create) {
+        chrome.tabs.create({ url: link });
+      } else {
+        // Fallback to foolproof anchor click
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    } catch (e) {
+      window.open(link, '_blank');
+    }
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-[#1f2532]/60 backdrop-blur-md transition-opacity duration-300" onClick={onClose}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', backgroundColor: 'rgba(31, 37, 50, 0.6)', backdropFilter: 'blur(8px)' }} onClick={onClose}>
       <div 
-        className="bg-white rounded-3xl shadow-[0_24px_48px_rgba(0,0,0,0.2)] w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+        style={{ backgroundColor: '#ffffff', borderRadius: '24px', boxShadow: '0 24px 48px rgba(0,0,0,0.2)', width: '100%', maxWidth: '540px', overflow: 'hidden' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-8 py-6 bg-[#f8f6ff] border-b border-[#e6e9ef] flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-[#e2d9ff] flex items-center justify-center">
-              <span className="text-2xl">💜</span>
+        <div style={{ padding: '24px 32px', backgroundColor: '#f8f6ff', borderBottom: '1px solid #e6e9ef', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '16px', backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2d9ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>
+              💜
             </div>
             <div>
-              <h3 className="text-xl font-extrabold text-[#1f2532] tracking-tight">Support Pahruli</h3>
-              <p className="text-sm font-medium text-[#676879] mt-1">100% free. No ads. Runs offline.</p>
+              <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#1f2532', letterSpacing: '-0.02em', margin: 0 }}>Support Pahruli</h3>
+              <p style={{ fontSize: '14px', fontWeight: 500, color: '#676879', margin: '4px 0 0 0' }}>100% free. No ads. Runs offline.</p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e2d9ff]/50 text-[#676879] transition-colors"
+            style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', backgroundColor: 'transparent', border: 'none', color: '#676879', cursor: 'pointer', fontSize: '18px' }}
           >
             ✕
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          <p className="text-[15px] text-[#4d5156] mb-8 leading-relaxed">
+        <div style={{ padding: '32px' }}>
+          <p style={{ fontSize: '15px', color: '#4d5156', marginBottom: '32px', lineHeight: 1.6, marginTop: 0 }}>
             I don't want your email. I don't want your data. I just want to build the fastest offline tools on the internet.
             If Pahruli saved you from a bloated, ad-ridden cloud converter today, consider buying me a chai to fuel the development.
           </p>
 
-          <div className="space-y-4 mb-8">
-            {tiers.map((tier) => (
-              <button
-                key={tier.id}
-                onClick={() => setSelectedTier(tier.id)}
-                className={`w-full flex items-center justify-between p-5 rounded-2xl border-2 text-left transition-all duration-200 ${
-                  selectedTier === tier.id 
-                    ? 'border-[#6161ff] bg-[#f8f6ff] shadow-[0_4px_14px_rgba(97,97,255,0.12)] scale-[1.01]' 
-                    : 'border-[#e6e9ef] bg-white hover:border-[#dcd1ff]'
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`w-6 h-6 rounded-full border-[2.5px] flex items-center justify-center ${
-                    selectedTier === tier.id ? 'border-[#6161ff]' : 'border-[#b4b7c5]'
-                  }`}>
-                    {selectedTier === tier.id && <div className="w-3 h-3 rounded-full bg-[#6161ff]" />}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+            {tiers.map((tier) => {
+              const isSelected = selectedTier === tier.id;
+              return (
+                <button
+                  key={tier.id}
+                  onClick={() => setSelectedTier(tier.id)}
+                  style={{
+                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', borderRadius: '16px', textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s',
+                    border: isSelected ? '2px solid #6161ff' : '2px solid #e6e9ef',
+                    backgroundColor: isSelected ? '#f8f6ff' : '#ffffff',
+                    boxShadow: isSelected ? '0 4px 14px rgba(97,97,255,0.12)' : 'none',
+                    transform: isSelected ? 'scale(1.01)' : 'scale(1)'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: isSelected ? '2.5px solid #6161ff' : '2.5px solid #b4b7c5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {isSelected && <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#6161ff' }} />}
+                    </div>
+                    <span style={{ fontWeight: 600, fontSize: '15.5px', color: isSelected ? '#1f2532' : '#4d5156' }}>
+                      {tier.desc}
+                    </span>
                   </div>
-                  <span className={`font-semibold text-[15px] ${selectedTier === tier.id ? 'text-[#1f2532]' : 'text-[#4d5156]'}`}>
-                    {tier.desc}
+                  <span style={{ fontWeight: 800, fontSize: '20px', color: isSelected ? '#6161ff' : '#1f2532' }}>
+                    {currentPricing.symbol}{tier.amount}
                   </span>
-                </div>
-                <span className={`font-bold text-xl ${selectedTier === tier.id ? 'text-[#6161ff]' : 'text-[#1f2532]'}`}>
-                  {currentPricing.symbol}{tier.amount}
-                </span>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
 
           <button
             onClick={handleDonate}
-            className="w-full py-4 px-6 rounded-2xl font-bold text-lg text-white shadow-[0_8px_24px_rgba(97,97,255,0.4)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(97,97,255,0.5)] transition-all"
-            style={{ background: 'linear-gradient(135deg, #6161ff, #00b4d8)' }}
+            style={{
+              width: '100%', padding: '18px 24px', borderRadius: '16px', fontWeight: 800, fontSize: '16.5px', color: '#ffffff', border: 'none', cursor: 'pointer',
+              background: 'linear-gradient(135deg, #6161ff, #00b4d8)',
+              boxShadow: '0 8px 24px rgba(97,97,255,0.4)',
+              transition: 'all 0.2s'
+            }}
           >
             Support {currentPricing.symbol}{currentPricing[selectedTier]} via {currentPricing.paymentMethod}
           </button>
           
-          <p className="text-center text-[13px] text-[#868894] mt-5 font-semibold">
+          <p style={{ textAlign: 'center', fontSize: '13px', color: '#868894', marginTop: '20px', fontWeight: 600, marginBottom: 0 }}>
             Secure payments • Cancel anytime • 100% goes to development
           </p>
         </div>

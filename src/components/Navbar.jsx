@@ -22,26 +22,36 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-2.5 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
-          {/* Modern gradient logo mark */}
-          <div style={{
-            width: 34, height: 34, borderRadius: 10,
-            background: 'linear-gradient(135deg, #6161ff, #00b4d8)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(97,97,255,0.3)',
-            flexShrink: 0,
-          }}>
-            <span style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontWeight: 800, fontSize: 19, color: '#ffffff',
-              lineHeight: 1, marginTop: 1,
-            }}>P</span>
+          {/* Premium Tech Logo Mark */}
+          <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="34" height="34" rx="10" fill="url(#logo-bg)"/>
+              <rect x="0.75" y="0.75" width="32.5" height="32.5" rx="9.25" stroke="url(#logo-border)" strokeWidth="1.5" />
+              <path d="M12 10.5C12 9.67157 12.6716 9 13.5 9H18.5C21.5376 9 24 11.4624 24 14.5C24 17.5376 21.5376 20 18.5 20H15.5V23.5C15.5 24.3284 14.8284 25 14 25C13.1716 25 12.5 24.3284 12.5 23.5V10.5H12Z" fill="url(#p-gradient)"/>
+              <path d="M15.5 12.5V16.5H18.5C19.6046 16.5 20.5 15.6046 20.5 14.5C20.5 13.3954 19.6046 12.5 18.5 12.5H15.5Z" fill="#FFFFFF"/>
+              <defs>
+                <linearGradient id="logo-bg" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#0F172A"/>
+                  <stop offset="1" stopColor="#1E293B"/>
+                </linearGradient>
+                <linearGradient id="logo-border" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#475569" stopOpacity="0.8"/>
+                  <stop offset="1" stopColor="#0F172A" stopOpacity="0"/>
+                </linearGradient>
+                <linearGradient id="p-gradient" x1="12" y1="9" x2="24" y2="25" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#38BDF8"/>
+                  <stop offset="1" stopColor="#818CF8"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
           <span style={{
-            fontFamily: "'Outfit', 'Inter', sans-serif",
-            fontWeight: 800, fontSize: 22, color: '#1f2532',
-            letterSpacing: '-0.03em', lineHeight: 1,
+            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+            fontWeight: 900, fontSize: 25, color: '#0f172a',
+            letterSpacing: '-0.06em', lineHeight: 1,
+            marginLeft: 2,
           }}>
-            pahruli
+            pahruli<span style={{ color: '#38bdf8' }}>.</span>
           </span>
           <span style={{
             fontSize: 10, fontWeight: 700,
