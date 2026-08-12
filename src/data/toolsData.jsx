@@ -114,6 +114,7 @@ const TOOLS = [
       </svg>
     ),
     component: EtsyFeeCalculator,
+    useCases: ['digital-products', 'print-on-demand', 'handmade', 'vintage'],
   },
   {
     id: 'paypal-fee',
@@ -142,6 +143,7 @@ const TOOLS = [
       </svg>
     ),
     component: StripeFeeCalculator,
+    useCases: ['uk', 'canada', 'australia', 'india', 'non-profits'],
   },
   {
     id: 'gst-calculator',
@@ -924,6 +926,7 @@ const TOOLS = [
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
     ),
     component: CropImageTool,
+    useCases: ['for-youtube', 'for-instagram', 'for-shopify', 'for-etsy'],
   },
   {
     id: 'convert-to-jpg',

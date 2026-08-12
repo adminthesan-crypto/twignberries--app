@@ -72,8 +72,8 @@ export default function DonationModal({ isOpen, onClose }) {
         {/* Content */}
         <div className="p-8">
           <p className="text-[15px] text-[#4d5156] mb-8 leading-relaxed">
-            I built Pahruli because I was tired of uploading my private documents to cloud converters just to merge PDFs or compress images. 
-            If these offline tools saved you time today, consider supporting the development!
+            I don't want your email. I don't want your data. I just want to build the fastest offline tools on the internet.
+            If Pahruli saved you from a bloated, ad-ridden cloud converter today, consider buying me a chai to fuel the development.
           </p>
 
           <div className="space-y-4 mb-8">

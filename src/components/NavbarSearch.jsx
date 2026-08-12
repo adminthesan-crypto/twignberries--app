@@ -124,7 +124,7 @@ export default function NavbarSearch({ tools = [], toolsCount = 100, onSelectToo
         }}>
           {filteredTools.length === 0 ? (
             <div style={{ padding: '20px', textAlign: 'center', color: '#676879', fontSize: 13 }}>
-              No tools found matching "{query}"
+              No tools found in the offline arsenal for "{query}"
             </div>
           ) : (
             <div style={{ maxHeight: 400, overflowY: 'auto', padding: 8 }}>

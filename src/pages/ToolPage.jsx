@@ -6,9 +6,10 @@ import TOOLS from '../data/toolsData';
 import Sidebar from '../components/Sidebar';
 import ViralShareBar from '../components/ViralShareBar';
 import AdUnit from '../components/AdUnit';
+import EmbedCodeGenerator from '../components/EmbedCodeGenerator';
 
 export default function ToolPage() {
-  const { id } = useParams();
+  const { id, useCase } = useParams();
   const { handleSelectTool } = useOutletContext();
   
   const [starredIds, setStarredIds] = useState(() => {
@@ -30,6 +31,11 @@ export default function ToolPage() {
   const ActiveComponent = tool.component;
   const isStarred = starredIds.includes(tool.id);
 
+  const formattedUseCase = useCase 
+    ? useCase.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
+    : '';
+  const displayTitle = useCase ? `${tool.name} ${formattedUseCase}` : tool.name;
+
   const handleToggleStar = () => {
     setStarredIds(prev => {
       const isStarred = prev.includes(tool.id);
@@ -42,11 +48,11 @@ export default function ToolPage() {
   return (
     <>
       <Helmet>
-        <title>{tool.name} - Free Offline Utility | Pahruli</title>
+        <title>{displayTitle} - Free Offline Utility | Pahruli</title>
         <meta name="description" content={tool.description} />
-        <meta property="og:title" content={`${tool.name} | Pahruli`} />
+        <meta property="og:title" content={`${displayTitle} | Pahruli`} />
         <meta property="og:description" content={tool.description} />
-        <link rel="canonical" href={`https://free.pahruli.in/tool/${tool.id}`} />
+        <link rel="canonical" href={`https://free.pahruli.in/tool/${tool.id}${useCase ? `/${useCase}` : ''}`} />
       </Helmet>
 
       {/* Sidebar for quick switching */}
@@ -92,6 +98,9 @@ export default function ToolPage() {
               }}>
                 {tool.category}
               </span>
+
+              {/* Embed Button */}
+              <EmbedCodeGenerator toolId={tool.id} toolName={tool.name} />
 
               {/* Star button */}
               <button
