@@ -96,6 +96,12 @@ html, body {
 }
 
 /* ─── Tool Home Cards (Monday Board Widget Style) ────────── */
+.pb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
 .tool-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

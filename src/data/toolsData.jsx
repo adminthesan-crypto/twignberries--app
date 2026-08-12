@@ -103,7 +103,8 @@ import ImageCollageMakerTool from '../tools/ImageCollageMakerTool';
 const TOOLS = [
   {
     id: 'etsy-fee',
-    name: 'What Etsy actually leaves you with',
+    name: 'Etsy Fee Calculator',
+    marketingCopy: 'What Etsy actually leaves you with',
     category: 'E-Commerce',
     description: 'Listing fee, 6.5% transaction cut, payment processing, offsite ads — all of it, before you hit publish.',
     keywords: ['etsy margin', 'etsy seller', 'handmade fee', 'profit margin'],
@@ -118,7 +119,8 @@ const TOOLS = [
   },
   {
     id: 'paypal-fee',
-    name: 'PayPal\'s cut, before it surprises you',
+    name: 'PayPal Fee Calculator',
+    marketingCopy: 'PayPal\'s cut, before it surprises you',
     category: 'E-Commerce',
     description: 'Standard rate, micropayment rate, whichever applies — see your real payout first.',
     keywords: ['paypal fee', 'paypal calculator', 'paypal merchant'],
@@ -132,7 +134,8 @@ const TOOLS = [
   },
   {
     id: 'stripe-fee',
-    name: 'How much to charge to actually break even?',
+    name: 'Stripe Fee Calculator',
+    marketingCopy: 'How much to charge to actually break even?',
     category: 'E-Commerce',
     description: 'Domestic or international, Stripe takes its slice either way. This works backward from your target.',
     keywords: ['stripe payout', 'stripe pricing', 'break even calculator'],
@@ -147,7 +150,8 @@ const TOOLS = [
   },
   {
     id: 'gst-calculator',
-    name: 'Is that price with GST or without?',
+    name: 'GST Calculator',
+    marketingCopy: 'Is that price with GST or without?',
     category: 'E-Commerce',
     description: 'Flip it either direction in one click. No more guessing on a client call.',
     keywords: ['gst exclusive', 'gst inclusive', 'cgst sgst india'],
@@ -162,7 +166,8 @@ const TOOLS = [
   },
   {
     id: 'amazon-fba',
-    name: 'FBA fees are a maze. Here\'s the exit.',
+    name: 'Amazon FBA Calculator',
+    marketingCopy: 'FBA fees are a maze. Here\'s the exit.',
     category: 'E-Commerce',
     description: 'Fulfilment tier, referral cut, category rules — your real margin after Amazon takes its share.',
     keywords: ['amazon fba', 'amazon referral fee', 'fba calculator'],
@@ -176,7 +181,8 @@ const TOOLS = [
   },
   {
     id: 'tiktok-shop',
-    name: 'TikTok Shop wants 6%. Here\'s what\'s left.',
+    name: 'TikTok Shop Calculator',
+    marketingCopy: 'TikTok Shop wants 6%. Here\'s what\'s left.',
     category: 'E-Commerce',
     description: 'Commission, affiliate creator cuts, and your actual take-home per sale.',
     keywords: ['tiktok shop fee', 'tiktok affiliate calculator'],
@@ -190,7 +196,8 @@ const TOOLS = [
   },
   {
     id: 'shopify-fee',
-    name: 'Which Shopify plan actually pays for itself?',
+    name: 'Shopify Fee Calculator',
+    marketingCopy: 'Which Shopify plan actually pays for itself?',
     category: 'E-Commerce',
     description: 'Compare monthly cost against your real card processing rates before you commit.',
     keywords: ['shopify transaction fee', 'shopify basic plan'],
@@ -205,9 +212,10 @@ const TOOLS = [
   },
   {
     id: 'invoice-generator',
-    name: 'A proper invoice, in the time it takes to make tea.',
+    name: 'Invoice Generator',
+    marketingCopy: 'A proper invoice, in the time it takes to make tea.',
     category: 'Freelance',
-    description: 'No login, no "upgrade to export." Fill it in, download it, send it.',
+    description: 'Generate, preview, and download a clean PDF invoice instantly. No watermark.',
     keywords: ['free invoice maker', 'freelance receipt', 'pdf invoice without signup'],
     color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',
     icon: (

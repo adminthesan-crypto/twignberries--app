@@ -30,7 +30,14 @@ function ToolCard({ tool, onClick }) {
         </span>
       </div>
       <div style={{ marginTop: 4 }}>
-        <div className="tool-card-name" style={{ fontSize: 16 }}>{tool.name}</div>
+        <div className="tool-card-name" style={{ fontSize: 16 }}>
+          {tool.marketingCopy || tool.name}
+        </div>
+        {tool.marketingCopy && (
+          <div style={{ fontSize: 12, fontWeight: 700, color: tool.color, marginTop: 6, letterSpacing: '-0.01em' }}>
+            {tool.name}
+          </div>
+        )}
         <div className="tool-card-desc" style={{ marginTop: 6, fontSize: 13, color: '#676879' }}>{tool.description}</div>
       </div>
       <div
