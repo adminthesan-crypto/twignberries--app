@@ -84,15 +84,15 @@ export default function HomePage() {
             {TOOLS.length} free offline tools — no signup needed
           </div>
 
-          <h1 className="pb-display">
-            The toolkit<br />
-            sellers <span className="highlight">actually</span><br />
-            bookmark.
+          <h1 className="pb-display" style={{ letterSpacing: '-0.04em' }}>
+            The offline toolkit<br />
+            for <span className="highlight">builders</span> &<br />
+            creators.
           </h1>
 
-          <p className="pb-subtitle">
-            Fee calculators, PDF tools, and image utilities that run in your browser.
-            Nothing uploads. Nothing tracks. It's just math.
+          <p className="pb-subtitle" style={{ maxWidth: 540, margin: '0 auto 32px' }}>
+            Stop giving your private documents and data to bloated, ad-ridden cloud apps. 
+            Lightning-fast PDF utilities, calculators, and image tools that run 100% locally in your browser.
           </p>
 
           {/* Trust Strip */}
@@ -203,9 +203,9 @@ export default function HomePage() {
           <div id="tools-grid" className="pb-section-header">
             <div>
               <h2 className="pb-h2">
-                {selectedCategory === 'All' ? 'All tools' : `${selectedCategory} tools`}
+                {selectedCategory === 'All' ? 'The Offline Arsenal' : `${selectedCategory} tools`}
               </h2>
-              <p className="pb-p">Everything runs in your browser. No data leaves your machine.</p>
+              <p className="pb-p">Everything runs in your browser. No data leaves your machine. Ever.</p>
             </div>
             {selectedCategory === 'All' && (
               <div className="pb-category-pills hidden md:flex" style={{ marginTop: 0 }}>

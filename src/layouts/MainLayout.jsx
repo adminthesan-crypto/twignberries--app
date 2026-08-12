@@ -74,7 +74,7 @@ export default function MainLayout() {
             {/* Brand column */}
             <div className="pb-footer-brand">
               <h3>pahruli</h3>
-              <p>{TOOLS.length} offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
+              <p>{TOOLS.length} offline tools for builders and creators. Built by a founder who got tired of tracking pixels and subscription fees.</p>
               <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
                 <button onClick={() => setIsDonationModalOpen(true)} className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
                   ⚡ Support Pahruli
