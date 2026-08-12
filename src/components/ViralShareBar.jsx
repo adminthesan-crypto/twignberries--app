@@ -4,12 +4,15 @@ import { Share2, Check, Copy } from 'lucide-react';
 export default function ViralShareBar({ toolName = 'Pahruli' }) {
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://pahruli.com';
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://free.pahruli.in';
   const whatsappText = encodeURIComponent(
-    `Found this free offline alternative to Smallpdf & iLovePDF (built in India 🇮🇳, zero cloud uploads, 100 free tools): ${shareUrl}`
+    `*⚡ I just used this free offline tool instead of Smallpdf/iLovePDF!* \nNo signup, no upload to cloud. Try it free: ${shareUrl}`
+  );
+  const telegramText = encodeURIComponent(
+    `I just used this free offline tool! No signup, no upload to cloud. Try it free:`
   );
   const twitterText = encodeURIComponent(
-    `No more ₹1,000/month Smallpdf paywalls or uploading private docs to iLovePDF servers. Using Pahruli — 100 free offline browser tools built in India 🇮🇳 ⚡\n\n${shareUrl}`
+    `No more uploading private docs to iLovePDF servers. Using Pahruli — 100 free offline browser tools built in India 🇮🇳 ⚡\n\n${shareUrl}`
   );
 
   const handleCopy = () => {
@@ -82,6 +85,29 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
           title="Share on WhatsApp"
         >
           <span>WhatsApp</span>
+        </a>
+
+        {/* Telegram Button */}
+        <a
+          href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${telegramText}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            background: '#24A1DE',
+            color: '#ffffff',
+            fontSize: 12,
+            fontWeight: 700,
+            padding: '8px 14px',
+            borderRadius: 99,
+            textDecoration: 'none',
+            transition: 'opacity 0.15s ease',
+          }}
+          title="Share on Telegram"
+        >
+          <span>Telegram</span>
         </a>
 
         {/* X / Twitter Button */}

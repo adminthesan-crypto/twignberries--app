@@ -14,7 +14,7 @@ const CATEGORIES = [
   { id: 'Surprise',      label: '🎁 Surprise Me', icon: Gift }, // At the end, right side
 ];
 
-export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
+export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison, onOpenDonation }) {
   const [showSurpriseAd, setShowSurpriseAd] = useState(false);
 
   return (
@@ -86,10 +86,8 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             <span>🇮🇳</span>
             <span className="hidden sm:inline">vs. Smallpdf & iLovePDF</span>
           </button>
-          <a
-            href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenDonation}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -101,15 +99,15 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
               color: '#5521e8',
               fontSize: 12.5,
               fontWeight: 700,
-              textDecoration: 'none',
+              cursor: 'pointer',
               boxShadow: '0 2px 6px rgba(97,97,255,0.06)',
               transition: 'all 0.15s ease'
             }}
-            title="Support Pahruli's free offline development via Stripe"
+            title="Support Pahruli's free offline development"
           >
             <span>⚡</span>
             <span className="hidden sm:inline">Support Pahruli</span>
-          </a>
+          </button>
           <button
             onClick={() => {
               onSelectCategory('All');

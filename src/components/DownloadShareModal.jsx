@@ -20,9 +20,10 @@ export default function DownloadShareModal() {
   if (!fileData) return null;
 
   const handleDownload = () => {
+    const finalFilename = fileData.filename.replace(/(\.[^.]+)$/, '_via_pahruli$1');
     const a = document.createElement('a');
     a.href = fileData.url;
-    a.download = fileData.filename;
+    a.download = finalFilename;
     // We add a custom attribute to bypass our own interceptor in main.jsx
     a.dataset.bypassed = "true";
     document.body.appendChild(a);
@@ -37,12 +38,13 @@ export default function DownloadShareModal() {
       
       const response = await fetch(fileData.url);
       const blob = await response.blob();
-      const file = new File([blob], fileData.filename, { type: blob.type });
+      const finalFilename = fileData.filename.replace(/(\.[^.]+)$/, '_via_pahruli$1');
+      const file = new File([blob], finalFilename, { type: blob.type });
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: fileData.filename,
-          text: `Here is ${fileData.filename} converted via Pahruli.`,
+          title: finalFilename,
+          text: `Here is ${finalFilename}, processed offline using Pahruli. Try it for free: https://free.pahruli.in`,
           files: [file]
         });
         // Close modal on successful share sheet opening

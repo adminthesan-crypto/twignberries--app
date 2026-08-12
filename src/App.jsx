@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import AdUnit from './components/AdUnit';
 import CompetitorComparisonModal from './components/CompetitorComparisonModal';
 import DownloadShareModal from './components/DownloadShareModal';
+import DonationModal from './components/DonationModal';
 import ViralShareBar from './components/ViralShareBar';
 import { ArrowLeft, Star, ShieldCheck, ExternalLink } from 'lucide-react';
 
@@ -1504,7 +1505,7 @@ function ToolCard({ tool, onClick }) {
 }
 
 /* ─── Home Grid (Monday.com Hero & Workspace Board) ──────── */
-function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
+function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison, onOpenDonation }) {
   const filtered = selectedCategory === 'All' ? tools : tools.filter(t => t.category === selectedCategory);
 
   return (
@@ -1534,13 +1535,28 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
           Nothing uploads. Nothing tracks. It's just math.
         </p>
 
+        {/* Trust Strip */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span>🇮🇳</span> Made in India
+          </span>
+          <span style={{ color: '#0077b6' }}>•</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span>🔒</span> 100% Offline
+          </span>
+          <span style={{ color: '#0077b6' }}>•</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span>⚡</span> Sub-second Speed
+          </span>
+        </div>
+
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginBottom: 16 }}>
           <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none' }}>
             Explore all {tools.length} tools →
           </a>
-          <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
+          <button onClick={onOpenDonation} className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
             ⚡ Support Pahruli
-          </a>
+          </button>
         </div>
 
         {/* Why 60M Indians are switching badge */}
@@ -1716,7 +1732,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
 
       {/* Culture Meme Widget */}
       <div style={{ marginBottom: 64, marginTop: 32, padding: '0 8px' }}>
-        <CultureMemeWidget toolsCount={TOOLS.length} />
+        <CultureMemeWidget toolsCount={TOOLS.length} onOpenDonation={onOpenDonation} />
       </div>
 
       {/* Grid Section Heading */}
@@ -1785,15 +1801,13 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
           <span style={{ fontSize: 14, fontWeight: 700, color: '#676879' }}>
             — Someone who got tired of doing this by hand.
           </span>
-          <a
-            href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#6161ff', textDecoration: 'none' }}
+          <button
+            onClick={onOpenDonation}
+            style={{ color: '#6161ff', textDecoration: 'none', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
             className="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
           >
             <span>⚡ Support Pahruli's free tools →</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -1805,7 +1819,8 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
 export default function App() {
   const [activeToolId, setActiveToolId] = useState(null); // null = home grid
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  const [isComparisonModalOpen, setIsComparisonModalOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   const [starredIds, setStarredIds] = useState(() => {
     try { return JSON.parse(localStorage.getItem('tw_starred') || '[]'); }
@@ -1862,7 +1877,8 @@ export default function App() {
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
         toolsCount={TOOLS.length}
-        onOpenComparison={() => setIsComparisonOpen(true)}
+        onOpenComparison={() => setIsComparisonModalOpen(true)}
+        onOpenDonation={() => setIsDonationModalOpen(true)}
       />
 
       {/* Body */}
@@ -1956,7 +1972,8 @@ export default function App() {
                 tools={TOOLS}
                 onSelectTool={handleSelectTool}
                 selectedCategory={selectedCategory}
-                onOpenComparison={() => setIsComparisonOpen(true)}
+                onOpenComparison={() => setIsComparisonModalOpen(true)}
+                onOpenDonation={() => setIsDonationModalOpen(true)}
               />
             )}
 
@@ -1968,9 +1985,9 @@ export default function App() {
                   <h3>pahruli</h3>
                   <p>{TOOLS.length} offline tools for founders and creators. Built by someone who got tired of doing this by hand.</p>
                   <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
-                    <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
+                    <button onClick={() => setIsDonationModalOpen(true)} className="pb-cta pb-cta-primary" style={{ fontSize: 12, padding: '8px 18px', textDecoration: 'none' }}>
                       ⚡ Support Pahruli
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -1997,7 +2014,7 @@ export default function App() {
                 {/* Resources column */}
                 <div className="pb-footer-col">
                   <h4>Resources</h4>
-                  <a href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 700, color: '#6161ff' }}>Donate</a>
+                  <button onClick={() => setIsDonationModalOpen(true)} style={{ fontWeight: 700, color: '#6161ff', background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}>Donate</button>
                   <a href="#">Privacy</a>
                   <a href="#">Changelog</a>
                 </div>
@@ -2023,8 +2040,13 @@ export default function App() {
 
       {/* Competitor Comparison Modal (Why 60M Indians Are Switching) */}
       <CompetitorComparisonModal
-        isOpen={isComparisonOpen}
-        onClose={() => setIsComparisonOpen(false)}
+        isOpen={isComparisonModalOpen}
+        onClose={() => setIsComparisonModalOpen(false)}
+      />
+
+      <DonationModal
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
       />
 
       {/* Download / Share Interceptor Modal */}

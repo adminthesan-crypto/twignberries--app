@@ -58,7 +58,7 @@ const getMemes = (toolsCount) => [
   }
 ];
 
-export default function CultureMemeWidget({ toolsCount = 100 }) {
+export default function CultureMemeWidget({ toolsCount = 100, onOpenDonation }) {
   const memes = getMemes(toolsCount);
   const [index, setIndex] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -175,17 +175,16 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
         <span style={{ color: '#5521e8', fontWeight: 600 }}>
           💡 Like our {toolsCount} free offline utilities?
         </span>
-        <a
-          href="https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={onOpenDonation}
           style={{
             color: '#5521e8', fontWeight: 700, textDecoration: 'underline',
-            display: 'inline-flex', alignItems: 'center', gap: 4
+            display: 'inline-flex', alignItems: 'center', gap: 4,
+            background: 'none', border: 'none', cursor: 'pointer', padding: 0
           }}
         >
           <span>⚡ Support Pahruli's free tools →</span>
-        </a>
+        </button>
       </div>
     </div>
   );
