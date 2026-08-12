@@ -21,22 +21,37 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
     <header className="nav-panel no-print w-full" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
       <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto w-full">
-        <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
-          <img src="/logo.jpg" alt="Pahruli Logo" className="w-9 h-9 rounded-xl shadow-[0_4px_14px_rgba(0,180,216,0.25)] object-cover" />
-          <div className="flex items-center gap-2.5">
-            <span style={{ fontFamily: "'Outfit', 'Inter', sans-serif", fontWeight: 800, fontSize: 24, color: '#1f2532', letterSpacing: '-0.03em' }}>
-              pahruli
-            </span>
+        <div className="flex items-center gap-2.5 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
+          {/* Modern gradient logo mark */}
+          <div style={{
+            width: 34, height: 34, borderRadius: 10,
+            background: 'linear-gradient(135deg, #6161ff, #00b4d8)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 14px rgba(97,97,255,0.3)',
+            flexShrink: 0,
+          }}>
             <span style={{
-              fontSize: 10.5, fontWeight: 700,
-              padding: '3px 9px', borderRadius: 99,
-              background: 'linear-gradient(135deg, #eceeff, #f3eeff)', color: '#6161ff',
-              letterSpacing: '0.03em',
-              border: '1px solid rgba(97,97,255,0.15)'
-            }}>
-              {toolsCount} Free Tools
-            </span>
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 800, fontSize: 19, color: '#ffffff',
+              lineHeight: 1, marginTop: 1,
+            }}>P</span>
           </div>
+          <span style={{
+            fontFamily: "'Outfit', 'Inter', sans-serif",
+            fontWeight: 800, fontSize: 22, color: '#1f2532',
+            letterSpacing: '-0.03em', lineHeight: 1,
+          }}>
+            pahruli
+          </span>
+          <span style={{
+            fontSize: 10, fontWeight: 700,
+            padding: '2px 8px', borderRadius: 99,
+            background: '#f0f2f5', color: '#676879',
+            letterSpacing: '0.04em',
+            whiteSpace: 'nowrap',
+          }}>
+            {toolsCount} tools
+          </span>
         </div>
 
         {/* Center: Inline Search Dropdown */}
