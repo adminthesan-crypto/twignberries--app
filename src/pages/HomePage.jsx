@@ -14,7 +14,7 @@ function ToolCard({ tool, onClick }) {
       onMouseLeave={() => setHovered(false)}
     >
       <div className="flex items-center justify-between">
-        <div className="tool-card-icon" style={{ background: tool.bg, color: tool.color }}>
+        <div className="tool-card-icon" style={{ background: '#f8fafc', color: tool.color, border: '1px solid #f1f5f9' }}>
           {tool.icon}
         </div>
         <span
@@ -67,111 +67,48 @@ export default function HomePage() {
   return (
     <main style={{ flex: 1, padding: '32px 40px' }}>
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
-        {/* ─── PhantomBuster-Inspired Hero ─── */}
+        {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">
-          {/* Floating gradient blobs (pure CSS via ::before) */}
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: 8,
-            padding: '6px 14px',
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(10px)',
-            borderRadius: 99,
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: '0.05em',
+            fontSize: 11,
+            fontWeight: 800,
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
             marginBottom: 24,
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            color: '#90e0ef',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
+            color: '#a0aec0',
           }}>
-            <span className="w-2 h-2 rounded-full bg-[#00c875] animate-pulse"></span>
-            {TOOLS.length} free offline tools — no signup needed
+            100 FREE TOOLS <span style={{ opacity: 0.5, margin: '0 8px' }}>·</span> 100% OFFLINE
           </div>
 
-          <h1 className="pb-display" style={{ letterSpacing: '-0.04em' }}>
-            The offline toolkit<br />
-            for <span className="highlight">builders</span> &<br />
-            creators.
+          <h1 className="pb-display" style={{ fontFamily: '"Instrument Serif", serif', fontWeight: 400, letterSpacing: '-0.02em', fontStyle: 'italic', fontSize: 'clamp(48px, 8vw, 84px)', lineHeight: 0.9, marginBottom: '24px' }}>
+            100 tools.<br />
+            Zero uploads.
           </h1>
 
-          <p className="pb-subtitle" style={{ maxWidth: 540, margin: '0 auto 32px' }}>
-            Stop giving your private documents and data to bloated, ad-ridden cloud apps. 
-            Lightning-fast PDF utilities, calculators, and image tools that run 100% locally in your browser.
+          <p className="pb-subtitle" style={{ maxWidth: 540, margin: '0 auto 40px', fontSize: 18, color: '#e2e8f0', lineHeight: 1.6 }}>
+            Powerful PDF, image, calculator and creator utilities that run entirely in your browser. 
+            <strong style={{ color: '#fff', fontWeight: 600 }}> Private by default.</strong>
           </p>
 
-          {/* Trust Strip */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>🇮🇳</span> Made in India
-            </span>
-            <span style={{ color: '#0077b6' }}>•</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>🔒</span> 100% Offline
-            </span>
-            <span style={{ color: '#0077b6' }}>•</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#90e0ef', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>⚡</span> Sub-second Speed
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginBottom: 16 }}>
-            <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none' }}>
-              Explore all {TOOLS.length} tools →
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginBottom: 48 }}>
+            <a href="#tools-grid" className="pb-cta pb-cta-primary" style={{ textDecoration: 'none', background: '#fff', color: '#0f172a', fontWeight: 700, padding: '14px 28px', borderRadius: 99 }}>
+              Explore the toolkit →
             </a>
-            <button onClick={onOpenDonation} className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none' }}>
-              ⚡ Support Pahruli
+            <button onClick={() => {
+              const randomTool = TOOLS[Math.floor(Math.random() * TOOLS.length)];
+              window.location.href = `/tool/${randomTool.id}`;
+            }} className="pb-cta pb-cta-secondary" style={{ textDecoration: 'none', background: 'transparent', border: '1.5px solid rgba(255,255,255,0.15)', color: '#fff', padding: '14px 28px', borderRadius: 99 }}>
+              Surprise me
             </button>
           </div>
 
-          {/* Why 60M Indians are switching badge */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
-            <button
-              onClick={onOpenComparison}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '8px 18px',
-                borderRadius: 99,
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
-                backdropFilter: 'blur(10px)',
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: 'pointer',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.15s ease',
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
-              <span>🇮🇳</span>
-              <span>Why 60M Indians are switching from Smallpdf & iLovePDF →</span>
-            </button>
-          </div>
-
-          {/* Stats row */}
-          <div className="pb-stats">
-            <div className="pb-stat">
-              <div className="pb-stat-value">{TOOLS.length}</div>
-              <div className="pb-stat-label">Offline Tools</div>
-            </div>
-            <div className="pb-stat">
-              <div className="pb-stat-value">0</div>
-              <div className="pb-stat-label">Cloud Uploads</div>
-            </div>
-            <div className="pb-stat">
-              <div className="pb-stat-value">$0</div>
-              <div className="pb-stat-label">Forever</div>
-            </div>
-            <div className="pb-stat">
-              <div className="pb-stat-value">6</div>
-              <div className="pb-stat-label">Platform Integrations</div>
-            </div>
+          {/* Trust Strip */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>
+              Made in India <span style={{ opacity: 0.3, margin: '0 12px' }}>·</span> Runs entirely on-device <span style={{ opacity: 0.3, margin: '0 12px' }}>·</span> No uploads
+            </span>
           </div>
         </div>
 

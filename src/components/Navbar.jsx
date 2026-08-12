@@ -26,7 +26,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
           <div className="flex items-end" style={{ transform: 'skewX(-6deg)' }}>
             <span style={{
               fontFamily: '"Impact", "Arial Black", sans-serif',
-              fontSize: 34,
+              fontSize: 42,
               fontWeight: 900,
               color: '#0f172a',
               letterSpacing: '-0.04em', 
@@ -38,8 +38,8 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             }}>
               PAHRULI
             </span>
-            <svg width="8" height="30" viewBox="0 0 8 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '2px', transform: 'translateY(-3px)' }}>
-              <path d="M0 30L2.5 0H8L5.5 30H0Z" fill="#ff3d8b"/>
+            <svg width="10" height="38" viewBox="0 0 10 38" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '2px', transform: 'translateY(-3px)' }}>
+              <path d="M0 38L3.5 0H10L6.5 38H0Z" fill="#ff3d8b"/>
             </svg>
           </div>
           <span style={{
@@ -135,36 +135,53 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
           maxWidth: 1040, margin: '0 auto', width: '100%',
         }}
       >
-        {CATEGORIES.map(cat => {
+        {CATEGORIES.map((cat, index) => {
           if (cat.id === 'Surprise') {
             return (
-              <button
-                key={cat.id}
-                onClick={() => setShowSurpriseAd(!showSurpriseAd)}
-                className="cat-pill"
-                style={{
-                  background: 'linear-gradient(135deg, #ff3d8b, #6161ff)',
-                  color: 'white',
-                  border: 'none',
-                  fontWeight: 700,
-                  padding: '7px 20px',
-                  fontSize: 13,
-                  letterSpacing: '0.01em'
-                }}
-              >
-                {cat.label}
-              </button>
+              <React.Fragment key={cat.id}>
+                <span style={{ color: '#e2e8f0' }}>·</span>
+                <button
+                  onClick={() => setShowSurpriseAd(!showSurpriseAd)}
+                  style={{
+                    background: 'linear-gradient(135deg, #ff3d8b, #6161ff)',
+                    color: 'white',
+                    border: 'none',
+                    fontWeight: 700,
+                    padding: '4px 12px',
+                    borderRadius: 99,
+                    fontSize: 12,
+                    letterSpacing: '0.01em',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(255, 61, 139, 0.25)'
+                  }}
+                >
+                  {cat.label}
+                </button>
+              </React.Fragment>
             );
           }
           const isActive = selectedCategory === cat.id;
           return (
-            <button
-              key={cat.id}
-              onClick={() => onSelectCategory(cat.id)}
-              className={`cat-pill ${isActive ? 'active' : ''}`}
-            >
-              {cat.label}
-            </button>
+            <React.Fragment key={cat.id}>
+              {index > 0 && <span style={{ color: '#e2e8f0' }}>·</span>}
+              <button
+                onClick={() => onSelectCategory(cat.id)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: isActive ? '#0f172a' : '#64748b',
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: 13,
+                  cursor: 'pointer',
+                  padding: '4px 4px',
+                  transition: 'color 0.15s ease'
+                }}
+                onMouseOver={(e) => e.target.style.color = '#0f172a'}
+                onMouseOut={(e) => { if (!isActive) e.target.style.color = '#64748b'; }}
+              >
+                {cat.label}
+              </button>
+            </React.Fragment>
           );
         })}
       </div>

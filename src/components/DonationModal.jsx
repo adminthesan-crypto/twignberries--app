@@ -26,7 +26,7 @@ export default function DonationModal({ isOpen, onClose }) {
     INR: {
       symbol: '₹', small: 49, standard: 99, high: 249,
       smallDesc: 'Buy me a cutting chai ☕', standardDesc: 'Keep Pahruli ad-free 💜', highDesc: 'Sponsor a new tool 🔥',
-      upiLink: 'https://razorpay.me/@shriman7048',
+      upiLink: 'https://razorpay.me/@pahruli',
       cardLink: 'https://donate.stripe.com/test_bJeaEZayMeCWgfD68RdfG00',
     },
     IDR: {
