@@ -116,7 +116,9 @@ export default function GlobalBackdrop({ fixed = true }) {
       <div style={{
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
-        background: 'linear-gradient(to bottom, #ffffff 0%, transparent 15%, transparent 85%, #ffffff 100%)',
+        background: fixed 
+          ? 'linear-gradient(to bottom, #ffffff 0%, transparent 15%, transparent 85%, #ffffff 100%)'
+          : 'linear-gradient(to bottom, #ffffff 0%, transparent 100px, transparent calc(100% - 100px), #ffffff 100%)',
         pointerEvents: 'none'
       }}></div>
     </div>

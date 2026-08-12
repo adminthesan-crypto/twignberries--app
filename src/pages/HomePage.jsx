@@ -110,8 +110,9 @@ export default function HomePage() {
           <div id="tools-grid-container" style={{ position: 'relative', overflow: 'hidden', margin: '0 -40px', padding: '0 40px' }}>
             <GlobalBackdrop fixed={false} />
             
-            {/* Grid Section Heading */}
-            <div id="tools-grid" className="pb-section-header">
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              {/* Grid Section Heading */}
+              <div id="tools-grid" className="pb-section-header">
               <div>
                 <h2 className="pb-h2">
                   {selectedCategory === 'All' ? 'The Offline Arsenal' : `${selectedCategory} tools`}
@@ -135,6 +136,7 @@ export default function HomePage() {
                   onClick={() => handleSelectTool(tool.id)}
                 />
               ))}
+            </div>
             </div>
           </div>
         </div>
