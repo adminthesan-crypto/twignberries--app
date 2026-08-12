@@ -34,31 +34,14 @@ function ToolCard({ tool, onClick }) {
   );
 }
 
-import React, { useState, useEffect } from 'react';
-import { BackdropTrigger } from '../contexts/BackdropContext';
+import GlobalBackdrop from '../components/GlobalBackdrop';
 
 export default function HomePage() {
   const { selectedCategory, handleSelectCategory, handleSelectTool, onOpenComparison, onOpenDonation } = useOutletContext();
   const filtered = selectedCategory === 'All' ? TOOLS : TOOLS.filter(t => t.category === selectedCategory);
-  
-  const [isGridVisible, setIsGridVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsGridVisible(entry.isIntersecting),
-      { threshold: 0.01, rootMargin: '-100px 0px 0px 0px' }
-    );
-
-    // We observe the grid container which wraps the tools grid
-    const el = document.getElementById('tools-grid-container');
-    if (el) observer.observe(el);
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <main style={{ flex: 1, padding: '32px 40px' }}>
-      {isGridVisible && <BackdropTrigger />}
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
         {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">
@@ -124,7 +107,9 @@ export default function HomePage() {
           </div>
 
           {/* Grid Section Container */}
-          <div id="tools-grid-container">
+          <div id="tools-grid-container" style={{ position: 'relative', overflow: 'hidden', margin: '0 -40px', padding: '0 40px' }}>
+            <GlobalBackdrop fixed={false} />
+            
             {/* Grid Section Heading */}
             <div id="tools-grid" className="pb-section-header">
               <div>

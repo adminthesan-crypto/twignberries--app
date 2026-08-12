@@ -17,7 +17,7 @@ const TRANSLATIONS = [
   "Her şey yerel olarak çalışır." // Turkish
 ];
 
-export default function GlobalBackdrop() {
+export default function GlobalBackdrop({ fixed = true }) {
   const { isBackdropVisible } = useBackdropContext();
 
   // Memoize positions so they don't jump around on re-renders
@@ -55,16 +55,18 @@ export default function GlobalBackdrop() {
     };
   }, []);
 
+  const show = fixed ? isBackdropVisible : true;
+
   return (
     <div 
       className="backdrop-container no-print" 
       aria-hidden="true" 
       style={{ 
-        width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, 
+        width: '100%', height: '100%', position: fixed ? 'fixed' : 'absolute', top: 0, left: 0, 
         zIndex: 0, pointerEvents: 'none', overflow: 'hidden',
-        opacity: isBackdropVisible ? 1 : 0,
-        visibility: isBackdropVisible ? 'visible' : 'hidden',
-        transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+        opacity: show ? 1 : 0,
+        visibility: show ? 'visible' : 'hidden',
+        transition: fixed ? 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none'
       }}
     >
       {/* Left Margin Text */}
