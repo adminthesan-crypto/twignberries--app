@@ -69,7 +69,7 @@ export default function MainLayout() {
 
       {/* PhantomBuster-Style Multi-Column Footer */}
       <div className="pb-footer no-print" style={{ marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 40, padding: '40px' }}>
-        <div className="max-w-7xl mx-auto">
+        <div style={{ maxWidth: 1040, margin: '0 auto', width: '100%' }}>
           <div className="pb-footer-grid">
             {/* Brand column */}
             <div className="pb-footer-brand">

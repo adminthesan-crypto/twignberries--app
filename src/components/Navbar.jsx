@@ -20,7 +20,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
   return (
     <header className="nav-panel no-print w-full" style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e6e9ef' }}>
       {/* Top row: Monday.com style header with logo, search, and action pills */}
-      <div className="flex items-center justify-between px-6 h-16 max-w-7xl mx-auto w-full">
+      <div className="flex items-center justify-between px-6 h-16 w-full" style={{ maxWidth: 1040, margin: '0 auto' }}>
         <div className="flex items-center gap-2.5 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           {/* Premium Tech Logo Mark */}
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
