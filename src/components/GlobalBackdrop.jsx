@@ -33,7 +33,7 @@ export default function GlobalBackdrop() {
         // randomize font size slightly between 24px and 42px
         const fontSize = 28 + Math.random() * 24;
         // randomize opacity slightly
-        const opacity = 0.03 + Math.random() * 0.03; // 3% to 6%
+        const opacity = 0.05 + Math.random() * 0.05; // 5% to 10%
         
         return {
           id: `${alignRight ? 'r' : 'l'}-${i}`,
@@ -53,9 +53,9 @@ export default function GlobalBackdrop() {
   }, []);
 
   return (
-    <div className="backdrop-container no-print pointer-events-none fixed inset-0 z-[-1] overflow-hidden hidden xl:block" aria-hidden="true" style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0 }}>
+    <div className="backdrop-container no-print" aria-hidden="true" style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       {/* Left Margin Text */}
-      <div className="absolute inset-y-0 left-0 w-[300px] h-full" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '300px' }}>
+      <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '300px' }}>
         {leftItems.map(item => (
           <div
             key={item.id}
@@ -76,7 +76,7 @@ export default function GlobalBackdrop() {
       </div>
 
       {/* Right Margin Text */}
-      <div className="absolute inset-y-0 right-0 w-[300px] h-full" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '300px' }}>
+      <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '300px' }}>
         {rightItems.map(item => (
           <div
             key={item.id}
