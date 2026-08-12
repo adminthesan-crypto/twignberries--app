@@ -70,7 +70,7 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
   };
 
   const handleCopy = () => {
-    const shareText = `${current.headline}\n\n${current.content}\n\n— Try free offline at https://twignberries.com`;
+    const shareText = `${current.headline}\n\n${current.content}\n\n— Try free offline at https://free.pahruli.in`;
     navigator.clipboard.writeText(shareText);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
@@ -81,11 +81,13 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
       className="w-full rounded-2xl bg-white border border-[#e6e9ef] overflow-hidden"
       style={{
         boxShadow: '0 10px 30px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03)',
-        borderTop: '4px solid #6161ff'
+        borderTop: '4px solid #6161ff',
+        maxWidth: 720,
+        margin: '0 auto'
       }}
     >
       {/* Header bar */}
-      <div className="flex items-center justify-between px-5 py-3.5 bg-[#f7f9fc] border-b border-[#e6e9ef]">
+      <div className="flex items-center justify-between px-6 py-4 bg-[#f7f9fc] border-b border-[#e6e9ef]">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#6161ff] animate-pulse" />
           <span style={{ fontSize: 12.5, fontWeight: 700, color: '#1f2532', letterSpacing: '-0.02em' }}>
@@ -105,7 +107,7 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
       </div>
 
       {/* Meme Body */}
-      <div className="p-5">
+      <div className="px-6 py-6">
         <div className="flex items-center justify-between mb-2">
           <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', color: '#868894', letterSpacing: '0.06em' }}>
             {current.category}
@@ -120,24 +122,24 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
           </div>
         </div>
 
-        <h4 style={{ fontSize: 16, fontWeight: 800, color: '#1f2532', marginBottom: 8, lineHeight: 1.3 }}>
+        <h4 style={{ fontSize: 17, fontWeight: 800, color: '#1f2532', marginBottom: 12, lineHeight: 1.4 }}>
           {current.headline}
         </h4>
 
         <p
           style={{
-            fontSize: 13.5, color: '#4d5156', lineHeight: 1.6,
-            padding: '12px 14px', borderRadius: 12,
+            fontSize: 14, color: '#4d5156', lineHeight: 1.7,
+            padding: '16px 18px', borderRadius: 12,
             background: '#f6f8fa', border: '1px solid #e6e9ef',
             fontFamily: 'var(--font)', whiteSpace: 'pre-line',
-            marginBottom: 16
+            marginBottom: 20
           }}
         >
           {current.content}
         </p>
 
         {/* Interactive Actions */}
-        <div className="flex items-center justify-between gap-3 pt-2">
+        <div className="flex items-center justify-between gap-4 pt-3">
           <button
             onClick={handleCopy}
             className="btn-secondary"
@@ -169,7 +171,7 @@ export default function CultureMemeWidget({ toolsCount = 100 }) {
       </div>
 
       {/* Footer strip: Support prompt */}
-      <div className="px-5 py-2.5 bg-[#f8f6ff] border-t border-[#e2d9ff] flex items-center justify-between text-xs">
+      <div className="px-6 py-3 bg-[#f8f6ff] border-t border-[#e2d9ff] flex items-center justify-between text-xs">
         <span style={{ color: '#5521e8', fontWeight: 600 }}>
           💡 Like our {toolsCount} free offline utilities?
         </span>

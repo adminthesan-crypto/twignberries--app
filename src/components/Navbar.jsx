@@ -4,7 +4,6 @@ import NavbarSearch from './NavbarSearch';
 import AdUnit from './AdUnit';
 
 const CATEGORIES = [
-  { id: 'Surprise',      label: 'Surprise Me',    icon: Gift }, // Replaces All Tools
   { id: 'PDF Tools',     label: 'PDF Suite',      icon: Layers },
   { id: 'E-Commerce',    label: 'E-Commerce',     icon: DollarSign },
   { id: 'AI & Dev',      label: 'AI & Dev',       icon: Cpu },
@@ -12,6 +11,7 @@ const CATEGORIES = [
   { id: 'SEO & Web',     label: 'SEO & Web',      icon: Globe },
   { id: 'Freelance',     label: 'Freelance',      icon: FileText },
   { id: 'Marketing',     label: 'Marketing',      icon: Link2 },
+  { id: 'Surprise',      label: '🎁 Surprise Me', icon: Gift }, // At the end, right side
 ];
 
 export default function Navbar({ tools = [], onSelectTool, selectedCategory, onSelectCategory, toolsCount = 100, onOpenComparison }) {
@@ -24,14 +24,15 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           <img src="/logo.jpg" alt="Pahruli Logo" className="w-9 h-9 rounded-xl shadow-[0_4px_14px_rgba(0,180,216,0.25)] object-cover" />
           <div className="flex items-center gap-2.5">
-            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 24, color: '#1f2532', letterSpacing: '-0.03em' }}>
-              pahruli<span style={{ color: '#00b4d8', fontSize: 17, fontWeight: 700 }}>.com</span>
+            <span style={{ fontFamily: "'Outfit', 'Inter', sans-serif", fontWeight: 800, fontSize: 22, color: '#1f2532', letterSpacing: '-0.04em' }}>
+              <span style={{ color: '#00b4d8', fontWeight: 600, fontSize: 15 }}>free.</span>pahruli<span style={{ color: '#00b4d8', fontSize: 15, fontWeight: 600 }}>.in</span>
             </span>
             <span style={{
-              fontSize: 11, fontWeight: 700,
+              fontSize: 10.5, fontWeight: 700,
               padding: '3px 9px', borderRadius: 99,
-              background: '#eceeff', color: '#6161ff',
-              letterSpacing: '0.02em'
+              background: 'linear-gradient(135deg, #eceeff, #f3eeff)', color: '#6161ff',
+              letterSpacing: '0.03em',
+              border: '1px solid rgba(97,97,255,0.15)'
             }}>
               {toolsCount} Free Tools
             </span>
@@ -131,15 +132,17 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
               <button
                 key={cat.id}
                 onClick={() => setShowSurpriseAd(!showSurpriseAd)}
-                className="cat-pill animate-pulse"
+                className="cat-pill"
                 style={{
-                  background: 'linear-gradient(45deg, #ff3d8b, #6161ff)',
+                  background: 'linear-gradient(135deg, #ff3d8b, #6161ff)',
                   color: 'white',
                   border: 'none',
-                  fontWeight: 800
+                  fontWeight: 700,
+                  padding: '7px 20px',
+                  fontSize: 13,
+                  letterSpacing: '0.01em'
                 }}
               >
-                <Gift size={14} />
                 {cat.label}
               </button>
             );

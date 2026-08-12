@@ -1715,7 +1715,7 @@ function HomeGrid({ tools, onSelectTool, selectedCategory, onOpenComparison }) {
       </div>
 
       {/* Culture Meme Widget */}
-      <div style={{ marginBottom: 48, marginTop: 12 }}>
+      <div style={{ marginBottom: 64, marginTop: 32, padding: '0 8px' }}>
         <CultureMemeWidget toolsCount={TOOLS.length} />
       </div>
 
