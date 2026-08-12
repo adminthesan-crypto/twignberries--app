@@ -23,21 +23,25 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
       <div className="flex items-center justify-between px-6 h-16 w-full" style={{ maxWidth: 1040, margin: '0 auto' }}>
         <div className="flex items-center gap-2.5 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           {/* Premium Tech Logo Mark */}
-          <span style={{
-            fontFamily: "Impact, 'Arial Black', sans-serif",
-            fontWeight: 900, 
-            fontSize: 34, 
-            color: '#111111',
-            letterSpacing: '-0.04em', 
-            lineHeight: 1,
-            fontStyle: 'italic',
-            textTransform: 'uppercase',
-            WebkitTextStroke: '0.5px #111',
-            transform: 'skewX(-5deg)',
-            display: 'inline-block'
-          }}>
-            PAHRULI<span style={{ color: '#ff3d8b' }}>.</span>
-          </span>
+          <div className="flex items-end" style={{ transform: 'skewX(-6deg)' }}>
+            <span style={{
+              fontFamily: '"Impact", "Arial Black", sans-serif',
+              fontSize: 34,
+              fontWeight: 900,
+              color: '#0f172a',
+              letterSpacing: '-0.04em', 
+              lineHeight: 0.9,
+              fontStyle: 'italic',
+              textTransform: 'uppercase',
+              WebkitTextStroke: '0.5px #0f172a',
+              display: 'inline-block'
+            }}>
+              PAHRULI
+            </span>
+            <svg width="8" height="30" viewBox="0 0 8 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '2px', transform: 'translateY(-3px)' }}>
+              <path d="M0 30L2.5 0H8L5.5 30H0Z" fill="#ff3d8b"/>
+            </svg>
+          </div>
           <span style={{
             fontSize: 10, fontWeight: 700,
             padding: '2px 8px', borderRadius: 99,
