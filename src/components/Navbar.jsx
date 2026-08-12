@@ -24,8 +24,8 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => onSelectCategory('All', { scrollToTop: true })}>
           <img src="/logo.jpg" alt="Pahruli Logo" className="w-9 h-9 rounded-xl shadow-[0_4px_14px_rgba(0,180,216,0.25)] object-cover" />
           <div className="flex items-center gap-2.5">
-            <span style={{ fontFamily: "'Outfit', 'Inter', sans-serif", fontWeight: 800, fontSize: 22, color: '#1f2532', letterSpacing: '-0.04em' }}>
-              <span style={{ color: '#00b4d8', fontWeight: 600, fontSize: 15 }}>free.</span>pahruli<span style={{ color: '#00b4d8', fontSize: 15, fontWeight: 600 }}>.in</span>
+            <span style={{ fontFamily: "'Outfit', 'Inter', sans-serif", fontWeight: 800, fontSize: 24, color: '#1f2532', letterSpacing: '-0.03em' }}>
+              pahruli
             </span>
             <span style={{
               fontSize: 10.5, fontWeight: 700,
@@ -115,15 +115,11 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
         </div>
       </div>
 
-      {/* Bottom row: Monday.com rounded-full category pills */}
       <div
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           padding: '8px 24px 12px',
           borderTop: '1px solid #f0f2f5',
-          overflowX: 'auto',
-          maxWidth: '1280px',
-          margin: '0 auto'
         }}
       >
         {CATEGORIES.map(cat => {
