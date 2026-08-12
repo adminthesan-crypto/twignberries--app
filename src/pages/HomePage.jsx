@@ -34,15 +34,31 @@ function ToolCard({ tool, onClick }) {
   );
 }
 
+import React, { useState, useEffect } from 'react';
 import { BackdropTrigger } from '../contexts/BackdropContext';
 
 export default function HomePage() {
   const { selectedCategory, handleSelectCategory, handleSelectTool, onOpenComparison, onOpenDonation } = useOutletContext();
   const filtered = selectedCategory === 'All' ? TOOLS : TOOLS.filter(t => t.category === selectedCategory);
+  
+  const [isGridVisible, setIsGridVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsGridVisible(entry.isIntersecting),
+      { threshold: 0.01, rootMargin: '-100px 0px 0px 0px' }
+    );
+
+    // We observe the grid container which wraps the tools grid
+    const el = document.getElementById('tools-grid-container');
+    if (el) observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main style={{ flex: 1, padding: '32px 40px' }}>
-      <BackdropTrigger />
+      {isGridVisible && <BackdropTrigger />}
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
         {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">
@@ -62,7 +78,7 @@ export default function HomePage() {
             </a>
             <button onClick={() => {
               const randomTool = TOOLS[Math.floor(Math.random() * TOOLS.length)];
-              handleSelectTool(randomTool);
+              handleSelectTool(randomTool.id);
             }} className="btn btn-ghost" style={{ color: 'rgba(255,255,255,0.7)' }}>
               Surprise me 🎲
             </button>
@@ -107,31 +123,34 @@ export default function HomePage() {
             <CultureMemeWidget toolsCount={TOOLS.length} onOpenDonation={onOpenDonation} />
           </div>
 
-          {/* Grid Section Heading */}
-          <div id="tools-grid" className="pb-section-header">
-            <div>
-              <h2 className="pb-h2">
-                {selectedCategory === 'All' ? 'The Offline Arsenal' : `${selectedCategory} tools`}
-              </h2>
-              <p className="pb-p">Everything runs in your browser. No data leaves your machine. Ever.</p>
-            </div>
-            {selectedCategory === 'All' && (
-              <div className="pb-category-pills hidden md:flex" style={{ marginTop: 0 }}>
-                <span style={{ background: 'rgba(249,115,22,0.12)', color: '#f97316', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>11 TOOLS</span>
-                <span style={{ background: '#eceeff', color: '#6161ff', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>35 TOOLS</span>
-                <span style={{ background: 'rgba(236,72,153,0.12)', color: '#ec4899', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>29 TOOLS</span>
+          {/* Grid Section Container */}
+          <div id="tools-grid-container">
+            {/* Grid Section Heading */}
+            <div id="tools-grid" className="pb-section-header">
+              <div>
+                <h2 className="pb-h2">
+                  {selectedCategory === 'All' ? 'The Offline Arsenal' : `${selectedCategory} tools`}
+                </h2>
+                <p className="pb-p">Everything runs in your browser. No data leaves your machine. Ever.</p>
               </div>
-            )}
-          </div>
+              {selectedCategory === 'All' && (
+                <div className="pb-category-pills hidden md:flex" style={{ marginTop: 0 }}>
+                  <span style={{ background: 'rgba(249,115,22,0.12)', color: '#f97316', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>11 TOOLS</span>
+                  <span style={{ background: '#eceeff', color: '#6161ff', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>35 TOOLS</span>
+                  <span style={{ background: 'rgba(236,72,153,0.12)', color: '#ec4899', padding: '5px 12px', borderRadius: 99, fontSize: 11, fontWeight: 700 }}>29 TOOLS</span>
+                </div>
+              )}
+            </div>
 
-          <div className="pb-grid" style={{ marginBottom: 96 }}>
-            {filtered.map(tool => (
-              <ToolCard
-                key={tool.id}
-                tool={tool}
-                onClick={() => handleSelectTool(tool.id)}
-              />
-            ))}
+            <div className="pb-grid" style={{ marginBottom: 96 }}>
+              {filtered.map(tool => (
+                <ToolCard
+                  key={tool.id}
+                  tool={tool}
+                  onClick={() => handleSelectTool(tool.id)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
