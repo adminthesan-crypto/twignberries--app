@@ -961,3 +961,12 @@ label.dropzone {
   margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse))) !important;
   margin-bottom: calc(3.5rem * var(--tw-space-y-reverse)) !important;
 }
+
+/* ─── Global Backdrop ────────────────────────────────────── */
+.backdrop-text {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  user-select: none;
+}

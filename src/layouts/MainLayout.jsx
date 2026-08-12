@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import CompetitorComparisonModal from '../components/CompetitorComparisonModal';
 import DonationModal from '../components/DonationModal';
 import DownloadShareModal from '../components/DownloadShareModal';
+import GlobalBackdrop from '../components/GlobalBackdrop';
 import TOOLS from '../data/toolsData';
 
 export default function MainLayout() {
@@ -45,6 +46,7 @@ export default function MainLayout() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-app)' }}>
+      <GlobalBackdrop />
       {/* Navbar */}
       <Navbar
         tools={TOOLS}
