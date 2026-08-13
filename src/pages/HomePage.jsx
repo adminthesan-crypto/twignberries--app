@@ -35,9 +35,12 @@ function ToolCard({ tool, onClick }) {
 }
 
 import GlobalBackdrop from '../components/GlobalBackdrop';
+import SurpriseAdModal from '../components/SurpriseAdModal';
 
 export default function HomePage() {
   const { selectedCategory, handleSelectCategory, handleSelectTool, onOpenComparison, onOpenDonation } = useOutletContext();
+  const [isSurpriseModalOpen, setIsSurpriseModalOpen] = useState(false);
+  const [pendingSurpriseTool, setPendingSurpriseTool] = useState(null);
   const filtered = selectedCategory === 'All' ? TOOLS : TOOLS.filter(t => t.category === selectedCategory);
 
   return (
@@ -61,7 +64,8 @@ export default function HomePage() {
             </a>
             <button onClick={() => {
               const randomTool = TOOLS[Math.floor(Math.random() * TOOLS.length)];
-              handleSelectTool(randomTool.id);
+              setPendingSurpriseTool(randomTool.id);
+              setIsSurpriseModalOpen(true);
             }} className="btn btn-ghost" style={{ color: 'rgba(255,255,255,0.7)' }}>
               Surprise me 🎲
             </button>
@@ -141,6 +145,14 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <SurpriseAdModal 
+        isOpen={isSurpriseModalOpen}
+        onClose={() => setIsSurpriseModalOpen(false)}
+        onContinue={() => {
+          setIsSurpriseModalOpen(false);
+          handleSelectTool(pendingSurpriseTool);
+        }}
+      />
     </main>
   );
 }
