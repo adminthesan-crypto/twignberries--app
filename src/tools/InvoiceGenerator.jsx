@@ -76,12 +76,12 @@ export default function InvoiceGenerator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }} className="no-print">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            A proper invoice, in the time it takes to make tea.
+            Freelance Invoice Generator
           </h1>
           <span className="badge badge-brand">NO SIGNUP REQUIRED</span>
         </div>
         <p style={{ fontSize: 13.5, color: 'var(--text-3)' }}>
-          No login, no "upgrade to export." Fill out your physical address &amp; tax details, add line items, and export a clean PDF.
+          Generate, preview, and download a clean PDF invoice instantly for free. No watermark, no signup, 100% private.
         </p>
       </div>
 

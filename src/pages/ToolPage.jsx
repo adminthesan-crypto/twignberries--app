@@ -34,7 +34,7 @@ export default function ToolPage() {
   const formattedUseCase = useCase 
     ? useCase.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
     : '';
-  const displayTitle = useCase ? `${tool.name} ${formattedUseCase}` : tool.name;
+  const displayTitle = useCase ? `${tool.seo.title} - ${formattedUseCase}` : tool.seo.title;
 
   const handleToggleStar = () => {
     setStarredIds(prev => {
@@ -48,10 +48,10 @@ export default function ToolPage() {
   return (
     <>
       <Helmet>
-        <title>{displayTitle} - Free Offline Utility | Pahruli</title>
-        <meta name="description" content={tool.description} />
+        <title>{displayTitle} | Pahruli</title>
+        <meta name="description" content={tool.seo.description} />
         <meta property="og:title" content={`${displayTitle} | Pahruli`} />
-        <meta property="og:description" content={tool.description} />
+        <meta property="og:description" content={tool.seo.description} />
         <link rel="canonical" href={`https://free.pahruli.in/tool/${tool.id}${useCase ? `/${useCase}` : ''}`} />
       </Helmet>
 

@@ -42,11 +42,11 @@ export default function EtsyFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
-            What Etsy actually leaves you with
+            Etsy Fee Calculator (2026)
           </h1>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Listing fee, 6.5% transaction cut, payment processing, offsite ads if it applies — all of it, before you hit publish.
+          Calculate your real Etsy profit margin after listing fees, the 6.5% transaction cut, and offsite ads. 100% private and runs offline in your browser.
         </p>
       </div>
 

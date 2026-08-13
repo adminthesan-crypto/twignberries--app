@@ -44,12 +44,12 @@ export default function ShopifyFeeCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            Which Shopify plan actually pays for itself?
+            Shopify Break-Even Calculator
           </h1>
           <span className="badge badge-success">COMPARE PLANS</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Compare monthly cost against your real card processing rates before you commit.
+          Compare monthly Shopify plans against real credit card processing rates to find the break-even point for your store.
         </p>
       </div>
 

@@ -33,12 +33,12 @@ export default function AmazonFbaCalculator() {
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.025em' }}>
-            FBA fees are a maze. Here's the exit.
+            Amazon FBA Margin Calculator
           </h1>
           <span className="badge badge-brand">8%–17% REFERRAL</span>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-4)' }}>
-          Fulfilment tier, referral cut, category rules — your real margin after Amazon takes its share.
+          Calculate your real FBA margin after Amazon takes its share for fulfillment and referral fees (USD). Browser-based.
         </p>
       </div>
 
