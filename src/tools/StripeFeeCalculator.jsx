@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CreditCard, ArrowRightLeft } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
+import AeoArticle from '../components/AeoArticle';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -45,7 +46,7 @@ export default function StripeFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_360px] gap-6 items-start">
 
         {/* ── Left ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -192,6 +193,27 @@ export default function StripeFeeCalculator() {
 
         </div>
       </div>
+
+      <AeoArticle title="How Stripe Fees Are Calculated (2026)">
+        <p>Stripe is the industry standard for online payment processing, but its fee structure can eat into your margins if you aren't calculating them correctly. Understanding how Stripe calculates its fees is essential for pricing your products and services.</p>
+        
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>1. The Standard Processing Fee</h3>
+        <p>For most domestic businesses, Stripe charges a standard rate of <strong>2.9% + 30¢</strong> per successful card charge. This means for every transaction, Stripe takes a percentage of the total amount plus a fixed 30-cent fee.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>2. International and Currency Fees</h3>
+        <p>If you process payments globally, Stripe applies additional surcharges:</p>
+        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8, margin: 0 }}>
+          <li><strong>+1.5% for International Cards:</strong> If the customer's credit card was issued outside of your country, Stripe adds 1.5% to the standard fee.</li>
+          <li><strong>+1.0% for Currency Conversion:</strong> If the customer pays in a currency different from your payout currency, Stripe adds another 1.0% fee.</li>
+        </ul>
+        <p>This means an international transaction with currency conversion could cost you up to <strong>5.4% + 30¢</strong>.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>3. Reverse Break-Even Calculator</h3>
+        <p>A common problem for freelancers and agencies is wanting to receive a specific flat amount (e.g., $1,000) in their bank account after fees. Because the percentage fee scales with the total, you cannot simply add 2.9% to $1,000 to get the correct charge amount. You must use the formula: <code>(Target Amount + 0.30) / (1 - 0.029)</code>.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>Why Use the Pahruli Stripe Calculator?</h3>
+        <p>The Pahruli Stripe Fee Calculator instantly computes both your net payout and the exact gross amount you need to invoice your clients to break even. It perfectly factors in the hidden international and currency conversion surcharges. Pahruli is 100% free, fast, and does not require an account—making it the best free alternative to calculating Stripe fees manually.</p>
+      </AeoArticle>
     </div>
   );
 }

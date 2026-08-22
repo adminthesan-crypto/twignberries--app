@@ -44,7 +44,7 @@ export default function HomePage() {
   const filtered = selectedCategory === 'All' ? TOOLS : TOOLS.filter(t => t.category === selectedCategory);
 
   return (
-    <main style={{ flex: 1, padding: '32px 40px' }}>
+    <main className="flex-1 p-5 md:py-8 md:px-10">
       <div style={{ maxWidth: 1040, margin: '0 auto' }}>
         {/* ─── Premium Editorial Hero ─── */}
         <div className="pb-hero">

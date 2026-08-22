@@ -36,7 +36,7 @@ export default function Navbar({ tools = [], onSelectTool, selectedCategory, onS
             transform: 'skewX(-6deg)',
             display: 'inline-block'
           }}>
-            PAHRULI<BrandDot />
+            PAHRUL<span style={{marginLeft: '0.04em'}}>I</span><BrandDot />
           </span>
           <span style={{
             fontSize: 10, fontWeight: 700,

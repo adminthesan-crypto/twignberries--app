@@ -38,7 +38,7 @@ export default function RepairPdfTool() {
       }
 
       // Add recovery signature
-      pdfDoc.setProducer('Twignberries PDF Repair Engine (v2.0)');
+      pdfDoc.setProducer('Pahruli PDF Repair Engine (v2.0)');
       logs.push('[OK] Synchronizing stream offsets and EOF markers...');
 
       const pdfBytes = await pdfDoc.save();

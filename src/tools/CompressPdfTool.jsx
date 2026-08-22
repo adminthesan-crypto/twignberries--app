@@ -39,8 +39,8 @@ export default function CompressPdfTool() {
       pdfDoc.setAuthor('');
       pdfDoc.setSubject('');
       pdfDoc.setKeywords([]);
-      pdfDoc.setProducer('Twignberries PDF Suite (Optimized)');
-      pdfDoc.setCreator('Twignberries');
+      pdfDoc.setProducer('Pahruli PDF Suite (Optimized)');
+      pdfDoc.setCreator('Pahruli');
 
       const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
       

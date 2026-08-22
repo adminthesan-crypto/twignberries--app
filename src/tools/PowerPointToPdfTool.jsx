@@ -5,7 +5,7 @@ import NativeShareButton from '../components/NativeShareButton';
 
 export default function PowerPointToPdfTool() {
   const [slides, setSlides] = useState([
-    { title: 'Welcome to Twignberries 2026', points: 'Comprehensive Offline Utility Workspace\n100% Client-Side Privacy\nDesigned for Founders & Creators' },
+    { title: 'Welcome to Pahruli 2026', points: 'Comprehensive Offline Utility Workspace\n100% Client-Side Privacy\nDesigned for Founders & Creators' },
     { title: 'Why Offline PDF & UI Tools Matter', points: 'Zero Server Uploads — Complete Confidentiality\nInstant Processing Speed\nNo Subscription or Paywall Lock-in' },
     { title: 'Next Steps & Action Plan', points: 'Deploy to Vercel & Custom Domain\nLaunch on Reddit, HackerNews, and ProductHunt\nGrow Organically with SEO Utility Pages' }
   ]);

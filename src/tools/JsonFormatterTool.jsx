@@ -7,7 +7,7 @@ const SL = {
 };
 
 const SAMPLE_JSON = `{
-  "name": "Twignberries v6.0",
+  "name": "Pahruli v6.0",
   "version": 6.0,
   "offline_privacy": true,
   "tools": 30,
@@ -81,7 +81,7 @@ export default function JsonFormatterTool() {
       } else if (targetMode === 'minify') {
         setOutputCode(JSON.stringify(parsed));
       } else if (targetMode === 'typescript') {
-        const tsCode = generateTsInterface(parsed, 'TwignberriesPayload');
+        const tsCode = generateTsInterface(parsed, 'PahruliPayload');
         setOutputCode(tsCode);
       }
     } catch (err) {
@@ -102,7 +102,7 @@ export default function JsonFormatterTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input JSON & Output Viewport */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -130,7 +130,7 @@ export default function JsonFormatterTool() {
             value={inputJson}
             onChange={e => setInputJson(e.target.value)}
             rows={10}
-            placeholder='Paste your JSON payload here (e.g. {"name": "Twignberries"})...'
+            placeholder='Paste your JSON payload here (e.g. {"name": "Pahruli"})...'
             style={{
               width: '100%', padding: '14px', borderRadius: 12, border: errorMsg ? '2px solid #e2445c' : '1px solid #d0d4e4',
               background: '#f6f8fa', fontFamily: 'var(--font-mono)', fontSize: 13.5, color: '#1f2532',
@@ -240,7 +240,7 @@ export default function JsonFormatterTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use an Offline JSON Tool?</div>
-          Pasting customer API responses or secret JWT tokens into online JSON formatters can expose private credentials. Twignberries processes everything inside your local RAM.
+          Pasting customer API responses or secret JWT tokens into online JSON formatters can expose private credentials. Pahruli processes everything inside your local RAM.
         </div>
       </div>
     </div>

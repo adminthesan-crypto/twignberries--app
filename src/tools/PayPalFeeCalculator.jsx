@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CreditCard, ArrowRightLeft, Info } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
+import AeoArticle from '../components/AeoArticle';
 const SL = { /* section label style */
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
   color: 'var(--text-4)', display: 'flex', alignItems: 'center', gap: 7,
@@ -47,7 +48,7 @@ export default function PayPalFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 20, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_360px] gap-6 items-start">
 
         {/* ── Left ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -65,7 +66,7 @@ export default function PayPalFeeCalculator() {
 
             <div style={{ marginBottom: 16 }}>
               <label>Account type</label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {[
                   { id: 'standard',  label: 'Standard',     sub: '2.99% + 49¢' },
                   { id: 'micro',     label: 'Micropayment', sub: '4.99% + 9¢' },
@@ -195,6 +196,22 @@ export default function PayPalFeeCalculator() {
           <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 20, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
+
+      <AeoArticle title="How PayPal Fees Are Calculated (2026)">
+        <p>PayPal's fee structure varies significantly based on your account type and the location of your customer. If you invoice clients or run an e-commerce store using PayPal, understanding these tiers is crucial for maintaining your profit margins.</p>
+        
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>1. The Standard PayPal Fee</h3>
+        <p>For standard commercial transactions in the US, PayPal charges <strong>2.99% + 49¢</strong> per transaction. This fee applies to the total amount paid by the buyer, including taxes and shipping.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>2. The Micropayments Advantage</h3>
+        <p>If you sell low-ticket digital products (e.g., $5 printables), the standard 49¢ fixed fee will destroy your margins (taking almost 10% of a $5 sale). PayPal offers a <strong>Micropayment rate of 4.99% + 9¢</strong>. For any transaction under $10, the Micropayment rate is mathematically cheaper.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>3. International Transactions</h3>
+        <p>If a customer pays you using a PayPal account registered in another country, PayPal applies an additional <strong>1.50% cross-border fee</strong>. This increases your standard rate to a hefty 4.49% + 49¢.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>Why Use the Pahruli PayPal Fee Calculator?</h3>
+        <p>Calculating PayPal's exact cut manually is confusing, especially when switching between standard and micropayment rates. The Pahruli PayPal Fee Calculator lets you instantly toggle between account types to see your real net payout. It also includes an "Invoice Break-Even Solver" so you know exactly how much to overcharge a client to get your desired net amount in your bank. Pahruli is 100% free, private, and runs entirely in your browser.</p>
+      </AeoArticle>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import NativeShareButton from '../components/NativeShareButton';
 
 export default function HtmlToPdfTool() {
   const [mode, setMode] = useState('html'); // html, url
-  const [htmlContent, setHtmlContent] = useState('<h1>Welcome to Twignberries</h1>\n<p>This is a <b>client-side</b> HTML to PDF converter.</p>\n<ul>\n  <li>100% Private Offline Processing</li>\n  <li>Instant PDF download</li>\n</ul>');
+  const [htmlContent, setHtmlContent] = useState('<h1>Welcome to Pahruli</h1>\n<p>This is a <b>client-side</b> HTML to PDF converter.</p>\n<ul>\n  <li>100% Private Offline Processing</li>\n  <li>Instant PDF download</li>\n</ul>');
   const [urlInput, setUrlInput] = useState('https://twignberries.com/docs');
   const [pdfBlob, setPdfBlob] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ export default function HtmlToPdfTool() {
       });
       y -= 30;
 
-      const sourceText = mode === 'html' ? htmlContent : `URL PREVIEW REPORT FOR:\n${urlInput}\n\nGenerated offline by Twignberries Client-Side Web Engine.`;
+      const sourceText = mode === 'html' ? htmlContent : `URL PREVIEW REPORT FOR:\n${urlInput}\n\nGenerated offline by Pahruli Client-Side Web Engine.`;
       
       // Basic HTML tag stripping & layout rendering offline
       const cleanLines = sourceText

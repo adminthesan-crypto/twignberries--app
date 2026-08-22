@@ -96,7 +96,7 @@ export default function WatermarkPdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Watermark Settings */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -182,7 +182,7 @@ export default function WatermarkPdfTool() {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Opacity: {Math.round(opacity * 100)}%
@@ -214,7 +214,7 @@ export default function WatermarkPdfTool() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Stamp Angle
@@ -289,13 +289,13 @@ export default function WatermarkPdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Watermarked-Document.pdf"
+                download="Pahruli-Watermarked-Document.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Watermarked PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Watermarked-Document.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Watermarked-Document.pdf" />
             </div>
             </div>
           )}
@@ -308,7 +308,7 @@ export default function WatermarkPdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Watermarking?</div>
-          Stamping confidential company drafts or financial audits online exposes your documents to third-party servers. Twignberries applies vector watermarks in your device RAM.
+          Stamping confidential company drafts or financial audits online exposes your documents to third-party servers. Pahruli applies vector watermarks in your device RAM.
         </div>
       </div>
     </div>

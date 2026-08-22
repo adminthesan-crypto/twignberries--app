@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Link2, Copy, Check, ExternalLink, Sparkles, AlertCircle, Share2, Target, Zap } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -58,7 +59,7 @@ export default function UtmBuilder() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* ── Left Column (Inputs) ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
@@ -103,7 +104,7 @@ export default function UtmBuilder() {
               <Target size={13} color="var(--brand)" /> 2. Traffic Source &amp; Medium
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 16 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
               <div>
                 <label>Campaign source * (utm_source)</label>
                 <input
@@ -172,7 +173,7 @@ export default function UtmBuilder() {
               <Zap size={13} color="var(--brand)" /> 3. Advanced Attribution (Optional)
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 0 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[0px]">
               <div>
                 <label>Campaign term (utm_term)</label>
                 <input
@@ -306,6 +307,29 @@ export default function UtmBuilder() {
 
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>What are UTM Parameters?</h2>
+        <p>UTM (Urchin Tracking Module) parameters are short text codes added to the end of a URL. They act as invisible tags that pass critical data back to Google Analytics 4 (GA4) or other analytics platforms, telling you exactly where your website traffic came from and what campaign drove it.</p>
+        
+        <h3>The 5 Core UTM Tags</h3>
+        <p>A properly structured UTM link removes the guesswork from marketing attribution. The standard parameters are:</p>
+        <ul>
+          <li><strong>utm_source (Required):</strong> Identifies the specific platform or referrer sending traffic (e.g., <code>google</code>, <code>newsletter</code>, <code>linkedin</code>).</li>
+          <li><strong>utm_medium (Required):</strong> Describes the type of traffic or the marketing medium (e.g., <code>cpc</code> for paid search, <code>email</code>, <code>social</code>).</li>
+          <li><strong>utm_campaign (Required):</strong> Identifies the specific promotion, sale, or marketing initiative (e.g., <code>black_friday_2026</code>).</li>
+          <li><strong>utm_term (Optional):</strong> Used in paid search to track the exact keyword the user searched for.</li>
+          <li><strong>utm_content (Optional):</strong> Differentiates similar links within the same ad or email (e.g., <code>hero_button</code> vs <code>footer_link</code>).</li>
+        </ul>
+
+        <h3>Best Practices for UTM Tagging in GA4</h3>
+        <p>Google Analytics 4 is notoriously strict about casing and spacing. To maintain a clean dashboard, adhere to these rules:</p>
+        <ul>
+          <li><strong>Always use lowercase:</strong> <code>utm_source=Facebook</code> and <code>utm_source=facebook</code> will be split into two entirely separate rows in GA4. Force lowercase for everything.</li>
+          <li><strong>Use underscores instead of spaces:</strong> Spaces break URLs. Use underscores (<code>summer_sale</code>) or hyphens (<code>summer-sale</code>) for readability.</li>
+          <li><strong>Never use UTMs for internal links:</strong> Adding UTM tags to links <em>within</em> your own website will overwrite the original session referrer and destroy your attribution data. Only use UTMs for inbound external traffic.</li>
+        </ul>
+      </AeoArticle>
     </div>
   );
 }

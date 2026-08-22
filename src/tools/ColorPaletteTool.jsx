@@ -52,13 +52,13 @@ export default function ColorPaletteTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Color Inputs & Accessibility Results */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         <div className="form-card" style={{ padding: '24px' }}>
           <div style={SL}>1. Foreground & Background Color Pairing</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[24px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 8 }}>
                 Foreground Text Color
@@ -121,7 +121,7 @@ export default function ColorPaletteTool() {
         <div className="form-card" style={{ padding: '24px' }}>
           <div style={SL}>2. WCAG 2.1 Accessibility Compliance Breakdown</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               { name: 'WCAG AA (Normal Text)', req: '>= 4.5:1', pass: passAANormal },
               { name: 'WCAG AA (Large Text)', req: '>= 3.0:1', pass: passAALarge },
@@ -174,7 +174,7 @@ export default function ColorPaletteTool() {
             <div style={{ fontSize: 12, fontWeight: 700, color: '#676879', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 10 }}>
               Quick Monday SaaS Tints
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {generateShades().map(h => (
                 <button
                   key={h}

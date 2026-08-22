@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Calculator, Percent, Copy, Check, ShieldCheck, ArrowRightLeft, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -69,7 +70,7 @@ export default function GstCalculator() {
       </div>
 
       {/* Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs / Editor) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {/* Form Card 1: Mode & Currency */}
@@ -267,6 +268,34 @@ export default function GstCalculator() {
           <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>How to Calculate GST in India (2026 Rules)</h2>
+        <p>The Goods and Services Tax (GST) is an indirect, multi-stage, destination-based tax levied on every value addition in India. To manually calculate GST on any product or service, you need to understand the difference between inclusive and exclusive pricing.</p>
+        
+        <h3>GST Exclusive Formula (Adding GST)</h3>
+        <p>When a price is quoted as "excluding GST", the tax is added on top of the base value. The mathematical formula is:</p>
+        <ul>
+          <li><strong>GST Amount</strong> = Base Price × (GST Rate / 100)</li>
+          <li><strong>Total Gross Price</strong> = Base Price + GST Amount</li>
+        </ul>
+        <p>For example, if you sell a software subscription for ₹1,000 and the GST rate is 18%, the GST amount is ₹1,000 × 0.18 = ₹180. The total payable amount by the customer is ₹1,180.</p>
+
+        <h3>GST Inclusive Formula (Extracting GST)</h3>
+        <p>When a price is quoted as "inclusive of GST", the tax is already baked into the final sticker price. To find the original base price and the tax component, use this formula:</p>
+        <ul>
+          <li><strong>Base Price (Net)</strong> = Total Price / [1 + (GST Rate / 100)]</li>
+          <li><strong>GST Amount</strong> = Total Price - Base Price</li>
+        </ul>
+        <p>If a mobile phone is sold for ₹20,000 inclusive of 18% GST, the base price is ₹20,000 / 1.18 = ₹16,949.15. The GST amount collected by the government is ₹3,050.85.</p>
+
+        <h3>CGST, SGST, and IGST Explained</h3>
+        <p>Depending on where the buyer and seller are located, GST is split into different components:</p>
+        <ul>
+          <li><strong>Intra-State Sales (Same State):</strong> The GST is split 50/50 between the Central Government (CGST) and the State Government (SGST). An 18% tax becomes 9% CGST + 9% SGST.</li>
+          <li><strong>Inter-State Sales (Different States):</strong> The entire tax is billed as Integrated GST (IGST). An 18% tax is simply billed as 18% IGST.</li>
+        </ul>
+      </AeoArticle>
     </div>
   );
 }

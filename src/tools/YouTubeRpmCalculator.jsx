@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { PlaySquare, TrendingUp, DollarSign, PieChart, Sparkles, AlertCircle, Copy, Check } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -69,7 +70,7 @@ export default function YouTubeRpmCalculator() {
       </div>
 
       {/* Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs / Editor) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {/* Form Card 1: Monthly Views */}
@@ -240,6 +241,25 @@ export default function YouTubeRpmCalculator() {
           </div>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>YouTube RPM vs CPM Explained</h2>
+        <p>If you are trying to estimate how much a YouTuber makes, you must understand the difference between CPM (Cost Per Mille) and RPM (Revenue Per Mille). Confusing the two is the most common reason creators drastically overestimate their potential AdSense revenue.</p>
+        
+        <h3>What is CPM (Cost Per Mille)?</h3>
+        <p>CPM represents what <strong>advertisers pay</strong> to show 1,000 ads on your channel. It is a metric used by YouTube to measure advertiser demand for your specific niche and demographic. For example, a finance channel might have a $25 CPM, meaning an advertiser pays $25 for 1,000 ad views. However, this is gross revenue—you do not keep this entire amount.</p>
+
+        <h3>What is RPM (Revenue Per Mille)?</h3>
+        <p>RPM is the actual <strong>take-home pay</strong> you earn per 1,000 total video views. RPM is always lower than CPM because it accounts for several massive deductions:</p>
+        <ul>
+          <li><strong>YouTube's Cut:</strong> YouTube takes 45% of the gross ad revenue, leaving you with 55%.</li>
+          <li><strong>Unmonetized Views:</strong> Not every view gets an ad. Viewers using ad-blockers, YouTube Premium subscribers, and skipped ad placements mean total video views vastly outnumber monetized playbacks.</li>
+        </ul>
+        <p>The mathematical formula for RPM is simple: <strong>RPM = (Total Estimated Earnings / Total Views) × 1,000</strong>.</p>
+        
+        <h3>How to Increase Your YouTube RPM</h3>
+        <p>To maximize your RPM without relying on volatile advertiser budgets, focus on the length and niche of your content. Videos longer than 8 minutes allow for mid-roll ads, which can double or triple your RPM. Additionally, creating content targeting high-purchasing-power demographics (like SaaS tutorials, real estate, and B2B finance) naturally commands higher CPMs at the auction level, lifting your RPM proportionally.</p>
+      </AeoArticle>
     </div>
   );
 }

@@ -160,7 +160,7 @@ export default function ImageToPdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Image List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -205,7 +205,7 @@ export default function ImageToPdfTool() {
         {/* Page Layout Settings */}
         <div className="form-card">
           <div style={SL}>2. PDF Page Settings</div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Page Orientation
@@ -348,13 +348,13 @@ export default function ImageToPdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Converted-Images.pdf"
+                download="Pahruli-Converted-Images.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Converted PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Converted-Images.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Converted-Images.pdf" />
             </div>
             </div>
           )}
@@ -367,7 +367,7 @@ export default function ImageToPdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Image to PDF?</div>
-          Most tools reject WEBP or AVIF formats or require cloud uploads. Twignberries automatically renders your images on a private HTML5 canvas and embeds them into a clean A4 PDF.
+          Most tools reject WEBP or AVIF formats or require cloud uploads. Pahruli automatically renders your images on a private HTML5 canvas and embeds them into a clean A4 PDF.
         </div>
       </div>
     </div>

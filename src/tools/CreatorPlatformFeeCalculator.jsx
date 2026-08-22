@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Heart, Coffee, DollarSign, Award, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -50,7 +51,7 @@ export default function CreatorPlatformFeeCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* ── Left Column (Inputs) ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
@@ -249,6 +250,25 @@ export default function CreatorPlatformFeeCalculator() {
 
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>Comparing Creator Platform Processing Fees (2026)</h2>
+        <p>Monetizing an audience is one of the most reliable ways to build a modern media business. However, the platform you choose to process those recurring subscriptions or one-time donations dramatically impacts your bottom line. Major platforms like Patreon, Buy Me a Coffee, and Ko-Fi all take different approaches to revenue sharing.</p>
+        
+        <h3>Patreon Fee Structure</h3>
+        <p>Patreon is the industry standard for recurring memberships, but it is also the most expensive. Patreon charges a base platform fee (typically <strong>8% on the Pro tier</strong> or 12% on the Premium tier), plus standard payment processing fees (usually 2.9% + $0.30 per transaction).</p>
+        <ul>
+          <li><strong>Total Patreon Deduction</strong> = (Gross Revenue × 0.08) + Payment Processing</li>
+        </ul>
+        <p>If you generate $5,000 a month on the 8% tier, Patreon takes $400 for hosting the platform, plus an estimated $200–$300 in processing fees.</p>
+
+        <h3>Buy Me a Coffee & Ko-Fi Fees</h3>
+        <p>Buy Me a Coffee (BMAC) takes a flat <strong>5% platform fee</strong> across all features, plus standard payment processing via Stripe or PayPal. This makes it mathematically more favorable for creators than Patreon's 8% tier.</p>
+        <p>Ko-Fi is even leaner: it charges <strong>0% platform fees</strong> on its standard free tier for one-time donations. However, if you want to offer recurring memberships or sell digital products, you must upgrade to Ko-Fi Gold (a flat monthly fee) or pay a 5% cut.</p>
+        
+        <h3>Which Platform Leaves You With More Profit?</h3>
+        <p>If your primary goal is maximizing take-home pay, Ko-Fi (for one-off tips) or Buy Me a Coffee (for memberships) are the clear winners. However, Patreon justifies its 8-12% premium by offering robust native integrations, such as automatic Discord role assignment, exclusive gated RSS feeds for podcasts, and a more recognized "subscription" brand name among audiences.</p>
+      </AeoArticle>
     </div>
   );
 }

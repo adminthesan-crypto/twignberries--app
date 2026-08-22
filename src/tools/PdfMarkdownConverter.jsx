@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { FileText, Printer, Copy, Check, Eye, Code, Sparkles, ShieldCheck } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -24,7 +25,7 @@ This document outlines the deliverables and pricing structure for custom fronten
 > *Note: All deliverables include 100% client-side privacy and zero recurring backend server fees.*
 
 ---
-**Prepared by:** Twignberries Studio  
+**Prepared by:** Pahruli Studio  
 **Date:** August 2026`);
 
   const [activeTab, setActiveTab] = useState('split'); // split, edit, preview
@@ -123,7 +124,7 @@ This document outlines the deliverables and pricing structure for custom fronten
       </div>
 
       {/* Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs / Editor & Document Preview) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Form Card 1: Markdown Editor (No Print) */}
@@ -248,6 +249,27 @@ This document outlines the deliverables and pricing structure for custom fronten
           </div>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>Why Convert Markdown to PDF?</h2>
+        <p>Markdown is a lightweight markup language designed for formatting plain text documents. It is the de-facto standard for software documentation (like GitHub README files), note-taking apps (like Obsidian and Notion), and static site generators. Converting Markdown directly into a PDF allows you to take raw, unstyled text and instantly generate a beautifully formatted, print-ready document.</p>
+        
+        <h3>The Benefits of GitHub Flavored Markdown (GFM)</h3>
+        <p>Standard Markdown supports basic elements like headers (<code>#</code>), bold text (<code>**</code>), and lists. However, GitHub Flavored Markdown (GFM) extends the spec to include crucial modern features:</p>
+        <ul>
+          <li><strong>Tables:</strong> Create structured data grids using pipes (<code>|</code>) and hyphens.</li>
+          <li><strong>Task Lists:</strong> Render interactive or static checkboxes using <code>[ ]</code> and <code>[x]</code>.</li>
+          <li><strong>Strikethrough:</strong> Cross out text using tildes (<code>~~</code>).</li>
+          <li><strong>Fenced Code Blocks:</strong> Add syntax-highlighted code snippets with language specifiers (like <code>```javascript</code>).</li>
+        </ul>
+        <p>A high-quality Markdown to PDF converter must support the full GFM spec to ensure technical documentation renders correctly.</p>
+
+        <h3>Client-Side PDF Generation for Maximum Privacy</h3>
+        <p>Many online PDF converters require you to upload your files to a remote server. This is a massive security risk when dealing with sensitive intellectual property, API keys embedded in READMEs, or proprietary technical documentation. By leveraging modern Web APIs like HTML5 Canvas and jsPDF, Markdown can be parsed, styled, and rendered into a PDF document <strong>entirely locally within your browser</strong>, ensuring zero data leaves your machine.</p>
+        
+        <h3>Print CSS and Page Breaks</h3>
+        <p>When translating web-based Markdown into a paginated PDF, handling page breaks is notoriously difficult. A robust converter utilizes CSS properties like <code>page-break-inside: avoid</code> to ensure that critical elements—like code blocks, images, and tables—are not sliced in half across two printed pages.</p>
+      </AeoArticle>
     </div>
   );
 }

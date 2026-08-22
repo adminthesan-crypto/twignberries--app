@@ -21,8 +21,8 @@ export default function AdUnit({ variant = 'banner', placement = 'tool-footer' }
   // ==========================================
   // ACTION REQUIRED: Add your AdSense details here!
   // ==========================================
-  const PUBLISHER_ID = 'ca-pub-XXXXXXXXXXXX';
-  const AD_SLOT_ID = 'YYYYYYYYYY';
+  const PUBLISHER_ID = 'ca-pub-4399618621076160';
+  const AD_SLOT_ID = '2927650853';
 
   return (
     <div

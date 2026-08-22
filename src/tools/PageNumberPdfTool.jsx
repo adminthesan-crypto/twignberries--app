@@ -107,7 +107,7 @@ export default function PageNumberPdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Numbering Controls */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -176,7 +176,7 @@ export default function PageNumberPdfTool() {
         <div className="form-card">
           <div style={SL}>2. Numbering Format & Position</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 20 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-[20px]">
             {[
               { id: 'full', label: 'Page X of Y', preview: 'Page 1 of 12' },
               { id: 'slash', label: 'X / Y', preview: '1 / 12' },
@@ -198,7 +198,7 @@ export default function PageNumberPdfTool() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Page Position
@@ -287,13 +287,13 @@ export default function PageNumberPdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Numbered.pdf"
+                download="Pahruli-Numbered.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Numbered PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Numbered.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Numbered.pdf" />
             </div>
             </div>
           )}
@@ -306,7 +306,7 @@ export default function PageNumberPdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Page Numbering?</div>
-          Adding sequential numbers to contracts shouldn't require sending files to an external converter. Twignberries stamps coordinates in local RAM.
+          Adding sequential numbers to contracts shouldn't require sending files to an external converter. Pahruli stamps coordinates in local RAM.
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Package, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
-
 import NativeShareButton from '../components/NativeShareButton';
+import AeoArticle from '../components/AeoArticle';
 
 const SL = {
   fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase',
@@ -42,7 +42,7 @@ export default function AmazonFbaCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
@@ -97,7 +97,7 @@ export default function AmazonFbaCalculator() {
               </select>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label>Unit COGS ($)</label>
                 <input
@@ -213,6 +213,26 @@ export default function AmazonFbaCalculator() {
           <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
+
+      <AeoArticle title="How Amazon FBA Fees and Profit Margins Are Calculated (2026)">
+        <p>Selling on Amazon FBA (Fulfillment by Amazon) is a powerful way to scale an e-commerce business, but Amazon's complex fee structure can quickly eat away at your profit margins if you aren't careful. As of 2026, Amazon charges two primary fees for FBA sellers: the Referral Fee and the FBA Fulfillment Fee.</p>
+        
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>1. The Amazon Referral Fee</h3>
+        <p>Think of the referral fee as a "commission" you pay Amazon for allowing you to sell on their marketplace. It is a percentage of your total sales price (including shipping charged to the customer). For most standard categories (like Home, Kitchen, Toys, and Beauty), the fee is <strong>15%</strong>. However, this varies by category—Electronics are typically 8%, while Jewelry can be up to 20%.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>2. The FBA Fulfillment Fee (Pick & Pack)</h3>
+        <p>This is the fee Amazon charges to pick, pack, and ship your product from their fulfillment centers to the customer. This fee is calculated based on the weight and dimensions of your product. For example, a small standard-size item under 4 oz costs <strong>$3.22</strong> to fulfill, whereas a 2 lb standard item costs <strong>$6.10</strong>.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>3. Hidden Costs to Remember</h3>
+        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8, margin: 0 }}>
+          <li><strong>COGS (Cost of Goods Sold):</strong> The raw manufacturing cost of your product.</li>
+          <li><strong>Inbound Shipping:</strong> The cost of shipping your inventory from your supplier to Amazon's fulfillment centers.</li>
+          <li><strong>Monthly Storage Fees:</strong> Amazon charges a fee based on the volume (cubic feet) of inventory you store in their warehouses, which goes up significantly during Q4 (holiday season).</li>
+        </ul>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>Why Use the Pahruli Amazon FBA Calculator?</h3>
+        <p>Calculating your true net profit and break-even price manually is tedious and prone to errors. The Pahruli Amazon FBA Margin Calculator instantly computes your take-home profit per unit, margin percentage, and the minimum price you need to charge to avoid losing money. Pahruli is 100% free, browser-based (your data stays private), and requires no login—making it a perfect free alternative to bloated FBA revenue calculators.</p>
+      </AeoArticle>
     </div>
   );
 }

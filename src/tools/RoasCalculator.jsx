@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Target, BarChart2 } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -47,7 +48,7 @@ export default function RoasCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
@@ -55,7 +56,7 @@ export default function RoasCalculator() {
               <Target size={13} color="var(--brand)" /> 1. Unit Economics &amp; Margin
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label>Selling price ($)</label>
                 <input
@@ -218,6 +219,25 @@ export default function RoasCalculator() {
           </div>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>ROAS vs Break-Even ROAS Explained</h2>
+        <p>Return on Ad Spend (ROAS) is the metric digital marketers use to measure the gross efficiency of an advertising campaign. However, generating a high ROAS does not automatically mean a campaign is profitable. To understand true profitability, you must calculate your Break-Even ROAS.</p>
+        
+        <h3>How to Calculate ROAS</h3>
+        <p>The standard formula for ROAS is straightforward: <strong>ROAS = Revenue from Ads / Cost of Ads</strong>.</p>
+        <p>For example, if you spend $1,000 on Facebook Ads and those ads generate $4,000 in sales, your ROAS is 4.0x (or 400%). For every $1 you spent, you generated $4 in gross revenue.</p>
+
+        <h3>The Danger of Ignoring Profit Margins</h3>
+        <p>Many dropshippers and e-commerce brands scale campaigns with a 2.0x ROAS, believing they are doubling their money. This ignores the Cost of Goods Sold (COGS), shipping fees, and payment processing fees. If you sell a $100 jacket that costs $60 to manufacture and ship, your Gross Margin is 40%.</p>
+        
+        <h3>The Break-Even ROAS Formula</h3>
+        <p>Your Break-Even ROAS is the exact multiple your ads must hit to ensure you don't lose money on the sale. The formula is:</p>
+        <ul>
+          <li><strong>Break-Even ROAS</strong> = 1 / Gross Margin %</li>
+        </ul>
+        <p>Using the jacket example above (40% margin): 1 / 0.40 = <strong>2.5x Break-Even ROAS</strong>. If your Facebook campaign is running at a 2.0x ROAS, you are actively losing money on every order despite the ads "working." Knowing your break-even point dictates your entire bidding and scaling strategy.</p>
+      </AeoArticle>
     </div>
   );
 }

@@ -89,7 +89,7 @@ export default function SocialImageCropperTool() {
   }, [file, preset, zoom, fitMode, bgColor]);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Image Input & Social Presets */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -158,7 +158,7 @@ export default function SocialImageCropperTool() {
         <div className="form-card">
           <div style={SL}>2. Social Media Platform Aspect Ratios</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[20px]">
             {PRESETS.map(p => (
               <button
                 key={p.id}
@@ -180,7 +180,7 @@ export default function SocialImageCropperTool() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Fit Mode
@@ -255,7 +255,7 @@ export default function SocialImageCropperTool() {
             <div className="flex gap-3 w-full">
               <a
                 href={resultUrl}
-                download={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`}
+                download={`Pahruli-${preset.id}-${preset.width}x${preset.height}.jpg`}
                 className="btn-primary"
                 style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
@@ -263,7 +263,7 @@ export default function SocialImageCropperTool() {
               </a>
               <NativeShareButton 
                 fileUrl={resultUrl} 
-                fileName={`Twignberries-${preset.id}-${preset.width}x${preset.height}.jpg`} 
+                fileName={`Pahruli-${preset.id}-${preset.width}x${preset.height}.jpg`} 
                 mimeType="image/jpeg" 
               />
             </div>
@@ -277,7 +277,7 @@ export default function SocialImageCropperTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Social Cropping?</div>
-          Online croppers upload your photography to external servers. Twignberries crops and exports your creative assets inside your browser GPU in milliseconds.
+          Online croppers upload your photography to external servers. Pahruli crops and exports your creative assets inside your browser GPU in milliseconds.
         </div>
       </div>
     </div>

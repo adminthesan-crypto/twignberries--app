@@ -120,7 +120,7 @@ export default function OrganizePdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Organize Modes */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -189,7 +189,7 @@ export default function OrganizePdfTool() {
         <div className="form-card">
           <div style={SL}>2. Select Organization Operation</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 20 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-[20px]">
             <button
               type="button"
               onClick={() => { setMode('delete'); setResultUrl(null); }}
@@ -306,13 +306,13 @@ export default function OrganizePdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Organized.pdf"
+                download="Pahruli-Organized.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Organized PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Organized.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Organized.pdf" />
             </div>
             </div>
           )}
@@ -325,7 +325,7 @@ export default function OrganizePdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Organization?</div>
-          Removing sensitive pages from legal briefs or medical reports shouldn't require cloud servers. Twignberries slices and deletes pages inside local RAM.
+          Removing sensitive pages from legal briefs or medical reports shouldn't require cloud servers. Pahruli slices and deletes pages inside local RAM.
         </div>
       </div>
     </div>

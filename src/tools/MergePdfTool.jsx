@@ -14,6 +14,7 @@ export default function MergePdfTool() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [mergedPdfUrl, setMergedPdfUrl] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
+  const [outputFileName, setOutputFileName] = useState('Pahruli_Merged');
 
   const handleFileUpload = async (e) => {
     setErrorMsg(null);
@@ -103,7 +104,7 @@ export default function MergePdfTool() {
   const isIdleOrSuccess = files.length === 0 || !!mergedPdfUrl;
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {isIdleOrSuccess && <BackdropTrigger />}
       {/* Left Column: Input Dropzone & File List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -238,19 +239,33 @@ export default function MergePdfTool() {
 
           {mergedPdfUrl && (
             <div style={{ padding: '16px', borderRadius: 14, background: '#f3f5ff', border: '1px solid rgba(97,97,255,0.3)', textAlign: 'center' }}>
-              <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 8 }}>
+              <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1f2532', marginBottom: 12 }}>
                 🎉 Merged {files.length} files ({totalPages} pages) successfully!
+              </div>
+              <div style={{ marginBottom: 16, textAlign: 'left' }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: '#676879', marginBottom: 6 }}>Rename Output File:</label>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <input
+                    type="text"
+                    value={outputFileName}
+                    onChange={(e) => setOutputFileName(e.target.value)}
+                    style={{ flex: 1, padding: '8px 12px', borderRadius: '8px 0 0 8px', border: '1px solid #d0d4e4', borderRight: 'none', fontSize: 13, outline: 'none' }}
+                  />
+                  <div style={{ padding: '8px 12px', background: '#f6f8fa', border: '1px solid #d0d4e4', borderRadius: '0 8px 8px 0', fontSize: 13, color: '#676879', fontWeight: 500 }}>
+                    .pdf
+                  </div>
+                </div>
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={mergedPdfUrl}
-                download="Twignberries-Merged-Document.pdf"
+                download={`${outputFileName || 'Pahruli_Merged'}.pdf`}
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
-                <Download size={16} /> Download Merged PDF
+                <Download size={16} /> Download
               </a>
-              <NativeShareButton fileUrl={mergedPdfUrl} fileName="Twignberries-Merged-Document.pdf" />
+              <NativeShareButton fileUrl={mergedPdfUrl} fileName={`${outputFileName || 'Pahruli_Merged'}.pdf`} />
             </div>
             </div>
           )}
@@ -263,7 +278,7 @@ export default function MergePdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Private Client-Side Merge?</div>
-          Most online PDF tools upload your sensitive contracts and tax filings to external servers. Twignberries uses WebAssembly to execute 100% of PDF processing locally on your device.
+          Most online PDF tools upload your sensitive contracts and tax filings to external servers. Pahruli uses WebAssembly to execute 100% of PDF processing locally on your device.
         </div>
       </div>
     </div>

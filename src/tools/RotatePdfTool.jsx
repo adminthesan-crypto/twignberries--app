@@ -81,7 +81,7 @@ export default function RotatePdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Rotation Controls */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -150,7 +150,7 @@ export default function RotatePdfTool() {
         <div className="form-card">
           <div style={SL}>2. Rotation Angle & Target Pages</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 20 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-[20px]">
             <button
               type="button"
               onClick={() => { setRotationAngle(90); setResultUrl(null); }}
@@ -261,13 +261,13 @@ export default function RotatePdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Rotated.pdf"
+                download="Pahruli-Rotated.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Rotated PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Rotated.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Rotated.pdf" />
             </div>
             </div>
           )}
@@ -280,7 +280,7 @@ export default function RotatePdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side Rotation?</div>
-          Rotated financial PDFs and scanned invoices shouldn't touch third-party servers. Twignberries modifies your PDF orientation in local RAM instantly.
+          Rotated financial PDFs and scanned invoices shouldn't touch third-party servers. Pahruli modifies your PDF orientation in local RAM instantly.
         </div>
       </div>
     </div>

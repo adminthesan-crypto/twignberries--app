@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { ShoppingBag, DollarSign } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -50,7 +51,7 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* Left Column (Inputs) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div className="form-card">
@@ -111,7 +112,7 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
               </select>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label>Unit COGS ($)</label>
                 <input
@@ -227,6 +228,29 @@ Break-Even Selling Price: $${breakEvenPrice.toFixed(2)}`;
           <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>TikTok Shop Commission and Affiliate Fees Explained</h2>
+        <p>TikTok Shop has evolved rapidly into one of the highest-converting social commerce platforms. However, selling directly through the feed means navigating TikTok's native fee structure, payment processing costs, and the affiliate creator network.</p>
+        
+        <h3>What is the TikTok Shop Seller Fee?</h3>
+        <p>As of recent policy updates, TikTok Shop charges a flat commission fee on the gross sales price (item price + shipping cost). The standard US commission rate is <strong>6% plus a $0.30 transaction fee</strong> per order. This fee covers payment processing, platform hosting, and checkout infrastructure.</p>
+        <p>The mathematical formula for the base platform fee is:</p>
+        <ul>
+          <li><strong>TikTok Fee</strong> = (Gross Sales Price) × 0.06 + $0.30</li>
+        </ul>
+        <p>For a $50 product with $5 shipping ($55 total), TikTok retains $3.30 in percentage fees plus the $0.30 flat fee, totaling $3.60.</p>
+
+        <h3>Factoring in Affiliate Creator Commissions</h3>
+        <p>The true power of TikTok Shop lies in its affiliate network, where creators promote your products for a cut. Sellers can set open, targeted, or shop-level affiliate plans. Standard affiliate commissions range from <strong>10% to 20%</strong> depending on the profit margin of the product category.</p>
+        <ul>
+          <li><strong>Total Deduction</strong> = Platform Fee (6% + $0.30) + Affiliate Commission (%)</li>
+          <li><strong>Net Payout</strong> = Gross Sales - Total Deduction - COGS</li>
+        </ul>
+        
+        <h3>Break-Even Strategy for TikTok Commerce</h3>
+        <p>Because you are paying both the platform and the creator, products with low gross margins (under 40%) struggle on TikTok Shop. To succeed, aim for a <strong>60%+ gross margin</strong> prior to affiliate payouts. This ensures that even if a creator takes 15% and TikTok takes 6%, you are still retaining a 39% net margin to cover your advertising and operational overhead.</p>
+      </AeoArticle>
     </div>
   );
 }

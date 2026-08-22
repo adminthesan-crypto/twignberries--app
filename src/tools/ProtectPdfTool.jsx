@@ -10,7 +10,7 @@ const SL = {
 export default function ProtectPdfTool() {
   const [file, setFile] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [ownerName, setOwnerName] = useState('Twignberries Authorized Creator');
+  const [ownerName, setOwnerName] = useState('Pahruli Authorized Creator');
   const [sealNote, setSealNote] = useState('OFFICIAL ENCRYPTED RELEASE — DO NOT EDIT');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -70,11 +70,11 @@ export default function ProtectPdfTool() {
 
       // Embed immutable Creator & Author metadata + Cryptographic Seal stamp
       pdfDoc.setAuthor(ownerName);
-      pdfDoc.setCreator('Twignberries Client-Side Security Engine v5.0');
-      pdfDoc.setProducer('Twignberries Zero-Cloud Security');
+      pdfDoc.setCreator('Pahruli Client-Side Security Engine v5.0');
+      pdfDoc.setProducer('Pahruli Zero-Cloud Security');
       pdfDoc.setTitle(`${file.name} (Sealed & Verified)`);
       pdfDoc.setSubject(sealNote);
-      pdfDoc.setKeywords(['Twignberries-Sealed', ownerName, new Date().toISOString()]);
+      pdfDoc.setKeywords(['Pahruli-Sealed', ownerName, new Date().toISOString()]);
 
       // Add a clean visual footer seal on the first page
       const firstPage = pdfDoc.getPages()[0];
@@ -101,7 +101,7 @@ export default function ProtectPdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Protect Settings */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -204,7 +204,7 @@ export default function ProtectPdfTool() {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <div className="flex items-center justify-between mb-1">
                 <label style={{ fontSize: 13, fontWeight: 600, color: '#1f2532' }}>
@@ -287,13 +287,13 @@ export default function ProtectPdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Sealed-Document.pdf"
+                download="Pahruli-Sealed-Document.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Sealed PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Sealed-Document.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Sealed-Document.pdf" />
             </div>
             </div>
           )}
@@ -306,7 +306,7 @@ export default function ProtectPdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side PDF Sealing?</div>
-          Adding author metadata or security stamps on web servers risks document leakage. Twignberries embeds your official copyright signature directly in device memory.
+          Adding author metadata or security stamps on web servers risks document leakage. Pahruli embeds your official copyright signature directly in device memory.
         </div>
       </div>
     </div>

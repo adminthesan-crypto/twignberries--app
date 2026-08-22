@@ -11,7 +11,7 @@ export default function CopySummaryButton({ title, lines, className = '' }) {
       return `- **${line.label}:** ${line.value}`;
     }).join('\n');
 
-    const summaryText = `✨ **${title}**\n${formattedLines}\n\n_Calculated with Twignberries 2026 Daily Workspace_`;
+    const summaryText = `✨ **${title}**\n${formattedLines}\n\n_Calculated with Pahruli 2026 Daily Workspace_`;
 
     navigator.clipboard.writeText(summaryText).then(() => {
       setCopied(true);

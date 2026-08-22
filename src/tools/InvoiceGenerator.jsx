@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { FileText, Plus, Trash2, Printer, Building2, User, Receipt, Calendar, CreditCard } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
 
 export default function InvoiceGenerator() {
   // Sender (Your Business) State
-  const [senderName, setSenderName] = useState('Twignberries Creative LLC');
+  const [senderName, setSenderName] = useState('Pahruli Creative LLC');
   const [senderEmail, setSenderEmail] = useState('hello@twignberries.com');
   const [senderAddress, setSenderAddress] = useState('100 Innovation Way, Suite 400\nAustin, TX 78701 USA');
   const [senderTaxId, setSenderTaxId] = useState('Tax ID: US-88291044');
@@ -27,7 +28,7 @@ export default function InvoiceGenerator() {
 
   // Line Items State
   const [items, setItems] = useState([
-    { id: 1, desc: 'Web App UI/UX Design & Prototyping (Twignberries 2026)', qty: 1, rate: 1200 },
+    { id: 1, desc: 'Web App UI/UX Design & Prototyping (Pahruli 2026)', qty: 1, rate: 1200 },
     { id: 2, desc: 'Custom Frontend React Development & Architecture', qty: 25, rate: 80 }
   ]);
 
@@ -479,6 +480,32 @@ export default function InvoiceGenerator() {
           </div>
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>How to Create a Legally Compliant Freelance Invoice</h2>
+        <p>An invoice is more than just a request for payment; it is a legally binding document that establishes a record of sale and dictates payment terms between a freelancer and a client. Missing critical elements on an invoice can delay payment or cause tax complications during audit season.</p>
+        
+        <h3>Essential Elements of a Professional Invoice</h3>
+        <p>To ensure your invoice is processed quickly by client accounting departments, it must include the following standard components:</p>
+        <ul>
+          <li><strong>Unique Invoice Number:</strong> A sequential identifier (e.g., INV-2026-042). Never repeat an invoice number.</li>
+          <li><strong>Business Details:</strong> Your legal name or DBA, address, and tax ID (if required), alongside the client's identical details.</li>
+          <li><strong>Dates:</strong> The date the invoice was issued, and the exact payment due date.</li>
+          <li><strong>Line Items:</strong> Clear, itemized descriptions of the services rendered, the quantity (or hours), the rate, and the subtotal for each line.</li>
+          <li><strong>Payment Terms:</strong> Clear instructions on how to pay (e.g., bank transfer details, Stripe link) and the timeframe (e.g., Net-15, Net-30).</li>
+        </ul>
+
+        <h3>Understanding Net Payment Terms</h3>
+        <p>Payment terms dictate when the money is legally owed. "Net" refers to the total days the client has to pay after the invoice is received:</p>
+        <ul>
+          <li><strong>Net-15:</strong> Payment is due 15 days from the invoice date. Common for freelancers.</li>
+          <li><strong>Net-30:</strong> Payment is due 30 days from the invoice date. The standard for B2B corporate contracts.</li>
+          <li><strong>Due on Receipt:</strong> Payment is expected immediately upon delivery of the invoice.</li>
+        </ul>
+
+        <h3>Why PDF is the Standard Format</h3>
+        <p>Always send invoices as a PDF (Portable Document Format) rather than an editable Word document or Excel spreadsheet. A PDF locks the layout and prevents unauthorized tampering with line items, rates, or payment details. Modern invoicing tools generate these PDFs entirely in your browser to protect sensitive financial data from cloud storage.</p>
+      </AeoArticle>
     </div>
   );
 }

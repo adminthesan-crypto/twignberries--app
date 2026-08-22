@@ -10,7 +10,7 @@ const DEFAULT_IMG = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fb
 
 export default function OpenGraphPreviewTool() {
   const [url, setUrl] = useState('https://twignberries.com/v6-enterprise-suite');
-  const [title, setTitle] = useState('Twignberries — 30 Enterprise-Grade Offline Utilities');
+  const [title, setTitle] = useState('Pahruli — 30 Enterprise-Grade Offline Utilities');
   const [desc, setDesc] = useState('Explore our 100% client-side PDF Suite, E-Commerce margin solvers, Image croppers, and developer tools with zero cloud retention.');
   const [imgSrc, setImgSrc] = useState(DEFAULT_IMG);
   const [activePlatform, setActivePlatform] = useState('google'); // google, twitter, linkedin, facebook
@@ -51,7 +51,7 @@ export default function OpenGraphPreviewTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Link Meta Data & Social Preview Viewport */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">

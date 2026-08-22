@@ -32,8 +32,8 @@ export default function PdfToPdfATool() {
       // Add standard PDF/A archival metadata and conformance tags
       pdfDoc.setTitle(file.name.replace(/\.pdf$/i, ''));
       pdfDoc.setSubject('ISO 19005-1 PDF/A-1b Archival Compliant Document');
-      pdfDoc.setProducer('Twignberries Archival Engine (PDF/A-1b)');
-      pdfDoc.setCreator('Twignberries PDF Suite');
+      pdfDoc.setProducer('Pahruli Archival Engine (PDF/A-1b)');
+      pdfDoc.setCreator('Pahruli PDF Suite');
       pdfDoc.setCreationDate(new Date());
       pdfDoc.setModificationDate(new Date());
 

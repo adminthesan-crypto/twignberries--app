@@ -108,7 +108,7 @@ export default function SplitPdfTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Range Controls */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -177,7 +177,7 @@ export default function SplitPdfTool() {
           <div className="form-card">
             <div style={SL}>2. Select Pages to Extract</div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[20px]">
               <button
                 type="button"
                 onClick={() => { setMode('range'); setResultUrl(null); }}
@@ -278,13 +278,13 @@ export default function SplitPdfTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Extracted-Pages.pdf"
+                download="Pahruli-Extracted-Pages.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
                 <Download size={16} /> Download Extracted PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Extracted-Pages.pdf" mimeType="application/pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Extracted-Pages.pdf" mimeType="application/pdf" />
             </div>
             </div>
           )}
@@ -297,7 +297,7 @@ export default function SplitPdfTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side PDF Splitting?</div>
-          Extracting confidential pages from legal contracts or financial statements online is risky if tools upload to third-party servers. Twignberries slices pages in your device RAM.
+          Extracting confidential pages from legal contracts or financial statements online is risky if tools upload to third-party servers. Pahruli slices pages in your device RAM.
         </div>
       </div>
     </div>

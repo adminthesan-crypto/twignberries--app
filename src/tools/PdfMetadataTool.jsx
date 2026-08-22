@@ -110,7 +110,7 @@ export default function PdfMetadataTool() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: Input Dropzone & Metadata Editor */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -194,7 +194,7 @@ export default function PdfMetadataTool() {
             )}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Document Title
@@ -222,7 +222,7 @@ export default function PdfMetadataTool() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[16px]">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Subject / Category
@@ -250,7 +250,7 @@ export default function PdfMetadataTool() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 6 }}>
                 Software Creator Tag
@@ -259,7 +259,7 @@ export default function PdfMetadataTool() {
                 type="text"
                 value={meta.creator}
                 onChange={e => { setMeta({ ...meta, creator: e.target.value }); setResultUrl(null); }}
-                placeholder="e.g. Twignberries Client Engine"
+                placeholder="e.g. Pahruli Client Engine"
                 style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
@@ -272,7 +272,7 @@ export default function PdfMetadataTool() {
                 type="text"
                 value={meta.producer}
                 onChange={e => { setMeta({ ...meta, producer: e.target.value }); setResultUrl(null); }}
-                placeholder="e.g. Twignberries PDF Engine v6.0"
+                placeholder="e.g. Pahruli PDF Engine v6.0"
                 style={{ width: '100%', padding: '24px 26px', borderRadius: 12, border: '1px solid #d0d4e4', background: '#ffffff', fontSize: 14, fontWeight: 600, color: '#1f2532' }}
               />
             </div>
@@ -320,13 +320,13 @@ export default function PdfMetadataTool() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
               <a
                 href={resultUrl}
-                download="Twignberries-Metadata-Updated.pdf"
+                download="Pahruli-Metadata-Updated.pdf"
                 className="btn-primary"
                 style={{ width: '100%', background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 24 }}
               >
                 <Download size={16} /> Download Updated PDF
               </a>
-              <NativeShareButton fileUrl={resultUrl} fileName="Twignberries-Metadata-Updated.pdf" />
+              <NativeShareButton fileUrl={resultUrl} fileName="Pahruli-Metadata-Updated.pdf" />
             </div>
             </div>
           )}

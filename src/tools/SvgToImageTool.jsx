@@ -100,7 +100,7 @@ export default function SvgToImageTool() {
   }, [svgCode, scale, format]);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+    <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
       {/* Left Column: SVG Input & Settings */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div className="form-card">
@@ -162,12 +162,12 @@ export default function SvgToImageTool() {
         <div className="form-card">
           <div style={SL}>2. Scale Resolution & Image Format</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 8 }}>
                 Resolution Scale
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {[
                   { id: 1, label: '1x' },
                   { id: 2, label: '2x' },
@@ -196,7 +196,7 @@ export default function SvgToImageTool() {
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1f2532', marginBottom: 8 }}>
                 Output Format
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   { id: 'png', label: 'PNG (Transparent)' },
                   { id: 'jpeg', label: 'JPG (White Bg)' }
@@ -252,7 +252,7 @@ export default function SvgToImageTool() {
             <div className="flex gap-3 w-full">
               <a
                 href={resultUrl}
-                download={`Twignberries-SVG-Export-${scale}x.${format === 'jpeg' ? 'jpg' : 'png'}`}
+                download={`Pahruli-SVG-Export-${scale}x.${format === 'jpeg' ? 'jpg' : 'png'}`}
                 className="btn-primary"
                 style={{ flex: 1, background: '#00c875', color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
               >
@@ -260,7 +260,7 @@ export default function SvgToImageTool() {
               </a>
               <NativeShareButton 
                 fileUrl={resultUrl} 
-                fileName={`Twignberries-SVG-Export-${scale}x.${format === 'jpeg' ? 'jpg' : 'png'}`} 
+                fileName={`Pahruli-SVG-Export-${scale}x.${format === 'jpeg' ? 'jpg' : 'png'}`} 
                 mimeType={`image/${format}`} 
               />
             </div>
@@ -274,7 +274,7 @@ export default function SvgToImageTool() {
 
         <div className="insight-block">
           <div style={{ fontWeight: 700, color: '#6161ff', marginBottom: 4 }}>💡 Why use Client-Side SVG Export?</div>
-          Converting logos and vector assets on third-party servers can leak pre-release brand art. Twignberries renders vectors inside your GPU canvas offline.
+          Converting logos and vector assets on third-party servers can leak pre-release brand art. Pahruli renders vectors inside your GPU canvas offline.
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Users, RefreshCw, TrendingUp, DollarSign, Award, ShieldCheck, AlertCircle, Activity } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
@@ -43,7 +44,7 @@ export default function SaasChurnLtvCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* ── Left Column (Inputs) ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
@@ -53,7 +54,7 @@ export default function SaasChurnLtvCalculator() {
               <Users size={13} color="var(--brand)" /> 1. Revenue &amp; Acquisition Cost
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 0 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[0px]">
               <div>
                 <label>ARPU (monthly per user) ($)</label>
                 <input
@@ -237,6 +238,28 @@ export default function SaasChurnLtvCalculator() {
 
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>SaaS MRR Churn and LTV Formulas Explained</h2>
+        <p>For any Software-as-a-Service (SaaS) business, growth isn't just about acquiring new users—it's about retaining them. Two of the most critical metrics investors look at are Customer Lifetime Value (LTV) and Monthly Recurring Revenue (MRR) Churn.</p>
+        
+        <h3>How to Calculate Customer Lifetime Value (LTV)</h3>
+        <p>LTV represents the total gross profit you expect to earn from a single customer throughout their entire relationship with your business. The standard formula uses Average Revenue Per User (ARPU), your Gross Margin, and your Monthly Churn Rate.</p>
+        <ul>
+          <li><strong>LTV Formula</strong> = (ARPU × Gross Margin %) / Monthly Churn Rate</li>
+        </ul>
+        <p>For example, if your software costs $50/month, your gross margin (after server costs) is 80%, and your monthly churn rate is 5%: your LTV is ($50 × 0.80) / 0.05 = <strong>$800</strong>. This means, on average, every new signup is worth $800 to your business.</p>
+
+        <h3>Understanding Customer Acquisition Cost (CAC) Payback</h3>
+        <p>Knowing your LTV is useless if you don't know how much it costs to acquire that customer. CAC includes marketing spend, sales commissions, and onboarding costs. The <strong>CAC Payback Period</strong> is the number of months it takes to recoup those acquisition costs from a new customer.</p>
+        <ul>
+          <li><strong>Payback Period (Months)</strong> = CAC / (ARPU × Gross Margin %)</li>
+        </ul>
+        <p>If it costs $150 to acquire a customer, and they generate $40 of gross profit a month, your payback period is $150 / $40 = <strong>3.75 months</strong>. A payback period under 12 months is generally considered excellent for bootstrapped SaaS businesses.</p>
+        
+        <h3>The Golden Rule: LTV:CAC Ratio</h3>
+        <p>Venture capitalists and SaaS operators aim for an <strong>LTV:CAC ratio of 3:1 or higher</strong>. If your LTV is $800 and your CAC is $150, your ratio is 5.3x. This indicates a highly efficient growth engine. If the ratio drops near 1:1, you are spending just as much to acquire a customer as they will eventually pay you, which leads to cash flow death.</p>
+      </AeoArticle>
     </div>
   );
 }

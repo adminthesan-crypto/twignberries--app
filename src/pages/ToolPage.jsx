@@ -48,7 +48,7 @@ export default function ToolPage() {
   return (
     <>
       <Helmet>
-        <title>{displayTitle} | Pahruli</title>
+        <title>Pahruli</title>
         <meta name="description" content={tool.seo.description} />
         <meta property="og:title" content={`${displayTitle} | Pahruli`} />
         <meta property="og:description" content={tool.seo.description} />
@@ -64,7 +64,7 @@ export default function ToolPage() {
         recentIds={recentIds}
       />
 
-      <main style={{ flex: 1, padding: '32px 40px' }}>
+      <main className="flex-1 p-5 md:py-8 md:px-10">
         <div style={{ maxWidth: 1040, margin: '0 auto' }}>
           
           {/* Breadcrumb + actions bar */}

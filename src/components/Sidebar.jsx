@@ -11,7 +11,7 @@ export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds,
 
   return (
     <aside
-      className="no-print shrink-0 overflow-y-auto"
+      className="hidden md:flex flex-col no-print shrink-0 overflow-y-auto"
       style={{
         width: 250,
         position: 'sticky',
@@ -20,8 +20,6 @@ export default function Sidebar({ tools, activeToolId, onSelectTool, starredIds,
         alignSelf: 'flex-start',
         background: 'var(--bg-sidebar)',
         borderRight: '1px solid var(--border)',
-        display: 'flex',
-        flexDirection: 'column',
         gap: 0,
         padding: '20px 14px',
       }}

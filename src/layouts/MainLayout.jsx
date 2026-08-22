@@ -59,7 +59,7 @@ export default function MainLayout() {
       />
 
       {/* Body / Main content provided by pages (HomePage or ToolPage) */}
-      <div style={{ flex: 1, display: 'flex' }}>
+      <div className="flex-1 flex flex-col md:flex-row">
         <Outlet context={{ 
           selectedCategory, 
           handleSelectCategory, 

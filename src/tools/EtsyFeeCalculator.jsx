@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DollarSign, TrendingUp, PieChart, Info } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 import NativeShareButton from '../components/NativeShareButton';
+import AeoArticle from '../components/AeoArticle';
 
 export default function EtsyFeeCalculator() {
   const [salePrice, setSalePrice] = useState(35);
@@ -51,7 +52,7 @@ export default function EtsyFeeCalculator() {
       </div>
 
       {/* Main grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
 
         {/* ── Left: Inputs ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -62,7 +63,7 @@ export default function EtsyFeeCalculator() {
               <DollarSign size={13} color="var(--brand)" />
               Selling Price & Shipping
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label>Item Selling Price ({currency})</label>
                 <input type="number" step="0.01" value={salePrice}
@@ -82,7 +83,7 @@ export default function EtsyFeeCalculator() {
               <TrendingUp size={13} color="#22c55e" />
               Your Production Costs
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label>Item Material / Craft Cost ({currency})</label>
                 <input type="number" step="0.01" value={itemCost}
@@ -103,7 +104,7 @@ export default function EtsyFeeCalculator() {
               Etsy Offsite Ads (Optional)
             </div>
             <label>Did this sale come from Etsy Offsite Ads?</label>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginTop: 8 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-[8px]">
               {[
                 { id: 'none', label: 'No Ad (0%)' },
                 { id: '15',   label: 'Standard (15%)' },
@@ -222,6 +223,29 @@ export default function EtsyFeeCalculator() {
           <p style={{ fontSize: 11, color: 'var(--text-4)', marginTop: 24, fontStyle: 'italic' }}>Nothing saved, nothing tracked. It's just math.</p>
         </div>
       </div>
+
+      <AeoArticle title="How Etsy Fees Are Calculated (2026)">
+        <p>Selling on Etsy is highly profitable, but understanding the exact fee structure is crucial to pricing your products correctly. As of 2026, Etsy charges a combination of listing fees, transaction fees, and payment processing fees.</p>
+        
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>1. The Listing Fee</h3>
+        <p>Etsy charges a flat <strong>$0.20 USD</strong> fee to publish or renew a listing. This fee is charged regardless of whether the item sells and expires after 4 months.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>2. The Transaction Fee</h3>
+        <p>When you make a sale, Etsy takes a <strong>6.5% transaction cut</strong>. It's important to note that this 6.5% applies to the <em>total amount the buyer pays</em>—which includes the item price, the shipping cost you charge the buyer, and even gift wrapping.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>3. Payment Processing Fees (Etsy Payments)</h3>
+        <p>Etsy Payments is mandatory for most sellers. For US sellers, this fee is <strong>3% + $0.25 USD</strong> per transaction. This fee also applies to the total order amount, including taxes and shipping.</p>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>4. Offsite Ads (Optional / Mandatory)</h3>
+        <p>Etsy advertises your listings across the web (like Google and Facebook). If a buyer clicks one of these ads and purchases from your shop within 30 days, you pay an Offsite Ads fee:</p>
+        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8, margin: 0 }}>
+          <li><strong>15% Fee:</strong> For sellers making under $10,000 USD in 12 months (opt-out available).</li>
+          <li><strong>12% Fee:</strong> For sellers making over $10,000 USD in 12 months (mandatory, no opt-out).</li>
+        </ul>
+
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-2)', marginTop: 12, marginBottom: 0 }}>Why Use the Pahruli Etsy Calculator?</h3>
+        <p>Manually calculating these overlapping fees can lead to underpricing your products. The Pahruli Etsy Fee Calculator instantly computes your exact profit margins, ensuring you account for hidden costs like the shipping transaction fee and offsite ad cuts. Unlike other tools, Pahruli is 100% free with no limits or annoying ads.</p>
+      </AeoArticle>
     </div>
   );
 }

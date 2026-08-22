@@ -30,14 +30,13 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
         borderRadius: 16,
         padding: '16px 20px',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
+        flexDirection: 'column',
+        alignItems: 'stretch',
         gap: 16,
         boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%' }}>
         <div
           style={{
             width: 38,
@@ -63,7 +62,7 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: 8, width: '100%' }}>
         {/* WhatsApp Button */}
         <a
           href={`https://api.whatsapp.com/send?text=${whatsappText}`}
@@ -78,9 +77,11 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
             fontSize: 12,
             fontWeight: 700,
             padding: '8px 14px',
-            borderRadius: 99,
+            borderRadius: 12,
             textDecoration: 'none',
             transition: 'opacity 0.15s ease',
+            justifyContent: 'center',
+            minHeight: 44,
           }}
           title="Share on WhatsApp"
         >
@@ -101,9 +102,11 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
             fontSize: 12,
             fontWeight: 700,
             padding: '8px 14px',
-            borderRadius: 99,
+            borderRadius: 12,
             textDecoration: 'none',
             transition: 'opacity 0.15s ease',
+            justifyContent: 'center',
+            minHeight: 44,
           }}
           title="Share on Telegram"
         >
@@ -124,8 +127,10 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
             fontSize: 12,
             fontWeight: 700,
             padding: '8px 14px',
-            borderRadius: 99,
+            borderRadius: 12,
             textDecoration: 'none',
+            justifyContent: 'center',
+            minHeight: 44,
           }}
           title="Share on X"
         >
@@ -145,8 +150,10 @@ export default function ViralShareBar({ toolName = 'Pahruli' }) {
             fontSize: 12,
             fontWeight: 600,
             padding: '7px 14px',
-            borderRadius: 99,
+            borderRadius: 12,
             cursor: 'pointer',
+            justifyContent: 'center',
+            minHeight: 44,
           }}
         >
           {copied ? <Check size={13} color="#10b981" /> : <Copy size={13} />}

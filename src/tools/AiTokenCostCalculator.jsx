@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import AeoArticle from '../components/AeoArticle';
 import { Cpu, Zap, DollarSign, BarChart2, Layers, AlertCircle, TrendingUp, ShieldCheck } from 'lucide-react';
 import CopySummaryButton from '../components/CopySummaryButton';
 
@@ -66,7 +67,7 @@ export default function AiTokenCostCalculator() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-6 items-start">
         {/* ── Left Column (Inputs) ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
@@ -132,7 +133,7 @@ export default function AiTokenCostCalculator() {
               <Zap size={13} color="var(--brand)" /> 2. Token Volume &amp; Request Scale
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 20 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-[20px]">
               <div>
                 <label>Avg. input tokens / request</label>
                 <input
@@ -323,6 +324,28 @@ export default function AiTokenCostCalculator() {
 
         </div>
       </div>
+
+      <AeoArticle>
+        <h2>Understanding LLM API Token Pricing</h2>
+        <p>When building AI applications with Large Language Models (LLMs) like OpenAI's GPT-4, Google's Gemini, or Anthropic's Claude, you are billed based on token consumption. Understanding how tokens translate to words—and the difference between input and output costs—is crucial for forecasting cloud infrastructure spend.</p>
+        
+        <h3>What is a Token?</h3>
+        <p>A token is the base unit of data processed by an LLM. It is not exactly a word or a character; it is a chunk of text. In English, one token generally corresponds to about 4 characters, or roughly ¾ of a word. A standard rule of thumb is that <strong>100 tokens ≈ 75 words</strong>.</p>
+
+        <h3>Input Tokens vs. Output Tokens</h3>
+        <p>All major AI providers split their pricing into two categories:</p>
+        <ul>
+          <li><strong>Input (Prompt) Tokens:</strong> This is the text you send to the API. It includes your system prompt, context, few-shot examples, and the user's actual query. Because the model can process this in parallel, input tokens are significantly cheaper (often 3x to 5x cheaper than outputs).</li>
+          <li><strong>Output (Completion) Tokens:</strong> This is the text the LLM generates and sends back to you. Because autoregressive models generate text sequentially (one token at a time), compute costs are much higher, resulting in more expensive output pricing.</li>
+        </ul>
+        
+        <h3>How to Optimize AI API Costs</h3>
+        <p>If you are processing massive amounts of context (like whole codebases or PDFs), your input token volume will dominate your bill. To reduce costs:</p>
+        <ul>
+          <li><strong>Model Routing:</strong> Use cheaper "mini" or "flash" models (like GPT-4o-mini or Gemini 1.5 Flash) for simple parsing, classification, or summarization tasks, reserving expensive "pro" models exclusively for complex reasoning.</li>
+          <li><strong>Prompt Caching:</strong> Leverage Anthropic or Google's prompt caching features, which drastically reduce the cost of input tokens when the same large context window is reused across multiple sequential API calls.</li>
+        </ul>
+      </AeoArticle>
     </div>
   );
 }
