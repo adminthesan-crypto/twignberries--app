@@ -34,7 +34,15 @@ export default function ToolPage() {
   const formattedUseCase = useCase 
     ? useCase.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
     : '';
-  const displayTitle = useCase ? `${tool.seo.title} - ${formattedUseCase}` : tool.seo.title;
+    
+  // pSEO Optimized Metadata
+  const displayTitle = useCase 
+    ? `${tool.name} for ${formattedUseCase} - Free Online Tool` 
+    : tool.seo.title;
+    
+  const displayDesc = useCase 
+    ? `Free online ${tool.name.toLowerCase()} specifically designed for ${formattedUseCase.toLowerCase()}. No signup required, works 100% offline in your browser.`
+    : tool.seo.description;
 
   const handleToggleStar = () => {
     setStarredIds(prev => {
@@ -48,11 +56,11 @@ export default function ToolPage() {
   return (
     <>
       <Helmet>
-        <title>Pahruli</title>
-        <meta name="description" content={tool.seo.description} />
+        <title>{displayTitle}</title>
+        <meta name="description" content={displayDesc} />
         <meta property="og:title" content={`${displayTitle} | Pahruli`} />
-        <meta property="og:description" content={tool.seo.description} />
-        <link rel="canonical" href={`https://free.pahruli.in/tool/${tool.id}${useCase ? `/${useCase}` : ''}`} />
+        <meta property="og:description" content={displayDesc} />
+        <link rel="canonical" href={`https://usepahruli.com/tool/${tool.id}${useCase ? `/${useCase}` : ''}`} />
       </Helmet>
 
       {/* Sidebar for quick switching */}
@@ -121,12 +129,57 @@ export default function ToolPage() {
           </div>
 
           {/* Tool content */}
-          <div className="animate-fade-in pahruli-tool-container" style={{ minHeight: '50vh', marginBottom: 96 }}>
+          <div className="animate-fade-in pahruli-tool-container" style={{ minHeight: '50vh', marginBottom: 64 }}>
+            {/* Inject CSS to hide the default hardcoded H1 inside the tool components */}
+            <style>{`.pahruli-tool-container h1:first-of-type { display: none !important; }`}</style>
+            
+            {/* Dynamic SEO H1 Header */}
+            <div className="mb-8 pb-4 border-b border-[#e6e9ef]">
+              <h1 className="text-3xl font-heading font-bold text-[#1f2532] mb-2 tracking-tight">
+                {useCase 
+                  ? (useCase.includes('error') || useCase.includes('exceeds') || useCase.includes('limit') || useCase.includes('too-large') || useCase.includes('larger-than')
+                    ? (useCase.startsWith('fix') ? formattedUseCase.replace(/-/g, ' ') : `Fix: ${formattedUseCase.replace(/-/g, ' ')}`)
+                    : `${tool.name} for ${formattedUseCase.replace(/-/g, ' ')}`)
+                  : tool.seo.title}
+              </h1>
+              <p className="text-[#64748b] text-sm font-medium">
+                {useCase 
+                  ? `Use this free ${tool.name.toLowerCase()} to securely solve your issue 100% offline.` 
+                  : tool.description}
+              </p>
+            </div>
+
             <ActiveComponent />
           </div>
 
+          {/* pSEO Internal Linking: Related Use Cases */}
+          {tool.useCases && tool.useCases.length > 0 && (
+            <div className="mb-12 no-print">
+              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Specific Use Cases</h3>
+              <div className="flex flex-wrap gap-2">
+                {tool.useCases.map(uc => {
+                  const ucSlug = typeof uc === 'string' ? uc : uc.slug;
+                  const ucName = typeof uc === 'string' ? uc.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : uc.name;
+                  return (
+                    <Link
+                      key={ucSlug}
+                      to={`/tool/${tool.id}/${ucSlug}`}
+                      className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                        useCase === ucSlug 
+                          ? 'bg-gray-900 text-white' 
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                    >
+                      {ucName}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Post-Tool Widgets */}
-          <div className="flex flex-col gap-10 border-t border-[#e6e9ef]" style={{ marginTop: 64, paddingTop: 64 }}>
+          <div className="flex flex-col gap-10 border-t border-[#e6e9ef]" style={{ paddingTop: 64 }}>
             {/* Viral Share Bar (WhatsApp & Twitter/X 1-Click Viral Loop) */}
             <ViralShareBar toolName={tool.name} />
 

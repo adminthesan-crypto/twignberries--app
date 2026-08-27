@@ -6,6 +6,7 @@ import WidgetLayout from './layouts/WidgetLayout';
 import HomePage from './pages/HomePage';
 import ToolPage from './pages/ToolPage';
 import NotFoundPage from './pages/NotFoundPage';
+import EmbedPage from './pages/EmbedPage';
 import TOOLS from './data/toolsData';
 
 import { BackdropProvider } from './contexts/BackdropContext';
@@ -31,6 +32,7 @@ function App() {
             {/* Main Website Routes */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/embed-tools" element={<EmbedPage />} />
             <Route path="/tool/:id" element={<ToolPage />} />
             <Route path="/tool/:id/:useCase" element={<ToolPage />} />
             <Route path="*" element={<NotFoundPage />} />

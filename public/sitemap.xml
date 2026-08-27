@@ -1,609 +1,708 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.usepahruli.com/</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://usepahruli.com/</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/etsy-fee</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://usepahruli.com/embed-tools</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/paypal-fee</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/etsy-fee</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/stripe-fee</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/etsy-fee/digital-products</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/gst-calculator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/etsy-fee/print-on-demand</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/amazon-fba</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/etsy-fee/handmade</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/tiktok-shop</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/etsy-fee/vintage</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/shopify-fee</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/invoice-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee/uk</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-markdown</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee/canada</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/creator-platform</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee/australia</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/saas-churn-ltv</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee/india</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/youtube-rpm</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/paypal-fee/non-profits</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/utm-builder</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/stripe-fee</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/roas-calculator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/gst-calculator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/ai-token-cost</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/gst-calculator/indian-freelancer-gst</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/merge-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/gst-calculator/consulting-services</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/split-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/gst-calculator/contractor</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/gst-calculator/international-client</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/watermark-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/amazon-fba</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/protect-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/tiktok-shop</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/rotate-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/shopify-fee</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/organize-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/invoice-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/page-number-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/metadata-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/aadhaar-and-pan</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/svg-to-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/resume-and-cover-letter</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/social-cropper</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/scanned-documents</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/color-palette</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/bank-statements</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/json-formatter</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/ilovepdf-free-alternative-no-limit</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/regex-tester</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/smallpdf-daily-limit-bypass</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/og-preview</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/offline-no-upload</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-text-extractor</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-markdown/safe-for-bank-statements</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-crop</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/creator-platform</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-booklet</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/saas-churn-ltv</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-to-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/youtube-rpm</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/compress-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/utm-builder</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/word-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/roas-calculator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-to-word</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/ai-token-cost</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/excel-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/merge-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-to-excel</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/split-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/powerpoint-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/split-pdf/extract-one-page</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-to-powerpoint</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/split-pdf/remove-blank-pages</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/unlock-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/split-pdf/split-by-size</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-to-pdfa</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/repair-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/under-200kb-ssc</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/redact-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/under-100kb-upsc</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/sign-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/under-10mb-college-assignment</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/edit-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/for-email-attachment</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/pdf-forms</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/fix-file-size-exceeds-limit</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/scan-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/whatsapp-media-file-larger-than-100mb</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/ocr-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/iphone-browser-no-app</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/compare-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-to-pdf/android-free-no-download</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/ai-pdf-summarizer</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/watermark-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/translate-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/protect-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/html-to-pdf</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/rotate-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/base64-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/organize-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/css-gradient</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/page-number-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-palette</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/metadata-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/svg-optimizer</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/svg-to-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-compressor</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/social-cropper</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-resizer</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/color-palette</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/crop-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/json-formatter</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/convert-to-jpg</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/regex-tester</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/convert-from-jpg</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/og-preview</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/rotate-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-text-extractor</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/watermark-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-crop</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/photo-editor</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-booklet</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/upscale-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-to-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/remove-background</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/compress-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/meme-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/word-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/html-to-image</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/word-to-pdf/editable-resume</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/blur-face</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/word-to-pdf/legal-contract</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-color-picker</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/word-to-pdf/scanned-document</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-splitter</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-to-word</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-metadata-exif</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/excel-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/svg-to-png</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/excel-to-pdf/for-youtube</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-round-corners</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/excel-to-pdf/for-instagram</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-to-base64-bulk</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/excel-to-pdf/for-shopify</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-noise-reducer</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/excel-to-pdf/for-etsy</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-duotone</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-to-excel</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/image-collage-maker</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/powerpoint-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/sql-formatter</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-to-powerpoint</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/csv-json</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/unlock-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/diff-viewer</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-to-pdfa</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/jwt-decoder</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/repair-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/cron-parser</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/redact-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/markdown-editor</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/sign-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/password-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/edit-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/meta-robots</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/pdf-forms</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/keyword-density</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/scan-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/sitemap-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/ocr-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/favicon-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/compare-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/stripe-paypal</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/ai-pdf-summarizer</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/bundle-margin</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/translate-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/shipping-rate</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/html-to-pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/invoice-tax</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/base64-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/project-scoper</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/css-gradient</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/timezone-planner</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-palette</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/qr-generator</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/svg-optimizer</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/email-subject</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-compressor</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.usepahruli.com/tool/ad-copy-counter</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://usepahruli.com/tool/image-resizer</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/crop-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/convert-to-jpg</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/convert-from-jpg</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/rotate-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/watermark-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/photo-editor</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/upscale-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/remove-background</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/meme-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/html-to-image</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/blur-face</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-color-picker</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-splitter</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-metadata-exif</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/svg-to-png</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-round-corners</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-to-base64-bulk</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-noise-reducer</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-duotone</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/image-collage-maker</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/sql-formatter</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/csv-json</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/diff-viewer</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/jwt-decoder</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/cron-parser</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/markdown-editor</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/password-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/meta-robots</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/keyword-density</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/sitemap-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/favicon-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/stripe-paypal</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/bundle-margin</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/shipping-rate</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/invoice-tax</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/project-scoper</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/timezone-planner</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/qr-generator</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/email-subject</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://usepahruli.com/tool/ad-copy-counter</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
   </url>
 </urlset>
